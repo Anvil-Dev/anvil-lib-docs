@@ -111,13 +111,55 @@ public static void register(final RegisterPayloadHandlersEvent event) {
 
 `NetworkUtil` 提供了服务端向玩家批量发送包的快捷方法：
 
-- `sendToAllPlayersExcluded(@Nullable ServerPlayer excluded, CustomPacketPayload payload, ...)`  
-  向所有玩家发送包，可排除指定玩家。
+### `sendToAllPlayersExcluded`
 
--
+```java
+public static void sendToAllPlayersExcluded(
+   @Nullable ServerPlayer excluded,
+   CustomPacketPayload payload,
+   CustomPacketPayload... payloads
+)
+```
 
-`sendToAllPlayersInDimensionExcluded(ServerLevel level, @Nullable ServerPlayer excluded, CustomPacketPayload payload, ...)`  
-向特定维度的所有玩家发送包，可排除指定玩家。
+* 向所有玩家发送包，可排除指定玩家。
+
+### `sendToAllPlayersInDimensionExcluded`
+
+```java
+public static void sendToAllPlayersInDimensionExcluded(
+   ServerLevel level,
+   @Nullable ServerPlayer excluded,
+   CustomPacketPayload payload,
+   CustomPacketPayload... payloads
+)
+```
+
+* 向特定维度的所有玩家发送包，可排除指定玩家。
+
+### `sendToAllPlayersIncluded`
+
+```java
+public static void sendToAllPlayersIncluded(
+   @Nullable Predicate<ServerPlayer> included,
+   CustomPacketPayload payload,
+   CustomPacketPayload... payloads
+)
+```
+
+* 向**所有满足条件的玩家**发送网络包。若 `included` 为 `null`，则发送给全部玩家（等同于全服广播）。
+
+### `sendToAllPlayersInDimensionIncluded`
+
+```java
+public static void sendToAllPlayersInDimensionIncluded(
+   ServerLevel level,
+   @Nullable Predicate<ServerPlayer> included,
+   CustomPacketPayload payload,
+   CustomPacketPayload... payloads
+)
+```
+
+* 向**特定维度中满足条件的玩家**发送网络包。若 `included` 为 `null`，则发送给该维度所有玩家。
 
 ## 5. 注意事项
 
