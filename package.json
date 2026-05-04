@@ -1,0 +1,21 @@
+{
+  "name": "anvillib-docs",
+  "version": "1.0.0",
+  "description": "CC-BY-NC-SA 4.0 License",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.16.1",
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "gray-matter": "^4.0.3",
+    "vitepress": "2.0.0-alpha.17",
+    "vue": "^3.5.33"
+  }
+}
