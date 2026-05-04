@@ -7,6 +7,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 // @ts-ignore
 import matter from 'gray-matter'
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 function getFileTitle(filePath: string) {
     try {
@@ -177,6 +180,7 @@ function getAutoConfig(lang: string = 'zh', homeName = '首页') {
 }
 
 export default defineConfig({
+    ...(process.env.GH_PAGE == 'true' ? {base: '/anvil-lib-docs/'} : {}),
     title: "AnvilLib",
     description: "为 Minecraft 模组开发者提供一系列实用的工具和框架",
     lastUpdated: true,
