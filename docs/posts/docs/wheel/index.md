@@ -12,8 +12,6 @@ next: false
 模型层（`api` 包）完全独立于渲染逻辑，可在服务端或逻辑层使用；客户端渲染层（`client` 包）通过自定义 GUI 渲染管道实现高效的环形
 UI。
 
----
-
 ## 1. 模块概览
 
 | 包                         | 职责                                                        |
@@ -26,8 +24,6 @@ UI。
 | `client.input`            | `WheelScreenController`，封装了点按和长按两种模式的输入处理。                |
 
 **模块主类**：`AnvilLibWheel` – 负责初始化全局动态 Uniform 存储，并提供 `Identifier` 工具。
-
----
 
 ## 2. API 层 – 轮盘菜单模型
 
@@ -73,8 +69,6 @@ WheelMenuModel model = WheelMenuBuilder.create()
 ```
 
 内部类 `WheelSubmenuBuilder` 用于构造子菜单（仅支持动作项，不支持嵌套子子菜单）。
-
----
 
 ## 3. 客户端渲染层
 
@@ -133,8 +127,6 @@ WheelMenuModel model = WheelMenuBuilder.create()
 
 全局单例通过 `AnvilLibWheel.getLibDynamicUniforms()` 获取，在 `ConfigureMainRenderTargetEvent` 时初始化。
 
----
-
 ## 4. 输入控制
 
 ### `WheelScreenController`
@@ -147,8 +139,6 @@ WheelMenuModel model = WheelMenuBuilder.create()
 
 **推荐用法**：在按键事件中监听长短按，调用控制器对应方法。
 
----
-
 ## 5. 测试与示例
 
 `dev.anvilcraft.lib.v2.test.wheel` 包提供了完整的可运行示例，用于验证不同模式下轮盘菜单的行为。
@@ -159,8 +149,6 @@ WheelMenuModel model = WheelMenuBuilder.create()
 
 运行测试前需确保对应模组 `anvillib_test` 已加载并绑定按键。
 
----
-
 ## 6. 扩展指南
 
 - **自定义渲染器**：实现 `WheelEntryRenderer` 并传入 `action` 或 `submenu` 的重载方法，可在扇区中绘制任意 GUI 元素。
@@ -168,8 +156,6 @@ WheelMenuModel model = WheelMenuBuilder.create()
   Uniform 类型。
 - **动态样式**：通过 `WheelMenuBuilder.selectionEffectColor()` 等可调整颜色；`WheelWidget` 的构造参数支持更细致的动画时长、颜色、字体缩放。
 - **与服务端交互**：`WheelEntryAction` 可通过 `WheelActionContext` 获取页面与槽位信息，结合 `PacketDistributor` 发送网络包执行逻辑。
-
----
 
 ## 注意事项
 

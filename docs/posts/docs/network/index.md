@@ -8,8 +8,6 @@ next: false
 
 包 `dev.anvilcraft.lib.v2.network` 提供了基于 NeoForge 网络系统的高层抽象，用于简化网络包的定义、方向管理及自动注册。
 
----
-
 ## 1. 概述
 
 网络模块通过密封接口 `IPacket` 建立了一套类型安全的网络包体系，将包分为 **客户端包**、**服务端包** 和 **双端包**，并结合
@@ -21,8 +19,6 @@ next: false
    `StreamCodec` 字段。
 2. 在该包的 `package-info.java` 上添加 `@Network` 注解，指定协议阶段（默认 `PLAY`）。
 3. 在 `RegisterPayloadHandlersEvent` 中调用 `NetworkRegistrar.register(registrar, modId)`，自动完成所有包的注册。
-
----
 
 ## 2. 包方向接口
 
@@ -71,8 +67,6 @@ public class SyncPacket implements IInsensitiveBiPacket {
 
 如果两端逻辑不同，使用 `ISensitiveBiPacket`，仍需分别实现 `handleOnClient` 和 `handleOnServer`。
 
----
-
 ## 3. 注解与自动注册
 
 ### `@Network`
@@ -113,8 +107,6 @@ public static void register(final RegisterPayloadHandlersEvent event) {
 **要求**：每个网络包类必须包含 `public static final CustomPacketPayload.Type<T>` 和
 `public static final StreamCodec<B, T>` 静态字段，否则注册将抛出异常。
 
----
-
 ## 4. 辅助发送工具
 
 `NetworkUtil` 提供了服务端向玩家批量发送包的快捷方法：
@@ -123,10 +115,9 @@ public static void register(final RegisterPayloadHandlersEvent event) {
   向所有玩家发送包，可排除指定玩家。
 
 -
+
 `sendToAllPlayersInDimensionExcluded(ServerLevel level, @Nullable ServerPlayer excluded, CustomPacketPayload payload, ...)`  
 向特定维度的所有玩家发送包，可排除指定玩家。
-
----
 
 ## 5. 注意事项
 

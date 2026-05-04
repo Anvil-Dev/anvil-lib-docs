@@ -8,8 +8,6 @@ next: false
 
 包 `dev.anvilcraft.lib.v2.config` 提供了一套基于 NeoForge 配置系统的声明式配置框架，通过注解和反射简化配置类的定义、注册、语言生成以及运行时值注入。
 
----
-
 ## 1. 核心注解
 
 ### `@Config`
@@ -57,8 +55,6 @@ public NestedConfig nested = new NestedConfig();
 @BoundedDiscrete(min = 0, max = 100)
 public int volume = 80;
 ```
-
----
 
 ## 2. 配置管理
 
@@ -114,8 +110,6 @@ public int volume = 80;
 
 - `load()`：获取当前配置值，通过类型判断写入字段（支持基本类型、包装类型、String 等）。
 
----
-
 ## 3. 辅助工具
 
 ### `ConfigData`
@@ -138,8 +132,6 @@ public int volume = 80;
 |-------------------------|--------------------------------------------------------------------------|
 | `toLowerCaseUnder(str)` | 将驼峰式或大驼峰式字符串转为小写下划线格式（`"maragingSteel300"` → `"maraging_steel_300"`）     |
 | `toEnglishName(obj)`    | 将下划线分隔的字符串转为首字母大写的英文名（`"apple_orange.juice"` → `"Apple Orange (Juice)"`） |
-
----
 
 ## 4. 使用示例
 
@@ -182,8 +174,6 @@ ConfigData.readConfigClass(languageProvider, ExampleConfig.class);
 ```
 
 客户端无需额外操作，配置屏幕会自动注册。
-
----
 
 ## 注意事项
 

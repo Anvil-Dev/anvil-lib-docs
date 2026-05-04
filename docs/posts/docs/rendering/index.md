@@ -9,8 +9,6 @@ next: false
 包 `dev.anvilcraft.lib.v2.rendering` 提供了泛光（Bloom）后处理效果以及一套通用的 UBO（Uniform Buffer Object）布局定义框架，并通过
 Mixin 集成到 Minecraft 的 GUI 渲染和主渲染流程中。
 
----
-
 ## 1. 模块概述
 
 - **主类**：`ALRendering` – 模组入口，负责创建管线、注册事件。
@@ -20,8 +18,6 @@ Mixin 集成到 Minecraft 的 GUI 渲染和主渲染流程中。
   `util.glsl`。
 - **Mixin**：`GuiRendererMixin` 和 `MinecraftMixin` 用于在渲染流程中嵌入泛光处理，并支持 GUI 元素的额外 UBO 绑定。
 - **测试/调试**：`ALRTest` 提供示例（如渲染带泛光的物品），通过系统属性开启。
-
----
 
 ## 2. UBO 基础框架
 
@@ -53,8 +49,6 @@ UBO 系统用于在代码中声明 GLSL Uniform Block 的内存布局，并自�
 
 定义具体的 STD140 数据类型（FLOAT, VEC2, VEC3, VEC4, INT, MAT4），内部实现 `acceptSizeCalculator` 和 `acceptWriter`
 ，分别用于大小计算和写入。
-
----
 
 ## 3. 泛光后处理实现
 
@@ -99,8 +93,6 @@ UBO 系统用于在代码中声明 GLSL Uniform Block 的内存布局，并自�
 
 所有 UBO 继承自 `UboObject`，通过 `DEFINITION` 静态常量声明布局。
 
----
-
 ## 4. 着色器与管线
 
 ### 4.1 着色器
@@ -124,8 +116,6 @@ UBO 系统用于在代码中声明 GLSL Uniform Block 的内存布局，并自�
 - `UPSAMPLE` – 上采样
 
 基础片段 `POST_PASS` 使用 `blit.vsh`，绑定 `Transforms` UBO 和 `DiffuseSampler`，禁用面剔除。
-
----
 
 ## 5. 集成到 Minecraft 渲染
 
@@ -154,16 +144,12 @@ UBO 系统用于在代码中声明 GLSL Uniform Block 的内存布局，并自�
 - **`LibQuadGuiElementRenderState`**：进一步为四边形元素提供便捷的视口计算 (`getBounds`) 和顶点构建方法 (
   `buildVertices`)。
 
----
-
 ## 6. 测试与调试
 
 `ALRTest` 提供了简单示例：
 
 - `renderCarrotBloomed()`：渲染一个发光的胡萝卜，先绘制物品，再将其注册为 `BloomRenderCallback` 以产生泛光。
 - **开启调试**：添加 JVM 属性 `-Danvillib.rendering.debugMode` 即可启用测试渲染（需在屏幕或世界中调用）。
-
----
 
 ## 7. 使用指南摘要
 
@@ -177,8 +163,6 @@ UBO 系统用于在代码中声明 GLSL Uniform Block 的内存布局，并自�
 3. **标记脏状态**：每帧在 `beginFrame()` 后默认非脏，调用 `drawBloomed` 会自动标记脏，也可手动 `markDirty()`。
 4. **自定义 UBO**：继承 `UboObject<T>`，使用 `UboLayoutDefinition.create(...)` 定义字段布局，配合 `upload` 上传。
 5. **GUI 元素注入 UBO**：实现 `LibGuiElementRenderState`，在 `bufferSlices()` 中返回需要绑定的缓冲切片。
-
----
 
 ## 注意事项
 

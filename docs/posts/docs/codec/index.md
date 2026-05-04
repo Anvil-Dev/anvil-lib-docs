@@ -9,8 +9,6 @@ next: false
 包 `dev.anvilcraft.lib.v2.codec` 包含了用于 Minecraft/NeoForge 开发的高频序列化工具。  
 分为两大类：**配置/存档编解码器（`Codec`）** 和 **网络流编解码器（`StreamCodec`）**。
 
----
-
 ## 1. CodecUtil
 
 `CodecUtil` 是抽象工具类，提供了一批静态 `Codec` / `MapCodec` 常量及辅助方法，用于将游戏对象序列化为 JSON、NBT 或配置文件。
@@ -62,8 +60,6 @@ CodecUtil.<K,V,T>byMap(mapCodec, keyGetter, valueGetter, factory)
 ```
 
 将一个 `Codec<Map<K,V>>` 转成直接值 `Codec<T>`，适用于 JSON 中类似 `{ "key": value }` 的单条映射。
-
----
 
 ## 2. StreamCodecUtil
 
@@ -124,8 +120,6 @@ public static final StreamCodec<RegistryFriendlyByteBuf, MyObject> STREAM_CODEC 
 - **`enumStreamCodec(Class<T>)`** – 基于 ordinal 的枚举流编解码器
 - **`createPairStreamCodec(first, second)`** – 将两个 StreamCodec 组合为 `Pair<F, S>` 的编解码器
 - **`numberProviderNetworkEncode/Decode`** – 手动控制 NumberProvider 的二进制格式
-
----
 
 ## 3. 使用注意事项
 

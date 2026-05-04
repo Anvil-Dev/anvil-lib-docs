@@ -9,16 +9,12 @@ next: false
 包 `dev.anvilcraft.lib.v2.integration` 提供了一个轻量级的模组间集成系统。通过注解 `@Integration` 声明集成点，由
 `IntegrationManager` 自动发现并加载，支持在指定物理端（客户端/服务端/数据生成）以约定方法的形式执行集成逻辑。
 
----
-
 ## 1. 核心概念
 
 - **声明端**：在 `@Integration` 注解中指定目标模组 ID、版本范围以及需加载的集成类型。
 - **实现端**：被注解的类需提供无参构造以及约定名称的可选方法（`apply`、`applyClient`、`applyClientData`、`applyServerData`
   ），方法签名均为 `void ()`。
 - **管理器**：`IntegrationManager` 负责扫描 classpath 中所有 `@Integration` 注解，实例化并调用相应方法。
-
----
 
 ## 2. 快速开始
 
@@ -84,8 +80,6 @@ public class YourMod {
 }
 ```
 
----
-
 ## 3. 类详细说明
 
 ### `@Integration`
@@ -143,8 +137,6 @@ public class YourMod {
 
 封装 Maven 版本范围 (`VersionRange`)，提供 `of(String spec)` 静态构造，支持 `"*"` 表示任意版本。
 
----
-
 ## 4. 数据生成集成示例
 
 如果需要在客户端或服务端的数据生成事件中执行代码，可以结合 `IntegrationType.CLIENT_DATA` / `SERVER_DATA` 和
@@ -161,8 +153,6 @@ public class ExampleDataIntegration {
 ```
 
 确保在数据生成事件中提前设置 `IntegrationHook.setEvent(event)`。
-
----
 
 ## 5. 注意事项
 

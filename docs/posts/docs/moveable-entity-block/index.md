@@ -9,8 +9,6 @@ next: false
 包 `dev.anvilcraft.lib.v2.piston` 解决了原版活塞无法推动带方块实体的方块的问题。通过一组 Mixin 和接口，允许方块在移动过程中携带自定义
 NBT 数据，并在活塞停止或退出时将数据写回目标位置的方块实体。
 
----
-
 ## 1. 概述
 
 在原版中，当活塞推动一个带有方块实体的方块（如箱子、熔炉）时，该行为不会产生任何效果。本模块通过注入活塞的移动逻辑，让实现了
@@ -21,8 +19,6 @@ NBT 数据，并在活塞停止或退出时将数据写回目标位置的方块�
 - **在移动结束/最终移除时** 将数据写回新位置的方块实体（`setData`）
 
 整个过程对服务端透明，无需修改原版活塞的核心逻辑。
-
----
 
 ## 2. 核心接口
 
@@ -68,8 +64,6 @@ public interface IPistonMovingBlockEntityExtension {
 
 该接口由 Mixin 动态注入到 `PistonMovingBlockEntity` 中，作为数据的中转站。
 
----
-
 ## 3. Mixin 修改点
 
 ### `PistonBaseBlockMixin`
@@ -86,8 +80,6 @@ public interface IPistonMovingBlockEntityExtension {
   `IMoveableEntityBlock`，则调用其 `setData` 完成数据恢复。
 
 **所有操作均在服务端执行**，通过 `level.isClientSide()` 判断避免客户端副作用。
-
----
 
 ## 4. 使用步骤
 
@@ -122,8 +114,6 @@ public interface IPistonMovingBlockEntityExtension {
 
 3. **确保 Mixin 配置正确**：本模块的 Mixin 已包含在 AnvilLib 中，模组依赖 AnvilLib 即可获得功能。
 
----
-
 ## 5. 注意事项
 
 - **仅支持服务端逻辑**：所有数据传递均在服务端进行，客户端不会保留额外数据（因此渲染或客户端缓存需另行处理）。
@@ -132,8 +122,6 @@ public interface IPistonMovingBlockEntityExtension {
   ），只需额外实现该接口即可。
 - **性能**：仅在活塞移动时触发，对常规游戏性能无影响。
 - **Mixin 优先级**：`PistonBaseBlockMixin` 设置 `priority = 943`，若与其他修改活塞行为的模组冲突，可根据需要调整。
-
----
 
 ## 6. 示例
 
