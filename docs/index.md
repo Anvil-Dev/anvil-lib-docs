@@ -10,10 +10,10 @@ hero:
   tagline: 由 Anvil Dev 开发的 NeoForge 模组库
   actions:
     - theme: brand
-      text: 活动
+      text: 社区活动
       link: /posts/event/index
     - theme: alt
-      text: 文档
+      text: 开发文档
       link: /posts/docs/index
 
 features:
