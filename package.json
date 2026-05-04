@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/node": "^25.6.0",
     "gray-matter": "^4.0.3",
-    "vitepress": "2.0.0-alpha.17",
+    "vitepress": "2.0.0-alpha.16",
     "vue": "^3.5.33"
   }
 }
