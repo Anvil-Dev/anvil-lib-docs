@@ -2,41 +2,55 @@
 layout: home
 
 hero:
+  image:
+    src: /icon.png
+    alt: AnvilLib
   name: "AnvilLib"
-  text: "为 Minecraft 模组开发者提供一系列实用的工具和框架"
-  tagline: My great project tagline
+  text: "A collection of practical tools and frameworks for Minecraft mod developers"
+  tagline: "NeoForge mod library developed by Anvil Dev"
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /post/event/markdown-examples
-    - theme: brand
-      text: Markdown Examples
-      link: /post/event/markdown-examples
+      text: Community Events
+      link: /posts/event/index
+    - theme: alt
+      text: Documentation
+      link: /posts/docs/index
 
 features:
   - title: Config
-    details: 基于注解的配置系统
+    details: Annotation-based configuration system
+    link: /posts/docs/config/index
   - title: Codec
-    details: 数据编解码与网络序列化工具
+    details: Data codec and network serialization tools
+    link: /posts/docs/codec/index
   - title: Integration
-    details: 模组兼容性集成框架
+    details: Mod compatibility integration framework
+    link: /posts/docs/integration/index
   - title: Network
-    details: 网络通信与数据包自动注册框架
+    details: Network communication and packet auto-registration framework
+    link: /posts/docs/network/index
   - title: Recipe
-    details: 世界内配方系统
+    details: In-world recipe system
+    link: /posts/docs/recipe/index
   - title: Moveable Entity Block
-    details: 可被活塞推动的方块实体支持
+    details: Support for piston-movable block entities
+    link: /posts/docs/moveable_entity_block/index
   - title: Multiblock
-    details: 动态多方块系统
+    details: Dynamic multiblock system
+    link: /posts/docs/multiblock/index
   - title: Registrum
-    details: 简化的注册系统
+    details: Simplified registration system
+    link: /posts/docs/registrum/index
   - title: Util
-    details: 可共享的工具方法
+    details: Shareable utility methods
+    link: /posts/docs/util/index
   - title: Wheel
-    details: 轮盘菜单客户端 API
+    details: Wheel menu client API
+    link: /posts/docs/wheel/index
   - title: Rendering
-    details: 功能不多的渲染库
+    details: Minimalistic rendering library
+    link: /posts/docs/rendering/index
   - title: Main
-    details: 聚合模块（包含全部子模块）
+    details: Aggregation module (includes all submodules)
+    link: /posts/docs/main/index
 ---
-
