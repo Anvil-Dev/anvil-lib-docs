@@ -39,7 +39,7 @@ jobs:
       - name: Use pnpm
         run: npm i -g pnpm
       - name: Prepare Dependency
-        run: pnpm i
+        run: pnpm i --force
       - name: Build with VitePress
         run: pnpm run docs:build
       - name: Upload artifact
