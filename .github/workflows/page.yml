@@ -51,7 +51,7 @@ jobs:
           pnpm config set fetch-retries 5
           pnpm config set fetch-retry-mintimeout 10000
           pnpm config set fetch-retry-maxtimeout 120000
-          pnpm install --frozen-lockfile
+          pnpm install --frozen-lockfile --no-optional
 
       - name: Build with VitePress
         run: pnpm run docs:build
