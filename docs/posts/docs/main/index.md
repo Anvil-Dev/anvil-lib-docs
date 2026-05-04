@@ -25,5 +25,7 @@ AnvilLib 采用多模块 Gradle 项目组织。根项目 `anvillib` 通过 `buil
 | `anvillib-registrum-neoforge-26.1`             | 注册系统                 |
 | `anvillib-wheel-neoforge-26.1`                 | 轮盘菜单 UI 系统           |
 | `anvillib-rendering-neoforge-26.1`             | 功能不多的渲染库             |
+| `anvillib-multiblock-neoforge-26.1`            | 动态多方块系统              |
+| `anvillib-util-neoforge-26.1`                  | 可共享的工具方法             |
 
 所有子模块均以 `jarJar` 方式包含，即内嵌到最终发布的 Jar 中，并使用 `api` 进行依赖传递，无需模组单独依赖。
