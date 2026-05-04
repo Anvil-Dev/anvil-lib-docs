@@ -179,10 +179,10 @@ function getAutoConfig(lang: string = 'zh', homeName = '首页') {
     return {socialLinks, nav, sidebar, editLink, footer}
 }
 
-console.log(process.env.GH_PAGE)
+console.log(process.env.GH_PAGES)
 
 export default defineConfig({
-    ...(process.env.GH_PAGE == 'true' ? {base: '/anvil-lib-docs/'} : {}),
+    ...(process.env.GH_PAGES == 'true' ? {base: '/anvil-lib-docs/'} : {}),
     title: "AnvilLib",
     description: "为 Minecraft 模组开发者提供一系列实用的工具和框架",
     lastUpdated: true,
