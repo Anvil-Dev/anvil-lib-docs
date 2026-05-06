@@ -19,14 +19,14 @@ public interface IRecipePredicate<P extends IRecipePredicate<P>>
 
 ### 核心方法
 
-| 方法 | 说明 |
-|------|------|
-| `test(InWorldRecipeContext)` | 判断上下文是否匹配条件 |
-| `accept(InWorldRecipeContext)` | 匹配成功后消耗资源（默认空实现，仅冲突谓词需实现） |
-| `snapshot(InWorldRecipeContext)` | 创建上下文快照（用于回滚） |
-| `rollback(InWorldRecipeContext)` | 回滚到快照状态 |
-| `clearStack(InWorldRecipeContext)` | 清空谓词操作栈 |
-| `getType()` | 返回谓词的 `Type<P>` 描述符 |
+| 方法                                 | 说明                        |
+|------------------------------------|---------------------------|
+| `test(InWorldRecipeContext)`       | 判断上下文是否匹配条件               |
+| `accept(InWorldRecipeContext)`     | 匹配成功后消耗资源（默认空实现，仅冲突谓词需实现） |
+| `snapshot(InWorldRecipeContext)`   | 创建上下文快照（用于回滚）             |
+| `rollback(InWorldRecipeContext)`   | 回滚到快照状态                   |
+| `clearStack(InWorldRecipeContext)` | 清空谓词操作栈                   |
+| `getType()`                        | 返回谓词的 `Type<P>` 描述符       |
 
 ### Type 描述符
 
@@ -59,14 +59,14 @@ HasItem.builder()
     .build();
 ```
 
-| Builder 方法 | 说明 |
-|-------------|------|
-| `of(ItemLike...)` | 匹配的物品 |
-| `of(TagKey<Item>)` | 匹配的物品标签 |
-| `offset(Vec3)` / `offset(x,y,z)` | 相对偏移位置 |
-| `count(int min, int max)` | 数量范围 |
-| `consumption(ConsumptionType)` | 消耗模式：`CONSUME` / `OPTIONAL` |
-| `strict(boolean)` | 严格模式（需完全匹配组件） |
+| Builder 方法                       | 说明                          |
+|----------------------------------|-----------------------------|
+| `of(ItemLike...)`                | 匹配的物品                       |
+| `of(TagKey<Item>)`               | 匹配的物品标签                     |
+| `offset(Vec3)` / `offset(x,y,z)` | 相对偏移位置                      |
+| `count(int min, int max)`        | 数量范围                        |
+| `consumption(ConsumptionType)`   | 消耗模式：`CONSUME` / `OPTIONAL` |
+| `strict(boolean)`                | 严格模式（需完全匹配组件）               |
 
 **冲突型**（`Type.conflict() = true`）：消耗匹配的物品实体。
 
@@ -98,15 +98,15 @@ HasBlock.builder()
     .build();
 ```
 
-| Builder 方法 | 说明 |
-|-------------|------|
-| `of(Block...)` | 匹配的方块列表 |
-| `of(Collection<Block>)` | 匹配的方块集合 |
-| `of(TagKey<Block>)` | 匹配的方块标签 |
-| `offset(Vec3)` / `offset(x,y,z)` | 相对偏移 |
-| `with(Property<C>, C)` | 方块状态属性精确匹配 |
-| `with(String, String)` | 字符串形式属性匹配 |
-| `nbt(CompoundTag)` | NBT 条件 |
+| Builder 方法                       | 说明         |
+|----------------------------------|------------|
+| `of(Block...)`                   | 匹配的方块列表    |
+| `of(Collection<Block>)`          | 匹配的方块集合    |
+| `of(TagKey<Block>)`              | 匹配的方块标签    |
+| `offset(Vec3)` / `offset(x,y,z)` | 相对偏移       |
+| `with(Property<C>, C)`           | 方块状态属性精确匹配 |
+| `with(String, String)`           | 字符串形式属性匹配  |
+| `nbt(CompoundTag)`               | NBT 条件     |
 
 **非冲突型**（仅检查方块状态，不修改世界）。
 

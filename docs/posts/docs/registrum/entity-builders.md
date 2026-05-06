@@ -47,12 +47,12 @@ builder.renderer(() -> ctx -> new MyBlockEntityRenderer(ctx));
 BlockEntityEntry<MyBlockEntity> entry = builder.register();
 ```
 
-| 方法 | 说明 |
-|------|------|
-| `validBlock(NonNullSupplier<? extends Block>)` | 添加单个有效方块 |
-| `validBlocks(NonNullSupplier<? extends Block>...)` | 批量添加有效方块 |
-| `renderer(NonNullSupplier<...>)` | 注册方块实体渲染器 |
-| `register()` | 返回 `BlockEntityEntry<T>` |
+| 方法                                                 | 说明                       |
+|----------------------------------------------------|--------------------------|
+| `validBlock(NonNullSupplier<? extends Block>)`     | 添加单个有效方块                 |
+| `validBlocks(NonNullSupplier<? extends Block>...)` | 批量添加有效方块                 |
+| `renderer(NonNullSupplier<...>)`                   | 注册方块实体渲染器                |
+| `register()`                                       | 返回 `BlockEntityEntry<T>` |
 
 ## EntityBuilder
 
@@ -121,16 +121,16 @@ builder.tag(EntityTypeTags.SKELETONS, EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)
 EntityEntry<MyEntity> entry = builder.register();
 ```
 
-| 方法 | 说明 |
-|------|------|
+| 方法                                        | 说明                    |
+|-------------------------------------------|-----------------------|
 | `properties(NonNullConsumer<Builder<T>>)` | 修改 EntityType.Builder |
-| `renderer(NonNullSupplier<...>)` | 注册实体渲染器 |
-| `attributes(Supplier<Builder>)` | 注册属性（仅 LivingEntity） |
-| `spawnPlacement(...)` | 注册生成位置（仅 Mob） |
-| `loot(NonNullBiConsumer<...>)` | 自定义战利品表 |
-| `lang(String)` | 翻译名称 |
-| `tag(TagKey<EntityType<?>>...)` | 添加实体标签 |
-| `register()` | 返回 `EntityEntry<T>` |
+| `renderer(NonNullSupplier<...>)`          | 注册实体渲染器               |
+| `attributes(Supplier<Builder>)`           | 注册属性（仅 LivingEntity）  |
+| `spawnPlacement(...)`                     | 注册生成位置（仅 Mob）         |
+| `loot(NonNullBiConsumer<...>)`            | 自定义战利品表               |
+| `lang(String)`                            | 翻译名称                  |
+| `tag(TagKey<EntityType<?>>...)`           | 添加实体标签                |
+| `register()`                              | 返回 `EntityEntry<T>`   |
 
 ## MenuBuilder
 

@@ -19,12 +19,12 @@ public interface IRecipeOutcome<O extends IRecipeOutcome<O>>
 
 ### 核心方法
 
-| 方法 | 说明 |
-|------|------|
-| `accept(InWorldRecipeContext)` | 执行产出逻辑 |
-| `acceptWithChance(InWorldRecipeContext)` | 按概率随机决定是否执行，成功则调用 `accept()` |
-| `chance()` | 返回概率 `NumberProvider`，默认 `ConstantValue.exactly(1.0f)` |
-| `getType()` | 返回 `Type<O>` 描述符 |
+| 方法                                       | 说明                                                     |
+|------------------------------------------|--------------------------------------------------------|
+| `accept(InWorldRecipeContext)`           | 执行产出逻辑                                                 |
+| `acceptWithChance(InWorldRecipeContext)` | 按概率随机决定是否执行，成功则调用 `accept()`                           |
+| `chance()`                               | 返回概率 `NumberProvider`，默认 `ConstantValue.exactly(1.0f)` |
+| `getType()`                              | 返回 `Type<O>` 描述符                                       |
 
 ### Type 描述符
 

@@ -6,7 +6,8 @@ next: false
 
 # 世界内配方模块
 
-包 `dev.anvilcraft.lib.v2.recipe` 提供了一套**世界内交互配方系统**，允许配方在世界中通过实体/方块交互触发，而非在传统的合成台中执行。支持条件谓词、概率化产出、事务式缓存、数据包定义及网络同步。
+包 `dev.anvilcraft.lib.v2.recipe` 提供了一套**世界内交互配方系统**
+，允许配方在世界中通过实体/方块交互触发，而非在传统的合成台中执行。支持条件谓词、概率化产出、事务式缓存、数据包定义及网络同步。
 
 ## 架构概览
 
@@ -21,14 +22,14 @@ next: false
 
 ## 文档索引
 
-| 文档 | 内容 |
-|------|------|
-| [核心配方结构](./core) | `InWorldRecipe`、配方序列化、优先级计算 |
-| [构建器](./builder) | `InWorldRecipeBuilder` 流式 API、数据生成 |
-| [谓词系统](./predicate) | `IRecipePredicate` 接口、内置谓词（HasItem / HasBlock 等） |
-| [产出与触发器](./outcome) | `IRecipeOutcome` 接口、内置产出、`IRecipeTrigger` |
-| [缓存系统](./cache) | `BlockCache`、`ItemCache`、`TagCache` 事务式修改 |
-| [运行时管理](./manager) | `InWorldRecipeManager`、`InWorldRecipeContext`、事件、注册表 |
+| 文档                  | 内容                                                   |
+|---------------------|------------------------------------------------------|
+| [核心配方结构](./core)    | `InWorldRecipe`、配方序列化、优先级计算                          |
+| [构建器](./builder)    | `InWorldRecipeBuilder` 流式 API、数据生成                   |
+| [谓词系统](./predicate) | `IRecipePredicate` 接口、内置谓词（HasItem / HasBlock 等）     |
+| [产出与触发器](./outcome) | `IRecipeOutcome` 接口、内置产出、`IRecipeTrigger`            |
+| [缓存系统](./cache)     | `BlockCache`、`ItemCache`、`TagCache` 事务式修改            |
+| [运行时管理](./manager)  | `InWorldRecipeManager`、`InWorldRecipeContext`、事件、注册表 |
 
 ## 模块主类
 

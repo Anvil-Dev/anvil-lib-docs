@@ -28,9 +28,9 @@ public class MultiblockState {
 
 ### 序列化
 
-| 字段 | Codec | StreamCodec |
-|------|-------|-------------|
-| `controllerPos` | `BlockPos.CODEC` | `StreamCodecUtil.VAR_INT_BLOCK_POS` |
+| 字段              | Codec                                | StreamCodec                                |
+|-----------------|--------------------------------------|--------------------------------------------|
+| `controllerPos` | `BlockPos.CODEC`                     | `StreamCodecUtil.VAR_INT_BLOCK_POS`        |
 | `definitionKey` | `ResourceKey.codec(DEFINITIONS_KEY)` | `ResourceKey.streamCodec(DEFINITIONS_KEY)` |
 
 ## DynamicMultiblockManager
@@ -47,13 +47,13 @@ DynamicMultiblockManager manager = DynamicMultiblockManager.get(level);
 
 ### 查询方法
 
-| 方法 | 说明 |
-|------|------|
-| `getAt(BlockPos pos)` | 获取指定位置的多方块状态（不存在返回 null） |
-| `containsAt(BlockPos pos)` | 判断指定位置是否注册了控制器 |
-| `add(MultiblockState state)` | 注册新多方块，标记脏数据 |
-| `removeAt(BlockPos pos)` | 移除并返回多方块状态，标记脏数据 |
-| `updateFormed(Level, MultiblockState, boolean)` | 更新成型状态（状态变化时触发回调和网络同步） |
+| 方法                                              | 说明                       |
+|-------------------------------------------------|--------------------------|
+| `getAt(BlockPos pos)`                           | 获取指定位置的多方块状态（不存在返回 null） |
+| `containsAt(BlockPos pos)`                      | 判断指定位置是否注册了控制器           |
+| `add(MultiblockState state)`                    | 注册新多方块，标记脏数据             |
+| `removeAt(BlockPos pos)`                        | 移除并返回多方块状态，标记脏数据         |
+| `updateFormed(Level, MultiblockState, boolean)` | 更新成型状态（状态变化时触发回调和网络同步）   |
 
 ### updateFormed 详解
 
@@ -117,12 +117,12 @@ DynamicMultiblockManager.onBreak(level, pos);
 
 由 `AnvilLibMultiblockConfig` 控制：
 
-| 配置 | 默认值 | 范围 | 说明 |
-|------|--------|------|------|
-| `unformedMultiblockCheckInterval` | 10 | 5-100 | 检测未成型多方块间隔（tick） |
-| `formedMultiblockCheckInterval` | 20 | 5-100 | 检测已成型多方块间隔（tick） |
-| `asyncThreadPoolSize` | 4 | 1-16 | 异步线程池大小 |
-| `maxChecksPerTick` | 128 | 1-512 | 每 tick 最大检测数（受限于去重集） |
+| 配置                                | 默认值 | 范围    | 说明                   |
+|-----------------------------------|-----|-------|----------------------|
+| `unformedMultiblockCheckInterval` | 10  | 5-100 | 检测未成型多方块间隔（tick）     |
+| `formedMultiblockCheckInterval`   | 20  | 5-100 | 检测已成型多方块间隔（tick）     |
+| `asyncThreadPoolSize`             | 4   | 1-16  | 异步线程池大小              |
+| `maxChecksPerTick`                | 128 | 1-512 | 每 tick 最大检测数（受限于去重集） |
 
 ### 检测流程
 

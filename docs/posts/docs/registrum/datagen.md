@@ -12,30 +12,31 @@ Registrum 深度集成 NeoForge 数据生成系统，通过 `GeneratorType` 和 
 
 `ProviderType<T>` 是模块内置的数据生成器类型注册表。
 
-| 类型 | 生成器 | Side | 说明 |
-|------|--------|------|------|
-| `LANG` | `RegistrumLangProvider` | CLIENT | 语言文件 (`en_us.json`) |
-| `MODEL` | `RegistrumModelProvider` | CLIENT | 模型 JSON |
-| `BLOCKSTATE` | `RegistrumBlockModelGenerator` | CLIENT | 方块状态/模型 |
-| `ITEM_MODEL` | `RegistrumItemModelGenerator` | CLIENT | 物品模型 |
-| `RECIPE` | `RegistrumRecipeProvider` | SERVER | 配方 JSON |
-| `RECIPE_RUNNER` | `RegistrumRecipeRunner` | SERVER | 配方运行器 |
-| `LOOT` | `RegistrumLootTableProvider` | SERVER | 战利品表 |
-| `ADVANCEMENT` | `RegistrumAdvancementProvider` | SERVER | 进度 |
-| `DATA_MAP` | `RegistrumDataMapProvider` | SERVER | DataMap |
-| `DYNAMIC` | `RegistrumDatapackProvider` | SERVER | 数据包动态注册 |
-| `BLOCK_TAGS` | `RegistrumTagsProvider` | SERVER | 方块标签 |
-| `ITEM_TAGS` | `RegistrumItemTagsProvider` | SERVER | 物品标签 |
-| `FLUID_TAGS` | `RegistrumTagsProvider` | SERVER | 流体标签 |
-| `ENTITY_TAGS` | `RegistrumTagsProvider` | SERVER | 实体标签 |
-| `ENCHANTMENT_TAGS` | `RegistrumTagsProvider` | SERVER | 附魔标签 |
-| `DAMAGE_TYPE_TAGS` | `RegistrumTagsProvider` | SERVER | 伤害类型标签 |
-| `GENERIC_SERVER` | `RegistrumGenericProvider` | SERVER | 通用服务端数据 |
-| `GENERIC_CLIENT` | `RegistrumGenericProvider` | CLIENT | 通用客户端数据 |
+| 类型                 | 生成器                            | Side   | 说明                  |
+|--------------------|--------------------------------|--------|---------------------|
+| `LANG`             | `RegistrumLangProvider`        | CLIENT | 语言文件 (`en_us.json`) |
+| `MODEL`            | `RegistrumModelProvider`       | CLIENT | 模型 JSON             |
+| `BLOCKSTATE`       | `RegistrumBlockModelGenerator` | CLIENT | 方块状态/模型             |
+| `ITEM_MODEL`       | `RegistrumItemModelGenerator`  | CLIENT | 物品模型                |
+| `RECIPE`           | `RegistrumRecipeProvider`      | SERVER | 配方 JSON             |
+| `RECIPE_RUNNER`    | `RegistrumRecipeRunner`        | SERVER | 配方运行器               |
+| `LOOT`             | `RegistrumLootTableProvider`   | SERVER | 战利品表                |
+| `ADVANCEMENT`      | `RegistrumAdvancementProvider` | SERVER | 进度                  |
+| `DATA_MAP`         | `RegistrumDataMapProvider`     | SERVER | DataMap             |
+| `DYNAMIC`          | `RegistrumDatapackProvider`    | SERVER | 数据包动态注册             |
+| `BLOCK_TAGS`       | `RegistrumTagsProvider`        | SERVER | 方块标签                |
+| `ITEM_TAGS`        | `RegistrumItemTagsProvider`    | SERVER | 物品标签                |
+| `FLUID_TAGS`       | `RegistrumTagsProvider`        | SERVER | 流体标签                |
+| `ENTITY_TAGS`      | `RegistrumTagsProvider`        | SERVER | 实体标签                |
+| `ENCHANTMENT_TAGS` | `RegistrumTagsProvider`        | SERVER | 附魔标签                |
+| `DAMAGE_TYPE_TAGS` | `RegistrumTagsProvider`        | SERVER | 伤害类型标签              |
+| `GENERIC_SERVER`   | `RegistrumGenericProvider`     | SERVER | 通用服务端数据             |
+| `GENERIC_CLIENT`   | `RegistrumGenericProvider`     | CLIENT | 通用客户端数据             |
 
 ## GeneratorType
 
-`GeneratorType<T>` 是标记接口，没有方法。`ProviderType` 实现了它。你可以通过 `ProviderType.createGenerator(String)` 创建匿名生成器类型。
+`GeneratorType<T>` 是标记接口，没有方法。`ProviderType` 实现了它。你可以通过 `ProviderType.createGenerator(String)`
+创建匿名生成器类型。
 
 ## DataGenContext
 

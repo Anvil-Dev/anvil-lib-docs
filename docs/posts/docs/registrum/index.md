@@ -6,7 +6,8 @@ next: false
 
 # 注册系统模块
 
-包 `dev.anvilcraft.lib.v2.registrum` 提供了一套基于流式构建器的声明式注册系统，大幅简化 Minecraft 模组中物品、方块、实体、方块实体、菜单、流体等的注册与数据生成流程。
+包 `dev.anvilcraft.lib.v2.registrum` 提供了一套基于流式构建器的声明式注册系统，大幅简化 Minecraft
+模组中物品、方块、实体、方块实体、菜单、流体等的注册与数据生成流程。
 
 > 本模块部分代码基于 [Registrate](https://github.com/tterrag1098/Registrate)，遵循 Mozilla Public License 2.0。
 
@@ -19,13 +20,13 @@ next: false
 
 ## 文档索引
 
-| 文档 | 内容 |
-|------|------|
-| [核心 API](./core) | `Registrum`、`AbstractRegistrum` 核心方法 |
-| [构建器](./builders) | `Builder` 接口、`BlockBuilder`、`ItemBuilder` |
+| 文档                            | 内容                                                                |
+|-------------------------------|-------------------------------------------------------------------|
+| [核心 API](./core)              | `Registrum`、`AbstractRegistrum` 核心方法                              |
+| [构建器](./builders)             | `Builder` 接口、`BlockBuilder`、`ItemBuilder`                         |
 | [实体与菜单构建器](./entity-builders) | `BlockEntityBuilder`、`EntityBuilder`、`MenuBuilder`、`FluidBuilder` |
-| [条目类型](./entries) | `RegistryEntry`、`ItemProviderEntry`、`BlockEntry`、`ItemEntry` 等 |
-| [数据生成](./datagen) | `GeneratorType`、Provider 类型、模型/配方/战利品生成 |
+| [条目类型](./entries)             | `RegistryEntry`、`ItemProviderEntry`、`BlockEntry`、`ItemEntry` 等    |
+| [数据生成](./datagen)             | `GeneratorType`、Provider 类型、模型/配方/战利品生成                           |
 
 ## 快速开始
 

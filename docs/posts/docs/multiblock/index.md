@@ -6,7 +6,8 @@ next: false
 
 # 动态多方块系统
 
-包 `dev.anvilcraft.lib.v2.multiblock` 提供了一套**动态多方块结构**系统。支持通过数据包或代码定义多方块形状、异步检测方块匹配、自动追踪结构状态（成型/未成型），并通过网络同步到客户端。
+包 `dev.anvilcraft.lib.v2.multiblock` 提供了一套**动态多方块结构**
+系统。支持通过数据包或代码定义多方块形状、异步检测方块匹配、自动追踪结构状态（成型/未成型），并通过网络同步到客户端。
 
 ## 架构概览
 
@@ -19,11 +20,11 @@ next: false
 
 ## 文档索引
 
-| 文档 | 内容 |
-|------|------|
-| [定义系统](./definition) | `MultiblockDefinition`、`Builder`、`SeriaBuilder`、序列化 |
-| [控制器](./controller) | `IController`、`SimpleController`、`ControllerRecord` |
-| [运行时管理](./manager) | `DynamicMultiblockManager`、`MultiblockState`、异步检测、配置 |
+| 文档                   | 内容                                                   |
+|----------------------|------------------------------------------------------|
+| [定义系统](./definition) | `MultiblockDefinition`、`Builder`、`SeriaBuilder`、序列化  |
+| [控制器](./controller)  | `IController`、`SimpleController`、`ControllerRecord`  |
+| [运行时管理](./manager)   | `DynamicMultiblockManager`、`MultiblockState`、异步检测、配置 |
 
 ## 模块主类
 

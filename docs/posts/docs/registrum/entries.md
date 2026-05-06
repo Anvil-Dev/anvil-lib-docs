@@ -31,14 +31,14 @@ public class RegistryEntry<R, S extends R>
 
 ### 核心方法
 
-| 方法 | 说明 |
-|------|------|
-| `get()` | 获取注册的对象（继承自 `DeferredHolder`） |
-| `getSibling(ResourceKey<Registry<X>>)` | 获取同名其他注册表的兄弟条目 |
-| `getSibling(Registry<X>)` | 同上，通过 Registry 实例 |
-| `filter(Predicate<R>)` | 如果谓词匹配则返回 `Optional.of(this)` |
-| `is(X entry)` | 引用相等检查（`get() == entry`） |
-| `cast(Class<E>, RegistryEntry)` | 安全类型转换（检查类型参数） |
+| 方法                                     | 说明                            |
+|----------------------------------------|-------------------------------|
+| `get()`                                | 获取注册的对象（继承自 `DeferredHolder`） |
+| `getSibling(ResourceKey<Registry<X>>)` | 获取同名其他注册表的兄弟条目                |
+| `getSibling(Registry<X>)`              | 同上，通过 Registry 实例             |
+| `filter(Predicate<R>)`                 | 如果谓词匹配则返回 `Optional.of(this)` |
+| `is(X entry)`                          | 引用相等检查（`get() == entry`）      |
+| `cast(Class<E>, RegistryEntry)`        | 安全类型转换（检查类型参数）                |
 
 ### 使用示例
 
@@ -63,13 +63,13 @@ public class ItemProviderEntry<R extends ItemLike, T extends R>
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
-| `asStack()` | 返回数量 1 的 `ItemStack` |
-| `asStack(int count)` | 返回指定数量的 `ItemStack` |
-| `isIn(ItemStack stack)` | 检查物品是否匹配 |
-| `is(Item item)` | 检查特定物品 |
-| `asItem()` | 返回 `Item` 实例 |
+| 方法                      | 说明                   |
+|-------------------------|----------------------|
+| `asStack()`             | 返回数量 1 的 `ItemStack` |
+| `asStack(int count)`    | 返回指定数量的 `ItemStack`  |
+| `isIn(ItemStack stack)` | 检查物品是否匹配             |
+| `is(Item item)`         | 检查特定物品               |
+| `asItem()`              | 返回 `Item` 实例         |
 
 ### 使用示例
 
@@ -90,11 +90,11 @@ public class BlockEntry<T extends Block> extends ItemProviderEntry<Block, T> {
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
-| `getDefaultState()` | 返回方块的默认 `BlockState` |
-| `has(BlockState state)` | 检查 BlockState 是否属于此方块 |
-| `cast(RegistryEntry<Block, T>)` | 静态安全转换 |
+| 方法                              | 说明                    |
+|---------------------------------|-----------------------|
+| `getDefaultState()`             | 返回方块的默认 `BlockState`  |
+| `has(BlockState state)`         | 检查 BlockState 是否属于此方块 |
+| `cast(RegistryEntry<Block, T>)` | 静态安全转换                |
 
 ## ItemEntry
 
@@ -104,8 +104,8 @@ public class ItemEntry<T extends Item> extends ItemProviderEntry<Item, T> {
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
+| 方法                             | 说明     |
+|--------------------------------|--------|
 | `cast(RegistryEntry<Item, T>)` | 静态安全转换 |
 
 ## BlockEntityEntry
@@ -117,13 +117,13 @@ public class BlockEntityEntry<T extends BlockEntity>
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
-| `create(BlockPos, BlockState)` | 创建方块实体实例 |
-| `is(@Nullable BlockEntity)` | 类型检查 |
-| `get(BlockGetter, BlockPos)` | 从世界获取 Optional |
-| `getNullable(BlockGetter, BlockPos)` | 从世界获取或 null |
-| `cast(RegistryEntry)` | 静态安全转换 |
+| 方法                                   | 说明             |
+|--------------------------------------|----------------|
+| `create(BlockPos, BlockState)`       | 创建方块实体实例       |
+| `is(@Nullable BlockEntity)`          | 类型检查           |
+| `get(BlockGetter, BlockPos)`         | 从世界获取 Optional |
+| `getNullable(BlockGetter, BlockPos)` | 从世界获取或 null    |
+| `cast(RegistryEntry)`                | 静态安全转换         |
 
 ### 使用示例
 
@@ -142,11 +142,11 @@ public class EntityEntry<T extends Entity>
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
+| 方法                                 | 说明     |
+|------------------------------------|--------|
 | `create(Level, EntitySpawnReason)` | 创建实体实例 |
-| `is(Entity)` | 类型检查 |
-| `cast(RegistryEntry)` | 静态安全转换 |
+| `is(Entity)`                       | 类型检查   |
+| `cast(RegistryEntry)`              | 静态安全转换 |
 
 ## MenuEntry
 
@@ -157,12 +157,12 @@ public class MenuEntry<T extends AbstractContainerMenu>
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
-| `create(int windowId, Inventory)` | 创建菜单实例 |
-| `asProvider()` | 包装为 `MenuConstructor` |
-| `open(ServerPlayer, Component)` | 打开菜单 |
-| `open(ServerPlayer, Component, Consumer<RegistryFriendlyByteBuf>)` | 打开菜单 + 额外数据 |
+| 方法                                                                 | 说明                    |
+|--------------------------------------------------------------------|-----------------------|
+| `create(int windowId, Inventory)`                                  | 创建菜单实例                |
+| `asProvider()`                                                     | 包装为 `MenuConstructor` |
+| `open(ServerPlayer, Component)`                                    | 打开菜单                  |
+| `open(ServerPlayer, Component, Consumer<RegistryFriendlyByteBuf>)` | 打开菜单 + 额外数据           |
 
 ## FluidEntry
 
@@ -173,12 +173,12 @@ public class FluidEntry<T extends BaseFlowingFluid>
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
-| `getSource()` | 获取 Source 流体 |
-| `getType()` | 获取 `FluidType` |
-| `getBlock()` | 获取 LiquidBlock（Optional） |
-| `getBucket()` | 获取 BucketItem（Optional） |
+| 方法            | 说明                       |
+|---------------|--------------------------|
+| `getSource()` | 获取 Source 流体             |
+| `getType()`   | 获取 `FluidType`           |
+| `getBlock()`  | 获取 LiquidBlock（Optional） |
+| `getBucket()` | 获取 BucketItem（Optional）  |
 
 ## LazyRegistryEntry
 

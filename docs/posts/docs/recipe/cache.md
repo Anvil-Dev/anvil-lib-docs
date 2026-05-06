@@ -20,15 +20,15 @@ BlockCache cache = context.get(BlockCache.BLOCK_CACHE);
 
 ### 核心方法
 
-| 方法 | 说明 |
-|------|------|
-| `getBlockState(BlockPos)` | 返回模拟或真实的方块状态（优先缓存） |
-| `getBlockEntity(BlockPos)` | 返回模拟或真实的方块实体 |
-| `setBlock(BlockPos, BlockState)` | 模拟放置方块 |
-| `setBlock(BlockPos, Block)` | 模拟放置方块（使用默认 BlockState） |
-| `setBlockEntity(BlockPos, BlockEntity)` | 模拟设置方块实体 |
-| `removeBlock(BlockPos)` | 模拟移除方块（设为空气，清理实体） |
-| `accept()` | 提交所有修改到世界（仅写入变更的部分） |
+| 方法                                      | 说明                      |
+|-----------------------------------------|-------------------------|
+| `getBlockState(BlockPos)`               | 返回模拟或真实的方块状态（优先缓存）      |
+| `getBlockEntity(BlockPos)`              | 返回模拟或真实的方块实体            |
+| `setBlock(BlockPos, BlockState)`        | 模拟放置方块                  |
+| `setBlock(BlockPos, Block)`             | 模拟放置方块（使用默认 BlockState） |
+| `setBlockEntity(BlockPos, BlockEntity)` | 模拟设置方块实体                |
+| `removeBlock(BlockPos)`                 | 模拟移除方块（设为空气，清理实体）       |
+| `accept()`                              | 提交所有修改到世界（仅写入变更的部分）     |
 
 ### 工作原理
 
@@ -53,18 +53,18 @@ ItemCache cache = context.get(ItemCache.ITEM_CACHE);
 
 ### 核心方法
 
-| 方法 | 说明 |
-|------|------|
-| `grow(Vec3 center, Vec3 range)` | 扩展缓存扫描范围 |
-| `inRange(Vec3 pos, Vec3 range)` | 判断位置是否已在扫描范围内 |
-| `getInput(ItemLike, Vec3 pos)` | 获取匹配物品类型的输入 |
-| `getInput(ItemLike, Vec3 pos, Vec3 range)` | 带范围扫描的输入获取 |
-| `getInput(ItemStack, Vec3 pos)` | 按完全匹配获取输入 |
-| `getInput(Predicate<ItemStack>, Vec3 pos)` | 按自定义谓词获取输入 |
-| `getOutput(ItemStack, Vec3 pos)` | 获取输出目标位置 |
-| `getOutput(ItemStack, Vec3 pos, Vec3 range)` | 带范围的输出目标 |
-| `pushSpawnList(Collection<SpawnOperation>)` | 添加待生成的物品操作 |
-| `endCache()` | 结束缓存：同步所有输入输出，生成队列中的物品 |
+| 方法                                           | 说明                     |
+|----------------------------------------------|------------------------|
+| `grow(Vec3 center, Vec3 range)`              | 扩展缓存扫描范围               |
+| `inRange(Vec3 pos, Vec3 range)`              | 判断位置是否已在扫描范围内          |
+| `getInput(ItemLike, Vec3 pos)`               | 获取匹配物品类型的输入            |
+| `getInput(ItemLike, Vec3 pos, Vec3 range)`   | 带范围扫描的输入获取             |
+| `getInput(ItemStack, Vec3 pos)`              | 按完全匹配获取输入              |
+| `getInput(Predicate<ItemStack>, Vec3 pos)`   | 按自定义谓词获取输入             |
+| `getOutput(ItemStack, Vec3 pos)`             | 获取输出目标位置               |
+| `getOutput(ItemStack, Vec3 pos, Vec3 range)` | 带范围的输出目标               |
+| `pushSpawnList(Collection<SpawnOperation>)`  | 添加待生成的物品操作             |
+| `endCache()`                                 | 结束缓存：同步所有输入输出，生成队列中的物品 |
 
 ### 工作机制
 
@@ -86,11 +86,11 @@ TagCache cache = context.get(TagCache.TAG_CACHE);
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
-| `getTag(Identifier)` | 按 ID 获取缓存的 NBT Tag（不存在返回 null） |
-| `putTag(Identifier, Tag)` | 存储 NBT Tag |
-| `computeIfAbsent(Identifier, Function)` | 惰性计算并缓存 |
+| 方法                                      | 说明                             |
+|-----------------------------------------|--------------------------------|
+| `getTag(Identifier)`                    | 按 ID 获取缓存的 NBT Tag（不存在返回 null） |
+| `putTag(Identifier, Tag)`               | 存储 NBT Tag                     |
+| `computeIfAbsent(Identifier, Function)` | 惰性计算并缓存                        |
 
 ## 使用示例
 

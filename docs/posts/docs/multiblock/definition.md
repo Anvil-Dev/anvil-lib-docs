@@ -22,14 +22,15 @@ public record MultiblockDefinition(
 
 ### 核心方法
 
-| 方法 | 说明 |
-|------|------|
-| `toGlobal(BlockPos centerPos)` | 将相对位置转为以 `centerPos` 为原点的绝对位置映射 |
+| 方法                                                               | 说明                              |
+|------------------------------------------------------------------|---------------------------------|
+| `toGlobal(BlockPos centerPos)`                                   | 将相对位置转为以 `centerPos` 为原点的绝对位置映射 |
 | `isController(LevelAccessor, BlockState, @Nullable BlockEntity)` | 检测 `ZERO` 位置的谓词是否匹配（判断某处是否为控制器） |
 
 ### 序列化
 
-提供 `CODEC` (`MapCodec<MultiblockDefinition>`) 和 `STREAM_CODEC`。内部通过 `DefinitionSerialization` 将定义转换为人类可读的栅格格式进行序列化。
+提供 `CODEC` (`MapCodec<MultiblockDefinition>`) 和 `STREAM_CODEC`。内部通过 `DefinitionSerialization`
+将定义转换为人类可读的栅格格式进行序列化。
 
 ## Builder（代码方式）
 
@@ -48,17 +49,17 @@ MultiblockDefinition definition = MultiblockDefinition.builder()
 
 ### Builder 方法
 
-| 方法 | 说明 |
-|------|------|
-| `add(Vec3i, BlockStatePredicate.Builder)` | 添加位置的谓词 |
-| `add(Vec3i, Block)` | 添加位置的方块匹配 |
-| `add(Vec3i, CompoundTag)` | 添加位置的 NBT 匹配 |
-| `add(Vec3i, Block, CompoundTag)` | 添加位置的方块+NBT 匹配 |
-| `addController(BlockStatePredicate.Builder)` | 设置控制器位置 (`Vec3i.ZERO`) 的谓词 |
-| `addController(Block)` | 设置控制器方块 |
-| `addController(CompoundTag)` | 设置控制器 NBT |
-| `addController(Block, CompoundTag)` | 设置控制器方块+NBT |
-| `build()` | 构建不可变的 `MultiblockDefinition` |
+| 方法                                           | 说明                            |
+|----------------------------------------------|-------------------------------|
+| `add(Vec3i, BlockStatePredicate.Builder)`    | 添加位置的谓词                       |
+| `add(Vec3i, Block)`                          | 添加位置的方块匹配                     |
+| `add(Vec3i, CompoundTag)`                    | 添加位置的 NBT 匹配                  |
+| `add(Vec3i, Block, CompoundTag)`             | 添加位置的方块+NBT 匹配                |
+| `addController(BlockStatePredicate.Builder)` | 设置控制器位置 (`Vec3i.ZERO`) 的谓词    |
+| `addController(Block)`                       | 设置控制器方块                       |
+| `addController(CompoundTag)`                 | 设置控制器 NBT                     |
+| `addController(Block, CompoundTag)`          | 设置控制器方块+NBT                   |
+| `build()`                                    | 构建不可变的 `MultiblockDefinition` |
 
 ## SeriaBuilder（栅格方式）
 
@@ -102,15 +103,15 @@ MultiblockDefinition definition = MultiblockDefinition.seriaBuilder()
 
 ### SeriaBuilder 方法
 
-| 方法 | 说明 |
-|------|------|
-| `layer(String... layer)` | 添加一层（数组每项为 Z 行，内容为 X 字符序列） |
-| `map(char key, BlockStatePredicate.Builder)` | 将字符映射到谓词 |
-| `map(char key, Block)` | 将字符映射到方块 |
-| `map(char key, CompoundTag)` | 将字符映射到 NBT |
-| `map(char key, Block, CompoundTag)` | 将字符映射到方块+NBT |
-| `mapController(...)` | 将控制器标记（'0'）映射到指定谓词/方块 |
-| `build()` | 构建 `MultiblockDefinition` |
+| 方法                                           | 说明                         |
+|----------------------------------------------|----------------------------|
+| `layer(String... layer)`                     | 添加一层（数组每项为 Z 行，内容为 X 字符序列） |
+| `map(char key, BlockStatePredicate.Builder)` | 将字符映射到谓词                   |
+| `map(char key, Block)`                       | 将字符映射到方块                   |
+| `map(char key, CompoundTag)`                 | 将字符映射到 NBT                 |
+| `map(char key, Block, CompoundTag)`          | 将字符映射到方块+NBT               |
+| `mapController(...)`                         | 将控制器标记（'0'）映射到指定谓词/方块      |
+| `build()`                                    | 构建 `MultiblockDefinition`  |
 
 ## DefinitionSerialization（内部格式）
 

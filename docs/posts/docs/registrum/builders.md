@@ -24,13 +24,13 @@ public interface Builder<R, T extends R, P, S extends Builder<R, T, P, S>>
 
 ### 通用方法
 
-| 方法 | 说明 |
-|------|------|
-| `register()` | 完成注册，返回 `RegistryEntry` |
-| `get()` | 从 Owner 获取已注册条目 |
-| `getEntry()` | 获取实际对象（通过 `get().get()`） |
+| 方法             | 说明                            |
+|----------------|-------------------------------|
+| `register()`   | 完成注册，返回 `RegistryEntry`       |
+| `get()`        | 从 Owner 获取已注册条目               |
+| `getEntry()`   | 获取实际对象（通过 `get().get()`）      |
 | `asSupplier()` | 返回 `NonNullSupplier<T>` 供延迟获取 |
-| `build()` | 调用 `register()` 后返回 Parent |
+| `build()`      | 调用 `register()` 后返回 Parent    |
 
 ### 回调与变换
 
@@ -148,22 +148,22 @@ BlockEntry<MyBlock> entry = builder.register();
 
 ### BlockBuilder 特有方法
 
-| 方法 | 返回值 | 说明 |
-|------|--------|------|
-| `simpleItem()` | `BlockBuilder<T,P>` | 快速创建 BlockItem |
-| `item()` | `ItemBuilder<BlockItem, BlockBuilder>` | 标准 BlockItem Builder |
-| `item(factory)` | `ItemBuilder<I, BlockBuilder>` | 自定义 BlockItem 工厂 |
-| `simpleBlockEntity(factory)` | `BlockBuilder<T,P>` | 快速创建 BlockEntity |
-| `blockEntity(factory)` | `BlockEntityBuilder<BE, BlockBuilder>` | BlockEntity Builder |
-| `color(supplier)` | `BlockBuilder<T,P>` | 方块颜色处理器 |
-| `clientExtension(supplier)` | `BlockBuilder<T,P>` | 客户端扩展 |
-| `defaultBlockstate()` | `BlockBuilder<T,P>` | 默认 blockstate 模型 |
-| `blockstate(supplier)` | `BlockBuilder<T,P>` | 自定义 blockstate 模型 |
-| `defaultLoot()` | `BlockBuilder<T,P>` | 默认战利品表 |
-| `loot(consumer)` | `BlockBuilder<T,P>` | 自定义战利品表 |
-| `recipe(consumer)` | `BlockBuilder<T,P>` | 自定义配方 |
-| `tag(TagKey...)` | `BlockBuilder<T,P>` | 添加方块标签 |
-| `register()` | `BlockEntry<T>` | 完成注册 |
+| 方法                           | 返回值                                    | 说明                   |
+|------------------------------|----------------------------------------|----------------------|
+| `simpleItem()`               | `BlockBuilder<T,P>`                    | 快速创建 BlockItem       |
+| `item()`                     | `ItemBuilder<BlockItem, BlockBuilder>` | 标准 BlockItem Builder |
+| `item(factory)`              | `ItemBuilder<I, BlockBuilder>`         | 自定义 BlockItem 工厂     |
+| `simpleBlockEntity(factory)` | `BlockBuilder<T,P>`                    | 快速创建 BlockEntity     |
+| `blockEntity(factory)`       | `BlockEntityBuilder<BE, BlockBuilder>` | BlockEntity Builder  |
+| `color(supplier)`            | `BlockBuilder<T,P>`                    | 方块颜色处理器              |
+| `clientExtension(supplier)`  | `BlockBuilder<T,P>`                    | 客户端扩展                |
+| `defaultBlockstate()`        | `BlockBuilder<T,P>`                    | 默认 blockstate 模型     |
+| `blockstate(supplier)`       | `BlockBuilder<T,P>`                    | 自定义 blockstate 模型    |
+| `defaultLoot()`              | `BlockBuilder<T,P>`                    | 默认战利品表               |
+| `loot(consumer)`             | `BlockBuilder<T,P>`                    | 自定义战利品表              |
+| `recipe(consumer)`           | `BlockBuilder<T,P>`                    | 自定义配方                |
+| `tag(TagKey...)`             | `BlockBuilder<T,P>`                    | 添加方块标签               |
+| `register()`                 | `BlockEntry<T>`                        | 完成注册                 |
 
 ## ItemBuilder
 
@@ -235,19 +235,19 @@ ItemEntry<MyItem> entry = builder.register();
 
 ### ItemBuilder 特有方法
 
-| 方法 | 返回值 | 说明 |
-|------|--------|------|
-| `tab(key)` | `ItemBuilder<T,P>` | 加入创造性标签页 |
-| `tab(key, consumer)` | `ItemBuilder<T,P>` | 标签页 + 上下文 |
-| `removeTab(key)` | `ItemBuilder<T,P>` | 移除标签页 |
-| `defaultModel()` | `ItemBuilder<T,P>` | 默认 flat 模型 |
-| `model(supplier)` | `ItemBuilder<T,P>` | 自定义模型 |
-| `recipe(consumer)` | `ItemBuilder<T,P>` | 配方生成 |
-| `burnTime(int)` | `ItemBuilder<T,P>` | 燃料时间（tick） |
-| `compostable(float)` | `ItemBuilder<T,P>` | 堆肥概率 |
-| `clientExtension(supplier)` | `ItemBuilder<T,P>` | 客户端扩展 |
-| `tag(TagKey...)` | `ItemBuilder<T,P>` | 添加物品标签 |
-| `register()` | `ItemEntry<T>` | 完成注册 |
+| 方法                          | 返回值                | 说明         |
+|-----------------------------|--------------------|------------|
+| `tab(key)`                  | `ItemBuilder<T,P>` | 加入创造性标签页   |
+| `tab(key, consumer)`        | `ItemBuilder<T,P>` | 标签页 + 上下文  |
+| `removeTab(key)`            | `ItemBuilder<T,P>` | 移除标签页      |
+| `defaultModel()`            | `ItemBuilder<T,P>` | 默认 flat 模型 |
+| `model(supplier)`           | `ItemBuilder<T,P>` | 自定义模型      |
+| `recipe(consumer)`          | `ItemBuilder<T,P>` | 配方生成       |
+| `burnTime(int)`             | `ItemBuilder<T,P>` | 燃料时间（tick） |
+| `compostable(float)`        | `ItemBuilder<T,P>` | 堆肥概率       |
+| `clientExtension(supplier)` | `ItemBuilder<T,P>` | 客户端扩展      |
+| `tag(TagKey...)`            | `ItemBuilder<T,P>` | 添加物品标签     |
+| `register()`                | `ItemEntry<T>`     | 完成注册       |
 
 ## 完整示例
 

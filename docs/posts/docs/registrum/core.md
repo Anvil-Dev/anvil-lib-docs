@@ -38,12 +38,12 @@ protected String currentName();
 
 ### 条目检索
 
-| 方法 | 说明 |
-|------|------|
-| `<R,T> RegistryEntry<R,T> get(ResourceKey<Registry<R>>)` | 按当前名字获取 |
-| `<R,T> RegistryEntry<R,T> get(String, ResourceKey)` | 按指定名字获取 |
-| `<R,T> Optional<RegistryEntry<R,T>> getOptional(String, ResourceKey)` | 可选获取 |
-| `<R,T> Collection<RegistryEntry<R,T>> getAll(ResourceKey)` | 获取某注册表全部已知条目 |
+| 方法                                                                    | 说明           |
+|-----------------------------------------------------------------------|--------------|
+| `<R,T> RegistryEntry<R,T> get(ResourceKey<Registry<R>>)`              | 按当前名字获取      |
+| `<R,T> RegistryEntry<R,T> get(String, ResourceKey)`                   | 按指定名字获取      |
+| `<R,T> Optional<RegistryEntry<R,T>> getOptional(String, ResourceKey)` | 可选获取         |
+| `<R,T> Collection<RegistryEntry<R,T>> getAll(ResourceKey)`            | 获取某注册表全部已知条目 |
 
 ### 注册回调
 
@@ -174,6 +174,7 @@ public interface BuilderCallback {
 ## 事件监听
 
 在 `registerEventListeners(IEventBus bus)` 中注册：
+
 - `RegisterEvent` — 注册条目
 - `RegisterEvent` (LOWEST) — 注册完成后回调
 - `BuildCreativeModeTabContentsEvent` — 填充创造性标签页

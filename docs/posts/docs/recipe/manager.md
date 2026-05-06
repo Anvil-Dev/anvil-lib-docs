@@ -21,10 +21,10 @@ public class InWorldRecipeManager {
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
-| `register(RecipeHolder<InWorldRecipe>)` | 注册配方，按触发器归类 |
-| `trigger(IRecipeTrigger, InWorldRecipeContext)` | 触发配方检测与执行 |
+| 方法                                                        | 说明          |
+|-----------------------------------------------------------|-------------|
+| `register(RecipeHolder<InWorldRecipe>)`                   | 注册配方，按触发器归类 |
+| `trigger(IRecipeTrigger, InWorldRecipeContext)`           | 触发配方检测与执行   |
 | `trigger(Supplier<IRecipeTrigger>, InWorldRecipeContext)` | Supplier 形式 |
 
 ### 触发逻辑
@@ -53,6 +53,7 @@ public void trigger(IRecipeTrigger trigger, InWorldRecipeContext ctx) {
 ```
 
 关键行为：
+
 1. 按触发器查找所有注册配方
 2. 优先级排序（Multimap 中 TreeSet 排序）
 3. 循环检测 `matches()` → `assemble()` 直至不再匹配或达到效率上限
@@ -83,40 +84,40 @@ new InWorldRecipeContext(ServerLevel level, Vec3 pos, @Nullable Entity entity)
 
 ### 核心方法
 
-| 方法 | 说明 |
-|------|------|
-| `getLevel()` | 获取 `ServerLevel` |
-| `getPos()` | 获取执行中心位置 |
-| `getEntity()` | 获取相关实体（可为 null） |
-| `getStack()` | 获取线程安全的谓词操作栈 |
-| `push(IRecipePredicate)` / `pop(IRecipePredicate)` | 谓词栈推入/弹出（带 snapshot/rollback） |
-| `put(InWorldRecipeData<T>, T)` | 存储类型安全的键值数据 |
-| `get(InWorldRecipeData<T>)` | 按键获取数据（不存在时使用 Data 的默认 supplier） |
-| `computeIfAbsent(InWorldRecipeData<T>)` | 惰性计算并缓存 |
-| `putAcceptor(Identifier, Consumer<InWorldRecipeContext>)` | 注册完成回调 |
-| `accept()` | 调用所有已注册的 acceptor |
-| `getFloat(NumberProvider)` / `getInt(NumberProvider)` | 评估 NumberProvider |
-| `emptyLootContext()` | 创建空战利品上下文 |
+| 方法                                                        | 说明                               |
+|-----------------------------------------------------------|----------------------------------|
+| `getLevel()`                                              | 获取 `ServerLevel`                 |
+| `getPos()`                                                | 获取执行中心位置                         |
+| `getEntity()`                                             | 获取相关实体（可为 null）                  |
+| `getStack()`                                              | 获取线程安全的谓词操作栈                     |
+| `push(IRecipePredicate)` / `pop(IRecipePredicate)`        | 谓词栈推入/弹出（带 snapshot/rollback）    |
+| `put(InWorldRecipeData<T>, T)`                            | 存储类型安全的键值数据                      |
+| `get(InWorldRecipeData<T>)`                               | 按键获取数据（不存在时使用 Data 的默认 supplier） |
+| `computeIfAbsent(InWorldRecipeData<T>)`                   | 惰性计算并缓存                          |
+| `putAcceptor(Identifier, Consumer<InWorldRecipeContext>)` | 注册完成回调                           |
+| `accept()`                                                | 调用所有已注册的 acceptor                |
+| `getFloat(NumberProvider)` / `getInt(NumberProvider)`     | 评估 NumberProvider                |
+| `emptyLootContext()`                                      | 创建空战利品上下文                        |
 
 ### 预定义数据键
 
-| 键 | 类型 | 说明 |
-|----|------|------|
-| `BlockCache.BLOCK_CACHE` | `InWorldRecipeData<BlockCache>` | 方块修改缓存 |
-| `ItemCache.ITEM_CACHE` | `InWorldRecipeData<ItemCache>` | 物品输入/输出缓存 |
-| `TagCache.TAG_CACHE` | `InWorldRecipeData<TagCache>` | NBT 标签缓存 |
+| 键                        | 类型                              | 说明        |
+|--------------------------|---------------------------------|-----------|
+| `BlockCache.BLOCK_CACHE` | `InWorldRecipeData<BlockCache>` | 方块修改缓存    |
+| `ItemCache.ITEM_CACHE`   | `InWorldRecipeData<ItemCache>`  | 物品输入/输出缓存 |
+| `TagCache.TAG_CACHE`     | `InWorldRecipeData<TagCache>`   | NBT 标签缓存  |
 
 ## 自定义注册表
 
 `LibRegistries` 注册了 5 个 NeoForge 注册表（均限制 512 条目）：
 
-| 注册表 | Key | 注册类型 |
-|--------|-----|----------|
-| `TRIGGER_REGISTRY` | `anvillib:trigger` | `IRecipeTrigger` |
-| `PREDICATE_TYPE_REGISTRY` | `anvillib:predicate` | `IRecipePredicate.Type<?>` |
+| 注册表                                | Key                           | 注册类型                         |
+|------------------------------------|-------------------------------|------------------------------|
+| `TRIGGER_REGISTRY`                 | `anvillib:trigger`            | `IRecipeTrigger`             |
+| `PREDICATE_TYPE_REGISTRY`          | `anvillib:predicate`          | `IRecipePredicate.Type<?>`   |
 | `PREDICATE_FUNCTION_TYPE_REGISTRY` | `anvillib:predicate_function` | `IPredicateFunction.Type<?>` |
-| `OUTCOME_TYPE_REGISTRY` | `anvillib:outcome` | `IRecipeOutcome.Type<?>` |
-| `OUTCOME_FUNCTION_TYPE_REGISTRY` | `anvillib:outcome_function` | `IOutcomeFunction.Type<?>` |
+| `OUTCOME_TYPE_REGISTRY`            | `anvillib:outcome`            | `IRecipeOutcome.Type<?>`     |
+| `OUTCOME_FUNCTION_TYPE_REGISTRY`   | `anvillib:outcome_function`   | `IOutcomeFunction.Type<?>`   |
 
 所有注册表均已同步到客户端，通过 `registerRegistries(NewRegistryEvent)` 事件处理注册。
 

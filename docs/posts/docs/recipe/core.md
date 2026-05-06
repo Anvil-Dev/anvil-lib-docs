@@ -12,16 +12,16 @@ next: false
 
 ### 构造参数
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| icon | `ItemStackTemplate` | 配方图标（JEI/配方书展示） |
-| trigger | `IRecipeTrigger` | 触发条件 |
-| conflicting | `List<IRecipePredicate<?>>` | 冲突谓词（消耗型匹配，消耗后阻止其他配方） |
-| nonConflicting | `List<IRecipePredicate<?>>` | 非冲突谓词（仅检查，不消耗） |
-| outcomes | `List<IRecipeOutcome<?>>` | 产出列表 |
-| priority | `int` | 优先级（数字越小越优先），可自动计算 |
-| compatible | `boolean` | 兼容模式（`true` 允许多配方共享输入） |
-| maxEfficiency | `int` | 每触发最大执行次数，默认 `Integer.MAX_VALUE` |
+| 参数             | 类型                          | 说明                               |
+|----------------|-----------------------------|----------------------------------|
+| icon           | `ItemStackTemplate`         | 配方图标（JEI/配方书展示）                  |
+| trigger        | `IRecipeTrigger`            | 触发条件                             |
+| conflicting    | `List<IRecipePredicate<?>>` | 冲突谓词（消耗型匹配，消耗后阻止其他配方）            |
+| nonConflicting | `List<IRecipePredicate<?>>` | 非冲突谓词（仅检查，不消耗）                   |
+| outcomes       | `List<IRecipeOutcome<?>>`   | 产出列表                             |
+| priority       | `int`                       | 优先级（数字越小越优先），可自动计算               |
+| compatible     | `boolean`                   | 兼容模式（`true` 允许多配方共享输入）           |
+| maxEfficiency  | `int`                       | 每触发最大执行次数，默认 `Integer.MAX_VALUE` |
 
 ### 构造器重载
 
@@ -39,12 +39,12 @@ new InWorldRecipe(icon, trigger, conflicting, nonConflicting, outcomes, compatib
 
 ### 核心方法
 
-| 方法 | 说明 |
-|------|------|
+| 方法                                     | 说明                                                                                                  |
+|----------------------------------------|-----------------------------------------------------------------------------------------------------|
 | `matches(InWorldRecipeContext, Level)` | 先检查非冲突谓词（`ShapelessMatcher.compatible`），再检查冲突谓词（兼容模式用 `compatible`，非兼容模式用 `incompatible`）。失败时清空谓词栈。 |
-| `assemble(InWorldRecipeContext)` | 依次弹出并消耗冲突谓词，按概率执行所有产出，返回图标 `ItemStack` |
-| `getSerializer()` | 返回 `LibRecipeTypes.IN_WORLD_RECIPE_SERIALIZER` |
-| `getType()` | 返回 `LibRecipeTypes.IN_WORLD_RECIPE` |
+| `assemble(InWorldRecipeContext)`       | 依次弹出并消耗冲突谓词，按概率执行所有产出，返回图标 `ItemStack`                                                              |
+| `getSerializer()`                      | 返回 `LibRecipeTypes.IN_WORLD_RECIPE_SERIALIZER`                                                      |
+| `getType()`                            | 返回 `LibRecipeTypes.IN_WORLD_RECIPE`                                                                 |
 
 ### 优先级自动计算
 
@@ -56,16 +56,16 @@ new InWorldRecipe(icon, trigger, conflicting, nonConflicting, outcomes, compatib
 
 **JSON 字段：**
 
-| 字段 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `icon` | `ItemStackTemplate` | `minecraft:anvil` | 配方图标 |
-| `trigger` | `Identifier` | — | 触发器注册表 ID |
-| `conflicting` | `IRecipePredicate[]` | — | 冲突谓词列表 |
-| `non_conflicting` | `IRecipePredicate[]` | — | 非冲突谓词列表 |
-| `outcomes` | `IRecipeOutcome[]` | — | 产出列表 |
-| `priority` | `int` | `1` | 优先级 |
-| `compatible` | `bool` | `true` | 兼容模式 |
-| `max_efficiency` | `int` | `2147483647` | 最大效率 |
+| 字段                | 类型                   | 默认值               | 说明        |
+|-------------------|----------------------|-------------------|-----------|
+| `icon`            | `ItemStackTemplate`  | `minecraft:anvil` | 配方图标      |
+| `trigger`         | `Identifier`         | —                 | 触发器注册表 ID |
+| `conflicting`     | `IRecipePredicate[]` | —                 | 冲突谓词列表    |
+| `non_conflicting` | `IRecipePredicate[]` | —                 | 非冲突谓词列表   |
+| `outcomes`        | `IRecipeOutcome[]`   | —                 | 产出列表      |
+| `priority`        | `int`                | `1`               | 优先级       |
+| `compatible`      | `bool`               | `true`            | 兼容模式      |
+| `max_efficiency`  | `int`                | `2147483647`      | 最大效率      |
 
 ### Getters
 
