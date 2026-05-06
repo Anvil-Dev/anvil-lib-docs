@@ -4,7 +4,7 @@ prev: false
 next: false
 ---
 
-# 泛光后处理
+# 泛光后处理 <Badge type="tip" text=">=26.1" />
 
 ## BloomPostEffect
 

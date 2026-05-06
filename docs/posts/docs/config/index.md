@@ -4,7 +4,7 @@ prev: false
 next: false
 ---
 
-# 配置模块
+# 配置模块 <Badge type="tip" text=">=1.21.1" />
 
 包 `dev.anvilcraft.lib.v2.config` 提供了一套基于 NeoForge 配置系统的声明式配置框架，通过注解和反射简化配置类的定义、注册、语言生成以及运行时值注入。
 

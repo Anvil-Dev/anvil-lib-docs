@@ -4,7 +4,7 @@ prev: false
 next: false
 ---
 
-# 集成模块
+# 集成模块 <Badge type="tip" text=">=1.21.1" /> <Badge type="info" text="IntegrationType changed in 26.1" />
 
 包 `dev.anvilcraft.lib.v2.integration` 提供了一个轻量级的模组间集成系统。通过注解 `@Integration` 声明集成点，由
 `IntegrationManager` 自动发现并加载，支持在指定物理端以约定方法的形式执行集成逻辑。

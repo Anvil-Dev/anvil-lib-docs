@@ -4,7 +4,18 @@ prev: false
 next: false
 ---
 
-# Mixin 与使用指南
+# Mixin 与使用指南 <Badge type="info" text="1.21.1 API" />
+
+> **26.1 迁移提示**: 本文档描述 1.21.1 版本的 API（`clearData`/`setData` + `CompoundTag`）。26.1 版本使用全新的
+`storeData`/`loadData` + `ValueInput`/`ValueOutput` API。迁移指南请参考[核心接口文档](./api)。
+
+## 适用版本
+
+| 内容          | 适用版本                                                 |
+|-------------|------------------------------------------------------|
+| Mixin 修改点说明 | 1.21.1 / 26.1（Mixin 结构一致，内部实现不同）                     |
+| 使用步骤与代码示例   | 1.21.1（`clearData`/`setData`）                        |
+| 26.1 新 API  | 参见[核心接口 § 26.1 API](./api#261-api-storedataloaddata) |
 
 ## Mixin 修改点
 

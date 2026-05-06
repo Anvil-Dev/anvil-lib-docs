@@ -6,6 +6,10 @@ next: false
 
 # 发送工具
 
+<Badge type="tip" text="1.21.1" /> <Badge type="danger" text="not in 1.21.2–1.21.11" /> <Badge type="tip" text="26.1" />
+
+> **可用性警告**: `NetworkUtil` 在 1.21.2 至 1.21.11 版本中**不可用**。如果你使用这些版本，请直接使用 `PacketDistributor` 或自行实现等价的批量发送逻辑。
+
 `NetworkUtil` 提供服务端向玩家批量发送网络包的静态快捷方法。
 
 ## sendToAllPlayersExcluded

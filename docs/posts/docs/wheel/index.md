@@ -4,7 +4,7 @@ prev: false
 next: false
 ---
 
-# 轮盘菜单模块
+# 轮盘菜单模块 <Badge type="tip" text=">=1.21.1" /> <Badge type="info" text="enhanced: 1.21.5 / 1.21.6 / 26.1" />
 
 包 `dev.anvilcraft.lib.v2.wheel` 提供了一套高度可定制的**环形菜单（Radial Menu）**
 系统，支持点按（Tap）和长按（Hold）两种打开模式、自定义扇形/圆点选中效果、子菜单以及自定义渲染器。

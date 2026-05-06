@@ -4,7 +4,7 @@ prev: false
 next: false
 ---
 
-# 渲染集成
+# 渲染集成 <Badge type="tip" text=">=26.1" />
 
 ## ALRendering
 

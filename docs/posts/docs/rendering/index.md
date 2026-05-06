@@ -4,7 +4,9 @@ prev: false
 next: false
 ---
 
-# 渲染模块
+# 渲染模块 <Badge type="tip" text="26.1 only" />
+
+> **可用性**: 本模块**仅**在 Minecraft **26.1** 版本中存在。所有更早的版本（1.21.1 至 1.21.11）均不包含此模块。
 
 包 `dev.anvilcraft.lib.v2.rendering` 提供了泛光（Bloom）后处理效果以及一套通用的 UBO（Uniform Buffer Object）布局定义框架，并通过
 Mixin 集成到 Minecraft 的 GUI 渲染和主渲染流程中。

@@ -4,7 +4,9 @@ prev: false
 next: false
 ---
 
-# 网络包模块
+# 网络包模块 <Badge type="tip" text=">=1.21.1" />
+
+> **可用性**: `NetworkUtil`（批量发送工具）在 1.21.2–1.21.11 版本中未同步，仅 1.21.1 和 26.1 中可用。其余 API 在所有版本中一致。
 
 包 `dev.anvilcraft.lib.v2.network` 提供基于 NeoForge 网络系统的高层抽象，用于简化网络包的定义、方向管理及自动注册。
 

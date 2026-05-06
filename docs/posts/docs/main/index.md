@@ -4,7 +4,7 @@ prev: false
 next: false
 ---
 
-# AnvilLib 聚合模块
+# AnvilLib 聚合模块 <Badge type="tip" text=">=1.21.1" />
 
 该模块是 AnvilLib 的聚合模块，代表整个库的基座。它本身不包含功能代码，而是作为所有子模块的聚合入口，统一版本管理、构建发布与依赖协调。
 

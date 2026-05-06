@@ -25,9 +25,13 @@ public @interface Integration {
 | version | `String`            | 兼容的模组版本范围（Maven 版本语法），默认 `"*"`          |
 | type    | `IntegrationType[]` | 集成的目标环境，默认 `{CLIENT, DEDICATED_SERVER}` |
 
-## IntegrationType
+## IntegrationType <Badge type="info" text="changed in 26.1" />
 
 枚举，表示集成适用的环境：
+
+**1.21.1**: `CLIENT`、`DEDICATED_SERVER`、`DATA`
+
+**26.1**: `CLIENT`、`DEDICATED_SERVER`、`CLIENT_DATA`、`SERVER_DATA` <Badge type="danger" text="breaking" />
 
 | 值                  | 说明      |
 |--------------------|---------|

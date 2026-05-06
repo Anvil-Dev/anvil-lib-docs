@@ -4,7 +4,7 @@ prev: false
 next: false
 ---
 
-# 编解码器工具模块
+# 编解码器工具模块 <Badge type="tip" text=">=1.21.1" />
 
 包 `dev.anvilcraft.lib.v2.codec` 包含了 Minecraft/NeoForge 开发中高频使用的序列化工具，分为两大类：
 

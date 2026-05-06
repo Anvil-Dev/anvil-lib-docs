@@ -4,7 +4,7 @@ prev: false
 next: false
 ---
 
-# 世界内配方模块
+# 世界内配方模块 <Badge type="tip" text=">=1.21.1" /> <Badge type="info" text="changed: 1.21.2 / 1.21.10 / 26.1" />
 
 包 `dev.anvilcraft.lib.v2.recipe` 提供了一套**世界内交互配方系统**
 ，允许配方在世界中通过实体/方块交互触发，而非在传统的合成台中执行。支持条件谓词、概率化产出、事务式缓存、数据包定义及网络同步。

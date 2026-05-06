@@ -112,7 +112,7 @@ int totalPages = WheelPagination.pageCount(totalEntries, slotsPerPage);
 | `TAP`  | 点按模式：点击触发当前选中条目，子菜单可进入 |
 | `HOLD` | 长按模式：释放时触发动作项，子菜单不可被触发 |
 
-### WheelSelectionEffect
+### WheelSelectionEffect <Badge type="tip" text=">=26.1" />
 
 | 值                | 说明       |
 |------------------|----------|

@@ -65,7 +65,7 @@ next: false
 
 鼠标滚轮在页面间切换。
 
-## 渲染管道与 Uniform
+## 渲染管道与 Uniform <Badge type="info" text="enhanced in 26.1" />
 
 ### 着色器管道 (LibRenders)
 

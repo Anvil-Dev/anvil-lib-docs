@@ -4,7 +4,7 @@ prev: false
 next: false
 ---
 
-# 可推动方块实体模块
+# 可推动方块实体模块 <Badge type="tip" text=">=1.21.1" /> <Badge type="danger" text="API redesigned in 26.1" />
 
 包 `dev.anvilcraft.lib.v2.piston` 解决了原版活塞无法推动带方块实体的方块的问题。通过一组 Mixin 和接口，允许方块在移动过程中携带自定义
 NBT 数据，并在活塞停止时将数据写回目标位置的方块实体。

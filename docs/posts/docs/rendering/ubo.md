@@ -4,7 +4,7 @@ prev: false
 next: false
 ---
 
-# UBO 基础框架
+# UBO 基础框架 <Badge type="tip" text=">=26.1" />
 
 UBO 系统用于在代码中声明 GLSL Uniform Block 的内存布局，并自动计算 STD140 大小和填充数据。
 
