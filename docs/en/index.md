@@ -34,7 +34,7 @@ features:
     link: /posts/docs/recipe/index
   - title: Moveable Entity Block
     details: Support for piston-movable block entities
-    link: /posts/docs/moveable_entity_block/index
+    link: /posts/docs/moveable-entity-block/index
   - title: Multiblock
     details: Dynamic multiblock system
     link: /posts/docs/multiblock/index

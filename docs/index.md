@@ -34,7 +34,7 @@ features:
     link: /posts/docs/recipe/index
   - title: Moveable Entity Block
     details: 可被活塞推动的方块实体支持
-    link: /posts/docs/moveable_entity_block/index
+    link: /posts/docs/moveable-entity-block/index
   - title: Multiblock
     details: 动态多方块系统
     link: /posts/docs/multiblock/index
