@@ -179,8 +179,6 @@ function getAutoConfig(lang: string = 'zh', homeName = '首页') {
     return {socialLinks, nav, sidebar, editLink, footer}
 }
 
-console.log(process.env.GH_PAGES)
-
 export default defineConfig({
     ...(process.env.GH_PAGES == 'true' ? {base: '/anvil-lib-docs/'} : {}),
     title: "AnvilLib",

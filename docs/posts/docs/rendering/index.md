@@ -18,6 +18,7 @@ Mixin 集成到 Minecraft 的 GUI 渲染和主渲染流程中。
 | [泛光后处理](./bloom)      | `BloomPostEffect`、`BloomRenderCallback`、多 Pass 处理链           |
 | [UBO 框架](./ubo)       | `UboObject`、`UboLayoutDefinition`、`UboLayoutEntry`、STD140 布局 |
 | [渲染集成](./integration) | `ALRendering`、Mixin、`LibGuiElementRenderState`、着色器管线         |
+| [SDF 2D 图形](./sdf)    | `SdfGraphics`、`Sdf2d`、`SdfParameters`、7 种图形类型                |
 
 ## 模块结构
 

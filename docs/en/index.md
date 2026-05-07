@@ -50,6 +50,9 @@ features:
   - title: Rendering
     details: Minimalistic rendering library
     link: /posts/docs/rendering/index
+  - title: Sync
+    details: Declarative field synchronization system
+    link: /posts/docs/sync/index
   - title: Main
     details: Aggregation module (includes all submodules)
     link: /posts/docs/main/index

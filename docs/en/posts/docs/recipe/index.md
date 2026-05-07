@@ -1,5 +1,5 @@
 ---
-title: Recipe: In-World Recipes
+title: In-World Recipes
 prev: false
 next: false
 ---

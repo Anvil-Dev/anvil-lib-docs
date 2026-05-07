@@ -6,17 +6,21 @@ next: false
 
 # Rendering Module <Badge type="tip" text="26.1 only" />
 
-> **Availability**: This module **only** exists in Minecraft **26.1**. All earlier versions (1.21.1 through 1.21.11) do not include this module.
+> **Availability**: This module **only** exists in Minecraft **26.1**. All earlier versions (1.21.1 through 1.21.11) do
+> not include this module.
 
-The package `dev.anvilcraft.lib.v2.rendering` provides bloom post-processing effects and a general-purpose UBO (Uniform Buffer Object) layout definition framework, integrated into Minecraft's GUI rendering and main rendering pipeline via Mixin.
+The package `dev.anvilcraft.lib.v2.rendering` provides bloom post-processing effects and a general-purpose UBO (Uniform
+Buffer Object) layout definition framework, integrated into Minecraft's GUI rendering and main rendering pipeline via
+Mixin.
 
 ## Document Index
 
-| Document                       | Content                                                                      |
-|-------------------------------|------------------------------------------------------------------------------|
-| [Bloom Post-Processing](./bloom)      | `BloomPostEffect`, `BloomRenderCallback`, multi-pass processing chain       |
-| [UBO Framework](./ubo)        | `UboObject`, `UboLayoutDefinition`, `UboLayoutEntry`, STD140 layout         |
-| [Rendering Integration](./integration) | `ALRendering`, Mixin, `LibGuiElementRenderState`, shader pipelines         |
+| Document                               | Content                                                               |
+|----------------------------------------|-----------------------------------------------------------------------|
+| [Bloom Post-Processing](./bloom)       | `BloomPostEffect`, `BloomRenderCallback`, multi-pass processing chain |
+| [UBO Framework](./ubo)                 | `UboObject`, `UboLayoutDefinition`, `UboLayoutEntry`, STD140 layout   |
+| [Rendering Integration](./integration) | `ALRendering`, Mixin, `LibGuiElementRenderState`, shader pipelines    |
+| [SDF 2D Graphics](./sdf)               | `SdfGraphics`, `Sdf2d`, `SdfParameters`, 7 shape types                |
 
 ## Module Structure
 

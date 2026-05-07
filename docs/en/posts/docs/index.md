@@ -30,6 +30,7 @@ AnvilLib adopts a modular design with the following functional modules:
 | **Util**                  | Shareable utility methods |
 | **Wheel**                 | Radial menu client API |
 | **Rendering**             | Lightweight rendering library |
+| **Sync**                  | Declarative field synchronization system |
 | **Main**                  | Aggregate module (includes all submodules) |
 | **Version Diff**          | Version-to-version API changes and migration guide |
 

@@ -50,6 +50,9 @@ features:
   - title: Rendering
     details: 功能不多的渲染库
     link: /posts/docs/rendering/index
+  - title: Sync
+    details: 声明式字段同步系统
+    link: /posts/docs/sync/index
   - title: Main
     details: 聚合模块（包含全部子模块）
     link: /posts/docs/main/index
