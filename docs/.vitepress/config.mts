@@ -152,7 +152,7 @@ function getAutoConfig(lang: string = 'zh', homeName = '首页') {
 
     const editLink = {
         text: lang === 'zh' ? '在 GitHub 上编辑此页面' : 'Edit this page on GitHub',
-        pattern: 'https://github.com/Anvil-Dev/anvil-lib-docs/edit/main/src/:path'
+        pattern: 'https://github.com/Anvil-Dev/anvil-lib-docs/edit/main/docs/:path'
     }
 
     const socialLinks = [
