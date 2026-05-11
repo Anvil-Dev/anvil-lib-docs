@@ -21,7 +21,38 @@ public class AnvilLibFont {
 `getSelectFont()` reads the user-selected font family and font name from `AnvilLibFontConfig` and resolves it to an
 AWT `java.awt.Font` instance via `FontManager`.
 
-## FontManager
+## ALFont
+
+Wrapper around `java.awt.Font` providing text measurement and layout utilities. Internally delegates to `SdfGlyphAtlas`
+for glyph metrics.
+
+```java
+ALFont alf = new ALFont(AnvilLibFont.getSelectFont());
+
+// Text width measurement
+int w = alf.width("Hello World");
+int w2 = alf.width(Component.literal("Hello"));
+
+// Substring by pixel width (forward/reverse)
+String head = alf.plainSubstrByWidth("Hello World", 50);
+String tail = alf.plainSubstrByWidth("Hello World", 50, true);
+
+// Word wrapping
+List<FormattedCharSequence> lines = alf.split(FormattedText.of(text), 200);
+int totalHeight = alf.wordWrapHeight(FormattedText.of(text), 200);
+
+// Underlying AWT font
+Font awt = alf.awtFont();
+```
+
+| Method                                                                    | Description                    |
+|---------------------------------------------------------------------------|--------------------------------|
+| `alf.font()`                                                              | Returns the wrapped AWT `Font` |
+| `width(String)` / `width(FormattedText)` / `width(FormattedCharSequence)` | Text pixel width               |
+| `plainSubstrByWidth(str, maxW)`                                           | Forward substring by width     |
+| `plainSubstrByWidth(str, maxW, true)`                                     | Reverse substring by width     |
+| `split(FormattedText, maxW)`                                              | Word-wrap line splitting       |
+| `wordWrapHeight(FormattedText, maxW)`                                     | Total height after wrapping    |## FontManager
 
 System font discovery and management singleton.
 
@@ -114,13 +145,13 @@ public class SdfTextRenderer {
 
 The renderer supports the following text styles, automatically applied in `drawFormatted` and `drawComponent`:
 
-| Style        | Effect                              |
-|--------------|-------------------------------------|
-| **Bold**     | Renders text with increased weight  |
-| *Italic*     | Renders text with slant             |
-| <u>Underline</u> | Draws a line below the text     |
-| ~~Strikethrough~~ | Draws a line through the text  |
-| Obfuscated   | Random character replacement animation |
+| Style             | Effect                                 |
+|-------------------|----------------------------------------|
+| **Bold**          | Renders text with increased weight     |
+| *Italic*          | Renders text with slant                |
+| <u>Underline</u>  | Draws a line below the text            |
+| ~~Strikethrough~~ | Draws a line through the text          |
+| Obfuscated        | Random character replacement animation |
 
 ## SdfGlyphAtlas
 

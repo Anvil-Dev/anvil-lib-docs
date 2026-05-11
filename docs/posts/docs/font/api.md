@@ -20,6 +20,38 @@ public class AnvilLibFont {
 
 `getSelectFont()` 从 `AnvilLibFontConfig` 读取用户选择的字体族和字体名，通过 `FontManager` 解析为 AWT `java.awt.Font` 实例。
 
+## ALFont
+
+`java.awt.Font` 的包装类，提供文本测量和布局工具。内部通过 `SdfGlyphAtlas` 获取字形度量。
+
+```java
+ALFont alf = new ALFont(AnvilLibFont.getSelectFont());
+
+// 文本宽度测量
+int w = alf.width("Hello World");
+int w2 = alf.width(Component.literal("Hello"));
+
+// 按像素宽度截取子串（正向/反向）
+String head = alf.plainSubstrByWidth("Hello World", 50);        // 从头
+String tail = alf.plainSubstrByWidth("Hello World", 50, true);  // 从尾
+
+// 换行分割
+List<FormattedCharSequence> lines = alf.split(FormattedText.of(text), 200);
+int totalHeight = alf.wordWrapHeight(FormattedText.of(text), 200);
+
+// 获取底层 AWT 字体
+Font awt = alf.awtFont();
+```
+
+| 方法                                                                        | 说明                      |
+|---------------------------------------------------------------------------|-------------------------|
+| `alf.font()`                                                              | 返回包装的 AWT `Font`        |
+| `width(String)` / `width(FormattedText)` / `width(FormattedCharSequence)` | 文本像素宽度                  |
+| `plainSubstrByWidth(str, maxW)`                                           | 正向按宽度截取                 |
+| `plainSubstrByWidth(str, maxW, true)`                                     | 反向按宽度截取                 |
+| `split(FormattedText, maxW)`                                              | 单词换行分割                  |
+| `wordWrapHeight(FormattedText, maxW)`                                     | 换行后总高度（行数 × lineHeight） |
+
 ## FontManager
 
 系统字体发现与管理单例。

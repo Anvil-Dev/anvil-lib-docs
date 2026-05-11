@@ -41,21 +41,22 @@ manager.register(cfg);
 
 封装一个配置类的完整信息。
 
-| 字段         | 类型                  | 说明                 |
-|------------|---------------------|--------------------|
-| modId      | `String`            | 配置所属 modId         |
-| type       | `ModConfig.Type`    | 配置类型               |
-| spec       | `ModConfigSpec`     | 构建好的 ModConfigSpec |
-| object     | `Object`            | 配置类实例              |
-| values     | `List<ConfigField>` | 不可变列表，包含所有配置字段信息   |
-| registered | `AtomicBoolean`     | 是否已向容器注册           |
+| 字段         | 类型                  | 说明                                 |
+|------------|---------------------|------------------------------------|
+| group      | `String`            | 配置文件子目录（`@Config.group()`，默认 `""`） |
+| modId      | `String`            | 配置所属 modId                         |
+| type       | `ModConfig.Type`    | 配置类型                               |
+| spec       | `ModConfigSpec`     | 构建好的 ModConfigSpec                 |
+| object     | `Object`            | 配置类实例                              |
+| values     | `List<ConfigField>` | 不可变列表，包含所有配置字段信息                   |
+| registered | `AtomicBoolean`     | 是否已向容器注册                           |
 
 ### 方法
 
-| 方法              | 说明                                             |
-|-----------------|------------------------------------------------|
-| `load()`        | 遍历 values，调用每个 `ConfigField.load()` 将当前配置值注入字段 |
-| `getFileName()` | 返回 `"modId-type.toml"` 格式的文件名                  |
+| 方法              | 说明                                                                                    |
+|-----------------|---------------------------------------------------------------------------------------|
+| `load()`        | 遍历 values，调用每个 `ConfigField.load()` 将当前配置值注入字段                                        |
+| `getFileName()` | 返回文件名。`group` 为空时：`"<modId>-<type>.toml"`；`group` 非空时：`"<group>/<modId>-<type>.toml"` |
 
 ## ConfigField
 

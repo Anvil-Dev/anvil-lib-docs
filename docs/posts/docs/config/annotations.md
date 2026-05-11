@@ -11,14 +11,20 @@ next: false
 标记一个类为配置类，必须指定配置名称和类型。
 
 ```java
+// 基础用法
 @Config(name = "mymod", type = ModConfig.Type.COMMON)
 public class MyConfig { ... }
+
+// 使用 group 子目录 — 文件生成到 config/client/mymod-client.toml
+@Config(name = "mymod", group = "client", type = ModConfig.Type.CLIENT)
+public class MyClientConfig { ... }
 ```
 
-| 属性   | 类型               | 说明                                              |
-|------|------------------|-------------------------------------------------|
-| name | `String`         | 配置主键名，用于生成文件名及翻译键前缀                             |
-| type | `ModConfig.Type` | 配置类型：`COMMON` / `CLIENT` / `SERVER`，默认 `COMMON` |
+| 属性    | 类型               | 说明                                                             |
+|-------|------------------|----------------------------------------------------------------|
+| name  | `String`         | 配置主键名，用于生成文件名及翻译键前缀                                            |
+| group | `String`         | 配置文件子目录（可选，默认 `""`）。设置后路径为 `config/<group>/<name>-<type>.toml` |
+| type  | `ModConfig.Type` | 配置类型：`COMMON` / `CLIENT` / `SERVER`，默认 `COMMON`                |
 
 ## `@Comment`
 

@@ -41,31 +41,32 @@ manager.register(cfg);
 
 Encapsulates the complete information of a config class.
 
-| Field      | Type                | Description                                    |
-|------------|---------------------|------------------------------------------------|
-| modId      | `String`            | The modId to which the config belongs          |
-| type       | `ModConfig.Type`    | Config type                                    |
-| spec       | `ModConfigSpec`     | The constructed ModConfigSpec                  |
-| object     | `Object`            | Config class instance                          |
-| values     | `List<ConfigField>` | Immutable list containing all config field info |
-| registered | `AtomicBoolean`     | Whether it has been registered with the container |
+| Field      | Type                | Description                                                    |
+|------------|---------------------|----------------------------------------------------------------|
+| group      | `String`            | Config file subdirectory (`@Config.group()`, defaults to `""`) |
+| modId      | `String`            | The modId to which the config belongs                          |
+| type       | `ModConfig.Type`    | Config type                                                    |
+| spec       | `ModConfigSpec`     | The constructed ModConfigSpec                                  |
+| object     | `Object`            | Config class instance                                          |
+| values     | `List<ConfigField>` | Immutable list containing all config field info                |
+| registered | `AtomicBoolean`     | Whether it has been registered with the container              |
 
 ### Methods
 
-| Method        | Description                                                              |
-|---------------|--------------------------------------------------------------------------|
-| `load()`      | Iterates through values and calls `ConfigField.load()` on each to inject current config values into fields |
-| `getFileName()` | Returns the file name in `"modId-type.toml"` format                      |
+| Method          | Description                                                                                                |
+|-----------------|------------------------------------------------------------------------------------------------------------|
+| `load()`        | Iterates through values and calls `ConfigField.load()` on each to inject current config values into fields |
+| `getFileName()` | File name. When `group` is empty: `"<modId>-<type>.toml"`; when set: `"<group>/<modId>-<type>.toml"`       |
 
 ## ConfigField
 
 A record class that encapsulates the metadata and runtime value injection of a single config field.
 
-| Field       | Type                          | Description                        |
-|-------------|-------------------------------|------------------------------------|
-| object      | `Object`                      | The object to which the field belongs |
-| field       | `Field`                       | Java reflection Field reference    |
-| configValue | `ModConfigSpec.ConfigValue`   | The corresponding config value     |
+| Field       | Type                        | Description                           |
+|-------------|-----------------------------|---------------------------------------|
+| object      | `Object`                    | The object to which the field belongs |
+| field       | `Field`                     | Java reflection Field reference       |
+| configValue | `ModConfigSpec.ConfigValue` | The corresponding config value        |
 
 ### load()
 

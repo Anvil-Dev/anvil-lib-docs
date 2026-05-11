@@ -11,14 +11,20 @@ next: false
 Marks a class as a configuration class. You must specify the config name and type.
 
 ```java
+// Basic usage
 @Config(name = "mymod", type = ModConfig.Type.COMMON)
 public class MyConfig { ... }
+
+// With group subdirectory — file generated as config/client/mymod-client.toml
+@Config(name = "mymod", group = "client", type = ModConfig.Type.CLIENT)
+public class MyClientConfig { ... }
 ```
 
-| Attribute | Type             | Description                                                              |
-|-----------|------------------|--------------------------------------------------------------------------|
-| name      | `String`         | Config primary key name, used to generate the file name and translation key prefix |
-| type      | `ModConfig.Type` | Config type: `COMMON` / `CLIENT` / `SERVER`, defaults to `COMMON`        |
+| Attribute | Type             | Description                                                                                                            |
+|-----------|------------------|------------------------------------------------------------------------------------------------------------------------|
+| name      | `String`         | Config primary key name, used to generate the file name and translation key prefix                                     |
+| group     | `String`         | Config file subdirectory (optional, defaults to `""`). When set, file path becomes `config/<group>/<name>-<type>.toml` |
+| type      | `ModConfig.Type` | Config type: `COMMON` / `CLIENT` / `SERVER`, defaults to `COMMON`                                                      |
 
 ## `@Comment`
 
@@ -54,10 +60,10 @@ public int volume = 80;
 public double scale = 1.0;
 ```
 
-| Attribute | Type     | Default       | Description          |
-|-----------|----------|---------------|----------------------|
-| min       | `double` | `-Infinity`   | Minimum value (incl.) |
-| max       | `double` | `+Infinity`   | Maximum value (incl.) |
+| Attribute | Type     | Default     | Description           |
+|-----------|----------|-------------|-----------------------|
+| min       | `double` | `-Infinity` | Minimum value (incl.) |
+| max       | `double` | `+Infinity` | Maximum value (incl.) |
 
 Supported field types: `byte`, `short`, `int`, `long`, `float`, `double`.
 
