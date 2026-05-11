@@ -20,6 +20,7 @@ Java 对象的字段值。支持方向控制、维度感知分发，以及字节
 3. **管理层** — `SyncManager` 维护注册表并协调数据发送
 4. **网络层** — `SyncPayload` 通过 `IInsensitiveBiPacket` 在两端传输
 5. **注入层** — `SyncBytecodeInjector` 通过字节码注入自动建立 proxy 与所属对象/字段名/方向的关联，对用户透明
+6. **配置层** — `SyncConfigManager` 为同步字段分配唯一 ID，通过 `SyncConfigurationPayload` 在网络传输时将字段名压缩为整数
 
 ## 文档索引
 

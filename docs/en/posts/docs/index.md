@@ -32,6 +32,7 @@ AnvilLib adopts a modular design with the following functional modules:
 | **Wheel**                 | Radial menu client API                                            |
 | **Rendering**             | Lightweight rendering library                                     |
 | **Sync**                  | Declarative field synchronization system                          |
+| **Font**                  | SDF font rendering system                                         |
 | **Main**                  | Aggregate module (includes all submodules)                        |
 | **Version Diff**          | Version-to-version API changes and migration guide                |
 
@@ -79,6 +80,7 @@ dependencies {
     implementation "dev.anvilcraft.lib:anvillib-wheel-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-rendering-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-sync-neoforge-26.1:2.0.0"
+    implementation "dev.anvilcraft.lib:anvillib-font-neoforge-26.1:2.0.0"
 }
 ```
 
@@ -104,6 +106,7 @@ dependencies {
     implementation("dev.anvilcraft.lib:anvillib-wheel-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-rendering-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-sync-neoforge-26.1:2.0.0")
+    implementation("dev.anvilcraft.lib:anvillib-font-neoforge-26.1:2.0.0")
 }
 ```
 

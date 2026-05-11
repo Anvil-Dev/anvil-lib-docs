@@ -130,6 +130,36 @@ When a class is annotated with `@Sync`, the framework auto-injects at class-load
 - `SyncClassProcessorProvider` triggers injection only for indexed classes
 - `SyncBytecodeInjector` performs the actual ASM transformation
 
+## SyncConfigManager
+
+Manages sync field configuration registration, assigning a unique ID to each `SyncProxy` field for compressing field names during network transmission. Client config is initialized by `AnvilLibSyncClient`.
+
+```java
+SyncConfigManager config = AnvilLibSync.SYNC_CONFIG_MANAGER;
+
+config.register("com.example.MyEntity#health");
+int id = config.getId("com.example.MyEntity#health");
+String fieldName = config.getById(id);
+config.registerAll(syncConfigById);
+SyncConfigurationPayload payload = config.createPayload();
+```
+
+### SyncConfigurationPayload
+
+When a client connects, the server's registered sync field ID mapping is sent to the client. The client applies it via `registerAll()`.
+
+```java
+public record SyncConfigurationPayload(Map<Integer, String> configs) implements IClientboundPacket
+```
+
+### SyncConfigurationFinishPayload
+
+Configuration sync completion signal (`CLIENTBOUND`). Client acknowledges sync config is complete upon receipt.
+
+```java
+public record SyncConfigurationFinishPayload() implements IClientboundPacket
+```
+
 > **Users do nothing**: just declare fields as `public final SyncProxy<T>` and add `@Sync` to the class.
 
 ## SideUtil

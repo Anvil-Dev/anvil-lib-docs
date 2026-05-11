@@ -195,6 +195,47 @@ SyncRegisterEntry.create(type, idCodec, idGetter, finder, dimension, dimensionGe
 
 > **用户不需要做任何事情**：只要在类上添加 `@Sync` 注解，字节码注入就会自动建立 proxy 与父对象/字段名/方向的关联。
 
+## SyncConfigManager
+
+管理同步字段的配置注册，为每个 `SyncProxy` 字段分配唯一 ID，用于网络传输时压缩字段名。客户端配置由 `AnvilLibSyncClient` 初始化。
+
+```java
+// 全局单例 — 由 AnvilLibSyncClient 创建
+SyncConfigManager config = AnvilLibSync.SYNC_CONFIG_MANAGER;
+
+// 注册单个同步字段（类名#字段名）
+config.register("com.example.MyEntity#health");
+
+// 通过字段名获取 ID
+int id = config.getId("com.example.MyEntity#health");
+
+// 通过 ID 反向查找字段名
+String fieldName = config.getById(id);
+
+// 批量注册（客户端接收服务端配置时使用）
+config.registerAll(syncConfigById);
+
+// 创建配置同步包
+SyncConfigurationPayload payload = config.createPayload();
+```
+
+### SyncConfigurationPayload
+
+在客户端连接服务端时，将服务端已注册的同步字段 ID 映射发送到客户端。客户端通过 `registerAll()` 应用。
+
+```java
+// 服务端 → 客户端配置同步
+public record SyncConfigurationPayload(Map<Integer, String> configs) implements IClientboundPacket
+```
+
+### SyncConfigurationFinishPayload
+
+配置同步完成信号（`CLIENTBOUND`），客户端收到后确认配置同步结束。
+
+```java
+public record SyncConfigurationFinishPayload() implements IClientboundPacket
+```
+
 ## SideUtil
 
 物理端工具类，提供实体/方块实体查找器和网络发送逻辑。主要由 `SyncPayload` 和 `SyncManager` 内部使用。

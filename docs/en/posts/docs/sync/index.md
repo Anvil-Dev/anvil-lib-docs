@@ -21,6 +21,7 @@ This module is **only** available in Minecraft **26.1**.
 3. **Management Layer** — `SyncManager` maintains the registry and coordinates data transmission
 4. **Network Layer** — `SyncPayload` transmits data between both sides via `IInsensitiveBiPacket`
 5. **Injection Layer** — `SyncBytecodeInjector` auto-associates proxies with their parent objects, field names, and directions via bytecode injection — completely transparent to users
+6. **Configuration Layer** — `SyncConfigManager` assigns unique IDs to sync fields, compressing field names to integers during network transmission via `SyncConfigurationPayload`
 
 ## Document Index
 
