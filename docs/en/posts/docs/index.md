@@ -116,7 +116,8 @@ dependencies {
 :::
 
 ::: tip
-It is recommended to keep the version number consistent with the project release version (the current project configuration is `mod_version=2.0.0`).
+It is recommended to keep the version number consistent with the project release version (the current project
+configuration is `mod_version=2.0.0`).
 :::
 
 ## Building the Project

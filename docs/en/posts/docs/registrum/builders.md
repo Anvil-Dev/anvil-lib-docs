@@ -24,13 +24,13 @@ public interface Builder<R, T extends R, P, S extends Builder<R, T, P, S>>
 
 ### Common Methods
 
-| Method          | Description                                               |
-|-----------------|-----------------------------------------------------------|
-| `register()`    | Completes registration, returns `RegistryEntry`           |
-| `get()`         | Gets the registered entry from the Owner                  |
-| `getEntry()`    | Gets the actual object (via `get().get()`)                |
-| `asSupplier()`  | Returns `NonNullSupplier<T>` for deferred access          |
-| `build()`       | Calls `register()` then returns the Parent                |
+| Method         | Description                                      |
+|----------------|--------------------------------------------------|
+| `register()`   | Completes registration, returns `RegistryEntry`  |
+| `get()`        | Gets the registered entry from the Owner         |
+| `getEntry()`   | Gets the actual object (via `get().get()`)       |
+| `asSupplier()` | Returns `NonNullSupplier<T>` for deferred access |
+| `build()`      | Calls `register()` then returns the Parent       |
 
 ### Callbacks and Transforms
 
@@ -148,22 +148,22 @@ BlockEntry<MyBlock> entry = builder.register();
 
 ### BlockBuilder-Specific Methods
 
-| Method                        | Return Type                             | Description                    |
-|-------------------------------|-----------------------------------------|--------------------------------|
-| `simpleItem()`                | `BlockBuilder<T,P>`                     | Quick BlockItem creation       |
-| `item()`                      | `ItemBuilder<BlockItem, BlockBuilder>`  | Standard BlockItem Builder     |
-| `item(factory)`               | `ItemBuilder<I, BlockBuilder>`          | Custom BlockItem factory       |
-| `simpleBlockEntity(factory)`  | `BlockBuilder<T,P>`                     | Quick BlockEntity creation     |
-| `blockEntity(factory)`        | `BlockEntityBuilder<BE, BlockBuilder>`  | BlockEntity Builder            |
-| `color(supplier)`             | `BlockBuilder<T,P>`                     | Block color handler            |
-| `clientExtension(supplier)`   | `BlockBuilder<T,P>`                     | Client extension               |
-| `defaultBlockstate()`         | `BlockBuilder<T,P>`                     | Default blockstate model       |
-| `blockstate(supplier)`        | `BlockBuilder<T,P>`                     | Custom blockstate model        |
-| `defaultLoot()`               | `BlockBuilder<T,P>`                     | Default loot table             |
-| `loot(consumer)`              | `BlockBuilder<T,P>`                     | Custom loot table              |
-| `recipe(consumer)`            | `BlockBuilder<T,P>`                     | Custom recipe                  |
-| `tag(TagKey...)`              | `BlockBuilder<T,P>`                     | Add block tags                 |
-| `register()`                  | `BlockEntry<T>`                         | Complete registration          |
+| Method                       | Return Type                            | Description                |
+|------------------------------|----------------------------------------|----------------------------|
+| `simpleItem()`               | `BlockBuilder<T,P>`                    | Quick BlockItem creation   |
+| `item()`                     | `ItemBuilder<BlockItem, BlockBuilder>` | Standard BlockItem Builder |
+| `item(factory)`              | `ItemBuilder<I, BlockBuilder>`         | Custom BlockItem factory   |
+| `simpleBlockEntity(factory)` | `BlockBuilder<T,P>`                    | Quick BlockEntity creation |
+| `blockEntity(factory)`       | `BlockEntityBuilder<BE, BlockBuilder>` | BlockEntity Builder        |
+| `color(supplier)`            | `BlockBuilder<T,P>`                    | Block color handler        |
+| `clientExtension(supplier)`  | `BlockBuilder<T,P>`                    | Client extension           |
+| `defaultBlockstate()`        | `BlockBuilder<T,P>`                    | Default blockstate model   |
+| `blockstate(supplier)`       | `BlockBuilder<T,P>`                    | Custom blockstate model    |
+| `defaultLoot()`              | `BlockBuilder<T,P>`                    | Default loot table         |
+| `loot(consumer)`             | `BlockBuilder<T,P>`                    | Custom loot table          |
+| `recipe(consumer)`           | `BlockBuilder<T,P>`                    | Custom recipe              |
+| `tag(TagKey...)`             | `BlockBuilder<T,P>`                    | Add block tags             |
+| `register()`                 | `BlockEntry<T>`                        | Complete registration      |
 
 ## ItemBuilder
 
@@ -235,19 +235,19 @@ ItemEntry<MyItem> entry = builder.register();
 
 ### ItemBuilder-Specific Methods
 
-| Method                       | Return Type         | Description                |
-|------------------------------|---------------------|----------------------------|
-| `tab(key)`                   | `ItemBuilder<T,P>`  | Add to creative tab        |
-| `tab(key, consumer)`         | `ItemBuilder<T,P>`  | Tab with context           |
-| `removeTab(key)`             | `ItemBuilder<T,P>`  | Remove from tab            |
-| `defaultModel()`             | `ItemBuilder<T,P>`  | Default flat model         |
-| `model(supplier)`            | `ItemBuilder<T,P>`  | Custom model               |
-| `recipe(consumer)`           | `ItemBuilder<T,P>`  | Recipe generation          |
-| `burnTime(int)`              | `ItemBuilder<T,P>`  | Fuel time (ticks)          |
-| `compostable(float)`         | `ItemBuilder<T,P>`  | Compost probability        |
-| `clientExtension(supplier)`  | `ItemBuilder<T,P>`  | Client extension           |
-| `tag(TagKey...)`             | `ItemBuilder<T,P>`  | Add item tags              |
-| `register()`                 | `ItemEntry<T>`      | Complete registration      |
+| Method                      | Return Type        | Description           |
+|-----------------------------|--------------------|-----------------------|
+| `tab(key)`                  | `ItemBuilder<T,P>` | Add to creative tab   |
+| `tab(key, consumer)`        | `ItemBuilder<T,P>` | Tab with context      |
+| `removeTab(key)`            | `ItemBuilder<T,P>` | Remove from tab       |
+| `defaultModel()`            | `ItemBuilder<T,P>` | Default flat model    |
+| `model(supplier)`           | `ItemBuilder<T,P>` | Custom model          |
+| `recipe(consumer)`          | `ItemBuilder<T,P>` | Recipe generation     |
+| `burnTime(int)`             | `ItemBuilder<T,P>` | Fuel time (ticks)     |
+| `compostable(float)`        | `ItemBuilder<T,P>` | Compost probability   |
+| `clientExtension(supplier)` | `ItemBuilder<T,P>` | Client extension      |
+| `tag(TagKey...)`            | `ItemBuilder<T,P>` | Add item tags         |
+| `register()`                | `ItemEntry<T>`     | Complete registration |
 
 ## Complete Example
 

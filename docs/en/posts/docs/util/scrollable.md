@@ -16,4 +16,5 @@
 - `row()` – number of visible rows
 - `column()` – number of columns per row
 - `size()` – total number of elements
-- `setHead(int head)` – sets the starting index of the currently visible items (updates list data based on scroll position)
+- `setHead(int head)` – sets the starting index of the currently visible items (updates list data based on scroll
+  position)

@@ -6,15 +6,20 @@ next: false
 
 # AnvilLib - Incentive Program for TeaCon
 
-> AnvilLib Incentive Program - Prizes are 3D-printed souvenirs handmade by the author, with no commercial affiliation with TeaCon.
+> AnvilLib Incentive Program - Prizes are 3D-printed souvenirs handmade by the author, with no commercial affiliation
+> with TeaCon.
 
 ## About This Program
 
-The AnvilLib Incentive Program is a long-term third-party award initiative launched by the author of AnvilLib, aimed at TeaCon participants.
+The AnvilLib Incentive Program is a long-term third-party award initiative launched by the author of AnvilLib, aimed at
+TeaCon participants.
 
-Starting from TeaCon 2026, during each TeaCon event, this program will establish independent awards to encourage developers to try, dive deep into, and give back to the AnvilLib toolchain. We believe that good tools deserve to be used by more people, and every user and contributor deserves to be taken seriously.
+Starting from TeaCon 2026, during each TeaCon event, this program will establish independent awards to encourage
+developers to try, dive deep into, and give back to the AnvilLib toolchain. We believe that good tools deserve to be
+used by more people, and every user and contributor deserves to be taken seriously.
 
-Whether you are a newcomer just getting started or an experienced developer building stunning creations with AnvilLib, there is a place of honor here for you.
+Whether you are a newcomer just getting started or an experienced developer building stunning creations with AnvilLib,
+there is a place of honor here for you.
 
 ## Past and Current Editions
 

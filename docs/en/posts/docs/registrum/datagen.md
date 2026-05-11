@@ -6,61 +6,63 @@ next: false
 
 # Data Generation
 
-Registrum deeply integrates with NeoForge's data generation system, managing various data generators through `GeneratorType` and `ProviderType`.
+Registrum deeply integrates with NeoForge's data generation system, managing various data generators through
+`GeneratorType` and `ProviderType`.
 
 ## ProviderType (Built-in Types)
 
-`ProviderType<T>` is the module's built-in registry of data generator types, with each instance defining the corresponding generator factory.
+`ProviderType<T>` is the module's built-in registry of data generator types, with each instance defining the
+corresponding generator factory.
 
 ### Server-Side Data Generators
 
-| Type                                                 | Generator                                             | Description                                           |
-|------------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------|
-| `DYNAMIC`                                            | `RegistrumDatapackProvider`                           | Dynamic datapack registration (`DatapackBuiltinEntriesProvider`) |
-| `DATA_MAP`                                           | `RegistrumDataMapProvider`                            | DataMap (fuel, compost, etc. data attachments)        |
-| `RECIPE_RUNNER`                                      | `RegistrumRecipeRunner`                               | Recipe runner (`RecipeProvider.Runner`)               |
-| `ADVANCEMENT`                                        | `RegistrumAdvancementProvider`                        | Advancement JSON                                      |
-| `LOOT`                                               | `RegistrumLootTableProvider`                          | Loot tables                                           |
-| `BLOCK_TAGS`                                         | `RegistrumTagsProvider.IntrinsicImpl<Block>`          | Block tags                                            |
-| `ENCHANTMENT_TAGS` <Badge type="tip" text="26.1" />  | `RegistrumTagsProvider.Impl<Enchantment>`             | Enchantment tags                                      |
-| `DAMAGE_TYPE_TAGS` <Badge type="tip" text="26.1" />  | `RegistrumTagsProvider.Impl<DamageType>`              | Damage type tags                                      |
-| `ITEM_TAGS`                                          | `RegistrumItemTagsProvider`                           | Item tags                                             |
-| `FLUID_TAGS` <Badge type="tip" text="26.1" />        | `RegistrumTagsProvider.IntrinsicImpl<Fluid>`          | Fluid tags                                            |
-| `ENTITY_TAGS` <Badge type="tip" text="26.1" />       | `RegistrumTagsProvider.IntrinsicImpl<EntityType<?>>`  | Entity tags                                           |
-| `GENERIC_SERVER`                                     | `RegistrumGenericProvider`                            | Generic server data                                   |
+| Type                                                | Generator                                            | Description                                                      |
+|-----------------------------------------------------|------------------------------------------------------|------------------------------------------------------------------|
+| `DYNAMIC`                                           | `RegistrumDatapackProvider`                          | Dynamic datapack registration (`DatapackBuiltinEntriesProvider`) |
+| `DATA_MAP`                                          | `RegistrumDataMapProvider`                           | DataMap (fuel, compost, etc. data attachments)                   |
+| `RECIPE_RUNNER`                                     | `RegistrumRecipeRunner`                              | Recipe runner (`RecipeProvider.Runner`)                          |
+| `ADVANCEMENT`                                       | `RegistrumAdvancementProvider`                       | Advancement JSON                                                 |
+| `LOOT`                                              | `RegistrumLootTableProvider`                         | Loot tables                                                      |
+| `BLOCK_TAGS`                                        | `RegistrumTagsProvider.IntrinsicImpl<Block>`         | Block tags                                                       |
+| `ENCHANTMENT_TAGS` <Badge type="tip" text="26.1" /> | `RegistrumTagsProvider.Impl<Enchantment>`            | Enchantment tags                                                 |
+| `DAMAGE_TYPE_TAGS` <Badge type="tip" text="26.1" /> | `RegistrumTagsProvider.Impl<DamageType>`             | Damage type tags                                                 |
+| `ITEM_TAGS`                                         | `RegistrumItemTagsProvider`                          | Item tags                                                        |
+| `FLUID_TAGS` <Badge type="tip" text="26.1" />       | `RegistrumTagsProvider.IntrinsicImpl<Fluid>`         | Fluid tags                                                       |
+| `ENTITY_TAGS` <Badge type="tip" text="26.1" />      | `RegistrumTagsProvider.IntrinsicImpl<EntityType<?>>` | Entity tags                                                      |
+| `GENERIC_SERVER`                                    | `RegistrumGenericProvider`                           | Generic server data                                              |
 
 ### Client-Side Data Generators
 
-| Type                                    | Generator                     | Description                                |
-|-----------------------------------------|-------------------------------|--------------------------------------------|
-| `MODEL` <Badge type="tip" text="26.1" />| `RegistrumModelProvider`      | Unified model entry (`ModelProvider`)      |
-| `LANG`                                  | `RegistrumLangProvider`       | Language file (`en_us.json`)               |
-| `GENERIC_CLIENT`                        | `RegistrumGenericProvider`    | Generic client data                        |
+| Type                                     | Generator                  | Description                           |
+|------------------------------------------|----------------------------|---------------------------------------|
+| `MODEL` <Badge type="tip" text="26.1" /> | `RegistrumModelProvider`   | Unified model entry (`ModelProvider`) |
+| `LANG`                                   | `RegistrumLangProvider`    | Language file (`en_us.json`)          |
+| `GENERIC_CLIENT`                         | `RegistrumGenericProvider` | Generic client data                   |
 
 ### GeneratorType Combinations
 
 The following types are derived from `ProviderType` via the `createGenerator()` method:
 
-| GeneratorType                                 | Derived From                                | Generator                       |
-|-----------------------------------------------|---------------------------------------------|---------------------------------|
-| `RECIPE`                                      | `RECIPE_RUNNER.createGenerator("recipe")`   | `RegistrumRecipeProvider`      |
-| `BLOCKSTATE` <Badge type="tip" text="26.1" /> | `MODEL.createGenerator("blockstate")`       | `RegistrumBlockModelGenerator` |
-| `ITEM_MODEL` <Badge type="tip" text="26.1" /> | `MODEL.createGenerator("item_model")`       | `RegistrumItemModelGenerator`  |
+| GeneratorType                                 | Derived From                              | Generator                      |
+|-----------------------------------------------|-------------------------------------------|--------------------------------|
+| `RECIPE`                                      | `RECIPE_RUNNER.createGenerator("recipe")` | `RegistrumRecipeProvider`      |
+| `BLOCKSTATE` <Badge type="tip" text="26.1" /> | `MODEL.createGenerator("blockstate")`     | `RegistrumBlockModelGenerator` |
+| `ITEM_MODEL` <Badge type="tip" text="26.1" /> | `MODEL.createGenerator("item_model")`     | `RegistrumItemModelGenerator`  |
 
 ## 1.21.1 to 26.1 Migration
 
 ### Core Changes
 
-| Aspect       | 1.21.1                                                                         | 26.1                                                                          |
-|--------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-| Model framework | `BlockStateProvider` / `ItemModelProvider`                                    | `ModelProvider` + `BlockModelGenerators` / `ItemModelGenerators`              |
-| Block model class | `RegistrumBlockstateProvider`                                                 | `RegistrumBlockModelGenerator`                                                |
-| Item model class  | `RegistrumItemModelProvider`                                                  | `RegistrumItemModelGenerator`                                                 |
-| Recipe class | `RegistrumRecipeProvider` (extends RecipeProvider)                             | `RegistrumRecipeProvider` (extends RecipeProvider + implements RecipeOutput)  |
-| Recipe entry point | Directly via `ProviderType.RECIPE`                                        | Via `RECIPE_RUNNER` -> `ProviderType.RECIPE.createGenerator("recipe")`        |
-| Tag types    | BLOCK_TAGS / ITEM_TAGS                                                         | + ENCHANTMENT_TAGS / DAMAGE_TYPE_TAGS / FLUID_TAGS / ENTITY_TAGS              |
-| Context      | `Context` contains `ExistingFileHelper`                                         | `Context` does not contain `ExistingFileHelper`; uses `PackOutput` directly   |
-| Extension point | `SimpleServerDataFactory.create(parent, output, provider, existingFileHelper)` | `SimpleServerDataFactory.create(parent, output, provider)`                    |
+| Aspect             | 1.21.1                                                                         | 26.1                                                                         |
+|--------------------|--------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| Model framework    | `BlockStateProvider` / `ItemModelProvider`                                     | `ModelProvider` + `BlockModelGenerators` / `ItemModelGenerators`             |
+| Block model class  | `RegistrumBlockstateProvider`                                                  | `RegistrumBlockModelGenerator`                                               |
+| Item model class   | `RegistrumItemModelProvider`                                                   | `RegistrumItemModelGenerator`                                                |
+| Recipe class       | `RegistrumRecipeProvider` (extends RecipeProvider)                             | `RegistrumRecipeProvider` (extends RecipeProvider + implements RecipeOutput) |
+| Recipe entry point | Directly via `ProviderType.RECIPE`                                             | Via `RECIPE_RUNNER` -> `ProviderType.RECIPE.createGenerator("recipe")`       |
+| Tag types          | BLOCK_TAGS / ITEM_TAGS                                                         | + ENCHANTMENT_TAGS / DAMAGE_TYPE_TAGS / FLUID_TAGS / ENTITY_TAGS             |
+| Context            | `Context` contains `ExistingFileHelper`                                        | `Context` does not contain `ExistingFileHelper`; uses `PackOutput` directly  |
+| Extension point    | `SimpleServerDataFactory.create(parent, output, provider, existingFileHelper)` | `SimpleServerDataFactory.create(parent, output, provider)`                   |
 
 ### Migration Example
 
@@ -81,15 +83,18 @@ builder.blockstate(() -> (ctx, gen) -> {
 ### Compatibility Notes
 
 - The **Builder API** (`blockstate()`, `model()`, `recipe()`) has **unchanged calling conventions** across both versions
-- The internal `GeneratorType`/`ProviderType` implementations are **incompatible** (code that directly references the old `RegistrumBlockstateProvider` will fail to compile)
-- If your mod directly references `RegistrumBlockstateProvider`, `RegistrumItemModelProvider`, or similar classes in data generation, you need to migrate to the new
+- The internal `GeneratorType`/`ProviderType` implementations are **incompatible** (code that directly references the
+  old `RegistrumBlockstateProvider` will fail to compile)
+- If your mod directly references `RegistrumBlockstateProvider`, `RegistrumItemModelProvider`, or similar classes in
+  data generation, you need to migrate to the new
   `RegistrumBlockModelGenerator`, `RegistrumItemModelGenerator`
 
 ## GeneratorType
 
 <Badge type="tip" text="26.1" />
 
-`GeneratorType<T>` is a marker interface with no method definitions. It serves as a type key for data generator callbacks:
+`GeneratorType<T>` is a marker interface with no method definitions. It serves as a type key for data generator
+callbacks:
 
 ```java
 public interface GeneratorType<T> { }
@@ -171,7 +176,8 @@ gen.generateTintedModel(item, modLoc("item/my_item"), tintSource);
 
 ## Recipe Generation
 
-`RegistrumRecipeProvider` provides a recipe API consistent with vanilla Minecraft while delegating to `RecipeOutput` via `@Delegate`:
+`RegistrumRecipeProvider` provides a recipe API consistent with vanilla Minecraft while delegating to `RecipeOutput` via
+`@Delegate`:
 
 ```java
 builder.recipe((ctx, gen) -> {
@@ -229,7 +235,8 @@ DataIngredient.ingredient(
 ```
 
 ::: tip Note
-`DataIngredient` is only intended for data generation; attempting to serialize it over the network will throw an exception.
+`DataIngredient` is only intended for data generation; attempting to serialize it over the network will throw an
+exception.
 :::
 
 ## Tag Generation
@@ -335,11 +342,11 @@ builder.setData(MY_GEN, (ctx, gen) -> {
 
 ### addMiscData vs setData
 
-| Method                                    | Behavior              | Use Case                                   |
-|-------------------------------------------|-----------------------|--------------------------------------------|
-| `builder.setData(type, cons)`             | Replaces existing     | Generate specific data for a specific entry |
-| `builder.addMiscData(type, cons)`         | Appends, no replace   | General data generation, not tied to an entry |
-| `registrum.addDataGenerator(type, cons)`  | Registry-level append | Global data generation logic               |
+| Method                                   | Behavior              | Use Case                                      |
+|------------------------------------------|-----------------------|-----------------------------------------------|
+| `builder.setData(type, cons)`            | Replaces existing     | Generate specific data for a specific entry   |
+| `builder.addMiscData(type, cons)`        | Appends, no replace   | General data generation, not tied to an entry |
+| `registrum.addDataGenerator(type, cons)` | Registry-level append | Global data generation logic                  |
 
 ## DataProviderInitializer
 
@@ -357,4 +364,5 @@ init.addDependency(ProviderType.ITEM_TAGS, ProviderType.BLOCK_TAGS);
 // Default dependency: ITEM_TAGS -> BLOCK_TAGS (automatically set)
 ```
 
-`getSortedProviders()` uses topological sorting to resolve the dependency chain, ensuring data generators execute in the correct order.
+`getSortedProviders()` uses topological sorting to resolve the dependency chain, ensuring data generators execute in the
+correct order.

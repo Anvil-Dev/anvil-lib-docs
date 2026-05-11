@@ -17,8 +17,8 @@ package com.example.mod.network;
 import dev.anvilcraft.lib.v2.network.register.Network;
 ```
 
-| Attribute | Type             | Default | Description                   |
-|-----------|------------------|---------|-------------------------------|
+| Attribute | Type             | Default | Description                    |
+|-----------|------------------|---------|--------------------------------|
 | protocol  | `PacketProtocol` | `PLAY`  | Protocol phase for the packets |
 
 ## PacketProtocol
@@ -47,7 +47,8 @@ public static void register(final RegisterPayloadHandlersEvent event) {
 1. Scans the mod files for `@Network` annotations to obtain target package names
 2. Within each package, finds classes implementing `IPacket` (via interface information in ASM scan data)
 3. Uses reflection to retrieve the `static final Type<T>` and `static final StreamCodec<B, T>` fields from each class
-4. Automatically determines the direction based on implemented interfaces and calls the corresponding registration method
+4. Automatically determines the direction based on implemented interfaces and calls the corresponding registration
+   method
 
 ### PacketData.find
 

@@ -7,17 +7,18 @@ next: false
 # Core Interfaces <Badge type="tip" text=">=1.21.1" /> <Badge type="danger" text="API changed in 26.1" />
 
 ::: danger BREAKING
-In version 26.1, the `IMoveableEntityBlock` API has been completely redesigned from NBT-based `clearData`/`setData` to data-driven `storeData`/`loadData`. Choose the appropriate API based on your target version.
+In version 26.1, the `IMoveableEntityBlock` API has been completely redesigned from NBT-based `clearData`/`setData` to
+data-driven `storeData`/`loadData`. Choose the appropriate API based on your target version.
 :::
 
 ---
 
 ## Version Selection
 
-| Minecraft | API                      | Data Carrier                   | Documentation Section                                                          |
-|-----------|--------------------------|--------------------------------|--------------------------------------------------------------------------------|
-| 1.21.1    | `clearData` / `setData`  | `CompoundTag`                  | [1.21.1 API](#1211-api-cleardatasetdata)                                       |
-| 26.1      | `storeData` / `loadData` | `ValueInput` / `ValueOutput`   | [26.1 API](#261-api-storedataloaddata) <Badge type="tip" text="current" />    |
+| Minecraft | API                      | Data Carrier                 | Documentation Section                                                      |
+|-----------|--------------------------|------------------------------|----------------------------------------------------------------------------|
+| 1.21.1    | `clearData` / `setData`  | `CompoundTag`                | [1.21.1 API](#1211-api-cleardatasetdata)                                   |
+| 26.1      | `storeData` / `loadData` | `ValueInput` / `ValueOutput` | [26.1 API](#261-api-storedataloaddata) <Badge type="tip" text="current" /> |
 
 ---
 
@@ -56,7 +57,8 @@ public interface IMoveableEntityBlock extends EntityBlock {
 
 #### clearData Implementation
 
-Called when the block is about to be pushed by a piston. Should extract only the custom data from the block entity that needs to be preserved (rather than serializing the entire block entity), returning the NBT to be transferred:
+Called when the block is about to be pushed by a piston. Should extract only the custom data from the block entity that
+needs to be preserved (rather than serializing the entire block entity), returning the NBT to be transferred:
 
 ```java
 @Override
@@ -121,7 +123,8 @@ public interface IPistonMovingBlockEntityExtension {
 
 <Badge type="tip" text="26.1" />
 
-In version 26.1, the API has migrated from manual NBT operations to NeoForge's native `ValueInput`/`ValueOutput` data-driven system.
+In version 26.1, the API has migrated from manual NBT operations to NeoForge's native `ValueInput`/`ValueOutput`
+data-driven system.
 
 ### IMoveableEntityBlock (26.1)
 
@@ -194,17 +197,18 @@ Movement end:
 
 ### Key Differences
 
-| Aspect               | 1.21.1                                  | 26.1                                             |
-|----------------------|-----------------------------------------|--------------------------------------------------|
-| Data carrier         | `CompoundTag` (manual NBT)              | `ValueInput` / `ValueOutput` (data-driven)       |
-| Return style         | `clearData() → CompoundTag`             | `storeData(..., ValueOutput)` (write via output parameter) |
-| Mixin temp field     | `CompoundTag anvillib$nbt`              | `TagValueOutput anvillib$nbt`                    |
-| Error handling       | No specific error reporting             | Uses `ProblemReporter.ScopedCollector`           |
-| Save completeness    | Must manually select fields to save     | Can auto-serialize via `saveWithFullMetadata`    |
+| Aspect            | 1.21.1                              | 26.1                                                       |
+|-------------------|-------------------------------------|------------------------------------------------------------|
+| Data carrier      | `CompoundTag` (manual NBT)          | `ValueInput` / `ValueOutput` (data-driven)                 |
+| Return style      | `clearData() → CompoundTag`         | `storeData(..., ValueOutput)` (write via output parameter) |
+| Mixin temp field  | `CompoundTag anvillib$nbt`          | `TagValueOutput anvillib$nbt`                              |
+| Error handling    | No specific error reporting         | Uses `ProblemReporter.ScopedCollector`                     |
+| Save completeness | Must manually select fields to save | Can auto-serialize via `saveWithFullMetadata`              |
 
 ### IPistonMovingBlockEntityExtension (26.1)
 
-The interface signature is consistent with 1.21.1 (`clearData`/`setData` method names are preserved), but internal data types have changed from `CompoundTag` to the data-driven `TagValueOutput`:
+The interface signature is consistent with 1.21.1 (`clearData`/`setData` method names are preserved), but internal data
+types have changed from `CompoundTag` to the data-driven `TagValueOutput`:
 
 ```java
 public interface IPistonMovingBlockEntityExtension {
@@ -215,7 +219,8 @@ public interface IPistonMovingBlockEntityExtension {
 }
 ```
 
-Mod developers do not need to use this interface directly -- the Mixin layer handles data injection and extraction automatically.
+Mod developers do not need to use this interface directly -- the Mixin layer handles data injection and extraction
+automatically.
 
 ### AnvilLibMoveableEntityBlock
 
@@ -235,6 +240,7 @@ Used by `PistonBaseBlockMixin` to provide unified logging.
 
 1. Replace `clearData(Level, BlockPos) → CompoundTag` with `storeData(Level, BlockPos, ValueOutput)`
 2. Replace `setData(Level, BlockPos, CompoundTag)` with `loadData(Level, BlockPos, ValueInput)`
-3. Remove manual NBT operations (`CompoundTag.putInt()`, etc.) and use the data-driven `ValueOutput`/`ValueInput` API instead
+3. Remove manual NBT operations (`CompoundTag.putInt()`, etc.) and use the data-driven `ValueOutput`/`ValueInput` API
+   instead
 4. Check for compilation errors: `CompoundTag` is no longer used as a return/parameter type
 5. If custom Mixins reference the `anvillib$nbt` field, update the field type

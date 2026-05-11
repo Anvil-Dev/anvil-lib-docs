@@ -8,13 +8,14 @@ next: false
 
 ## Built-in Sync Target Types
 
-AnvilLib Sync has 3 built-in target types. If your `@Sync` field's parent object is one of the following, **no extra registration is needed**:
+AnvilLib Sync has 3 built-in target types. If your `@Sync` field's parent object is one of the following, **no extra
+registration is needed**:
 
-| Target Type | Identifier | Lookup Strategy | Dimension |
-|-------------|-----------|-----------------|-----------|
-| Static field (`Class<?>`) | FQCN `String` | `Class.forName(className)` | No (global broadcast) |
-| `Entity` instance | `UUID` | Find in Level on the appropriate side by flow | Yes (entity trackers only) |
-| `BlockEntity` instance | `BlockPos` | Find in Level on the appropriate side by flow | Yes (chunk trackers only) |
+| Target Type               | Identifier    | Lookup Strategy                               | Dimension                  |
+|---------------------------|---------------|-----------------------------------------------|----------------------------|
+| Static field (`Class<?>`) | FQCN `String` | `Class.forName(className)`                    | No (global broadcast)      |
+| `Entity` instance         | `UUID`        | Find in Level on the appropriate side by flow | Yes (entity trackers only) |
+| `BlockEntity` instance    | `BlockPos`    | Find in Level on the appropriate side by flow | Yes (chunk trackers only)  |
 
 > These built-in `SyncRegisterEntry` instances are pre-registered in `AnvilLibSyncEntries`.
 
@@ -62,7 +63,8 @@ int current = blockEntity.counter.getValue(); // Read
 
 ## Custom Sync Targets
 
-If your `SyncProxy` field's parent object is **NOT** a `Class`, `Entity`, or `BlockEntity` (e.g., custom managers, capabilities), you must register a custom `SyncRegisterEntry` via NeoForge's registry mechanism.
+If your `SyncProxy` field's parent object is **NOT** a `Class`, `Entity`, or `BlockEntity` (e.g., custom managers,
+capabilities), you must register a custom `SyncRegisterEntry` via NeoForge's registry mechanism.
 
 ### Registration
 
@@ -96,12 +98,12 @@ public MyMod(IEventBus modBus) {
 
 Each parameter of `SyncRegisterEntry.create()` has a clear meaning:
 
-| Parameter | Meaning | Team Example |
-|-----------|---------|-------------|
-| `type` | Object type carrying sync fields | `Team.class` |
-| `idCodec` | How to codec the identifier on the network | `ByteBufCodecs.STRING_UTF8` |
-| `idGetter` | How to extract the identifier from the object | `Team::getId` |
-| `finder` | How to find the object from the identifier + context | Lookup via Scoreboard |
+| Parameter  | Meaning                                              | Team Example                |
+|------------|------------------------------------------------------|-----------------------------|
+| `type`     | Object type carrying sync fields                     | `Team.class`                |
+| `idCodec`  | How to codec the identifier on the network           | `ByteBufCodecs.STRING_UTF8` |
+| `idGetter` | How to extract the identifier from the object        | `Team::getId`               |
+| `finder`   | How to find the object from the identifier + context | Lookup via Scoreboard       |
 
 ### Dimension-Aware Custom Target
 

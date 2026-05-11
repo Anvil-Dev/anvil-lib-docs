@@ -7,7 +7,8 @@ next: false
 # 核心接口 <Badge type="tip" text=">=1.21.1" /> <Badge type="danger" text="API changed in 26.1" />
 
 ::: danger BREAKING
-26.1 版本中 `IMoveableEntityBlock` 的 API 已从 NBT 基础的 `clearData`/`setData` 完全重设计为数据驱动的 `storeData`/`loadData`。请根据你的目标版本选择对应的 API。
+26.1 版本中 `IMoveableEntityBlock` 的 API 已从 NBT 基础的 `clearData`/`setData` 完全重设计为数据驱动的 `storeData`/
+`loadData`。请根据你的目标版本选择对应的 API。
 :::
 
 ---

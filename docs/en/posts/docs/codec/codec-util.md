@@ -6,17 +6,18 @@ next: false
 
 # CodecUtil
 
-`CodecUtil` is an abstract utility class providing static `Codec` / `MapCodec` constants and helper methods for serializing game objects to JSON, NBT, or configuration files.
+`CodecUtil` is an abstract utility class providing static `Codec` / `MapCodec` constants and helper methods for
+serializing game objects to JSON, NBT, or configuration files.
 
 ## Built-in Codecs
 
-| Field                  | Type                      | Description                                                           |
-|------------------------|---------------------------|-----------------------------------------------------------------------|
-| `ITEM`                 | `Codec<Item>`             | Serializes items by registry ID string; air or invalid IDs return an error |
-| `BLOCK`                | `Codec<Block>`            | Serializes blocks by registry ID string                               |
-| `ENTITY`               | `Codec<EntityType<?>>`    | Entity type codec with registry existence validation                  |
-| `CHAR`                 | `Codec<Character>`        | Single character codec                                                |
-| `NUMBER_PROVIDER`      | `Codec<NumberProvider>`   | Supports standard NumberProvider structures and plain integers (auto-expanded to ConstantValue) |
+| Field                   | Type                    | Description                                                                                     |
+|-------------------------|-------------------------|-------------------------------------------------------------------------------------------------|
+| `ITEM`                  | `Codec<Item>`           | Serializes items by registry ID string; air or invalid IDs return an error                      |
+| `BLOCK`                 | `Codec<Block>`          | Serializes blocks by registry ID string                                                         |
+| `ENTITY`                | `Codec<EntityType<?>>`  | Entity type codec with registry existence validation                                            |
+| `CHAR`                  | `Codec<Character>`      | Single character codec                                                                          |
+| `NUMBER_PROVIDER`       | `Codec<NumberProvider>` | Supports standard NumberProvider structures and plain integers (auto-expanded to ConstantValue) |
 | `BLOCK_STATE_MAP_CODEC` | `MapCodec<BlockState>`  | Identifies the block via the `"block"` field and carries property values in the `"state"` field |
 
 ## Block State Codec
@@ -33,9 +34,9 @@ MapCodec<BlockState> extended = CodecUtil.appendBlockStatePropertyCodec(
 
 ## Enum Codecs
 
-| Method                           | Description                       |
-|----------------------------------|-----------------------------------|
-| `enumCodecInInt(Class<T>)`       | Encode/decode by ordinal integer |
+| Method                           | Description                            |
+|----------------------------------|----------------------------------------|
+| `enumCodecInInt(Class<T>)`       | Encode/decode by ordinal integer       |
 | `enumCodecInLowerName(Class<T>)` | Encode/decode by lowercase name string |
 
 ```java

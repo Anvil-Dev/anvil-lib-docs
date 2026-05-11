@@ -19,10 +19,10 @@ public @interface Integration {
 }
 ```
 
-| Attribute | Type                | Description                                                        |
-|-----------|---------------------|--------------------------------------------------------------------|
-| value     | `String`            | Target mod ID to integrate with                                    |
-| version   | `String`            | Compatible mod version range (Maven version syntax), defaults to `"*"` |
+| Attribute | Type                | Description                                                                      |
+|-----------|---------------------|----------------------------------------------------------------------------------|
+| value     | `String`            | Target mod ID to integrate with                                                  |
+| version   | `String`            | Compatible mod version range (Maven version syntax), defaults to `"*"`           |
 | type      | `IntegrationType[]` | Target environment for the integration, defaults to `{CLIENT, DEDICATED_SERVER}` |
 
 ## IntegrationType <Badge type="info" text="changed in 26.1" />
@@ -33,10 +33,10 @@ An enum representing the environment the integration applies to:
 
 **26.1**: `CLIENT`, `DEDICATED_SERVER`, `CLIENT_DATA`, `SERVER_DATA` <Badge type="danger" text="breaking" />
 
-| Value              | Description          |
-|--------------------|----------------------|
-| `CLIENT`           | Physical client      |
-| `DEDICATED_SERVER` | Dedicated server     |
+| Value              | Description            |
+|--------------------|------------------------|
+| `CLIENT`           | Physical client        |
+| `DEDICATED_SERVER` | Dedicated server       |
 | `CLIENT_DATA`      | Client data generation |
 | `SERVER_DATA`      | Server data generation |
 
@@ -57,28 +57,29 @@ IntegrationInstance instance = new IntegrationInstance(
 
 ### Methods
 
-| Method                            | Description                                                             |
-|-----------------------------------|-------------------------------------------------------------------------|
-| `newInstance()`                   | Loads the class, uses `MethodHandles.Lookup` to find the no-arg constructor and four optional load methods |
-| `invoke()`                        | Invokes the `apply()` method (via MethodHandle reflection)              |
-| `invokeClient()`                  | Invokes the `applyClient()` method                                      |
-| `invokeClientData()`              | Invokes the `applyClientData()` method                                  |
-| `invokeServerData()`              | Invokes the `applyServerData()` method                                  |
-| `containsType(IntegrationType)`   | Checks whether this instance includes the specified environment type    |
-| `is(ModInfo)`                     | Matches the target mod ID and version range                             |
+| Method                          | Description                                                                                                |
+|---------------------------------|------------------------------------------------------------------------------------------------------------|
+| `newInstance()`                 | Loads the class, uses `MethodHandles.Lookup` to find the no-arg constructor and four optional load methods |
+| `invoke()`                      | Invokes the `apply()` method (via MethodHandle reflection)                                                 |
+| `invokeClient()`                | Invokes the `applyClient()` method                                                                         |
+| `invokeClientData()`            | Invokes the `applyClientData()` method                                                                     |
+| `invokeServerData()`            | Invokes the `applyServerData()` method                                                                     |
+| `containsType(IntegrationType)` | Checks whether this instance includes the specified environment type                                       |
+| `is(ModInfo)`                   | Matches the target mod ID and version range                                                                |
 
 ### Method Convention
 
 Integration classes must provide a no-arg constructor and the following optional methods (all must be `void ()`):
 
-| Method Name          | Invocation Context       |
-|----------------------|--------------------------|
-| `apply()`            | Common load (both sides) |
-| `applyClient()`      | Physical client load     |
-| `applyClientData()`  | Client data generation   |
-| `applyServerData()`  | Server data generation   |
+| Method Name         | Invocation Context       |
+|---------------------|--------------------------|
+| `apply()`           | Common load (both sides) |
+| `applyClient()`     | Physical client load     |
+| `applyClientData()` | Client data generation   |
+| `applyServerData()` | Server data generation   |
 
-At least one of these methods must be defined, otherwise a warning is emitted. Methods are invoked via `MethodHandle` reflection and do not depend on interface implementation.
+At least one of these methods must be defined, otherwise a warning is emitted. Methods are invoked via `MethodHandle`
+reflection and do not depend on interface implementation.
 
 ## Full Example
 

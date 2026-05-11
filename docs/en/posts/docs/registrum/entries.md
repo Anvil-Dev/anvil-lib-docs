@@ -37,14 +37,14 @@ public class RegistryEntry<R, S extends R>
 
 ### Core Methods
 
-| Method                                  | Description                                                 |
-|-----------------------------------------|-------------------------------------------------------------|
-| `get()`                                 | Gets the registered object (inherited from `DeferredHolder`) |
-| `getSibling(ResourceKey<Registry<X>>)`  | Gets the sibling entry in another registry with the same name |
-| `getSibling(Registry<X>)`               | Same as above, via Registry instance                        |
-| `filter(Predicate<R>)`                  | Returns `Optional.of(this)` if the predicate matches        |
-| `is(X entry)`                           | Reference equality check (`get() == entry`)                 |
-| `cast(Class<E>, RegistryEntry)`         | Safe type cast (checks type parameters)                     |
+| Method                                 | Description                                                   |
+|----------------------------------------|---------------------------------------------------------------|
+| `get()`                                | Gets the registered object (inherited from `DeferredHolder`)  |
+| `getSibling(ResourceKey<Registry<X>>)` | Gets the sibling entry in another registry with the same name |
+| `getSibling(Registry<X>)`              | Same as above, via Registry instance                          |
+| `filter(Predicate<R>)`                 | Returns `Optional.of(this)` if the predicate matches          |
+| `is(X entry)`                          | Reference equality check (`get() == entry`)                   |
+| `cast(Class<E>, RegistryEntry)`        | Safe type cast (checks type parameters)                       |
 
 ### Usage Example
 
@@ -69,13 +69,13 @@ public class ItemProviderEntry<R extends ItemLike, T extends R>
 
 ### Methods
 
-| Method                   | Description                          |
-|--------------------------|--------------------------------------|
-| `asStack()`              | Returns an `ItemStack` of count 1    |
-| `asStack(int count)`     | Returns an `ItemStack` of the specified count |
-| `isIn(ItemStack stack)`  | Checks if the item matches           |
-| `is(Item item)`          | Checks for a specific item           |
-| `asItem()`               | Returns the `Item` instance          |
+| Method                  | Description                                   |
+|-------------------------|-----------------------------------------------|
+| `asStack()`             | Returns an `ItemStack` of count 1             |
+| `asStack(int count)`    | Returns an `ItemStack` of the specified count |
+| `isIn(ItemStack stack)` | Checks if the item matches                    |
+| `is(Item item)`         | Checks for a specific item                    |
+| `asItem()`              | Returns the `Item` instance                   |
 
 ### Usage Example
 
@@ -96,11 +96,11 @@ public class BlockEntry<T extends Block> extends ItemProviderEntry<Block, T> {
 
 ### Methods
 
-| Method                           | Description                                     |
-|----------------------------------|-------------------------------------------------|
-| `getDefaultState()`              | Returns the block's default `BlockState`        |
-| `has(BlockState state)`          | Checks whether a BlockState belongs to this block |
-| `cast(RegistryEntry<Block, T>)`  | Static safe cast                                |
+| Method                          | Description                                       |
+|---------------------------------|---------------------------------------------------|
+| `getDefaultState()`             | Returns the block's default `BlockState`          |
+| `has(BlockState state)`         | Checks whether a BlockState belongs to this block |
+| `cast(RegistryEntry<Block, T>)` | Static safe cast                                  |
 
 ## ItemEntry
 
@@ -110,9 +110,9 @@ public class ItemEntry<T extends Item> extends ItemProviderEntry<Item, T> {
 
 ### Methods
 
-| Method                          | Description      |
-|---------------------------------|------------------|
-| `cast(RegistryEntry<Item, T>)`  | Static safe cast |
+| Method                         | Description      |
+|--------------------------------|------------------|
+| `cast(RegistryEntry<Item, T>)` | Static safe cast |
 
 ## BlockEntityEntry
 
@@ -123,13 +123,13 @@ public class BlockEntityEntry<T extends BlockEntity>
 
 ### Methods
 
-| Method                                | Description                       |
-|---------------------------------------|-----------------------------------|
-| `create(BlockPos, BlockState)`        | Creates a block entity instance   |
-| `is(@Nullable BlockEntity)`           | Type check                        |
-| `get(BlockGetter, BlockPos)`          | Gets Optional from the world      |
-| `getNullable(BlockGetter, BlockPos)`  | Gets from the world or null       |
-| `cast(RegistryEntry)`                 | Static safe cast                  |
+| Method                               | Description                     |
+|--------------------------------------|---------------------------------|
+| `create(BlockPos, BlockState)`       | Creates a block entity instance |
+| `is(@Nullable BlockEntity)`          | Type check                      |
+| `get(BlockGetter, BlockPos)`         | Gets Optional from the world    |
+| `getNullable(BlockGetter, BlockPos)` | Gets from the world or null     |
+| `cast(RegistryEntry)`                | Static safe cast                |
 
 ### Usage Example
 
@@ -148,11 +148,11 @@ public class EntityEntry<T extends Entity>
 
 ### Methods
 
-| Method                              | Description              |
-|-------------------------------------|--------------------------|
-| `create(Level, EntitySpawnReason)`  | Creates an entity instance |
-| `is(Entity)`                        | Type check               |
-| `cast(RegistryEntry)`               | Static safe cast         |
+| Method                             | Description                |
+|------------------------------------|----------------------------|
+| `create(Level, EntitySpawnReason)` | Creates an entity instance |
+| `is(Entity)`                       | Type check                 |
+| `cast(RegistryEntry)`              | Static safe cast           |
 
 ## MenuEntry
 
@@ -163,12 +163,12 @@ public class MenuEntry<T extends AbstractContainerMenu>
 
 ### Methods
 
-| Method                                                              | Description                          |
-|---------------------------------------------------------------------|--------------------------------------|
-| `create(int windowId, Inventory)`                                   | Creates a menu instance              |
-| `asProvider()`                                                      | Wraps as `MenuConstructor`           |
-| `open(ServerPlayer, Component)`                                     | Opens the menu                       |
-| `open(ServerPlayer, Component, Consumer<RegistryFriendlyByteBuf>)`  | Opens the menu with extra data       |
+| Method                                                             | Description                    |
+|--------------------------------------------------------------------|--------------------------------|
+| `create(int windowId, Inventory)`                                  | Creates a menu instance        |
+| `asProvider()`                                                     | Wraps as `MenuConstructor`     |
+| `open(ServerPlayer, Component)`                                    | Opens the menu                 |
+| `open(ServerPlayer, Component, Consumer<RegistryFriendlyByteBuf>)` | Opens the menu with extra data |
 
 ## FluidEntry
 
@@ -179,12 +179,12 @@ public class FluidEntry<T extends BaseFlowingFluid>
 
 ### Methods
 
-| Method         | Description                       |
-|----------------|-----------------------------------|
-| `getSource()`  | Gets the Source fluid             |
-| `getType()`    | Gets the `FluidType`              |
-| `getBlock()`   | Gets the LiquidBlock (Optional)   |
-| `getBucket()`  | Gets the BucketItem (Optional)    |
+| Method        | Description                     |
+|---------------|---------------------------------|
+| `getSource()` | Gets the Source fluid           |
+| `getType()`   | Gets the `FluidType`            |
+| `getBlock()`  | Gets the LiquidBlock (Optional) |
+| `getBucket()` | Gets the BucketItem (Optional)  |
 
 ## AttachmentEntry
 
@@ -196,8 +196,8 @@ A registration entry for `AttachmentType`, produced by `AttachmentBuilder`.
 
 ### Methods
 
-| Method | Description |
-|--------|-------------|
+| Method                | Description      |
+|-----------------------|------------------|
 | `cast(RegistryEntry)` | Static safe cast |
 
 ## DataComponentEntry
@@ -210,8 +210,8 @@ A registration entry for `DataComponentType`, produced by `DataComponentBuilder`
 
 ### Methods
 
-| Method | Description |
-|--------|-------------|
+| Method                | Description      |
+|-----------------------|------------------|
 | `cast(RegistryEntry)` | Static safe cast |
 
 ## ConditionEntry
@@ -220,12 +220,13 @@ A registration entry for `DataComponentType`, produced by `DataComponentBuilder`
 public class ConditionEntry<T extends ICondition> extends RegistryEntry<MapCodec<? extends ICondition>, MapCodec<T>> {
 ```
 
-A registration entry for condition codecs, produced by `ConditionBuilder`. What is registered is the `MapCodec`, not the condition instance itself, enabling the NeoForge data-driven condition system to recognize custom condition types.
+A registration entry for condition codecs, produced by `ConditionBuilder`. What is registered is the `MapCodec`, not the
+condition instance itself, enabling the NeoForge data-driven condition system to recognize custom condition types.
 
 ### Methods
 
-| Method | Description |
-|--------|-------------|
+| Method                | Description      |
+|-----------------------|------------------|
 | `cast(RegistryEntry)` | Static safe cast |
 
 ## BiomeModifierEntry
@@ -238,8 +239,8 @@ A registration entry for biome modifier serializers, produced by `BiomeModifierB
 
 ### Methods
 
-| Method | Description |
-|--------|-------------|
+| Method                | Description      |
+|-----------------------|------------------|
 | `cast(RegistryEntry)` | Static safe cast |
 
 ## GlobalLootModifierEntry
@@ -252,8 +253,8 @@ A registration entry for global loot modifier serializers, produced by `GlobalLo
 
 ### Methods
 
-| Method | Description |
-|--------|-------------|
+| Method                | Description      |
+|-----------------------|------------------|
 | `cast(RegistryEntry)` | Static safe cast |
 
 ## StructureModifierEntry
@@ -266,8 +267,8 @@ A registration entry for structure modifier serializers, produced by `StructureM
 
 ### Methods
 
-| Method | Description |
-|--------|-------------|
+| Method                | Description      |
+|-----------------------|------------------|
 | `cast(RegistryEntry)` | Static safe cast |
 
 ## LazyRegistryEntry

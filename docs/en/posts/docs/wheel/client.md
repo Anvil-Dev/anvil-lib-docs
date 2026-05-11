@@ -12,15 +12,16 @@ A subclass of `AbstractWidget`, the core control responsible for sector computat
 
 ### Layout
 
-Calculates the position and detection angle of each sector (`WheelSection`) based on the center point, inner/outer radii, and slots per page.
+Calculates the position and detection angle of each sector (`WheelSection`) based on the center point, inner/outer
+radii, and slots per page.
 
 ### Interaction
 
-| Method              | Description                                                    |
-|---------------------|----------------------------------------------------------------|
-| `checkMousePos()`   | Determines the currently pointed sector based on polar coordinates of the mouse relative to the center |
-| `mouseScrolled()`   | Cycles selection between sectors                               |
-| `onClosing()`       | Plays the closing animation                                    |
+| Method            | Description                                                                                            |
+|-------------------|--------------------------------------------------------------------------------------------------------|
+| `checkMousePos()` | Determines the currently pointed sector based on polar coordinates of the mouse relative to the center |
+| `mouseScrolled()` | Cycles selection between sectors                                                                       |
+| `onClosing()`     | Plays the closing animation                                                                            |
 
 No sector is selected within the dead zone (`deadZone`).
 
@@ -42,11 +43,11 @@ Screen host for the wheel menu, managing the page stack and mode triggers.
 
 ### Core Fields
 
-| Field                                  | Description                                                |
-|----------------------------------------|------------------------------------------------------------|
-| `WheelMenuModel model`                 | Wheel menu model                                           |
-| `WheelOpenMode mode`                   | Open mode                                                  |
-| `Deque<List<WheelEntry>> menuStack`    | Menu stack (supports submenu push/back navigation)         |
+| Field                               | Description                                        |
+|-------------------------------------|----------------------------------------------------|
+| `WheelMenuModel model`              | Wheel menu model                                   |
+| `WheelOpenMode mode`                | Open mode                                          |
+| `Deque<List<WheelEntry>> menuStack` | Menu stack (supports submenu push/back navigation) |
 
 ### Interaction Behavior
 
@@ -69,13 +70,14 @@ Mouse scroll wheel switches between pages.
 
 ### Shader Pipelines (LibRenders)
 
-| Pipeline                    | Uniform                | Purpose                    |
-|-----------------------------|------------------------|----------------------------|
-| `RING_PIPELINE`             | `RingUniform`          | Anti-aliased ring          |
-| `SELECTION_PIPELINE`        | `SelectionUniform`     | Soft-edged dot             |
-| `ANNULAR_SECTOR_PIPELINE`   | `AnnularSectorUniform` | Sector highlight           |
+| Pipeline                  | Uniform                | Purpose           |
+|---------------------------|------------------------|-------------------|
+| `RING_PIPELINE`           | `RingUniform`          | Anti-aliased ring |
+| `SELECTION_PIPELINE`      | `SelectionUniform`     | Soft-edged dot    |
+| `ANNULAR_SECTOR_PIPELINE` | `AnnularSectorUniform` | Sector highlight  |
 
-All pipelines are based on the common `SNIPPET_COMMON`, with UBOs automatically bound via `RingRenderState`, `SelectionRenderState`, and `AnnularSectorRenderState` (all implementing
+All pipelines are based on the common `SNIPPET_COMMON`, with UBOs automatically bound via `RingRenderState`,
+`SelectionRenderState`, and `AnnularSectorRenderState` (all implementing
 `LibQuadGuiElementRenderState`).
 
 ### Dynamic Uniforms (LibDynamicUniforms)
@@ -94,9 +96,11 @@ uniforms.writeAnnularSector(...);
 uniforms.reset();
 ```
 
-Internally uses `DynamicUniformStorage` with three data classes (`RingUniform`, `SelectionUniform`, `AnnularSectorUniform`), written in STD140 layout.
+Internally uses `DynamicUniformStorage` with three data classes (`RingUniform`, `SelectionUniform`,
+`AnnularSectorUniform`), written in STD140 layout.
 
-The global singleton is obtained via `AnvilLibWheel.getLibDynamicUniforms()`, initialized during `ConfigureMainRenderTargetEvent`.
+The global singleton is obtained via `AnvilLibWheel.getLibDynamicUniforms()`, initialized during
+`ConfigureMainRenderTargetEvent`.
 
 ## Input Control
 
@@ -123,11 +127,11 @@ The `dev.anvilcraft.lib.v2.test.wheel` package provides a complete runnable exam
 
 ### Test Components
 
-| Class                      | Description                                                                |
-|----------------------------|----------------------------------------------------------------------------|
-| `WheelTestKeys`            | Registers four keybindings (tap/hold + dot/sector)                         |
-| `WheelTestClientHandler`   | `ClientTickEvent.Pre` handles tap, `InputEvent.Key` handles hold           |
-| `WheelDemoMenus`           | Builds `buildTapDemo()` / `buildHoldDemo()` demonstration menus            |
+| Class                    | Description                                                      |
+|--------------------------|------------------------------------------------------------------|
+| `WheelTestKeys`          | Registers four keybindings (tap/hold + dot/sector)               |
+| `WheelTestClientHandler` | `ClientTickEvent.Pre` handles tap, `InputEvent.Key` handles hold |
+| `WheelDemoMenus`         | Builds `buildTapDemo()` / `buildHoldDemo()` demonstration menus  |
 
 ### Demo Menu Features
 
@@ -160,7 +164,8 @@ Adjust via `WheelMenuBuilder` and `WheelWidget` constructor parameters:
 
 ### Server Interaction
 
-`WheelEntryAction` can obtain page and slot information via `WheelActionContext` and send network packets using `PacketDistributor`:
+`WheelEntryAction` can obtain page and slot information via `WheelActionContext` and send network packets using
+`PacketDistributor`:
 
 ```java
 builder.action("action", Component.literal("Do Something"), ctx -> {

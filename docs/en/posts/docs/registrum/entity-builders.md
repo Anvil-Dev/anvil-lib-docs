@@ -47,12 +47,12 @@ Automatically registered during `EntityRenderersEvent.RegisterRenderers`. Client
 BlockEntityEntry<MyBlockEntity> entry = builder.register();
 ```
 
-| Method                                              | Description                       |
-|-----------------------------------------------------|-----------------------------------|
-| `validBlock(NonNullSupplier<? extends Block>)`     | Add a single valid block          |
-| `validBlocks(NonNullSupplier<? extends Block>...)`  | Add multiple valid blocks         |
-| `renderer(NonNullSupplier<...>)`                   | Register block entity renderer    |
-| `register()`                                        | Returns `BlockEntityEntry<T>`     |
+| Method                                             | Description                    |
+|----------------------------------------------------|--------------------------------|
+| `validBlock(NonNullSupplier<? extends Block>)`     | Add a single valid block       |
+| `validBlocks(NonNullSupplier<? extends Block>...)` | Add multiple valid blocks      |
+| `renderer(NonNullSupplier<...>)`                   | Register block entity renderer |
+| `register()`                                       | Returns `BlockEntityEntry<T>`  |
 
 ## EntityBuilder
 
@@ -121,16 +121,16 @@ builder.tag(EntityTypeTags.SKELETONS, EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)
 EntityEntry<MyEntity> entry = builder.register();
 ```
 
-| Method                                     | Description                           |
-|--------------------------------------------|---------------------------------------|
-| `properties(NonNullConsumer<Builder<T>>)` | Modify EntityType.Builder             |
-| `renderer(NonNullSupplier<...>)`          | Register entity renderer              |
+| Method                                    | Description                             |
+|-------------------------------------------|-----------------------------------------|
+| `properties(NonNullConsumer<Builder<T>>)` | Modify EntityType.Builder               |
+| `renderer(NonNullSupplier<...>)`          | Register entity renderer                |
 | `attributes(Supplier<Builder>)`           | Register attributes (LivingEntity only) |
-| `spawnPlacement(...)`                     | Register spawn placement (Mob only)   |
-| `loot(NonNullBiConsumer<...>)`            | Custom loot table                     |
-| `lang(String)`                            | Translation name                      |
-| `tag(TagKey<EntityType<?>>...)`           | Add entity tags                       |
-| `register()`                              | Returns `EntityEntry<T>`              |
+| `spawnPlacement(...)`                     | Register spawn placement (Mob only)     |
+| `loot(NonNullBiConsumer<...>)`            | Custom loot table                       |
+| `lang(String)`                            | Translation name                        |
+| `tag(TagKey<EntityType<?>>...)`           | Add entity tags                         |
+| `register()`                              | Returns `EntityEntry<T>`                |
 
 ## MenuBuilder
 
@@ -290,16 +290,16 @@ builder.copyHandler(myCloner);        // Custom copy handler
 AttachmentEntry<E> entry = builder.register();
 ```
 
-| Method | Description |
-|--------|-------------|
-| `serialize(IAttachmentSerializer<E>)` | Set the serializer |
-| `serialize(MapCodec<E>)` | Set the MapCodec serializer |
-| `serialize(MapCodec<E>, Predicate)` | Set MapCodec serializer with predicate |
-| `copyOnDeath()` | Copy data on death |
-| `copyHandler(IAttachmentCopyHandler<E>)` | Custom copy handler |
-| `sync(AttachmentSyncHandler<E>)` | Set sync handler |
-| `sync(StreamCodec<..., E>)` | Set StreamCodec sync |
-| `register()` | Returns `AttachmentEntry<E>` |
+| Method                                   | Description                            |
+|------------------------------------------|----------------------------------------|
+| `serialize(IAttachmentSerializer<E>)`    | Set the serializer                     |
+| `serialize(MapCodec<E>)`                 | Set the MapCodec serializer            |
+| `serialize(MapCodec<E>, Predicate)`      | Set MapCodec serializer with predicate |
+| `copyOnDeath()`                          | Copy data on death                     |
+| `copyHandler(IAttachmentCopyHandler<E>)` | Custom copy handler                    |
+| `sync(AttachmentSyncHandler<E>)`         | Set sync handler                       |
+| `sync(StreamCodec<..., E>)`              | Set StreamCodec sync                   |
+| `register()`                             | Returns `AttachmentEntry<E>`           |
 
 ### DataComponentBuilder
 
@@ -326,17 +326,18 @@ builder.ignoreSwapAnimation();                     // Ignore swap animation
 DataComponentEntry<E> entry = builder.register();
 ```
 
-| Method | Description |
-|--------|-------------|
-| `persistent(Codec<E>)` | Set the persistent codec |
-| `networkSynchronized(StreamCodec<..., E>)` | Set the network sync codec |
-| `cacheEncoding()` | Cache encoding results |
-| `ignoreSwapAnimation()` | Ignore swap animation |
-| `register()` | Returns `DataComponentEntry<E>` |
+| Method                                     | Description                     |
+|--------------------------------------------|---------------------------------|
+| `persistent(Codec<E>)`                     | Set the persistent codec        |
+| `networkSynchronized(StreamCodec<..., E>)` | Set the network sync codec      |
+| `cacheEncoding()`                          | Cache encoding results          |
+| `ignoreSwapAnimation()`                    | Ignore swap animation           |
+| `register()`                               | Returns `DataComponentEntry<E>` |
 
 ### CreativeTabBuilder
 
-Constructs a `CreativeModeTab` registration entry, registered to `Registries.CREATIVE_MODE_TAB`. Independent of `AbstractRegistrum`'s `defaultCreativeTab()`, this is a dedicated Builder for creating standalone creative tabs.
+Constructs a `CreativeModeTab` registration entry, registered to `Registries.CREATIVE_MODE_TAB`. Independent of
+`AbstractRegistrum`'s `defaultCreativeTab()`, this is a dedicated Builder for creating standalone creative tabs.
 
 #### Creation
 
@@ -372,26 +373,28 @@ builder.withLabelColor(0xFF0000);                    // Label color
 RegistryEntry<CreativeModeTab, CreativeModeTab> entry = builder.register();
 ```
 
-| Method | Description |
-|--------|-------------|
-| `defaultTitle()` | Use auto translation key title |
-| `title(Component)` | Set the title |
-| `icon(Supplier<ItemStack>)` | Set the icon |
-| `displayItems(DisplayItemsGenerator)` | Set the display items generator |
-| `displayItems(ItemLike...)` | List items directly |
-| `hideTitle()` | Hide the title |
-| `noScrollBar()` | Disable scroll bar |
-| `withSearchBar()` | Enable search bar |
-| `alignedRight()` | Align right |
-| `withTabsBefore(...)` | Place before specified tabs |
-| `withTabsAfter(...)` | Place after specified tabs |
-| `backgroundTexture(Identifier)` | Set background texture |
-| `withLabelColor(int)` | Set label color |
-| `register()` | Returns `RegistryEntry<CreativeModeTab, CreativeModeTab>` |
+| Method                                | Description                                               |
+|---------------------------------------|-----------------------------------------------------------|
+| `defaultTitle()`                      | Use auto translation key title                            |
+| `title(Component)`                    | Set the title                                             |
+| `icon(Supplier<ItemStack>)`           | Set the icon                                              |
+| `displayItems(DisplayItemsGenerator)` | Set the display items generator                           |
+| `displayItems(ItemLike...)`           | List items directly                                       |
+| `hideTitle()`                         | Hide the title                                            |
+| `noScrollBar()`                       | Disable scroll bar                                        |
+| `withSearchBar()`                     | Enable search bar                                         |
+| `alignedRight()`                      | Align right                                               |
+| `withTabsBefore(...)`                 | Place before specified tabs                               |
+| `withTabsAfter(...)`                  | Place after specified tabs                                |
+| `backgroundTexture(Identifier)`       | Set background texture                                    |
+| `withLabelColor(int)`                 | Set label color                                           |
+| `register()`                          | Returns `RegistryEntry<CreativeModeTab, CreativeModeTab>` |
 
 ### ConditionBuilder
 
-Constructs a `MapCodec<T extends ICondition>` registration entry, registered to `NeoForgeRegistries.Keys.CONDITION_CODECS`. Registers a condition codec, enabling the data-driven condition system to recognize custom condition types.
+Constructs a `MapCodec<T extends ICondition>` registration entry, registered to
+`NeoForgeRegistries.Keys.CONDITION_CODECS`. Registers a condition codec, enabling the data-driven condition system to
+recognize custom condition types.
 
 #### Creation
 
@@ -405,13 +408,14 @@ REGISTRUM.condition("my_condition", MyCondition.CODEC);
 ConditionEntry<MyCondition> entry = builder.register();
 ```
 
-| Method | Description |
-|--------|-------------|
+| Method       | Description                 |
+|--------------|-----------------------------|
 | `register()` | Returns `ConditionEntry<T>` |
 
 ### BiomeModifierBuilder
 
-Constructs a `MapCodec<T extends BiomeModifier>` registration entry, registered to `NeoForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS`. Registers a biome modifier serializer.
+Constructs a `MapCodec<T extends BiomeModifier>` registration entry, registered to
+`NeoForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS`. Registers a biome modifier serializer.
 
 #### Creation
 
@@ -425,13 +429,14 @@ REGISTRUM.biomeModifier("my_biome_modifier", MyBiomeModifier.CODEC);
 BiomeModifierEntry<MyBiomeModifier> entry = builder.register();
 ```
 
-| Method | Description |
-|--------|-------------|
+| Method       | Description                     |
+|--------------|---------------------------------|
 | `register()` | Returns `BiomeModifierEntry<T>` |
 
 ### GlobalLootModifierBuilder
 
-Constructs a `MapCodec<T extends IGlobalLootModifier>` registration entry, registered to `NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS`. Registers a global loot modifier serializer.
+Constructs a `MapCodec<T extends IGlobalLootModifier>` registration entry, registered to
+`NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS`. Registers a global loot modifier serializer.
 
 #### Creation
 
@@ -445,13 +450,14 @@ REGISTRUM.glm("my_loot_modifier", MyLootModifier.CODEC);
 GlobalLootModifierEntry<MyLootModifier> entry = builder.register();
 ```
 
-| Method | Description |
-|--------|-------------|
+| Method       | Description                          |
+|--------------|--------------------------------------|
 | `register()` | Returns `GlobalLootModifierEntry<T>` |
 
 ### StructureModifierBuilder
 
-Constructs a `MapCodec<T extends StructureModifier>` registration entry, registered to `NeoForgeRegistries.Keys.STRUCTURE_MODIFIER_SERIALIZERS`. Registers a structure modifier serializer.
+Constructs a `MapCodec<T extends StructureModifier>` registration entry, registered to
+`NeoForgeRegistries.Keys.STRUCTURE_MODIFIER_SERIALIZERS`. Registers a structure modifier serializer.
 
 #### Creation
 
@@ -465,6 +471,6 @@ REGISTRUM.structureModifier("my_structure_modifier", MyStructureModifier.CODEC);
 StructureModifierEntry<MyStructureModifier> entry = builder.register();
 ```
 
-| Method | Description |
-|--------|-------------|
+| Method       | Description                         |
+|--------------|-------------------------------------|
 | `register()` | Returns `StructureModifierEntry<T>` |

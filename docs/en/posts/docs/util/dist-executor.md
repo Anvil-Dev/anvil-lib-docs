@@ -15,5 +15,6 @@ DistExecutor.run(Dist.DEDICATED_SERVER, () -> () -> {
 
 ## ClientTickRecorder
 
-`ClientTickRecorder` listens to `ClientTickEvent.Pre`, recording the cumulative client ticks (unaffected by pausing), and resets every 24 hours (1,728,000
+`ClientTickRecorder` listens to `ClientTickEvent.Pre`, recording the cumulative client ticks (unaffected by pausing),
+and resets every 24 hours (1,728,000
 ticks) to maintain floating-point precision. Use `getTicks()` to obtain the current value.

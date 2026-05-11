@@ -6,7 +6,8 @@
 
 - Test `Tag`: `test(Tag)`
 - Test `ItemStackTemplate`: based on the CustomData component
-- Test `Entity`: extracts the entity's full NBT via `getEntityTagToCompare(Entity)` (includes the player's `SelectedItem`)
+- Test `Entity`: extracts the entity's full NBT via `getEntityTagToCompare(Entity)` (includes the player's
+  `SelectedItem`)
 
 ## IItemStackPredicate and Implementations
 
@@ -55,15 +56,18 @@
 `dev.anvilcraft.lib.v2.util.predicate.BlockStatePredicate` – a block state predicate, supporting AND/OR logic and NBT.
 
 - **Property matching**: `PropertyMatcher`, includes `ExactMatcher` (exact value) and `RangedMatcher` (range)
-- **Logic**: the internal `properties` is a `List<List<PropertyMatcher>>`, where the outer list represents OR and the inner lists represent AND
+- **Logic**: the internal `properties` is a `List<List<PropertyMatcher>>`, where the outer list represents OR and the
+  inner lists represent AND
 - **NBT**: an optional list of `NbtPredicate` can be attached (all must be satisfied)
 - **Test methods**:
     - `test(LevelAccessor, BlockState, @Nullable BlockEntity)` – full test (requires Level access)
     - `testWithoutEntity(BlockState)` – ignores NBT testing
     - `testEntityOffThread(BlockState, CompoundTag entityNbt)` – offline / multi-threaded safe
     - `testOffThread(BlockState, CompoundTag entityNbt)` – combined offline test
-- **Render caching**: `getStatesCache()` / `constructStatesForRender()` used to quickly obtain a list of possible states (not guaranteed to match at runtime, for preview purposes only)
-- **Builder** provides a fluent API: `.of(Block...)`, `.of(TagKey<Block>)`, `.with(Property, value)`, `.or()`, `.nbt(CompoundTag)`
+- **Render caching**: `getStatesCache()` / `constructStatesForRender()` used to quickly obtain a list of possible
+  states (not guaranteed to match at runtime, for preview purposes only)
+- **Builder** provides a fluent API: `.of(Block...)`, `.of(TagKey<Block>)`, `.with(Property, value)`, `.or()`,
+  `.nbt(CompoundTag)`
 
 **Code example**:
 

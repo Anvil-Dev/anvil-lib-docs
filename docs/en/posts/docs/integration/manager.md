@@ -8,7 +8,8 @@ next: false
 
 ## IntegrationManager
 
-The core management class responsible for scanning the classpath for all `@Integration` annotations, instantiating them, and invoking the appropriate methods.
+The core management class responsible for scanning the classpath for all `@Integration` annotations, instantiating them,
+and invoking the appropriate methods.
 
 ### Construction and Compilation
 
@@ -29,16 +30,16 @@ manager.compileContent();
 
 ### Load Methods
 
-| Method                                         | Description                                             |
-|------------------------------------------------|---------------------------------------------------------|
-| `load(String modid, ModInfo info)`             | Loads integrations for the specified target mod (checks physical side) |
-| `loadClient(String modid, ModInfo info)`       | Loads client-side logic                                 |
-| `loadClientData(String modid, ModInfo info)`   | Loads client data generation                            |
-| `loadServerData(String modid, ModInfo info)`   | Loads server data generation                            |
-| `loadAllIntegrations()`                        | Batch-loads common logic for all compiled integrations  |
-| `loadAllClientIntegrations()`                  | Batch-loads all client-side logic                       |
-| `loadAllClientDataIntegrations()`              | Batch-loads all client data generation                  |
-| `loadAllServerDataIntegrations()`              | Batch-loads all server data generation                  |
+| Method                                       | Description                                                            |
+|----------------------------------------------|------------------------------------------------------------------------|
+| `load(String modid, ModInfo info)`           | Loads integrations for the specified target mod (checks physical side) |
+| `loadClient(String modid, ModInfo info)`     | Loads client-side logic                                                |
+| `loadClientData(String modid, ModInfo info)` | Loads client data generation                                           |
+| `loadServerData(String modid, ModInfo info)` | Loads server data generation                                           |
+| `loadAllIntegrations()`                      | Batch-loads common logic for all compiled integrations                 |
+| `loadAllClientIntegrations()`                | Batch-loads all client-side logic                                      |
+| `loadAllClientDataIntegrations()`            | Batch-loads all client data generation                                 |
+| `loadAllServerDataIntegrations()`            | Batch-loads all server data generation                                 |
 
 ### Load Flow
 
@@ -87,11 +88,11 @@ public class IntegrationHook {
 }
 ```
 
-| Field        | Type              | Description                                              |
-|--------------|-------------------|----------------------------------------------------------|
+| Field        | Type              | Description                                                   |
+|--------------|-------------------|---------------------------------------------------------------|
 | event        | `GatherDataEvent` | Data generation event (only available during data generation) |
-| modEventBus  | `IEventBus`       | Current mod's event bus                                  |
-| modContainer | `ModContainer`    | Current mod container                                    |
+| modEventBus  | `IEventBus`       | Current mod's event bus                                       |
+| modContainer | `ModContainer`    | Current mod container                                         |
 
 ### How to Set
 

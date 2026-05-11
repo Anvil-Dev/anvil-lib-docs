@@ -7,7 +7,8 @@ next: false
 # Mixin 与使用指南 <Badge type="info" text="1.21.1 API" />
 
 ::: warning Migration to 26.1
-本文档描述 1.21.1 版本的 API（`clearData`/`setData` + `CompoundTag`）。26.1 版本使用全新的 `storeData`/`loadData` + `ValueInput`/`ValueOutput` API。迁移指南请参考[核心接口文档](./api)。
+本文档描述 1.21.1 版本的 API（`clearData`/`setData` + `CompoundTag`）。26.1 版本使用全新的 `storeData`/`loadData` +
+`ValueInput`/`ValueOutput` API。迁移指南请参考[核心接口文档](./api)。
 :::
 
 ## 适用版本

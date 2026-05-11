@@ -21,11 +21,11 @@ public class InWorldRecipeManager {
 
 ### Methods
 
-| Method                                                      | Description                                |
-|-------------------------------------------------------------|--------------------------------------------|
-| `register(RecipeHolder<InWorldRecipe>)`                     | Registers a recipe, categorized by trigger |
-| `trigger(IRecipeTrigger, InWorldRecipeContext)`             | Triggers recipe detection and execution    |
-| `trigger(Supplier<IRecipeTrigger>, InWorldRecipeContext)`   | Supplier form                              |
+| Method                                                    | Description                                |
+|-----------------------------------------------------------|--------------------------------------------|
+| `register(RecipeHolder<InWorldRecipe>)`                   | Registers a recipe, categorized by trigger |
+| `trigger(IRecipeTrigger, InWorldRecipeContext)`           | Triggers recipe detection and execution    |
+| `trigger(Supplier<IRecipeTrigger>, InWorldRecipeContext)` | Supplier form                              |
 
 ### Trigger Logic
 
@@ -84,40 +84,40 @@ new InWorldRecipeContext(ServerLevel level, Vec3 pos, @Nullable Entity entity)
 
 ### Core Methods
 
-| Method                                                      | Description                                                     |
-|-------------------------------------------------------------|-----------------------------------------------------------------|
-| `getLevel()`                                                | Gets the `ServerLevel`                                          |
-| `getPos()`                                                  | Gets the execution center position                              |
-| `getEntity()`                                               | Gets the associated entity (can be null)                        |
-| `getStack()`                                                | Gets the thread-safe predicate operation stack                  |
-| `push(IRecipePredicate)` / `pop(IRecipePredicate)`          | Push/pop predicate stack (with snapshot/rollback)               |
-| `put(InWorldRecipeData<T>, T)`                              | Stores type-safe key-value data                                 |
-| `get(InWorldRecipeData<T>)`                                 | Gets data by key (uses the Data's default supplier when absent) |
-| `computeIfAbsent(InWorldRecipeData<T>)`                     | Lazily computes and caches                                      |
-| `putAcceptor(Identifier, Consumer<InWorldRecipeContext>)`   | Registers a completion callback                                 |
-| `accept()`                                                  | Invokes all registered acceptors                                |
-| `getFloat(NumberProvider)` / `getInt(NumberProvider)`       | Evaluates a NumberProvider                                      |
-| `emptyLootContext()`                                        | Creates an empty loot context                                   |
+| Method                                                    | Description                                                     |
+|-----------------------------------------------------------|-----------------------------------------------------------------|
+| `getLevel()`                                              | Gets the `ServerLevel`                                          |
+| `getPos()`                                                | Gets the execution center position                              |
+| `getEntity()`                                             | Gets the associated entity (can be null)                        |
+| `getStack()`                                              | Gets the thread-safe predicate operation stack                  |
+| `push(IRecipePredicate)` / `pop(IRecipePredicate)`        | Push/pop predicate stack (with snapshot/rollback)               |
+| `put(InWorldRecipeData<T>, T)`                            | Stores type-safe key-value data                                 |
+| `get(InWorldRecipeData<T>)`                               | Gets data by key (uses the Data's default supplier when absent) |
+| `computeIfAbsent(InWorldRecipeData<T>)`                   | Lazily computes and caches                                      |
+| `putAcceptor(Identifier, Consumer<InWorldRecipeContext>)` | Registers a completion callback                                 |
+| `accept()`                                                | Invokes all registered acceptors                                |
+| `getFloat(NumberProvider)` / `getInt(NumberProvider)`     | Evaluates a NumberProvider                                      |
+| `emptyLootContext()`                                      | Creates an empty loot context                                   |
 
 ### Predefined Data Keys
 
-| Key                       | Type                            | Description        |
-|---------------------------|---------------------------------|--------------------|
+| Key                      | Type                            | Description              |
+|--------------------------|---------------------------------|--------------------------|
 | `BlockCache.BLOCK_CACHE` | `InWorldRecipeData<BlockCache>` | Block modification cache |
 | `ItemCache.ITEM_CACHE`   | `InWorldRecipeData<ItemCache>`  | Item input/output cache  |
-| `TagCache.TAG_CACHE`     | `InWorldRecipeData<TagCache>`   | NBT tag cache      |
+| `TagCache.TAG_CACHE`     | `InWorldRecipeData<TagCache>`   | NBT tag cache            |
 
 ## Custom Registries
 
 `LibRegistries` registers 5 NeoForge registries (all capped at 512 entries):
 
-| Registry                          | Key                           | Registered Type                  |
-|-----------------------------------|-------------------------------|----------------------------------|
-| `TRIGGER_REGISTRY`                | `anvillib:trigger`            | `IRecipeTrigger`                 |
-| `PREDICATE_TYPE_REGISTRY`         | `anvillib:predicate`          | `IRecipePredicate.Type<?>`       |
-| `PREDICATE_FUNCTION_TYPE_REGISTRY`| `anvillib:predicate_function` | `IPredicateFunction.Type<?>`     |
-| `OUTCOME_TYPE_REGISTRY`           | `anvillib:outcome`            | `IRecipeOutcome.Type<?>`         |
-| `OUTCOME_FUNCTION_TYPE_REGISTRY`  | `anvillib:outcome_function`   | `IOutcomeFunction.Type<?>`       |
+| Registry                           | Key                           | Registered Type              |
+|------------------------------------|-------------------------------|------------------------------|
+| `TRIGGER_REGISTRY`                 | `anvillib:trigger`            | `IRecipeTrigger`             |
+| `PREDICATE_TYPE_REGISTRY`          | `anvillib:predicate`          | `IRecipePredicate.Type<?>`   |
+| `PREDICATE_FUNCTION_TYPE_REGISTRY` | `anvillib:predicate_function` | `IPredicateFunction.Type<?>` |
+| `OUTCOME_TYPE_REGISTRY`            | `anvillib:outcome`            | `IRecipeOutcome.Type<?>`     |
+| `OUTCOME_FUNCTION_TYPE_REGISTRY`   | `anvillib:outcome_function`   | `IOutcomeFunction.Type<?>`   |
 
 All registries are synced to the client; registration is handled via the `registerRegistries(NewRegistryEvent)` event.
 

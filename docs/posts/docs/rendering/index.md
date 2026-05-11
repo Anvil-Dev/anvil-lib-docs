@@ -15,21 +15,24 @@ Mixin 集成到 Minecraft 的 GUI 渲染和主渲染流程中。
 
 ## 文档索引
 
-| 文档                    | 内容                                                           |
-|-----------------------|--------------------------------------------------------------|
-| [泛光后处理](./bloom)      | `BloomPostEffect`、`BloomRenderCallback`、多 Pass 处理链           |
-| [UBO 框架](./ubo)       | `UboObject`、`UboLayoutDefinition`、`UboLayoutEntry`、STD140 布局 |
-| [渲染集成](./integration) | `ALRendering`、Mixin、`LibGuiElementRenderState`、着色器管线         |
-| [SDF 2D 图形](./sdf)    | `SdfGraphics`、`Sdf2d`、`SdfParameters`、7 种图形类型                |
-| [Cached BlockEntity 渲染](./cachedber) | CachedBER 管线、CachedBlockEntityRenderer、RebuildTask |
+| 文档                                   | 内容                                                           |
+|--------------------------------------|--------------------------------------------------------------|
+| [泛光后处理](./bloom)                     | `BloomPostEffect`、`BloomRenderCallback`、多 Pass 处理链           |
+| [UBO 框架](./ubo)                      | `UboObject`、`UboLayoutDefinition`、`UboLayoutEntry`、STD140 布局 |
+| [渲染集成](./integration)                | `ALRendering`、Mixin、`LibGuiElementRenderState`、着色器管线         |
+| [SDF 2D 图形](./sdf)                   | `SdfGraphics`、`Sdf2d`、`SdfParameters`、7 种图形类型                |
+| [Cached BlockEntity 渲染](./cachedber) | CachedBER 管线、CachedBlockEntityRenderer、RebuildTask           |
 
 ## 模块结构
 
 - **主类**: `AnvilLibRendering`（原 `ALRendering`） — ALR→AnvilLib 重命名，模组入口，创建管线，注册事件
-- **CachedBER 管线**: `cachedber` 包 — `CachedBlockEntityRenderingPipeline`、`CachedRenderingChunk`、`RebuildTask`、`CachedBlockEntityRenderDispatcher`、`CachedBlockEntityRenderer<T,S>`
+- **CachedBER 管线**: `cachedber` 包 — `CachedBlockEntityRenderingPipeline`、`CachedRenderingChunk`、`RebuildTask`、
+  `CachedBlockEntityRenderDispatcher`、`CachedBlockEntityRenderer<T,S>`
 - **后处理**: `BloomPostEffect` — 泛光效果多 Pass 处理链，`ALRPostEffects` — 泛光后处理单例、`runBloomDraws()`
 - **UBO 框架**: `foundation.buffers.ubo` 包（`foundation/` 重组后从 `foundation.ubo` 迁移） — 类型安全的 ST140 布局定义
-- **Foundation 重组**: `foundation/` 目录重组：`buffers/ubo/`、新 `compound/` 包（`CompoundSubmitNode`）、新 `ALRMeshSorting.java`、`BloomSubmitNodeStorage.java`；`buffers/` 下新增 `EmptyBufferSource`、`EmptyOutlineBufferSource`、`EmptyVertexConsumer`、`FullyBufferedBufferSource`、`VertexBufferHost`
+- **Foundation 重组**: `foundation/` 目录重组：`buffers/ubo/`、新 `compound/` 包（`CompoundSubmitNode`）、新
+  `ALRMeshSorting.java`、`BloomSubmitNodeStorage.java`；`buffers/` 下新增 `EmptyBufferSource`、`EmptyOutlineBufferSource`、
+  `EmptyVertexConsumer`、`FullyBufferedBufferSource`、`VertexBufferHost`
 - **渲染类型**: `extension/ALRRenderTypeExtension.java` — 渲染类型扩展，`mixins/RenderTypeMixin.java` — 渲染类型 Mixin
 - **着色器**: `blit.vsh`, `blur.fsh`, `apply_bloom.fsh`, `down_sample.fsh`, `up_sample.fsh`
 - **Mixin**: `GuiRendererMixin`, `MinecraftMixin` — 渲染流程嵌入

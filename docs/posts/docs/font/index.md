@@ -15,19 +15,25 @@ next: false
 
 ## 架构概览
 
-1. **入口层** — `AnvilLibFont` 是 `@Mod` 入口点（CLIENT-only），提供 `getSelectFont()` 获取当前配置的 AWT Font，并注册 `FontConfigScreen` 作为配置界面
-2. **发现层** — `FontManager` 单例通过 AWT `GraphicsEnvironment` 发现所有系统字体，建立字体族 Trie 索引，提供 `getFont(String name)` 和 `getFamilyNames()`/`getFamilyFontNames()`
-3. **配置层** — `AnvilLibFontConfig` 基于 JSON 的配置（存储在 `config/anvillib/anvillib-font-client.json`），通过 Gson 读写 `fontFamily` 和 `font` 选择
-4. **渲染层** — `SdfTextRenderer` 主渲染器，支持 `drawString`、`drawFormatted`、`drawComponent`、`drawCentered`、`drawWrapped` 等绘制方法
-5. **图集层** — `SdfGlyphAtlas` 多页 CPU 端 SDF 字形图集，1024x1024 页，预烘焙 ASCII 32-126，按需渲染其他码点，使用 Dead Reckoning EDT 算法计算 SDF
+1. **入口层** — `AnvilLibFont` 是 `@Mod` 入口点（CLIENT-only），提供 `getSelectFont()` 获取当前配置的 AWT Font，并注册
+   `FontConfigScreen` 作为配置界面
+2. **发现层** — `FontManager` 单例通过 AWT `GraphicsEnvironment` 发现所有系统字体，建立字体族 Trie 索引，提供
+   `getFont(String name)` 和 `getFamilyNames()`/`getFamilyFontNames()`
+3. **配置层** — `AnvilLibFontConfig` 基于 JSON 的配置（存储在 `config/anvillib/anvillib-font-client.json`），通过 Gson 读写
+   `fontFamily` 和 `font` 选择
+4. **渲染层** — `SdfTextRenderer` 主渲染器，支持 `drawString`、`drawFormatted`、`drawComponent`、`drawCentered`、
+   `drawWrapped` 等绘制方法
+5. **图集层** — `SdfGlyphAtlas` 多页 CPU 端 SDF 字形图集，1024x1024 页，预烘焙 ASCII 32-126，按需渲染其他码点，使用 Dead
+   Reckoning EDT 算法计算 SDF
 6. **布局层** — `SdfTextLayout` CPU 端字形布局，按图集页分组字形，输出 `PageQuads` 携带每字形的 UV 坐标
 7. **上传层** — `SdfAtlasTexture` 将图集页上传到 GPU 为 `RED8` 纹理（LINEAR + CLAMP 过滤）
-8. **状态层** — `SdfTextRenderState` 实现 `LibGuiElementRenderState`，构建 SDF 文本渲染所需的四边形顶点，通过 `ALFPipelines.SDF_TEXT` 管线提交
+8. **状态层** — `SdfTextRenderState` 实现 `LibGuiElementRenderState`，构建 SDF 文本渲染所需的四边形顶点，通过
+   `ALFPipelines.SDF_TEXT` 管线提交
 
 ## 文档索引
 
-| 文档            | 内容                                                                                     |
-|---------------|----------------------------------------------------------------------------------------|
+| 文档              | 内容                                                                                      |
+|-----------------|-----------------------------------------------------------------------------------------|
 | [核心 API](./api) | `AnvilLibFont`、`FontManager`、`SdfTextRenderer`、`SdfGlyphAtlas`、`SdfTextLayout`、GUI 扩展方法 |
 
 ## 快速开始

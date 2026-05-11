@@ -6,14 +6,16 @@ next: false
 
 # Config Module <Badge type="tip" text=">=1.21.1" />
 
-The package `dev.anvilcraft.lib.v2.config` provides a declarative configuration framework built on top of the NeoForge config system. It simplifies the definition, registration, language generation, and runtime value injection of configuration classes through annotations and reflection.
+The package `dev.anvilcraft.lib.v2.config` provides a declarative configuration framework built on top of the NeoForge
+config system. It simplifies the definition, registration, language generation, and runtime value injection of
+configuration classes through annotations and reflection.
 
 ## Documentation Index
 
-| Document                    | Content                                                               |
-|-----------------------------|-----------------------------------------------------------------------|
-| [Annotation System](./annotations) | `@Config`, `@Comment`, `@CollapsibleObject`, `@BoundedDiscrete`       |
-| [Config Management](./manager)     | `ConfigManager`, `ConfigRecord`, `ConfigField`                        |
+| Document                           | Content                                                                  |
+|------------------------------------|--------------------------------------------------------------------------|
+| [Annotation System](./annotations) | `@Config`, `@Comment`, `@CollapsibleObject`, `@BoundedDiscrete`          |
+| [Config Management](./manager)     | `ConfigManager`, `ConfigRecord`, `ConfigField`                           |
 | [Utilities](./utilities)           | `ConfigData` (language generation), `FormattingUtil` (string formatting) |
 
 ## Quick Start

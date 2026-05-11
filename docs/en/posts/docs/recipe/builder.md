@@ -6,7 +6,8 @@ next: false
 
 # Builder (InWorldRecipeBuilder)
 
-`InWorldRecipeBuilder` provides a fluent API for constructing `InWorldRecipe` instances, with built-in support for data generation and advancement integration.
+`InWorldRecipeBuilder` provides a fluent API for constructing `InWorldRecipe` instances, with built-in support for data
+generation and advancement integration.
 
 ## Creating a Builder
 
@@ -24,7 +25,8 @@ InWorldRecipeBuilder.incompatible(() -> trigger)
 
 ## Offset Control
 
-The builder maintains a current offset (default `Vec3.ZERO`) used to set relative positions for subsequent predicates/outcomes.
+The builder maintains a current offset (default `Vec3.ZERO`) used to set relative positions for subsequent
+predicates/outcomes.
 
 ### Direct Offset
 
@@ -191,7 +193,8 @@ builder.save(recipeOutput, identifier);
 InWorldRecipe recipe = builder.build();
 ```
 
-This method converts stored predicate/outcome lists into an `ImmutableList`. If priority was not manually set, it is automatically calculated.
+This method converts stored predicate/outcome lists into an `ImmutableList`. If priority was not manually set, it is
+automatically calculated.
 
 ## Complete Example
 

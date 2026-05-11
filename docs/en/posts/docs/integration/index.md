@@ -6,13 +6,15 @@ next: false
 
 # Integration Module <Badge type="tip" text=">=1.21.1" /> <Badge type="info" text="IntegrationType changed in 26.1" />
 
-The package `dev.anvilcraft.lib.v2.integration` provides a lightweight inter-mod integration system. Integration points are declared via the `@Integration` annotation, automatically discovered and loaded by `IntegrationManager`, and support executing integration logic on designated physical sides through convention-based methods.
+The package `dev.anvilcraft.lib.v2.integration` provides a lightweight inter-mod integration system. Integration points
+are declared via the `@Integration` annotation, automatically discovered and loaded by `IntegrationManager`, and support
+executing integration logic on designated physical sides through convention-based methods.
 
 ## Documentation Index
 
-| Document              | Content                                                             |
-|-----------------------|---------------------------------------------------------------------|
-| [Core API](./core)    | `@Integration` annotation, `IntegrationType`, `IntegrationInstance` |
+| Document                     | Content                                                             |
+|------------------------------|---------------------------------------------------------------------|
+| [Core API](./core)           | `@Integration` annotation, `IntegrationType`, `IntegrationInstance` |
 | [Manager & Hooks](./manager) | `IntegrationManager`, `IntegrationHook`, `ModVersionRange`          |
 
 ## Quick Start
@@ -37,5 +39,6 @@ MANAGER.compileContent();
 
 - Integration classes are loaded via `Class.forName`; ensure the target class is on the classpath
 - Version matching uses Maven version range syntax; `"*"` matches any version
-- Method lookup only recognizes `void apply*(void)` methods; at least one must be defined, otherwise a warning is emitted
+- Method lookup only recognizes `void apply*(void)` methods; at least one must be defined, otherwise a warning is
+  emitted
 - Loading should be invoked during the appropriate mod lifecycle event

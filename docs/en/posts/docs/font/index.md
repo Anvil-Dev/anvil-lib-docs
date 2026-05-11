@@ -7,7 +7,8 @@ next: false
 # SDF Font Rendering Module <Badge type="tip" text=">=26.1" />
 
 The package `dev.anvilcraft.lib.v2.font` provides an **SDF (Signed Distance Field)** based font rendering system that
-supports loading arbitrary system AWT fonts and using them for Minecraft GUI text rendering, complete with a configuration
+supports loading arbitrary system AWT fonts and using them for Minecraft GUI text rendering, complete with a
+configuration
 screen and styled text support.
 
 ::: warning Availability
@@ -22,7 +23,8 @@ This module is **only** available in Minecraft **26.1**.
    font family Trie index, and provides `getFont(String name)` and `getFamilyNames()`/`getFamilyFontNames()`
 3. **Configuration Layer** — `AnvilLibFontConfig` is a JSON-based config (stored at
    `config/anvillib/anvillib-font-client.json`), reading/writing `fontFamily` and `font` selections via Gson
-4. **Rendering Layer** — `SdfTextRenderer` is the main renderer supporting `drawString`, `drawFormatted`, `drawComponent`,
+4. **Rendering Layer** — `SdfTextRenderer` is the main renderer supporting `drawString`, `drawFormatted`,
+   `drawComponent`,
    `drawCentered`, and `drawWrapped` methods
 5. **Atlas Layer** — `SdfGlyphAtlas` is a multi-page CPU-side SDF glyph atlas with 1024x1024 pages, pre-warming
    ASCII 32-126, lazy-rendering other codepoints, using the Dead Reckoning EDT algorithm for SDF computation
@@ -34,9 +36,9 @@ This module is **only** available in Minecraft **26.1**.
 
 ## Document Index
 
-| Document            | Contents                                                                                              |
-|---------------------|-------------------------------------------------------------------------------------------------------|
-| [Core API](./api)   | `AnvilLibFont`, `FontManager`, `SdfTextRenderer`, `SdfGlyphAtlas`, `SdfTextLayout`, GUI extension methods |
+| Document          | Contents                                                                                                  |
+|-------------------|-----------------------------------------------------------------------------------------------------------|
+| [Core API](./api) | `AnvilLibFont`, `FontManager`, `SdfTextRenderer`, `SdfGlyphAtlas`, `SdfTextLayout`, GUI extension methods |
 
 ## Quick Start
 

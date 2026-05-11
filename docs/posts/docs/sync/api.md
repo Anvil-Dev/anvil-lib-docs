@@ -17,8 +17,8 @@ public @interface Sync {
 }
 ```
 
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
+| 属性    | 类型              | 默认值    | 说明        |
+|-------|-----------------|--------|-----------|
 | value | `SyncDirection` | `BOTH` | 该类的默认同步方向 |
 
 注解中定义的方向在编译/类加载阶段由 `SyncBytecodeInjector` 自动应用到该类中所有 `SyncProxy` 字段上，对用户完全透明。
@@ -58,12 +58,12 @@ new SyncProxy<>(customStreamCodec);
 
 ### 核心方法
 
-| 方法 | 说明 |
-|------|------|
-| `T getValue()` | 获取当前值 |
-| `void setValue(@Nullable T value)` | 设置值，检测变更并自动发送到对端 |
-| `SyncProxy<T> direction(SyncDirection)` | 设置同步方向，返回 this（链式调用） |
-| `void encode(ByteBuf)` | 将当前值编码到缓冲区 |
+| 方法                                            | 说明                                    |
+|-----------------------------------------------|---------------------------------------|
+| `T getValue()`                                | 获取当前值                                 |
+| `void setValue(@Nullable T value)`            | 设置值，检测变更并自动发送到对端                      |
+| `SyncProxy<T> direction(SyncDirection)`       | 设置同步方向，返回 this（链式调用）                  |
+| `void encode(ByteBuf)`                        | 将当前值编码到缓冲区                            |
 | `void setValue(ByteBuf, boolean serverbound)` | 从缓冲区解码并设置值，serverbound 为 true 时触发变更同步 |
 
 ### 默认支持的 StreamCodec 类型（18 种）
@@ -71,28 +71,28 @@ new SyncProxy<>(customStreamCodec);
 ::: details Click to expand — Built-in StreamCodec Type Table
 `SyncProxy.defaultCodec()` 自动为以下类型提供 StreamCodec：
 
-| 类型 | StreamCodec |
-|------|-------------|
-| `CompoundTag` | `ByteBufCodecs.TAG` |
-| `Tag` | `ByteBufCodecs.TAG` |
-| `Vector3fc` | `ByteBufCodecs.VECTOR3F` |
-| `Quaternionfc` | `ByteBufCodecs.QUATERNIONF` |
-| `PropertyMap` | `ByteBufCodecs.GAME_PROFILE_PROPERTIES` |
-| `GameProfile` | `ByteBufCodecs.GAME_PROFILE` |
-| `BlockPos` | `BlockPos.STREAM_CODEC` |
-| `Component` | `ComponentSerialization.STREAM_CODEC` |
-| `ItemStack` | `ItemStack.OPTIONAL_STREAM_CODEC` |
-| `ItemStackTemplate` | `ItemStackTemplate.STREAM_CODEC` |
-| `String` | `ByteBufCodecs.STRING_UTF8` |
-| `Boolean/boolean` | `ByteBufCodecs.BOOL` |
-| `Double/double` | `ByteBufCodecs.DOUBLE` |
-| `Float/float` | `ByteBufCodecs.FLOAT` |
-| `Long/long` | `ByteBufCodecs.LONG` |
-| `Integer/int` | `ByteBufCodecs.INT` |
-| `Short/short` | `ByteBufCodecs.SHORT` |
-| `Byte/byte` | `ByteBufCodecs.BYTE` |
-| `long[]` | `ByteBufCodecs.LONG_ARRAY` |
-| `byte[]` (Byte[]) | `ByteBufCodecs.BYTE_ARRAY` |
+| 类型                  | StreamCodec                             |
+|---------------------|-----------------------------------------|
+| `CompoundTag`       | `ByteBufCodecs.TAG`                     |
+| `Tag`               | `ByteBufCodecs.TAG`                     |
+| `Vector3fc`         | `ByteBufCodecs.VECTOR3F`                |
+| `Quaternionfc`      | `ByteBufCodecs.QUATERNIONF`             |
+| `PropertyMap`       | `ByteBufCodecs.GAME_PROFILE_PROPERTIES` |
+| `GameProfile`       | `ByteBufCodecs.GAME_PROFILE`            |
+| `BlockPos`          | `BlockPos.STREAM_CODEC`                 |
+| `Component`         | `ComponentSerialization.STREAM_CODEC`   |
+| `ItemStack`         | `ItemStack.OPTIONAL_STREAM_CODEC`       |
+| `ItemStackTemplate` | `ItemStackTemplate.STREAM_CODEC`        |
+| `String`            | `ByteBufCodecs.STRING_UTF8`             |
+| `Boolean/boolean`   | `ByteBufCodecs.BOOL`                    |
+| `Double/double`     | `ByteBufCodecs.DOUBLE`                  |
+| `Float/float`       | `ByteBufCodecs.FLOAT`                   |
+| `Long/long`         | `ByteBufCodecs.LONG`                    |
+| `Integer/int`       | `ByteBufCodecs.INT`                     |
+| `Short/short`       | `ByteBufCodecs.SHORT`                   |
+| `Byte/byte`         | `ByteBufCodecs.BYTE`                    |
+| `long[]`            | `ByteBufCodecs.LONG_ARRAY`              |
+| `byte[]` (Byte[])   | `ByteBufCodecs.BYTE_ARRAY`              |
 
 :::
 
@@ -129,7 +129,8 @@ public class SyncManager {
 
 ## SyncRegisterEntry\<T, ID\> — 对象定位策略
 
-`SyncRegisterEntry` 不是简单的"注册一个类"，而是注册**一整套对象定位策略**。它告诉 AnvilLib：对于某种承载同步字段的对象，如何将它编码为网络可传输的标识，以及如何在另一端重新找到它。
+`SyncRegisterEntry` 不是简单的"注册一个类"，而是注册**一整套对象定位策略**。它告诉
+AnvilLib：对于某种承载同步字段的对象，如何将它编码为网络可传输的标识，以及如何在另一端重新找到它。
 
 ```java
 public record SyncRegisterEntry<T, ID>(
@@ -149,14 +150,14 @@ public record SyncRegisterEntry<T, ID>(
 
 ### 各字段含义
 
-| 字段 | 作用 |
-|------|------|
-| `clazz` | 承载 `SyncProxy` 字段的对象类型（`SyncProxy` 的 parent） |
-| `idCodec` | 将该类型对象的唯一标识编解码为网络字节（如 `UUID` 用 `UUIDUtil.STREAM_CODEC`） |
-| `idGetter` | 发送同步包时，从对象实例提取唯一标识 |
-| `finder` | 接收同步包后，根据解码出的标识和对端上下文，查找目标对象（可能为 null） |
-| `dimension` | 是否启用维度感知分发（仅同维度的玩家收到同步包） |
-| `dimensionGetter` | 从对象提取所在维度的 `ResourceKey<Level>` |
+| 字段                | 作用                                                      |
+|-------------------|---------------------------------------------------------|
+| `clazz`           | 承载 `SyncProxy` 字段的对象类型（`SyncProxy` 的 parent）            |
+| `idCodec`         | 将该类型对象的唯一标识编解码为网络字节（如 `UUID` 用 `UUIDUtil.STREAM_CODEC`） |
+| `idGetter`        | 发送同步包时，从对象实例提取唯一标识                                      |
+| `finder`          | 接收同步包后，根据解码出的标识和对端上下文，查找目标对象（可能为 null）                  |
+| `dimension`       | 是否启用维度感知分发（仅同维度的玩家收到同步包）                                |
+| `dimensionGetter` | 从对象提取所在维度的 `ResourceKey<Level>`                         |
 
 ### 工厂方法
 
@@ -172,6 +173,7 @@ SyncRegisterEntry.create(type, idCodec, idGetter, finder, dimension, dimensionGe
 ```
 
 维度分发模式根据 `id` 类型自动选择网络发送方式：
+
 - `BlockPos` → `sendToPlayersTrackingChunk`（仅追踪该 chunk 的玩家）
 - `Entity` → `sendToPlayersTrackingEntity`（仅追踪该实体的玩家）
 - 其他 → `sendToPlayersInDimension`（该维度的所有玩家）
@@ -197,7 +199,8 @@ SyncRegisterEntry.create(type, idCodec, idGetter, finder, dimension, dimensionGe
 
 ## SyncConfigManager
 
-管理同步字段的配置注册，为每个 `SyncProxy` 字段分配唯一 ID，用于网络传输时压缩字段名。客户端配置由 `AnvilLibSyncClient` 初始化。
+管理同步字段的配置注册，为每个 `SyncProxy` 字段分配唯一 ID，用于网络传输时压缩字段名。客户端配置由 `AnvilLibSyncClient`
+初始化。
 
 ```java
 // 全局单例 — 由 AnvilLibSyncClient 创建
@@ -240,12 +243,12 @@ public record SyncConfigurationFinishPayload() implements IClientboundPacket
 
 物理端工具类，提供实体/方块实体查找器和网络发送逻辑。主要由 `SyncPayload` 和 `SyncManager` 内部使用。
 
-| 方法 | 说明 |
-|------|------|
-| `registryAccess()` | 获取当前端的 RegistryAccess |
-| `entityFinder(IPayloadContext, UUID)` | 根据上下文端查找实体 |
-| `blockEntityFinder(IPayloadContext, BlockPos)` | 根据上下文端查找方块实体 |
-| `createFriendlyByteBuf(ByteBuf)` | 创建适配当前端的 FriendlyByteBuf |
-| `send(SyncDirection, ...)` | 根据方向发送 SyncPayload |
-| `clientSend(Supplier<IPacket>)` | 客户端发送（→ `ClientPacketDistributor.sendToServer`） |
-| `serverSend(T, ID, ...)` | 服务端发送（维度感知） |
+| 方法                                             | 说明                                              |
+|------------------------------------------------|-------------------------------------------------|
+| `registryAccess()`                             | 获取当前端的 RegistryAccess                           |
+| `entityFinder(IPayloadContext, UUID)`          | 根据上下文端查找实体                                      |
+| `blockEntityFinder(IPayloadContext, BlockPos)` | 根据上下文端查找方块实体                                    |
+| `createFriendlyByteBuf(ByteBuf)`               | 创建适配当前端的 FriendlyByteBuf                        |
+| `send(SyncDirection, ...)`                     | 根据方向发送 SyncPayload                              |
+| `clientSend(Supplier<IPacket>)`                | 客户端发送（→ `ClientPacketDistributor.sendToServer`） |
+| `serverSend(T, ID, ...)`                       | 服务端发送（维度感知）                                     |

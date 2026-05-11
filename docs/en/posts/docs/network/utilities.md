@@ -11,7 +11,8 @@ next: false
 <Badge type="tip" text="1.21.1" /> <Badge type="danger" text="not in 1.21.2–1.21.11" /> <Badge type="tip" text="26.1" />
 
 ::: warning Availability
-`NetworkUtil` is **not available** in versions 1.21.2 through 1.21.11. If you are using these versions, use `PacketDistributor` directly or implement equivalent batch-sending logic yourself.
+`NetworkUtil` is **not available** in versions 1.21.2 through 1.21.11. If you are using these versions, use
+`PacketDistributor` directly or implement equivalent batch-sending logic yourself.
 :::
 
 `NetworkUtil` provides static convenience methods for sending network packets from the server to multiple players.
@@ -28,11 +29,11 @@ public static void sendToAllPlayersExcluded(
 )
 ```
 
-| Parameter | Description                                       |
-|-----------|---------------------------------------------------|
-| excluded  | Player to exclude (null means broadcast to all)   |
-| payload   | Primary packet                                    |
-| payloads  | Additional packets (sent together)                |
+| Parameter | Description                                     |
+|-----------|-------------------------------------------------|
+| excluded  | Player to exclude (null means broadcast to all) |
+| payload   | Primary packet                                  |
+| payloads  | Additional packets (sent together)              |
 
 ### sendToAllPlayersInDimensionExcluded
 
@@ -108,7 +109,8 @@ NetworkUtil.sendToAllPlayersInDimensionIncluded(
 <Badge type="tip" text="1.21.1" /> <Badge type="danger" text="not in 1.21.2–1.21.11" /> <Badge type="tip" text="26.1" />
 
 ::: warning Availability
-`BoolAndInt` is **not available** in versions 1.21.2 through 1.21.11. If you are using these versions, implement equivalent compact-sending logic yourself.
+`BoolAndInt` is **not available** in versions 1.21.2 through 1.21.11. If you are using these versions, implement
+equivalent compact-sending logic yourself.
 :::
 
 `BoolAndInt` provides more compact sending logic to send a pair of boolean and integer.
@@ -128,5 +130,7 @@ BoolAndInt bai = BoolAndInt.STREAM_CODEC.decode(buf);
 Compared to directly encoding `Boolean + VarInt`,
 -If the data is positive and small, it saves an average of about 0.6 to 0.9 bytes;
 -If the data is positive and completely random, it saves an average of about 0.8 bytes;
--If the data is negative, at least 1 byte is saved, small negative numbers (absolute value<=32) save 5 bytes, and medium negative numbers save 3-4 bytes;
--If the positive and negative numbers in the data are evenly distributed and have small absolute values (commonly seen in small offsets, delta values, etc. in games), the average savings may be as high as 2-3 bytes.
+-If the data is negative, at least 1 byte is saved, small negative numbers (absolute value<=32) save 5 bytes, and medium
+negative numbers save 3-4 bytes;
+-If the positive and negative numbers in the data are evenly distributed and have small absolute values (commonly seen
+in small offsets, delta values, etc. in games), the average savings may be as high as 2-3 bytes.

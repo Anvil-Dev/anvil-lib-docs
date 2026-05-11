@@ -8,7 +8,8 @@ next: false
 
 ## ConfigData
 
-Used for automatic generation of config translation keys. Traverses config classes and their annotations via `readConfigClass`, automatically adding translation keys to the language provider.
+Used for automatic generation of config translation keys. Traverses config classes and their annotations via
+`readConfigClass`, automatically adding translation keys to the language provider.
 
 ```java
 ConfigData.readConfigClass(languageProvider, ExampleConfig.class);
@@ -16,12 +17,12 @@ ConfigData.readConfigClass(languageProvider, ExampleConfig.class);
 
 ### Generated Translation Key Types
 
-| Purpose             | Translation Key Format                                                           |
-|---------------------|----------------------------------------------------------------------------------|
-| Config title        | `<modid>.configuration.title`                                                    |
-| TOML title          | `<modid>.configuration.section.<modid>.<type>.toml`                              |
-| Option name         | `<modid>.configuration.<fieldpath>`                                               |
-| Option tooltip      | `<modid>.configuration.<fieldpath>.tooltip` (when `@Comment` is present)         |
+| Purpose              | Translation Key Format                                                            |
+|----------------------|-----------------------------------------------------------------------------------|
+| Config title         | `<modid>.configuration.title`                                                     |
+| TOML title           | `<modid>.configuration.section.<modid>.<type>.toml`                               |
+| Option name          | `<modid>.configuration.<fieldpath>`                                               |
+| Option tooltip       | `<modid>.configuration.<fieldpath>.tooltip` (when `@Comment` is present)          |
 | Collapse button text | `<modid>.configuration.<fieldpath>.button` (when `@CollapsibleObject` is present) |
 
 All key values are generated as human-readable names by `FormattingUtil`.
@@ -49,10 +50,10 @@ String formatting utility for converting Java naming conventions to human-readab
 
 ### Methods
 
-| Method                   | Input                  | Output                       | Description                      |
-|--------------------------|------------------------|------------------------------|----------------------------------|
-| `toLowerCaseUnder(str)`  | `"maragingSteel300"`   | `"maraging_steel_300"`       | camelCase to lowercase_underscore |
-| `toEnglishName(str)`     | `"apple_orange.juice"` | `"Apple Orange (Juice)"`     | Underscore/dot to English name   |
+| Method                  | Input                  | Output                   | Description                       |
+|-------------------------|------------------------|--------------------------|-----------------------------------|
+| `toLowerCaseUnder(str)` | `"maragingSteel300"`   | `"maraging_steel_300"`   | camelCase to lowercase_underscore |
+| `toEnglishName(str)`    | `"apple_orange.juice"` | `"Apple Orange (Juice)"` | Underscore/dot to English name    |
 
 ### Usage Examples
 

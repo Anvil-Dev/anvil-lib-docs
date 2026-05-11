@@ -8,7 +8,8 @@ next: false
 
 ## IRecipeOutcome
 
-The outcome interface, defining the result executed after a recipe successfully matches. Extends `Consumer<InWorldRecipeContext>` and `IPrioritized`.
+The outcome interface, defining the result executed after a recipe successfully matches. Extends
+`Consumer<InWorldRecipeContext>` and `IPrioritized`.
 
 ```java
 public interface IRecipeOutcome<O extends IRecipeOutcome<O>>
@@ -19,12 +20,12 @@ public interface IRecipeOutcome<O extends IRecipeOutcome<O>>
 
 ### Core Methods
 
-| Method                                     | Description                                                                                      |
-|--------------------------------------------|--------------------------------------------------------------------------------------------------|
-| `accept(InWorldRecipeContext)`             | Executes the outcome logic                                                                       |
-| `acceptWithChance(InWorldRecipeContext)`   | Decides randomly based on probability whether to execute; calls `accept()` on success            |
-| `chance()`                                 | Returns the probability `NumberProvider`, default `ConstantValue.exactly(1.0f)`                  |
-| `getType()`                                | Returns the `Type<O>` descriptor                                                                 |
+| Method                                   | Description                                                                           |
+|------------------------------------------|---------------------------------------------------------------------------------------|
+| `accept(InWorldRecipeContext)`           | Executes the outcome logic                                                            |
+| `acceptWithChance(InWorldRecipeContext)` | Decides randomly based on probability whether to execute; calls `accept()` on success |
+| `chance()`                               | Returns the probability `NumberProvider`, default `ConstantValue.exactly(1.0f)`       |
+| `getType()`                              | Returns the `Type<O>` descriptor                                                      |
 
 ### Type Descriptor
 

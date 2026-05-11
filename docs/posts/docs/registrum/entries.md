@@ -196,8 +196,8 @@ public class AttachmentEntry<E> extends RegistryEntry<AttachmentType<?>, Attachm
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
+| 方法                    | 说明     |
+|-----------------------|--------|
 | `cast(RegistryEntry)` | 静态安全转换 |
 
 ## DataComponentEntry
@@ -210,8 +210,8 @@ public class DataComponentEntry<E> extends RegistryEntry<DataComponentType<?>, D
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
+| 方法                    | 说明     |
+|-----------------------|--------|
 | `cast(RegistryEntry)` | 静态安全转换 |
 
 ## ConditionEntry
@@ -220,12 +220,13 @@ public class DataComponentEntry<E> extends RegistryEntry<DataComponentType<?>, D
 public class ConditionEntry<T extends ICondition> extends RegistryEntry<MapCodec<? extends ICondition>, MapCodec<T>> {
 ```
 
-用于条件编解码器的注册条目，由 `ConditionBuilder` 生成。注册的是 `MapCodec` 而非条件实例本身，使 NeoForge 数据驱动条件系统能识别自定义条件类型。
+用于条件编解码器的注册条目，由 `ConditionBuilder` 生成。注册的是 `MapCodec` 而非条件实例本身，使 NeoForge
+数据驱动条件系统能识别自定义条件类型。
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
+| 方法                    | 说明     |
+|-----------------------|--------|
 | `cast(RegistryEntry)` | 静态安全转换 |
 
 ## BiomeModifierEntry
@@ -238,8 +239,8 @@ public class BiomeModifierEntry<T extends BiomeModifier> extends RegistryEntry<M
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
+| 方法                    | 说明     |
+|-----------------------|--------|
 | `cast(RegistryEntry)` | 静态安全转换 |
 
 ## GlobalLootModifierEntry
@@ -252,8 +253,8 @@ public class GlobalLootModifierEntry<T extends IGlobalLootModifier> extends Regi
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
+| 方法                    | 说明     |
+|-----------------------|--------|
 | `cast(RegistryEntry)` | 静态安全转换 |
 
 ## StructureModifierEntry
@@ -266,8 +267,8 @@ public class StructureModifierEntry<T extends StructureModifier> extends Registr
 
 ### 方法
 
-| 方法 | 说明 |
-|------|------|
+| 方法                    | 说明     |
+|-----------------------|--------|
 | `cast(RegistryEntry)` | 静态安全转换 |
 
 ## LazyRegistryEntry

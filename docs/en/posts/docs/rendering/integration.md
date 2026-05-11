@@ -12,11 +12,11 @@ Mod entry point main class, registered via `@Mod` and `@EventBusSubscriber`.
 
 ### Initialization and Events
 
-| Event                                | Handling                                                               |
-|--------------------------------------|------------------------------------------------------------------------|
-| `RenderFrameEvent.Pre`               | `bloomPostEffect.beginFrame()`                                         |
-| `RenderLevelStageEvent.AfterLevel`   | `bloomPostEffect.process(modelViewMatrix, featureRenderDispatcher)`    |
-| `RegisterPipelineModifiersEvent`     | Register `REDIRECT_TO_BLOOM` modifier                                  |
+| Event                              | Handling                                                            |
+|------------------------------------|---------------------------------------------------------------------|
+| `RenderFrameEvent.Pre`             | `bloomPostEffect.beginFrame()`                                      |
+| `RenderLevelStageEvent.AfterLevel` | `bloomPostEffect.process(modelViewMatrix, featureRenderDispatcher)` |
+| `RegisterPipelineModifiersEvent`   | Register `REDIRECT_TO_BLOOM` modifier                               |
 
 ```java
 // Get the bloom instance
@@ -25,31 +25,32 @@ BloomPostEffect bloom = ALRendering.getBloomPostEffect();
 
 ### Pipeline Creation
 
-`ALRendering.createPipelines()` is called in the `MinecraftMixin` construction end callback to initialize the bloom instance.
+`ALRendering.createPipelines()` is called in the `MinecraftMixin` construction end callback to initialize the bloom
+instance.
 
 ## Shaders and Pipelines
 
 ### Shader Files
 
-| File                | Type     | Purpose                                                     |
-|---------------------|----------|-------------------------------------------------------------|
-| `blit.vsh`          | Vertex   | Full-screen quad transform, outputs UV                      |
-| `blur.fsh`          | Fragment | 7-weight Gaussian blur (direction + step length)            |
-| `apply_bloom.fsh`   | Fragment | Blend bloom onto the game framebuffer by intensity          |
-| `down_sample.fsh`   | Fragment | Average 4 pixels for downsampling                           |
-| `up_sample.fsh`     | Fragment | 5×5 Gaussian kernel upsample, blend with previous frame     |
-| `util.glsl`         | Utility  | `saturate()`, `toneMap()` helper functions                  |
+| File              | Type     | Purpose                                                 |
+|-------------------|----------|---------------------------------------------------------|
+| `blit.vsh`        | Vertex   | Full-screen quad transform, outputs UV                  |
+| `blur.fsh`        | Fragment | 7-weight Gaussian blur (direction + step length)        |
+| `apply_bloom.fsh` | Fragment | Blend bloom onto the game framebuffer by intensity      |
+| `down_sample.fsh` | Fragment | Average 4 pixels for downsampling                       |
+| `up_sample.fsh`   | Fragment | 5×5 Gaussian kernel upsample, blend with previous frame |
+| `util.glsl`       | Utility  | `saturate()`, `toneMap()` helper functions              |
 
 ### Pipeline Registration (ALRPipelines)
 
 4 pipelines based on the `POST_PASS` fragment:
 
-| Pipeline       | Purpose                  |
-|----------------|--------------------------|
-| `BLUR`         | Gaussian blur            |
-| `APPLY_BLOOM`  | Bloom blend to framebuffer |
-| `DOWNSAMPLE`   | Downsampling             |
-| `UPSAMPLE`     | Upsampling               |
+| Pipeline      | Purpose                    |
+|---------------|----------------------------|
+| `BLUR`        | Gaussian blur              |
+| `APPLY_BLOOM` | Bloom blend to framebuffer |
+| `DOWNSAMPLE`  | Downsampling               |
+| `UPSAMPLE`    | Upsampling                 |
 
 The base fragment `POST_PASS` uses `blit.vsh`, binds `Transforms` UBO and `DiffuseSampler`, and disables face culling.
 
@@ -63,7 +64,8 @@ The base fragment `POST_PASS` uses `blit.vsh`, binds `Transforms` UBO and `Diffu
 ### GuiRendererMixin
 
 - Tracks the `GuiElementRenderState` corresponding to each GUI draw element
-- When an element implements `LibGuiElementRenderState`, binds the UBO slices returned by its `bufferSlices()` to the RenderPass before drawing
+- When an element implements `LibGuiElementRenderState`, binds the UBO slices returned by its `bufferSlices()` to the
+  RenderPass before drawing
 
 ## State Interfaces
 

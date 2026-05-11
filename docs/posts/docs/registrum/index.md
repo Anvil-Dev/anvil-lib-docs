@@ -123,15 +123,15 @@ BlockBuilder<...> parent = builder.blockEntity(MyBE::new)
 
 ## 版本兼容性
 
-| 特性 | 1.21.1 | 1.21.2–1.21.11 | 26.1 | 说明 |
-|------|--------|----------------|------|------|
-| 核心 Builder API | ✅ | ✅ | ✅ | Block/Item/Entity/BlockEntity/Menu/Fluid 构建器通用 |
-| `GeneratorType` 接口 | — | ✅ | ✅ | 1.21.2 引入 |
-| `providers/generators/` 子包 | — | — (1.21.4+) | ✅ | 1.21.4 引入 |
-| 旧版 `RegistrumBlockstateProvider` | ✅ | ✅ (至 1.21.3) | — | 1.21.4 起替换为 `RegistrumBlockModelGenerator` |
-| nullness 包归属 | `util.nullness` | `registrum.util.nullness` | `util.nullness` | 随 `module.util` 存在状态变化 |
-| `NonNullSupplier` 导入路径 | `v2.util.nullness` | `v2.registrum.util.nullness` | `v2.util.nullness` | |
-| BIOME 构建器 | <Badge type="warning" text="commented" /> | <Badge type="warning" text="commented" /> | <Badge type="warning" text="commented" /> | 三版本均被注释，未启用 |
+| 特性                               | 1.21.1                                    | 1.21.2–1.21.11                            | 26.1                                      | 说明                                             |
+|----------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|------------------------------------------------|
+| 核心 Builder API                   | ✅                                         | ✅                                         | ✅                                         | Block/Item/Entity/BlockEntity/Menu/Fluid 构建器通用 |
+| `GeneratorType` 接口               | —                                         | ✅                                         | ✅                                         | 1.21.2 引入                                      |
+| `providers/generators/` 子包       | —                                         | — (1.21.4+)                               | ✅                                         | 1.21.4 引入                                      |
+| 旧版 `RegistrumBlockstateProvider` | ✅                                         | ✅ (至 1.21.3)                              | —                                         | 1.21.4 起替换为 `RegistrumBlockModelGenerator`     |
+| nullness 包归属                     | `util.nullness`                           | `registrum.util.nullness`                 | `util.nullness`                           | 随 `module.util` 存在状态变化                         |
+| `NonNullSupplier` 导入路径           | `v2.util.nullness`                        | `v2.registrum.util.nullness`              | `v2.util.nullness`                        |                                                |
+| BIOME 构建器                        | <Badge type="warning" text="commented" /> | <Badge type="warning" text="commented" /> | <Badge type="warning" text="commented" /> | 三版本均被注释，未启用                                    |
 
 ## 注意事项
 

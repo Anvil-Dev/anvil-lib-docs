@@ -290,16 +290,16 @@ builder.copyHandler(myCloner);        // 自定义复制处理器
 AttachmentEntry<E> entry = builder.register();
 ```
 
-| 方法 | 说明 |
-|------|------|
-| `serialize(IAttachmentSerializer<E>)` | 设置序列化器 |
-| `serialize(MapCodec<E>)` | 设置 MapCodec 序列化器 |
-| `serialize(MapCodec<E>, Predicate)` | 设置 MapCodec 序列化器及谓词 |
-| `copyOnDeath()` | 死亡时复制数据 |
-| `copyHandler(IAttachmentCopyHandler<E>)` | 自定义复制处理器 |
-| `sync(AttachmentSyncHandler<E>)` | 设置同步处理器 |
-| `sync(StreamCodec<..., E>)` | 设置 StreamCodec 同步 |
-| `register()` | 返回 `AttachmentEntry<E>` |
+| 方法                                       | 说明                      |
+|------------------------------------------|-------------------------|
+| `serialize(IAttachmentSerializer<E>)`    | 设置序列化器                  |
+| `serialize(MapCodec<E>)`                 | 设置 MapCodec 序列化器        |
+| `serialize(MapCodec<E>, Predicate)`      | 设置 MapCodec 序列化器及谓词     |
+| `copyOnDeath()`                          | 死亡时复制数据                 |
+| `copyHandler(IAttachmentCopyHandler<E>)` | 自定义复制处理器                |
+| `sync(AttachmentSyncHandler<E>)`         | 设置同步处理器                 |
+| `sync(StreamCodec<..., E>)`              | 设置 StreamCodec 同步       |
+| `register()`                             | 返回 `AttachmentEntry<E>` |
 
 ### DataComponentBuilder
 
@@ -326,17 +326,18 @@ builder.ignoreSwapAnimation();                     // 忽略交换动画
 DataComponentEntry<E> entry = builder.register();
 ```
 
-| 方法 | 说明 |
-|------|------|
-| `persistent(Codec<E>)` | 设置持久化 Codec |
-| `networkSynchronized(StreamCodec<..., E>)` | 设置网络同步 Codec |
-| `cacheEncoding()` | 缓存编码结果 |
-| `ignoreSwapAnimation()` | 忽略交换动画 |
-| `register()` | 返回 `DataComponentEntry<E>` |
+| 方法                                         | 说明                         |
+|--------------------------------------------|----------------------------|
+| `persistent(Codec<E>)`                     | 设置持久化 Codec                |
+| `networkSynchronized(StreamCodec<..., E>)` | 设置网络同步 Codec               |
+| `cacheEncoding()`                          | 缓存编码结果                     |
+| `ignoreSwapAnimation()`                    | 忽略交换动画                     |
+| `register()`                               | 返回 `DataComponentEntry<E>` |
 
 ### CreativeTabBuilder
 
-构建 `CreativeModeTab` 注册条目，注册到 `Registries.CREATIVE_MODE_TAB`。独立于 `AbstractRegistrum` 的 `defaultCreativeTab()`，是构建单独创造标签页的专用 Builder。
+构建 `CreativeModeTab` 注册条目，注册到 `Registries.CREATIVE_MODE_TAB`。独立于 `AbstractRegistrum` 的
+`defaultCreativeTab()`，是构建单独创造标签页的专用 Builder。
 
 #### 创建
 
@@ -372,26 +373,27 @@ builder.withLabelColor(0xFF0000);                    // 标签颜色
 RegistryEntry<CreativeModeTab, CreativeModeTab> entry = builder.register();
 ```
 
-| 方法 | 说明 |
-|------|------|
-| `defaultTitle()` | 使用自动翻译键标题 |
-| `title(Component)` | 设置标题 |
-| `icon(Supplier<ItemStack>)` | 设置图标 |
-| `displayItems(DisplayItemsGenerator)` | 设置物品生成器 |
-| `displayItems(ItemLike...)` | 直接列出物品 |
-| `hideTitle()` | 隐藏标题 |
-| `noScrollBar()` | 禁用滚动条 |
-| `withSearchBar()` | 启用搜索栏 |
-| `alignedRight()` | 右对齐 |
-| `withTabsBefore(...)` | 在指定标签页之前 |
-| `withTabsAfter(...)` | 在指定标签页之后 |
-| `backgroundTexture(Identifier)` | 设置背景纹理 |
-| `withLabelColor(int)` | 设置标签颜色 |
-| `register()` | 返回 `RegistryEntry<CreativeModeTab, CreativeModeTab>` |
+| 方法                                    | 说明                                                   |
+|---------------------------------------|------------------------------------------------------|
+| `defaultTitle()`                      | 使用自动翻译键标题                                            |
+| `title(Component)`                    | 设置标题                                                 |
+| `icon(Supplier<ItemStack>)`           | 设置图标                                                 |
+| `displayItems(DisplayItemsGenerator)` | 设置物品生成器                                              |
+| `displayItems(ItemLike...)`           | 直接列出物品                                               |
+| `hideTitle()`                         | 隐藏标题                                                 |
+| `noScrollBar()`                       | 禁用滚动条                                                |
+| `withSearchBar()`                     | 启用搜索栏                                                |
+| `alignedRight()`                      | 右对齐                                                  |
+| `withTabsBefore(...)`                 | 在指定标签页之前                                             |
+| `withTabsAfter(...)`                  | 在指定标签页之后                                             |
+| `backgroundTexture(Identifier)`       | 设置背景纹理                                               |
+| `withLabelColor(int)`                 | 设置标签颜色                                               |
+| `register()`                          | 返回 `RegistryEntry<CreativeModeTab, CreativeModeTab>` |
 
 ### ConditionBuilder
 
-构建 `MapCodec<T extends ICondition>` 注册条目，注册到 `NeoForgeRegistries.Keys.CONDITION_CODECS`。注册条件编解码器，允许数据驱动条件系统识别自定义条件类型。
+构建 `MapCodec<T extends ICondition>` 注册条目，注册到 `NeoForgeRegistries.Keys.CONDITION_CODECS`
+。注册条件编解码器，允许数据驱动条件系统识别自定义条件类型。
 
 #### 创建
 
@@ -405,13 +407,14 @@ REGISTRUM.condition("my_condition", MyCondition.CODEC);
 ConditionEntry<MyCondition> entry = builder.register();
 ```
 
-| 方法 | 说明 |
-|------|------|
+| 方法           | 说明                     |
+|--------------|------------------------|
 | `register()` | 返回 `ConditionEntry<T>` |
 
 ### BiomeModifierBuilder
 
-构建 `MapCodec<T extends BiomeModifier>` 注册条目，注册到 `NeoForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS`。注册生物群系修改器序列化器。
+构建 `MapCodec<T extends BiomeModifier>` 注册条目，注册到 `NeoForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS`
+。注册生物群系修改器序列化器。
 
 #### 创建
 
@@ -425,13 +428,14 @@ REGISTRUM.biomeModifier("my_biome_modifier", MyBiomeModifier.CODEC);
 BiomeModifierEntry<MyBiomeModifier> entry = builder.register();
 ```
 
-| 方法 | 说明 |
-|------|------|
+| 方法           | 说明                         |
+|--------------|----------------------------|
 | `register()` | 返回 `BiomeModifierEntry<T>` |
 
 ### GlobalLootModifierBuilder
 
-构建 `MapCodec<T extends IGlobalLootModifier>` 注册条目，注册到 `NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS`。注册全局战利品修改器序列化器。
+构建 `MapCodec<T extends IGlobalLootModifier>` 注册条目，注册到
+`NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS`。注册全局战利品修改器序列化器。
 
 #### 创建
 
@@ -445,13 +449,14 @@ REGISTRUM.glm("my_loot_modifier", MyLootModifier.CODEC);
 GlobalLootModifierEntry<MyLootModifier> entry = builder.register();
 ```
 
-| 方法 | 说明 |
-|------|------|
+| 方法           | 说明                              |
+|--------------|---------------------------------|
 | `register()` | 返回 `GlobalLootModifierEntry<T>` |
 
 ### StructureModifierBuilder
 
-构建 `MapCodec<T extends StructureModifier>` 注册条目，注册到 `NeoForgeRegistries.Keys.STRUCTURE_MODIFIER_SERIALIZERS`。注册结构修改器序列化器。
+构建 `MapCodec<T extends StructureModifier>` 注册条目，注册到 `NeoForgeRegistries.Keys.STRUCTURE_MODIFIER_SERIALIZERS`
+。注册结构修改器序列化器。
 
 #### 创建
 
@@ -465,6 +470,6 @@ REGISTRUM.structureModifier("my_structure_modifier", MyStructureModifier.CODEC);
 StructureModifierEntry<MyStructureModifier> entry = builder.register();
 ```
 
-| 方法 | 说明 |
-|------|------|
+| 方法           | 说明                             |
+|--------------|--------------------------------|
 | `register()` | 返回 `StructureModifierEntry<T>` |

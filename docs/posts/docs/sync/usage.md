@@ -10,11 +10,11 @@ next: false
 
 AnvilLib Sync 框架内置了 3 种常见的同步目标。如果你的 `@Sync` 字段所属对象是以下之一，**无需额外注册**：
 
-| 目标类型 | 标识 | 查找方式 | 维度分发 |
-|---------|------|---------|---------|
-| 静态字段 (`Class<?>`) | 类全限定名 `String` | `Class.forName(className)` | 否（全局广播） |
-| `Entity` 实例 | `UUID` | 根据 flow 在对应端的 Level 中查找 | 是（仅追踪实体的玩家） |
-| `BlockEntity` 实例 | `BlockPos` | 根据 flow 在对应端的 Level 中查找 | 是（仅追踪该 chunk 的玩家） |
+| 目标类型              | 标识             | 查找方式                       | 维度分发              |
+|-------------------|----------------|----------------------------|-------------------|
+| 静态字段 (`Class<?>`) | 类全限定名 `String` | `Class.forName(className)` | 否（全局广播）           |
+| `Entity` 实例       | `UUID`         | 根据 flow 在对应端的 Level 中查找    | 是（仅追踪实体的玩家）       |
+| `BlockEntity` 实例  | `BlockPos`     | 根据 flow 在对应端的 Level 中查找    | 是（仅追踪该 chunk 的玩家） |
 
 > 这些内置类型的 `SyncRegisterEntry` 在 `AnvilLibSyncEntries` 中已预注册。
 
@@ -66,7 +66,8 @@ int current = blockEntity.counter.getValue();
 
 ## 自定义同步目标
 
-如果你的 `SyncProxy` 字段所属的对象**不是** `Class`、`Entity` 或 `BlockEntity`（例如自定义的 Manager 类、Capability 对象等），需要通过 NeoForge 的注册机制向 `SYNC_ENTRY_REGISTRY` 注册一个自定义的 `SyncRegisterEntry`。
+如果你的 `SyncProxy` 字段所属的对象**不是** `Class`、`Entity` 或 `BlockEntity`（例如自定义的 Manager 类、Capability
+对象等），需要通过 NeoForge 的注册机制向 `SYNC_ENTRY_REGISTRY` 注册一个自定义的 `SyncRegisterEntry`。
 
 ### 注册流程
 
@@ -101,12 +102,12 @@ public MyMod(IEventBus modBus) {
 
 `SyncRegisterEntry.create()` 的每个参数都有明确意义：
 
-| 参数 | 含义 | Team 示例中的值 |
-|------|------|---------------|
-| `type` | 承载字段的对象类型 | `Team.class` |
-| `idCodec` | 标识如何在网络上编解码 | `ByteBufCodecs.STRING_UTF8` |
-| `idGetter` | 如何从对象提取唯一标识 | `Team::getId` |
-| `finder` | 收到同步包后，如何根据标识 + 上下文找到对象 | 通过 Scoreboard 按 id 查找 Team |
+| 参数         | 含义                      | Team 示例中的值                  |
+|------------|-------------------------|-----------------------------|
+| `type`     | 承载字段的对象类型               | `Team.class`                |
+| `idCodec`  | 标识如何在网络上编解码             | `ByteBufCodecs.STRING_UTF8` |
+| `idGetter` | 如何从对象提取唯一标识             | `Team::getId`               |
+| `finder`   | 收到同步包后，如何根据标识 + 上下文找到对象 | 通过 Scoreboard 按 id 查找 Team  |
 
 ### 维度感知的自定义目标
 
@@ -131,9 +132,9 @@ SYNC_ENTRIES.register("my_dimension_object", () ->
 1. `SyncTargetIndex` 扫描所有模组的 `@Sync` 注解，建立目标类索引
 2. `SyncClassProcessorProvider` 对索引中的类触发注入
 3. `SyncBytecodeInjector` 使用 ASM 在构造函数/静态初始化器末尾注入：
-   - `proxy.setParent(this / Owner.class)` — 让代理知道所属对象
-   - `proxy.setFieldName("fieldName")` — 让代理知道字段名（网络同步时用于反射定位）
-   - `proxy.setDirection(SyncDirection.XXX)` — 应用 `@Sync` 注解中定义的方向
+    - `proxy.setParent(this / Owner.class)` — 让代理知道所属对象
+    - `proxy.setFieldName("fieldName")` — 让代理知道字段名（网络同步时用于反射定位）
+    - `proxy.setDirection(SyncDirection.XXX)` — 应用 `@Sync` 注解中定义的方向
 
 用户无需做任何额外操作，只需声明字段为 `public final SyncProxy<T>` 并加 `@Sync` 注解即可。
 

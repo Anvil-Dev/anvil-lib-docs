@@ -6,7 +6,8 @@ next: false
 
 # Packet Interfaces
 
-The module defines a sealed hierarchy: all network packets must implement `IPacket` and can only be extended through the following sub-interfaces.
+The module defines a sealed hierarchy: all network packets must implement `IPacket` and can only be extended through the
+following sub-interfaces.
 
 ## Interface Hierarchy
 
@@ -145,9 +146,9 @@ public record BiDiPacket(int id) implements ISensitiveBiPacket {
 
 ## Interface Comparison
 
-| Interface               | Direction | Methods to Implement                     | Use Case                                      |
-|-------------------------|-----------|------------------------------------------|-----------------------------------------------|
-| `IClientboundPacket`    | S->C      | `handleOnClient`                         | Server notifying client                       |
-| `IServerboundPacket`    | C->S      | `handleOnServer`                         | Client requesting server                      |
-| `IInsensitiveBiPacket`  | Bidirectional | `handleOnBothSide`                   | Synchronization with identical logic on both sides |
-| `ISensitiveBiPacket`    | Bidirectional | `handleOnClient` + `handleOnServer`  | Synchronization with different logic per side  |
+| Interface              | Direction     | Methods to Implement                | Use Case                                           |
+|------------------------|---------------|-------------------------------------|----------------------------------------------------|
+| `IClientboundPacket`   | S->C          | `handleOnClient`                    | Server notifying client                            |
+| `IServerboundPacket`   | C->S          | `handleOnServer`                    | Client requesting server                           |
+| `IInsensitiveBiPacket` | Bidirectional | `handleOnBothSide`                  | Synchronization with identical logic on both sides |
+| `ISensitiveBiPacket`   | Bidirectional | `handleOnClient` + `handleOnServer` | Synchronization with different logic per side      |

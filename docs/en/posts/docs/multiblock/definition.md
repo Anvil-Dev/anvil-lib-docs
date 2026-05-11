@@ -8,7 +8,8 @@ next: false
 
 ## MultiblockDefinition
 
-An immutable record describing the multiblock structure, with the core being `Map<Vec3i, BlockStatePredicate>`, mapping relative positions to block predicates.
+An immutable record describing the multiblock structure, with the core being `Map<Vec3i, BlockStatePredicate>`, mapping
+relative positions to block predicates.
 
 ```java
 public record MultiblockDefinition(
@@ -22,10 +23,10 @@ public record MultiblockDefinition(
 
 ### Core Methods
 
-| Method                                                               | Description                                                                    |
-|----------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| `toGlobal(BlockPos centerPos)`                                       | Converts relative positions to absolute positions with `centerPos` as the origin |
-| `isController(LevelAccessor, BlockState, @Nullable BlockEntity)`     | Tests whether the predicate at `ZERO` matches (determines if a location is a controller) |
+| Method                                                           | Description                                                                              |
+|------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| `toGlobal(BlockPos centerPos)`                                   | Converts relative positions to absolute positions with `centerPos` as the origin         |
+| `isController(LevelAccessor, BlockState, @Nullable BlockEntity)` | Tests whether the predicate at `ZERO` matches (determines if a location is a controller) |
 
 ### Serialization
 
@@ -49,17 +50,17 @@ MultiblockDefinition definition = MultiblockDefinition.builder()
 
 ### Builder Methods
 
-| Method                                           | Description                                  |
-|-------------------------------------------------|----------------------------------------------|
-| `add(Vec3i, BlockStatePredicate.Builder)`       | Add a predicate at the position              |
-| `add(Vec3i, Block)`                             | Add a block match at the position            |
-| `add(Vec3i, CompoundTag)`                       | Add an NBT match at the position             |
-| `add(Vec3i, Block, CompoundTag)`                | Add a block+NBT match at the position        |
-| `addController(BlockStatePredicate.Builder)`    | Set the predicate at the controller position (`Vec3i.ZERO`) |
-| `addController(Block)`                          | Set the controller block                     |
-| `addController(CompoundTag)`                    | Set the controller NBT                       |
-| `addController(Block, CompoundTag)`             | Set the controller block+NBT                 |
-| `build()`                                       | Build an immutable `MultiblockDefinition`    |
+| Method                                       | Description                                                 |
+|----------------------------------------------|-------------------------------------------------------------|
+| `add(Vec3i, BlockStatePredicate.Builder)`    | Add a predicate at the position                             |
+| `add(Vec3i, Block)`                          | Add a block match at the position                           |
+| `add(Vec3i, CompoundTag)`                    | Add an NBT match at the position                            |
+| `add(Vec3i, Block, CompoundTag)`             | Add a block+NBT match at the position                       |
+| `addController(BlockStatePredicate.Builder)` | Set the predicate at the controller position (`Vec3i.ZERO`) |
+| `addController(Block)`                       | Set the controller block                                    |
+| `addController(CompoundTag)`                 | Set the controller NBT                                      |
+| `addController(Block, CompoundTag)`          | Set the controller block+NBT                                |
+| `build()`                                    | Build an immutable `MultiblockDefinition`                   |
 
 ## SeriaBuilder (Grid-based)
 
@@ -103,15 +104,15 @@ MultiblockDefinition definition = MultiblockDefinition.seriaBuilder()
 
 ### SeriaBuilder Methods
 
-| Method                                           | Description                                      |
-|-------------------------------------------------|--------------------------------------------------|
-| `layer(String... layer)`                        | Add a layer (each array entry is a Z row, content is X character sequence) |
-| `map(char key, BlockStatePredicate.Builder)`    | Map a character to a predicate                   |
-| `map(char key, Block)`                          | Map a character to a block                       |
-| `map(char key, CompoundTag)`                    | Map a character to NBT                           |
-| `map(char key, Block, CompoundTag)`             | Map a character to a block+NBT                   |
-| `mapController(...)`                            | Map the controller marker ('0') to the specified predicate/block |
-| `build()`                                       | Build the `MultiblockDefinition`                |
+| Method                                       | Description                                                                |
+|----------------------------------------------|----------------------------------------------------------------------------|
+| `layer(String... layer)`                     | Add a layer (each array entry is a Z row, content is X character sequence) |
+| `map(char key, BlockStatePredicate.Builder)` | Map a character to a predicate                                             |
+| `map(char key, Block)`                       | Map a character to a block                                                 |
+| `map(char key, CompoundTag)`                 | Map a character to NBT                                                     |
+| `map(char key, Block, CompoundTag)`          | Map a character to a block+NBT                                             |
+| `mapController(...)`                         | Map the controller marker ('0') to the specified predicate/block           |
+| `build()`                                    | Build the `MultiblockDefinition`                                           |
 
 ## DefinitionSerialization (Internal Format)
 
@@ -124,9 +125,11 @@ record DefinitionSerialization(
 )
 ```
 
-**`toDefinition()`**: Finds `'0'` as the origin, converts all non-space characters into predicate entries at relative positions.
+**`toDefinition()`**: Finds `'0'` as the origin, converts all non-space characters into predicate entries at relative
+positions.
 
-**`fromDefinition(definition)`**: Reverse conversion: reconstructs a grid from a free-form definition, automatically assigning character keys (`A-Z`, `a-z`, `0-9`, special characters... up to CJK characters).
+**`fromDefinition(definition)`**: Reverse conversion: reconstructs a grid from a free-form definition, automatically
+assigning character keys (`A-Z`, `a-z`, `0-9`, special characters... up to CJK characters).
 
 **Key assignment order**: `A-Z` → `a-z` → `1-9` → special characters → CJK characters starting from `一`
 
@@ -159,4 +162,5 @@ ResourceKey<Registry<MultiblockDefinition>> key = LibRegistries.DEFINITIONS_KEY;
 // → anvillib:definitions
 ```
 
-Registered as a synced datapack registry via `DataPackRegistryEvent.NewRegistry`, using `CODEC.codec()` as both save and network codec.
+Registered as a synced datapack registry via `DataPackRegistryEvent.NewRegistry`, using `CODEC.codec()` as both save and
+network codec.

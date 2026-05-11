@@ -12,16 +12,16 @@ The core recipe class, implementing `Recipe<InWorldRecipeContext>` and `IPriorit
 
 ### Constructor Parameters
 
-| Parameter      | Type                        | Description                                                                 |
-|----------------|-----------------------------|-----------------------------------------------------------------------------|
-| icon           | `ItemStackTemplate`         | Recipe icon (displayed in JEI / recipe book)                                |
-| trigger        | `IRecipeTrigger`            | Trigger condition                                                            |
+| Parameter      | Type                        | Description                                                                        |
+|----------------|-----------------------------|------------------------------------------------------------------------------------|
+| icon           | `ItemStackTemplate`         | Recipe icon (displayed in JEI / recipe book)                                       |
+| trigger        | `IRecipeTrigger`            | Trigger condition                                                                  |
 | conflicting    | `List<IRecipePredicate<?>>` | Conflicting predicates (consuming match; prevents other recipes after consumption) |
-| nonConflicting | `List<IRecipePredicate<?>>` | Non-conflicting predicates (check only, no consumption)                     |
-| outcomes       | `List<IRecipeOutcome<?>>`   | Outcome list                                                                 |
-| priority       | `int`                       | Priority (lower number = higher priority), can be auto-calculated           |
-| compatible     | `boolean`                   | Compatible mode (`true` allows multiple recipes to share inputs)            |
-| maxEfficiency  | `int`                       | Maximum executions per trigger; default `Integer.MAX_VALUE`                 |
+| nonConflicting | `List<IRecipePredicate<?>>` | Non-conflicting predicates (check only, no consumption)                            |
+| outcomes       | `List<IRecipeOutcome<?>>`   | Outcome list                                                                       |
+| priority       | `int`                       | Priority (lower number = higher priority), can be auto-calculated                  |
+| compatible     | `boolean`                   | Compatible mode (`true` allows multiple recipes to share inputs)                   |
+| maxEfficiency  | `int`                       | Maximum executions per trigger; default `Integer.MAX_VALUE`                        |
 
 ### Constructor Overloads
 
@@ -39,16 +39,17 @@ new InWorldRecipe(icon, trigger, conflicting, nonConflicting, outcomes, compatib
 
 ### Core Methods
 
-| Method                                 | Description                                                                                                                                    |
-|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| Method                                 | Description                                                                                                                                                                                                           |
+|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `matches(InWorldRecipeContext, Level)` | First checks non-conflicting predicates (`ShapelessMatcher.compatible`), then conflicting predicates (compatible mode uses `compatible`, non-compatible uses `incompatible`). On failure, clears the predicate stack. |
-| `assemble(InWorldRecipeContext)`       | Pops and consumes conflicting predicates in order, executes all outcomes by probability, returns the icon `ItemStack`                          |
-| `getSerializer()`                      | Returns `LibRecipeTypes.IN_WORLD_RECIPE_SERIALIZER`                                                                                            |
-| `getType()`                            | Returns `LibRecipeTypes.IN_WORLD_RECIPE`                                                                                                       |
+| `assemble(InWorldRecipeContext)`       | Pops and consumes conflicting predicates in order, executes all outcomes by probability, returns the icon `ItemStack`                                                                                                 |
+| `getSerializer()`                      | Returns `LibRecipeTypes.IN_WORLD_RECIPE_SERIALIZER`                                                                                                                                                                   |
+| `getType()`                            | Returns `LibRecipeTypes.IN_WORLD_RECIPE`                                                                                                                                                                              |
 
 ### Automatic Priority Calculation
 
-`calcPriority(trigger, conflicting, nonConflicting, outcomes)` sums the priority values of the trigger, all predicates, and all outcomes.
+`calcPriority(trigger, conflicting, nonConflicting, outcomes)` sums the priority values of the trigger, all predicates,
+and all outcomes.
 
 ### Serialization
 
@@ -56,16 +57,16 @@ new InWorldRecipe(icon, trigger, conflicting, nonConflicting, outcomes, compatib
 
 **JSON Fields:**
 
-| Field             | Type                 | Default           | Description          |
-|-------------------|----------------------|-------------------|----------------------|
-| `icon`            | `ItemStackTemplate`  | `minecraft:anvil` | Recipe icon          |
-| `trigger`         | `Identifier`         | --                | Trigger registry ID  |
-| `conflicting`     | `IRecipePredicate[]` | --                | Conflicting predicate list |
+| Field             | Type                 | Default           | Description                    |
+|-------------------|----------------------|-------------------|--------------------------------|
+| `icon`            | `ItemStackTemplate`  | `minecraft:anvil` | Recipe icon                    |
+| `trigger`         | `Identifier`         | --                | Trigger registry ID            |
+| `conflicting`     | `IRecipePredicate[]` | --                | Conflicting predicate list     |
 | `non_conflicting` | `IRecipePredicate[]` | --                | Non-conflicting predicate list |
-| `outcomes`        | `IRecipeOutcome[]`   | --                | Outcome list         |
-| `priority`        | `int`                | `1`               | Priority             |
-| `compatible`      | `bool`               | `true`            | Compatible mode      |
-| `max_efficiency`  | `int`                | `2147483647`      | Max efficiency       |
+| `outcomes`        | `IRecipeOutcome[]`   | --                | Outcome list                   |
+| `priority`        | `int`                | `1`               | Priority                       |
+| `compatible`      | `bool`               | `true`            | Compatible mode                |
+| `max_efficiency`  | `int`                | `2147483647`      | Max efficiency                 |
 
 ### Getters
 

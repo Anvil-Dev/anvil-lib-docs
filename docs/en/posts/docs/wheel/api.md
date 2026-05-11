@@ -6,7 +6,8 @@ next: false
 
 # API Model Layer
 
-All classes in the API layer reside in `dev.anvilcraft.lib.v2.wheel.api`, with no dependency on Minecraft client classes, and can be safely used on the logical server side.
+All classes in the API layer reside in `dev.anvilcraft.lib.v2.wheel.api`, with no dependency on Minecraft client
+classes, and can be safely used on the logical server side.
 
 ## WheelEntry
 
@@ -46,12 +47,12 @@ public interface WheelEntryAction {
 
 ### WheelActionContext
 
-| Field        | Description                  |
-|-------------|------------------------------|
-| `pageIndex` | Current page index           |
-| `slotIndex` | Current slot index           |
-| `entryId`   | Entry unique identifier      |
-| `openMode`  | Open mode (TAP / HOLD)       |
+| Field       | Description             |
+|-------------|-------------------------|
+| `pageIndex` | Current page index      |
+| `slotIndex` | Current slot index      |
+| `entryId`   | Entry unique identifier |
+| `openMode`  | Open mode (TAP / HOLD)  |
 
 ## WheelEntryRenderer
 
@@ -78,9 +79,9 @@ WheelMenuModel model = new WheelMenuModel(
 );
 ```
 
-| Method                | Description                            |
-|-----------------------|----------------------------------------|
-| `page(int index)`     | Generates the `WheelPageModel` for the specified page |
+| Method            | Description                                           |
+|-------------------|-------------------------------------------------------|
+| `page(int index)` | Generates the `WheelPageModel` for the specified page |
 
 ## WheelPageModel
 
@@ -107,17 +108,17 @@ int totalPages = WheelPagination.pageCount(totalEntries, slotsPerPage);
 
 ### WheelOpenMode
 
-| Value  | Description                                                       |
-|--------|-------------------------------------------------------------------|
+| Value  | Description                                                               |
+|--------|---------------------------------------------------------------------------|
 | `TAP`  | Tap mode: click triggers the currently selected entry, submenus navigable |
-| `HOLD` | Hold mode: trigger action item on release, submenus not triggerable |
+| `HOLD` | Hold mode: trigger action item on release, submenus not triggerable       |
 
 ### WheelSelectionEffect <Badge type="tip" text=">=26.1" />
 
-| Value              | Description                         |
-|--------------------|-------------------------------------|
-| `DOT`              | Dot follows the cursor              |
-| `ANNULAR_SECTOR`   | Sector highlight fills the entire sector |
+| Value            | Description                              |
+|------------------|------------------------------------------|
+| `DOT`            | Dot follows the cursor                   |
+| `ANNULAR_SECTOR` | Sector highlight fills the entire sector |
 
 ## WheelMenuBuilder
 
@@ -143,15 +144,15 @@ WheelMenuModel model = WheelMenuBuilder.create()
     .build();
 ```
 
-| Method                                                                   | Description                                    |
-|-------------------------------------------------------------------------|------------------------------------------------|
-| `slotsPerPage(int)`                                                     | Slots per page                                 |
-| `deadZone(float)`                                                       | Dead zone radius (pixels)                      |
-| `selectionEffect(WheelSelectionEffect)`                                 | Selection effect type                          |
-| `selectionColor(int)`                                                   | Selection effect color (ARGB)                  |
-| `action(String id, Component label, WheelEntryAction)`                  | Add an action entry                            |
-| `submenu(String id, Component label, Consumer<WheelSubmenuBuilder>)`    | Add a submenu                                  |
-| `build()`                                                               | Build the `WheelMenuModel`                     |
+| Method                                                               | Description                   |
+|----------------------------------------------------------------------|-------------------------------|
+| `slotsPerPage(int)`                                                  | Slots per page                |
+| `deadZone(float)`                                                    | Dead zone radius (pixels)     |
+| `selectionEffect(WheelSelectionEffect)`                              | Selection effect type         |
+| `selectionColor(int)`                                                | Selection effect color (ARGB) |
+| `action(String id, Component label, WheelEntryAction)`               | Add an action entry           |
+| `submenu(String id, Component label, Consumer<WheelSubmenuBuilder>)` | Add a submenu                 |
+| `build()`                                                            | Build the `WheelMenuModel`    |
 
 ### Notes
 

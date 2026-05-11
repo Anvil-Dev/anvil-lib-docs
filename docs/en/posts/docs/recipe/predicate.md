@@ -8,7 +8,8 @@ next: false
 
 ## IRecipePredicate
 
-The predicate interface, extending `Predicate<InWorldRecipeContext>`, `Consumer<InWorldRecipeContext>`, and `IPrioritized`.
+The predicate interface, extending `Predicate<InWorldRecipeContext>`, `Consumer<InWorldRecipeContext>`, and
+`IPrioritized`.
 
 ```java
 public interface IRecipePredicate<P extends IRecipePredicate<P>>
@@ -19,14 +20,14 @@ public interface IRecipePredicate<P extends IRecipePredicate<P>>
 
 ### Core Methods
 
-| Method                              | Description                                                                                |
-|-------------------------------------|--------------------------------------------------------------------------------------------|
-| `test(InWorldRecipeContext)`        | Determines whether the context matches the condition                                       |
-| `accept(InWorldRecipeContext)`      | Consumes the resource after a successful match (default no-op; only conflicting predicates need to implement) |
-| `snapshot(InWorldRecipeContext)`    | Creates a snapshot of the context (for rollback)                                           |
-| `rollback(InWorldRecipeContext)`    | Rolls back to the snapshot state                                                           |
-| `clearStack(InWorldRecipeContext)`  | Clears the predicate operation stack                                                      |
-| `getType()`                         | Returns the `Type<P>` descriptor for this predicate                                        |
+| Method                             | Description                                                                                                   |
+|------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| `test(InWorldRecipeContext)`       | Determines whether the context matches the condition                                                          |
+| `accept(InWorldRecipeContext)`     | Consumes the resource after a successful match (default no-op; only conflicting predicates need to implement) |
+| `snapshot(InWorldRecipeContext)`   | Creates a snapshot of the context (for rollback)                                                              |
+| `rollback(InWorldRecipeContext)`   | Rolls back to the snapshot state                                                                              |
+| `clearStack(InWorldRecipeContext)` | Clears the predicate operation stack                                                                          |
+| `getType()`                        | Returns the `Type<P>` descriptor for this predicate                                                           |
 
 ### Type Descriptor
 
@@ -41,7 +42,8 @@ interface Type<P extends IRecipePredicate<P>> {
 }
 ```
 
-Each predicate type is registered in the `anvillib:predicate` registry. Predicates where `conflict()` returns `true` are automatically classified into the `conflicting` list.
+Each predicate type is registered in the `anvillib:predicate` registry. Predicates where `conflict()` returns `true` are
+automatically classified into the `conflicting` list.
 
 ## Built-in Predicates
 
@@ -59,20 +61,21 @@ HasItem.builder()
     .build();
 ```
 
-| Builder Method                    | Description                                       |
-|-----------------------------------|---------------------------------------------------|
-| `of(ItemLike...)`                 | Items to match                                    |
-| `of(TagKey<Item>)`                | Item tag to match                                 |
-| `offset(Vec3)` / `offset(x,y,z)` | Relative offset position                          |
-| `count(int min, int max)`         | Count range                                       |
-| `consumption(ConsumptionType)`    | Consumption mode: `CONSUME` / `OPTIONAL`          |
-| `strict(boolean)`                 | Strict mode (requires exact component match)      |
+| Builder Method                   | Description                                  |
+|----------------------------------|----------------------------------------------|
+| `of(ItemLike...)`                | Items to match                               |
+| `of(TagKey<Item>)`               | Item tag to match                            |
+| `offset(Vec3)` / `offset(x,y,z)` | Relative offset position                     |
+| `count(int min, int max)`        | Count range                                  |
+| `consumption(ConsumptionType)`   | Consumption mode: `CONSUME` / `OPTIONAL`     |
+| `strict(boolean)`                | Strict mode (requires exact component match) |
 
 **Conflicting** (`Type.conflict() = true`): consumes the matching item entity.
 
 ### HasItemIngredient
 
-Detects whether item entities satisfying ingredient conditions exist at a given position. Similar to `HasItem` but semantically closer to "ingredient consumption"; the count indicates "at least required."
+Detects whether item entities satisfying ingredient conditions exist at a given position. Similar to `HasItem` but
+semantically closer to "ingredient consumption"; the count indicates "at least required."
 
 ```java
 HasItemIngredient.builder()
@@ -98,21 +101,22 @@ HasBlock.builder()
     .build();
 ```
 
-| Builder Method                    | Description                              |
-|-----------------------------------|------------------------------------------|
-| `of(Block...)`                    | Block list to match                      |
-| `of(Collection<Block>)`           | Block collection to match                |
-| `of(TagKey<Block>)`               | Block tag to match                       |
-| `offset(Vec3)` / `offset(x,y,z)` | Relative offset                          |
-| `with(Property<C>, C)`            | Exact BlockState property match          |
-| `with(String, String)`            | String-form property match               |
-| `nbt(CompoundTag)`                | NBT condition                            |
+| Builder Method                   | Description                     |
+|----------------------------------|---------------------------------|
+| `of(Block...)`                   | Block list to match             |
+| `of(Collection<Block>)`          | Block collection to match       |
+| `of(TagKey<Block>)`              | Block tag to match              |
+| `offset(Vec3)` / `offset(x,y,z)` | Relative offset                 |
+| `with(Property<C>, C)`           | Exact BlockState property match |
+| `with(String, String)`           | String-form property match      |
+| `nbt(CompoundTag)`               | NBT condition                   |
 
 **Non-conflicting** (checks block state only, does not modify the world).
 
 ### HasBlockIngredient
 
-Detects whether a block satisfying ingredient conditions exists at a given position. Same API as `HasBlock`, semantically meaning "consumed as ingredient."
+Detects whether a block satisfying ingredient conditions exists at a given position. Same API as `HasBlock`,
+semantically meaning "consumed as ingredient."
 
 ```java
 HasBlockIngredient.builder()

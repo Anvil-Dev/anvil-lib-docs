@@ -17,11 +17,12 @@ public @interface Sync {
 }
 ```
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| value | `SyncDirection` | `BOTH` | Default sync direction for this class |
+| Attribute | Type            | Default | Description                           |
+|-----------|-----------------|---------|---------------------------------------|
+| value     | `SyncDirection` | `BOTH`  | Default sync direction for this class |
 
-The direction defined in the annotation is automatically applied to all `SyncProxy` fields in the class by `SyncBytecodeInjector` at compile/class-load time — completely transparent.
+The direction defined in the annotation is automatically applied to all `SyncProxy` fields in the class by
+`SyncBytecodeInjector` at compile/class-load time — completely transparent.
 
 ## SyncDirection
 
@@ -51,17 +52,20 @@ new SyncProxy<>(customCodec);                 // Null value, custom codec
 
 ### Core Methods
 
-| Method | Description |
-|--------|-------------|
-| `T getValue()` | Get current value |
-| `void setValue(@Nullable T value)` | Set value, detect changes and auto-send |
-| `SyncProxy<T> direction(SyncDirection)` | Set sync direction, returns this (fluent) |
-| `void encode(ByteBuf)` | Encode current value to buffer |
+| Method                                        | Description                                             |
+|-----------------------------------------------|---------------------------------------------------------|
+| `T getValue()`                                | Get current value                                       |
+| `void setValue(@Nullable T value)`            | Set value, detect changes and auto-send                 |
+| `SyncProxy<T> direction(SyncDirection)`       | Set sync direction, returns this (fluent)               |
+| `void encode(ByteBuf)`                        | Encode current value to buffer                          |
 | `void setValue(ByteBuf, boolean serverbound)` | Decode from buffer; triggers sync when serverbound=true |
 
 ### Default StreamCodec Types (18 types)
 
-Auto-provided for: `CompoundTag`, `Tag`, `Vector3fc`, `Quaternionfc`, `PropertyMap`, `GameProfile`, `BlockPos`, `Component`, `ItemStack`, `ItemStackTemplate`, `String`, `Boolean`/`boolean`, `Double`/`double`, `Float`/`float`, `Long`/`long`, `Integer`/`int`, `Short`/`short`, `Byte`/`byte`, `long[]`, `byte[]`. Custom types must use `new SyncProxy<>(value, customCodec)`.
+Auto-provided for: `CompoundTag`, `Tag`, `Vector3fc`, `Quaternionfc`, `PropertyMap`, `GameProfile`, `BlockPos`,
+`Component`, `ItemStack`, `ItemStackTemplate`, `String`, `Boolean`/`boolean`, `Double`/`double`, `Float`/`float`,
+`Long`/`long`, `Integer`/`int`, `Short`/`short`, `Byte`/`byte`, `long[]`, `byte[]`. Custom types must use
+`new SyncProxy<>(value, customCodec)`.
 
 ## SyncManager
 
@@ -76,7 +80,9 @@ Singleton via `AnvilLibSync.SYNC_MANAGER`. `contains()` supports inheritance mat
 
 ## SyncRegisterEntry\<T, ID\> — Object Location Strategy
 
-`SyncRegisterEntry` is more than a registry entry — it defines a **complete object location strategy**. It tells AnvilLib: for objects carrying sync fields, how to encode their identity for network transmission, and how to find them back on the other side.
+`SyncRegisterEntry` is more than a registry entry — it defines a **complete object location strategy**. It tells
+AnvilLib: for objects carrying sync fields, how to encode their identity for network transmission, and how to find them
+back on the other side.
 
 ```java
 public record SyncRegisterEntry<T, ID>(
@@ -96,14 +102,14 @@ public record SyncRegisterEntry<T, ID>(
 
 ### Field Meanings
 
-| Field | Purpose |
-|-------|---------|
-| `clazz` | The type that carries `SyncProxy` fields (the proxy's parent) |
-| `idCodec` | Codec for the identifier on the network (e.g., `UUIDUtil.STREAM_CODEC` for UUIDs) |
-| `idGetter` | Extract the unique identifier from the object when sending |
-| `finder` | Look up the target object from the decoded identifier + context when receiving (may return null) |
-| `dimension` | Enable dimension-aware distribution (only players in the same dimension receive) |
-| `dimensionGetter` | Extract the `ResourceKey<Level>` from the object |
+| Field             | Purpose                                                                                          |
+|-------------------|--------------------------------------------------------------------------------------------------|
+| `clazz`           | The type that carries `SyncProxy` fields (the proxy's parent)                                    |
+| `idCodec`         | Codec for the identifier on the network (e.g., `UUIDUtil.STREAM_CODEC` for UUIDs)                |
+| `idGetter`        | Extract the unique identifier from the object when sending                                       |
+| `finder`          | Look up the target object from the decoded identifier + context when receiving (may return null) |
+| `dimension`       | Enable dimension-aware distribution (only players in the same dimension receive)                 |
+| `dimensionGetter` | Extract the `ResourceKey<Level>` from the object                                                 |
 
 ### Factory Methods
 
@@ -113,7 +119,8 @@ SyncRegisterEntry.create(type, idCodec, idGetter, finder, dimGetter); // With di
 SyncRegisterEntry.create(type, idCodec, idGetter, finder, dim, dimGetter); // Full
 ```
 
-Dimension mode auto-selects send strategy based on `id` type: `BlockPos` → chunk tracking, `Entity` → entity tracking, otherwise → per-dimension broadcast.
+Dimension mode auto-selects send strategy based on `id` type: `BlockPos` → chunk tracking, `Entity` → entity tracking,
+otherwise → per-dimension broadcast.
 
 ## Bytecode Injection (Transparent)
 
@@ -132,7 +139,8 @@ When a class is annotated with `@Sync`, the framework auto-injects at class-load
 
 ## SyncConfigManager
 
-Manages sync field configuration registration, assigning a unique ID to each `SyncProxy` field for compressing field names during network transmission. Client config is initialized by `AnvilLibSyncClient`.
+Manages sync field configuration registration, assigning a unique ID to each `SyncProxy` field for compressing field
+names during network transmission. Client config is initialized by `AnvilLibSyncClient`.
 
 ```java
 SyncConfigManager config = AnvilLibSync.SYNC_CONFIG_MANAGER;
@@ -146,7 +154,8 @@ SyncConfigurationPayload payload = config.createPayload();
 
 ### SyncConfigurationPayload
 
-When a client connects, the server's registered sync field ID mapping is sent to the client. The client applies it via `registerAll()`.
+When a client connects, the server's registered sync field ID mapping is sent to the client. The client applies it via
+`registerAll()`.
 
 ```java
 public record SyncConfigurationPayload(Map<Integer, String> configs) implements IClientboundPacket
@@ -164,14 +173,15 @@ public record SyncConfigurationFinishPayload() implements IClientboundPacket
 
 ## SideUtil
 
-Physical-side utility for entity/block entity finding and network send logic. Internal to `SyncPayload` and `SyncManager`.
+Physical-side utility for entity/block entity finding and network send logic. Internal to `SyncPayload` and
+`SyncManager`.
 
-| Method | Description |
-|--------|-------------|
-| `registryAccess()` | Get current side RegistryAccess |
-| `entityFinder(IPayloadContext, UUID)` | Find entity |
-| `blockEntityFinder(IPayloadContext, BlockPos)` | Find block entity |
-| `createFriendlyByteBuf(ByteBuf)` | Create side-appropriate buffer |
-| `send(SyncDirection, ...)` | Dispatch SyncPayload |
-| `clientSend(Supplier<IPacket>)` | Client → Server |
-| `serverSend(T, ID, ...)` | Server → Clients (dimension-aware) |
+| Method                                         | Description                        |
+|------------------------------------------------|------------------------------------|
+| `registryAccess()`                             | Get current side RegistryAccess    |
+| `entityFinder(IPayloadContext, UUID)`          | Find entity                        |
+| `blockEntityFinder(IPayloadContext, BlockPos)` | Find block entity                  |
+| `createFriendlyByteBuf(ByteBuf)`               | Create side-appropriate buffer     |
+| `send(SyncDirection, ...)`                     | Dispatch SyncPayload               |
+| `clientSend(Supplier<IPacket>)`                | Client → Server                    |
+| `serverSend(T, ID, ...)`                       | Server → Clients (dimension-aware) |

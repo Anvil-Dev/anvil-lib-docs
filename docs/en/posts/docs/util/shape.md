@@ -1,6 +1,7 @@
 # Block Collision Box Util
 
-`dev.anvilcraft.lib.v2.util.ShapeUtil` provides merging, cutting, rotation, and mirroring of block collision boxes (`VoxelShape`).
+`dev.anvilcraft.lib.v2.util.ShapeUtil` provides merging, cutting, rotation, and mirroring of block collision boxes (
+`VoxelShape`).
 
 ## Single-threaded Operations
 
@@ -13,7 +14,8 @@
 
 ## Multi-threaded Merging
 
-`threadedJoin(List<VoxelShape>, BooleanOp, ExecutorService)` – merges a large number of shapes in batched parallel operations, returns `Future<VoxelShape>`, suitable for use during initialization.
+`threadedJoin(List<VoxelShape>, BooleanOp, ExecutorService)` – merges a large number of shapes in batched parallel
+operations, returns `Future<VoxelShape>`, suitable for use during initialization.
 
 ## Helper Methods
 

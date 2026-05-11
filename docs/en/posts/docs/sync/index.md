@@ -8,7 +8,8 @@ next: false
 
 The package `dev.anvilcraft.lib.v2.sync` provides a **declarative field synchronization system** that automatically
 synchronizes Java object field values between client and server using the `@Sync` annotation and `SyncProxy<T>` proxies.
-It supports directional control, dimension-aware distribution, and bytecode injection that auto-associates proxies with parent objects, field names, and directions — completely transparent to users.
+It supports directional control, dimension-aware distribution, and bytecode injection that auto-associates proxies with
+parent objects, field names, and directions — completely transparent to users.
 
 ::: warning Availability
 This module is **only** available in Minecraft **26.1**.
@@ -20,8 +21,10 @@ This module is **only** available in Minecraft **26.1**.
 2. **Proxy Layer** — `SyncProxy<T>` wraps field values, providing automatic codec and change notification
 3. **Management Layer** — `SyncManager` maintains the registry and coordinates data transmission
 4. **Network Layer** — `SyncPayload` transmits data between both sides via `IInsensitiveBiPacket`
-5. **Injection Layer** — `SyncBytecodeInjector` auto-associates proxies with their parent objects, field names, and directions via bytecode injection — completely transparent to users
-6. **Configuration Layer** — `SyncConfigManager` assigns unique IDs to sync fields, compressing field names to integers during network transmission via `SyncConfigurationPayload`
+5. **Injection Layer** — `SyncBytecodeInjector` auto-associates proxies with their parent objects, field names, and
+   directions via bytecode injection — completely transparent to users
+6. **Configuration Layer** — `SyncConfigManager` assigns unique IDs to sync fields, compressing field names to integers
+   during network transmission via `SyncConfigurationPayload`
 
 ## Document Index
 

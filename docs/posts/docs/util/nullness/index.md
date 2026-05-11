@@ -25,13 +25,14 @@
 
 由于 `module.util` 在部分版本中未作为独立模块发布，`nullness` 包的导入路径存在版本差异：
 
-| 版本范围 | 导入路径 |
-|---------|---------|
-| 1.21.1 | `import dev.anvilcraft.lib.v2.util.nullness.NonNullSupplier;` |
+| 版本范围           | 导入路径                                                                    |
+|----------------|-------------------------------------------------------------------------|
+| 1.21.1         | `import dev.anvilcraft.lib.v2.util.nullness.NonNullSupplier;`           |
 | 1.21.2–1.21.11 | `import dev.anvilcraft.lib.v2.registrum.util.nullness.NonNullSupplier;` |
-| 26.1 | `import dev.anvilcraft.lib.v2.util.nullness.NonNullSupplier;`（恢复） |
+| 26.1           | `import dev.anvilcraft.lib.v2.util.nullness.NonNullSupplier;`（恢复）       |
 
-> 1.21.2–1.21.11 版本中 `module.util` 因产能限制未同步，nullness 函数式接口被内嵌到 `module.registrum` 中以保障 Registrum 可独立编译。26.1 中随 `module.util` 恢复同步，导入路径迁回。
+> 1.21.2–1.21.11 版本中 `module.util` 因产能限制未同步，nullness 函数式接口被内嵌到 `module.registrum` 中以保障 Registrum
+> 可独立编译。26.1 中随 `module.util` 恢复同步，导入路径迁回。
 
 ## 已废弃接口
 

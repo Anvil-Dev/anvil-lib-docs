@@ -11,21 +11,21 @@ system, supporting two open modes (Tap and Hold), custom sector/dot selection ef
 
 ## Document Index
 
-| Document               | Content                                                                     |
-|-----------------------|-----------------------------------------------------------------------------|
-| [API Model Layer](./api)  | `WheelMenuModel`, `WheelEntry`, `WheelMenuBuilder`, pages and pagination    |
-| [Client Rendering](./client) | `WheelWidget`, `WheelScreen`, input control, shader pipelines              |
+| Document                     | Content                                                                  |
+|------------------------------|--------------------------------------------------------------------------|
+| [API Model Layer](./api)     | `WheelMenuModel`, `WheelEntry`, `WheelMenuBuilder`, pages and pagination |
+| [Client Rendering](./client) | `WheelWidget`, `WheelScreen`, input control, shader pipelines            |
 
 ## Architecture Overview
 
-| Package                    | Responsibility                                                    |
-|----------------------------|-------------------------------------------------------------------|
-| `api`                      | Data models (entries, pages, pagination, open modes), no client class dependencies |
-| `client.gui.component`     | `WheelWidget` control, handles mouse interaction, animation, and rendering |
-| `client.gui.screen`        | `WheelScreen` screen host, manages page stack and mode triggers   |
-| `client.gui.render.state`  | GUI render states (ring, selection effect custom shaders)         |
-| `client.init`              | Shader pipelines, dynamic uniform buffers                         |
-| `client.input`             | `WheelScreenController` input handling                            |
+| Package                   | Responsibility                                                                     |
+|---------------------------|------------------------------------------------------------------------------------|
+| `api`                     | Data models (entries, pages, pagination, open modes), no client class dependencies |
+| `client.gui.component`    | `WheelWidget` control, handles mouse interaction, animation, and rendering         |
+| `client.gui.screen`       | `WheelScreen` screen host, manages page stack and mode triggers                    |
+| `client.gui.render.state` | GUI render states (ring, selection effect custom shaders)                          |
+| `client.init`             | Shader pipelines, dynamic uniform buffers                                          |
+| `client.input`            | `WheelScreenController` input handling                                             |
 
 ## Notes
 

@@ -6,7 +6,8 @@ next: false
 
 # UBO Foundation Framework <Badge type="tip" text=">=26.1" />
 
-The UBO system is used to declare GLSL Uniform Block memory layouts in code and automatically calculate STD140 sizes and padding data.
+The UBO system is used to declare GLSL Uniform Block memory layouts in code and automatically calculate STD140 sizes and
+padding data.
 
 ## UboObject
 
@@ -87,14 +88,14 @@ entry = UboLayoutEntry.ofFloat()
 
 Defines specific STD140 data types:
 
-| Type     | Description                                             |
-|----------|---------------------------------------------------------|
-| `FLOAT`  | Single-precision float (4 bytes)                        |
-| `INT`    | 32-bit integer (4 bytes)                                |
-| `VEC2`   | 2-component vector (8 bytes)                            |
-| `VEC3`   | 3-component vector (16 bytes, STD140 alignment)         |
-| `VEC4`   | 4-component vector (16 bytes)                           |
-| `MAT4`   | 4×4 matrix (64 bytes)                                   |
+| Type    | Description                                     |
+|---------|-------------------------------------------------|
+| `FLOAT` | Single-precision float (4 bytes)                |
+| `INT`   | 32-bit integer (4 bytes)                        |
+| `VEC2`  | 2-component vector (8 bytes)                    |
+| `VEC3`  | 3-component vector (16 bytes, STD140 alignment) |
+| `VEC4`  | 4-component vector (16 bytes)                   |
+| `MAT4`  | 4×4 matrix (64 bytes)                           |
 
 Internally implements `acceptSizeCalculator` and `acceptWriter` for size calculation and writing respectively.
 

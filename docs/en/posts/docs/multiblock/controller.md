@@ -28,7 +28,9 @@ public interface IController {
 
 ### correctPos Use Cases
 
-When the controller detects that the block is not exactly at the `ZERO` position in the definition, you can correct it via this method. For example: a multiblock component acts as a "controller marker" but the actual controller block is at an adjacent position.
+When the controller detects that the block is not exactly at the `ZERO` position in the definition, you can correct it
+via this method. For example: a multiblock component acts as a "controller marker" but the actual controller block is at
+an adjacent position.
 
 ```java
 @Override

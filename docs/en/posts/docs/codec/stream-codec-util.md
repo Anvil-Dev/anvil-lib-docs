@@ -6,21 +6,22 @@ next: false
 
 # StreamCodecUtil
 
-`StreamCodecUtil` focuses on `StreamCodec` for network packets, providing compact binary serialization for common game objects as well as higher-order combinators.
+`StreamCodecUtil` focuses on `StreamCodec` for network packets, providing compact binary serialization for common game
+objects as well as higher-order combinators.
 
 ## Built-in Stream Codecs
 
-| Field                | Applicable Buffer         | Description                                                             |
-|----------------------|---------------------------|-------------------------------------------------------------------------|
-| `ITEM`               | `RegistryFriendlyByteBuf` | Reads/writes items by registry ID                                       |
-| `BLOCK`              | `RegistryFriendlyByteBuf` | Reads/writes blocks by registry ID                                      |
-| `ENTITY`             | `RegistryFriendlyByteBuf` | Entity type stream codec                                                |
-| `CHAR`               | `RegistryFriendlyByteBuf` | Single character UTF stream codec                                       |
-| `VAR_INT_BLOCK_POS`  | `FriendlyByteBuf`         | BlockPos encoded with VarInt                                            |
-| `BLOCK_STATE`        | `ByteBuf`                 | Block state encoded by global runtime state ID                          |
-| `VEC3`               | `FriendlyByteBuf`         | Vec3 with three float components                                        |
-| `VEC3I`              | `ByteBuf`                 | Vec3i packed as a long (same packing as BlockPos)                       |
-| `NUMBER_PROVIDER`    | `RegistryFriendlyByteBuf` | Compact NumberProvider variant encoding (Const / Uniform / Binomial)    |
+| Field               | Applicable Buffer         | Description                                                          |
+|---------------------|---------------------------|----------------------------------------------------------------------|
+| `ITEM`              | `RegistryFriendlyByteBuf` | Reads/writes items by registry ID                                    |
+| `BLOCK`             | `RegistryFriendlyByteBuf` | Reads/writes blocks by registry ID                                   |
+| `ENTITY`            | `RegistryFriendlyByteBuf` | Entity type stream codec                                             |
+| `CHAR`              | `RegistryFriendlyByteBuf` | Single character UTF stream codec                                    |
+| `VAR_INT_BLOCK_POS` | `FriendlyByteBuf`         | BlockPos encoded with VarInt                                         |
+| `BLOCK_STATE`       | `ByteBuf`                 | Block state encoded by global runtime state ID                       |
+| `VEC3`              | `FriendlyByteBuf`         | Vec3 with three float components                                     |
+| `VEC3I`             | `ByteBuf`                 | Vec3i packed as a long (same packing as BlockPos)                    |
+| `NUMBER_PROVIDER`   | `RegistryFriendlyByteBuf` | Compact NumberProvider variant encoding (Const / Uniform / Binomial) |
 
 ## Bridging and Conversion
 
@@ -59,7 +60,8 @@ StreamCodec<B, C> composite(
 );
 ```
 
-Each `composite` reads from the buffer in order during decoding and writes in getter order during encoding. Supports `Function7` through `Function16` as factory methods.
+Each `composite` reads from the buffer in order during decoding and writes in getter order during encoding. Supports
+`Function7` through `Function16` as factory methods.
 
 ### Example: 7-field Object
 
@@ -79,16 +81,18 @@ public static final StreamCodec<RegistryFriendlyByteBuf, MyObject> STREAM_CODEC 
 
 ## Other Utility Methods
 
-| Method                                 | Description                                                  |
-|----------------------------------------|--------------------------------------------------------------|
-| `enumStreamCodec(Class<T>)`            | Ordinal-based enum stream codec                              |
-| `createPairStreamCodec(first, second)` | Combines two StreamCodecs into a `Pair<F, S>` codec          |
-| `numberProviderNetworkEncode(buf, np)` | Manually writes the binary format of a NumberProvider        |
-| `numberProviderNetworkDecode(buf)`     | Manually reads the binary format of a NumberProvider         |
+| Method                                 | Description                                           |
+|----------------------------------------|-------------------------------------------------------|
+| `enumStreamCodec(Class<T>)`            | Ordinal-based enum stream codec                       |
+| `createPairStreamCodec(first, second)` | Combines two StreamCodecs into a `Pair<F, S>` codec   |
+| `numberProviderNetworkEncode(buf, np)` | Manually writes the binary format of a NumberProvider |
+| `numberProviderNetworkDecode(buf)`     | Manually reads the binary format of a NumberProvider  |
 
 ## Usage Recommendations
 
 - For fewer than 7 fields, prefer the official `StreamCodec.composite` overloads (1-6 parameters)
 - For 7-16 fields, use `StreamCodecUtil.composite`
-- `codec2Stream` routes through NBT and incurs a performance cost; for frequently used network packets, consider manually writing the StreamCodec
-- `NUMBER_PROVIDER`'s STREAM_CODEC preserves precision: integer ConstantValues are compressed to a single byte tag + float
+- `codec2Stream` routes through NBT and incurs a performance cost; for frequently used network packets, consider
+  manually writing the StreamCodec
+- `NUMBER_PROVIDER`'s STREAM_CODEC preserves precision: integer ConstantValues are compressed to a single byte tag +
+  float

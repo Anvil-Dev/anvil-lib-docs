@@ -6,7 +6,8 @@ next: false
 
 # 空间选区模块 <Badge type="tip" text=">=26.1" />
 
-包 `dev.anvilcraft.lib.v2.space_select` 提供了一套**可视化空间选区系统**。通过实现 `SpaceSelectItem` 接口的物品，玩家可以在游戏世界中划定立方体区域，支持选区扩张/收缩/移动/滚轮缩放。选区状态在服务端存储、客户端渲染线框。
+包 `dev.anvilcraft.lib.v2.space_select` 提供了一套**可视化空间选区系统**。通过实现 `SpaceSelectItem`
+接口的物品，玩家可以在游戏世界中划定立方体区域，支持选区扩张/收缩/移动/滚轮缩放。选区状态在服务端存储、客户端渲染线框。
 
 ## 架构概览
 
@@ -43,17 +44,17 @@ District district = District.create(pos1, pos2);
 boolean inside = district.contains(x, y, z);
 ```
 
-| 方法 | 说明 |
-|------|------|
-| `create(BlockPos, BlockPos)` | 创建选区，自动取 min/max |
-| `expand(Direction, int)` | 向指定方向扩张 |
-| `contraction(Direction, int)` | 向指定方向收缩 |
-| `move(Direction, int)` | 向指定方向整体移动 |
-| `scaleOnAxis(Axis, scrollAmount, playerPos, boundingBox, lookAngle)` | 基于玩家朝向和位置缩放 |
-| `getPrimaryAxis(Vec3 lookAngle)` | 根据视角确定主轴 |
-| `contains(double, double, double)` | 点包含检测 |
-| `shape()` | 返回选区 VoxelShape |
-| `color()` | 基于 hashCode 的随机半透明色 |
+| 方法                                                                   | 说明                  |
+|----------------------------------------------------------------------|---------------------|
+| `create(BlockPos, BlockPos)`                                         | 创建选区，自动取 min/max    |
+| `expand(Direction, int)`                                             | 向指定方向扩张             |
+| `contraction(Direction, int)`                                        | 向指定方向收缩             |
+| `move(Direction, int)`                                               | 向指定方向整体移动           |
+| `scaleOnAxis(Axis, scrollAmount, playerPos, boundingBox, lookAngle)` | 基于玩家朝向和位置缩放         |
+| `getPrimaryAxis(Vec3 lookAngle)`                                     | 根据视角确定主轴            |
+| `contains(double, double, double)`                                   | 点包含检测               |
+| `shape()`                                                            | 返回选区 VoxelShape     |
+| `color()`                                                            | 基于 hashCode 的随机半透明色 |
 
 ### DistrictManager
 
@@ -72,7 +73,8 @@ manager.clear(key);             // 清除选区
 
 ### SpaceSelectItem
 
-物品实现的接口。默认逻辑：右键时通过 `AnvilLibSpaceSelectClient.MANAGER` 跟踪选区过程（startSelect→endSelect），选区完成时发送 `SpaceSelectPayload`。
+物品实现的接口。默认逻辑：右键时通过 `AnvilLibSpaceSelectClient.MANAGER` 跟踪选区过程（startSelect→endSelect），选区完成时发送
+`SpaceSelectPayload`。
 
 ```java
 public class MySelectTool extends Item implements SpaceSelectItem {
@@ -86,7 +88,8 @@ public class MySelectTool extends Item implements SpaceSelectItem {
 
 ### 网络包
 
-`SpaceSelectPayload` 是 `IServerboundPacket`（客户端→服务端），携带 `offhand`、`start`、`end`。服务端收到后发送 `PlayerCreateDistrictEvent`。
+`SpaceSelectPayload` 是 `IServerboundPacket`（客户端→服务端），携带 `offhand`、`start`、`end`。服务端收到后发送
+`PlayerCreateDistrictEvent`。
 
 ## 依赖引入
 

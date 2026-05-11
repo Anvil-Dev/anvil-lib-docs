@@ -19,13 +19,13 @@ Per-level singleton and the central scheduler of the cached BER system. It maint
 
 Key methods:
 
-| Method              | Description                                                       |
-|---------------------|-------------------------------------------------------------------|
-| `update(be)`        | Marks a block entity dirty and queues it for rebuild              |
-| `blockRemoved(be)`  | Cleans up cached data when a block is removed                     |
+| Method              | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| `update(be)`        | Marks a block entity dirty and queues it for rebuild                        |
+| `blockRemoved(be)`  | Cleans up cached data when a block is removed                               |
 | `runTasks()`        | Executes compile/upload task queues (should be called from `LevelRenderer`) |
-| `render(frustum)`   | Renders all cached chunks within the frustum                      |
-| `forcedUpdate(pos)` | Forces an immediate update of the cache at the given position     |
+| `render(frustum)`   | Renders all cached chunks within the frustum                                |
+| `forcedUpdate(pos)` | Forces an immediate update of the cache at the given position               |
 
 ### CachedRenderingChunk
 

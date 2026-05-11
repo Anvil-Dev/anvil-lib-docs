@@ -28,7 +28,7 @@ public class MultiblockState {
 
 ### Serialization
 
-| Field            | Codec                                | StreamCodec                                |
+| Field           | Codec                                | StreamCodec                                |
 |-----------------|--------------------------------------|--------------------------------------------|
 | `controllerPos` | `BlockPos.CODEC`                     | `StreamCodecUtil.VAR_INT_BLOCK_POS`        |
 | `definitionKey` | `ResourceKey.codec(DEFINITIONS_KEY)` | `ResourceKey.streamCodec(DEFINITIONS_KEY)` |
@@ -47,13 +47,13 @@ DynamicMultiblockManager manager = DynamicMultiblockManager.get(level);
 
 ### Query Methods
 
-| Method                                              | Description                                               |
-|-----------------------------------------------------|-----------------------------------------------------------|
-| `getAt(BlockPos pos)`                               | Get the multiblock state at the specified position (returns null if not present) |
-| `containsAt(BlockPos pos)`                          | Check whether a controller is registered at the position  |
-| `add(MultiblockState state)`                        | Register a new multiblock, mark as dirty                  |
-| `removeAt(BlockPos pos)`                            | Remove and return the multiblock state, mark as dirty     |
-| `updateFormed(Level, MultiblockState, boolean)`     | Update the formed status (triggers callbacks and network sync on state change) |
+| Method                                          | Description                                                                      |
+|-------------------------------------------------|----------------------------------------------------------------------------------|
+| `getAt(BlockPos pos)`                           | Get the multiblock state at the specified position (returns null if not present) |
+| `containsAt(BlockPos pos)`                      | Check whether a controller is registered at the position                         |
+| `add(MultiblockState state)`                    | Register a new multiblock, mark as dirty                                         |
+| `removeAt(BlockPos pos)`                        | Remove and return the multiblock state, mark as dirty                            |
+| `updateFormed(Level, MultiblockState, boolean)` | Update the formed status (triggers callbacks and network sync on state change)   |
 
 ### updateFormed Details
 
@@ -117,12 +117,12 @@ DynamicMultiblockManager.onBreak(level, pos);
 
 Controlled by `AnvilLibMultiblockConfig`:
 
-| Configuration                     | Default | Range  | Description                                    |
-|----------------------------------|---------|--------|------------------------------------------------|
-| `unformedMultiblockCheckInterval` | 10      | 5-100  | Check interval for unformed multiblocks (ticks) |
-| `formedMultiblockCheckInterval`   | 20      | 5-100  | Check interval for formed multiblocks (ticks)   |
-| `asyncThreadPoolSize`             | 4       | 1-16   | Async thread pool size                          |
-| `maxChecksPerTick`                | 128     | 1-512  | Maximum checks per tick (limited by dedup set)  |
+| Configuration                     | Default | Range | Description                                     |
+|-----------------------------------|---------|-------|-------------------------------------------------|
+| `unformedMultiblockCheckInterval` | 10      | 5-100 | Check interval for unformed multiblocks (ticks) |
+| `formedMultiblockCheckInterval`   | 20      | 5-100 | Check interval for formed multiblocks (ticks)   |
+| `asyncThreadPoolSize`             | 4       | 1-16  | Async thread pool size                          |
+| `maxChecksPerTick`                | 128     | 1-512 | Maximum checks per tick (limited by dedup set)  |
 
 ### Detection Flow
 
@@ -181,12 +181,15 @@ Serialized as JSON `List<MultiblockState>`, stored in world data.
 
 ## Network Sync
 
-On state change, broadcasts `IClientboundPacket` packets (under `anvillib:multiblock_form`/`anvillib:multiblock_unform`):
+On state change, broadcasts `IClientboundPacket` packets (under `anvillib:multiblock_form`/
+`anvillib:multiblock_unform`):
 
 - **On client receive**: Adds the state to the local `DynamicMultiblockManager`, updates the formed flag
-- **If the controller block is still valid**: Calls the corresponding `onFormed`/`onUnformed` to trigger client-side rendering/sounds, etc.
+- **If the controller block is still valid**: Calls the corresponding `onFormed`/`onUnformed` to trigger client-side
+  rendering/sounds, etc.
 
-Network packets are auto-registered via `NetworkRegistrar.register(registrar, MOD_ID)` (inside `AnvilLibMultiblock.onNetwork()`).
+Network packets are auto-registered via `NetworkRegistrar.register(registrar, MOD_ID)` (inside
+`AnvilLibMultiblock.onNetwork()`).
 
 ## Configuration
 
@@ -207,7 +210,8 @@ public class AnvilLibMultiblockConfig {
 }
 ```
 
-Registered via `ConfigManager.register(MOD_ID, AnvilLibMultiblockConfig::new)`, supports TOML configuration files and GUI configuration interface.
+Registered via `ConfigManager.register(MOD_ID, AnvilLibMultiblockConfig::new)`, supports TOML configuration files and
+GUI configuration interface.
 
 ## Complete Usage Example
 

@@ -20,18 +20,19 @@ BloomPostEffect bloom = ALRendering.getBloomPostEffect();
 BloomPostEffect bloom = new BloomPostEffect(bloomIntensity, threshold, sensitivity);
 ```
 
-The constructor creates `BloomParametersUbo`, `BlurParametersUbo`, `BloomPipelineParametersUbo` and corresponding GPU buffers, and initializes
+The constructor creates `BloomParametersUbo`, `BlurParametersUbo`, `BloomPipelineParametersUbo` and corresponding GPU
+buffers, and initializes
 the `downsampleTargets[]` and `upsampleTargets[]` target textures.
 
 ### Main Methods
 
-| Method                                                  | Description                                                    |
-|---------------------------------------------------------|----------------------------------------------------------------|
-| `beginFrame()`                                          | Clears temporary textures and dirty flags at the start of each frame |
-| `drawBloomed(BloomRenderCallback)`                      | Registers objects that need additional rendering on the bloom input texture |
-| `process(modelViewMatrix, featureRenderDispatcher)`     | Executes the complete bloom processing pipeline                |
-| `resize(width, height)`                                 | Resizes all target textures when the window size changes       |
-| `markDirty()`                                           | Manually marks as needing reprocessing                         |
+| Method                                              | Description                                                                 |
+|-----------------------------------------------------|-----------------------------------------------------------------------------|
+| `beginFrame()`                                      | Clears temporary textures and dirty flags at the start of each frame        |
+| `drawBloomed(BloomRenderCallback)`                  | Registers objects that need additional rendering on the bloom input texture |
+| `process(modelViewMatrix, featureRenderDispatcher)` | Executes the complete bloom processing pipeline                             |
+| `resize(width, height)`                             | Resizes all target textures when the window size changes                    |
+| `markDirty()`                                       | Manually marks as needing reprocessing                                      |
 
 ### process Flow
 
@@ -60,11 +61,11 @@ bloom.drawBloomed((nodeCollector, poseStack) -> {
 
 ### Internal Passes
 
-| Pass       | Pipeline       | Shader                       | Description                                      |
-|------------|----------------|------------------------------|--------------------------------------------------|
-| DownSample | `DOWNSAMPLE`   | `down_sample.fsh`            | Average 4 pixels, halve resolution               |
-| UpSample   | `UPSAMPLE`     | `up_sample.fsh` + `blur.fsh` | 5×5 Gaussian blur, blend with previous layer     |
-| ApplyBloom | `APPLY_BLOOM`  | `apply_bloom.fsh`            | Blend bloom texture with main framebuffer         |
+| Pass       | Pipeline      | Shader                       | Description                                  |
+|------------|---------------|------------------------------|----------------------------------------------|
+| DownSample | `DOWNSAMPLE`  | `down_sample.fsh`            | Average 4 pixels, halve resolution           |
+| UpSample   | `UPSAMPLE`    | `up_sample.fsh` + `blur.fsh` | 5×5 Gaussian blur, blend with previous layer |
+| ApplyBloom | `APPLY_BLOOM` | `apply_bloom.fsh`            | Blend bloom texture with main framebuffer    |
 
 ### Blend Formula
 
