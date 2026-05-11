@@ -197,6 +197,44 @@ public <R,T> NoConfigBuilder<R,T,S> generic(ResourceKey<Registry<R>> type,
     NonNullSupplier<T> factory);
 ```
 
+### 专用 Builder 入口
+
+以下方法提供特定类型的 Builder 快捷入口：
+
+| 方法 | 返回类型 | 注册表 |
+|------|---------|--------|
+| `attachment(String, Function<IAttachmentHolder, E>)` | `AttachmentBuilder<E, S>` | `NeoForgeRegistries.Keys.ATTACHMENT_TYPES` |
+| `attachment(String, Supplier<E>)` | `AttachmentBuilder<E, S>` | `NeoForgeRegistries.Keys.ATTACHMENT_TYPES` |
+| `dataComponent(String)` | `DataComponentBuilder<E, S>` | `Registries.DATA_COMPONENT_TYPE` |
+| `creativeTab(String, ItemLike)` | `CreativeTabBuilder<S>` | `Registries.CREATIVE_MODE_TAB` |
+| `creativeTab(String, Supplier<ItemLike>)` | `CreativeTabBuilder<S>` | `Registries.CREATIVE_MODE_TAB` |
+| `condition(String, MapCodec<T>)` | `ConditionBuilder<T, S>` | `NeoForgeRegistries.Keys.CONDITION_CODECS` |
+| `biomeModifier(String, MapCodec<T>)` | `BiomeModifierBuilder<T, S>` | `NeoForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS` |
+| `glm(String, MapCodec<T>)` | `GlobalLootModifierBuilder<T, S>` | `NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS` |
+| `structureModifier(String, MapCodec<T>)` | `StructureModifierBuilder<T, S>` | `NeoForgeRegistries.Keys.STRUCTURE_MODIFIER_SERIALIZERS` |
+
+```java
+// 示例
+REGISTRUM.attachment("my_data", MyAttachment::new)
+    .serialize(MyAttachment.CODEC)
+    .sync(MyAttachment.STREAM_CODEC)
+    .register();
+
+REGISTRUM.dataComponent("my_component")
+    .persistent(MyComponent.CODEC)
+    .networkSynchronized(MyComponent.STREAM_CODEC)
+    .register();
+
+REGISTRUM.creativeTab("my_tab", MY_ITEM)
+    .displayItems(MY_ITEM, MY_BLOCK)
+    .register();
+
+REGISTRUM.condition("my_condition", MyCondition.CODEC).register();
+REGISTRUM.biomeModifier("my_modifier", MyModifier.CODEC).register();
+REGISTRUM.glm("my_loot", MyLootModifier.CODEC).register();
+REGISTRUM.structureModifier("my_struct", MyStructModifier.CODEC).register();
+```
+
 ### 创建自定义注册表
 
 ```java

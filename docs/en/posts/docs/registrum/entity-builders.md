@@ -244,3 +244,227 @@ entry.getType();    // Get FluidType
 entry.getBlock();   // Get LiquidBlock (Optional)
 entry.getBucket();  // Get BucketItem (Optional)
 ```
+
+## Data and Modifier Builders
+
+### AttachmentBuilder
+
+Constructs an `AttachmentType<E>` registration entry, registered to `NeoForgeRegistries.Keys.ATTACHMENT_TYPES`.
+
+#### Creation
+
+```java
+// Using Function<IAttachmentHolder, E>
+REGISTRUM.attachment("my_attachment", holder -> new MyAttachment());
+
+// Using Supplier<E>
+REGISTRUM.attachment("my_attachment", MyAttachment::new);
+```
+
+#### Serialization
+
+```java
+builder.serialize(mySerializer);       // IAttachmentSerializer
+builder.serialize(myMapCodec);         // MapCodec
+builder.serialize(myMapCodec, predicate); // MapCodec + predicate
+```
+
+#### Synchronization
+
+```java
+builder.sync(mySyncHandler);                            // AttachmentSyncHandler
+builder.sync(myStreamCodec);                             // StreamCodec
+builder.sync(sendToPlayer, myStreamCodec);               // BiPredicate + StreamCodec
+```
+
+#### Lifecycle Control
+
+```java
+builder.copyOnDeath();               // Preserve on player death
+builder.copyHandler(myCloner);        // Custom copy handler
+```
+
+#### Registration
+
+```java
+AttachmentEntry<E> entry = builder.register();
+```
+
+| Method | Description |
+|--------|-------------|
+| `serialize(IAttachmentSerializer<E>)` | Set the serializer |
+| `serialize(MapCodec<E>)` | Set the MapCodec serializer |
+| `serialize(MapCodec<E>, Predicate)` | Set MapCodec serializer with predicate |
+| `copyOnDeath()` | Copy data on death |
+| `copyHandler(IAttachmentCopyHandler<E>)` | Custom copy handler |
+| `sync(AttachmentSyncHandler<E>)` | Set sync handler |
+| `sync(StreamCodec<..., E>)` | Set StreamCodec sync |
+| `register()` | Returns `AttachmentEntry<E>` |
+
+### DataComponentBuilder
+
+Constructs a `DataComponentType<E>` registration entry, registered to `Registries.DATA_COMPONENT_TYPE`.
+
+#### Creation
+
+```java
+REGISTRUM.dataComponent("my_component")
+```
+
+#### Configuration
+
+```java
+builder.persistent(myCodec);                       // Persistent codec
+builder.networkSynchronized(myStreamCodec);        // Network synchronization
+builder.cacheEncoding();                           // Cache encoding
+builder.ignoreSwapAnimation();                     // Ignore swap animation
+```
+
+#### Registration
+
+```java
+DataComponentEntry<E> entry = builder.register();
+```
+
+| Method | Description |
+|--------|-------------|
+| `persistent(Codec<E>)` | Set the persistent codec |
+| `networkSynchronized(StreamCodec<..., E>)` | Set the network sync codec |
+| `cacheEncoding()` | Cache encoding results |
+| `ignoreSwapAnimation()` | Ignore swap animation |
+| `register()` | Returns `DataComponentEntry<E>` |
+
+### CreativeTabBuilder
+
+Constructs a `CreativeModeTab` registration entry, registered to `Registries.CREATIVE_MODE_TAB`. Independent of `AbstractRegistrum`'s `defaultCreativeTab()`, this is a dedicated Builder for creating standalone creative tabs.
+
+#### Creation
+
+```java
+// Using ItemLike
+REGISTRUM.creativeTab("my_tab", MY_ITEM);
+
+// Using Supplier<ItemLike>
+REGISTRUM.creativeTab("my_tab", () -> MY_ITEM.get());
+```
+
+#### Configuration
+
+```java
+builder.title(Component.literal("My Tab"));          // Title
+builder.defaultTitle();                              // Auto translation key title
+builder.icon(() -> MY_ITEM.asStack());               // Icon
+builder.displayItems((params, output) -> { ... });   // Display items generator
+builder.displayItems(MY_ITEM1, MY_ITEM2);            // List items directly
+builder.hideTitle();                                 // Hide title
+builder.noScrollBar();                               // No scroll bar
+builder.withSearchBar();                             // Search bar
+builder.alignedRight();                              // Align right
+builder.withTabsBefore(otherTabId);                  // Ordering control
+builder.withTabsAfter(otherTabId);                   // Ordering control
+builder.backgroundTexture(myTexture);                // Background texture
+builder.withLabelColor(0xFF0000);                    // Label color
+```
+
+#### Registration
+
+```java
+RegistryEntry<CreativeModeTab, CreativeModeTab> entry = builder.register();
+```
+
+| Method | Description |
+|--------|-------------|
+| `defaultTitle()` | Use auto translation key title |
+| `title(Component)` | Set the title |
+| `icon(Supplier<ItemStack>)` | Set the icon |
+| `displayItems(DisplayItemsGenerator)` | Set the display items generator |
+| `displayItems(ItemLike...)` | List items directly |
+| `hideTitle()` | Hide the title |
+| `noScrollBar()` | Disable scroll bar |
+| `withSearchBar()` | Enable search bar |
+| `alignedRight()` | Align right |
+| `withTabsBefore(...)` | Place before specified tabs |
+| `withTabsAfter(...)` | Place after specified tabs |
+| `backgroundTexture(Identifier)` | Set background texture |
+| `withLabelColor(int)` | Set label color |
+| `register()` | Returns `RegistryEntry<CreativeModeTab, CreativeModeTab>` |
+
+### ConditionBuilder
+
+Constructs a `MapCodec<T extends ICondition>` registration entry, registered to `NeoForgeRegistries.Keys.CONDITION_CODECS`. Registers a condition codec, enabling the data-driven condition system to recognize custom condition types.
+
+#### Creation
+
+```java
+REGISTRUM.condition("my_condition", MyCondition.CODEC);
+```
+
+#### Registration
+
+```java
+ConditionEntry<MyCondition> entry = builder.register();
+```
+
+| Method | Description |
+|--------|-------------|
+| `register()` | Returns `ConditionEntry<T>` |
+
+### BiomeModifierBuilder
+
+Constructs a `MapCodec<T extends BiomeModifier>` registration entry, registered to `NeoForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS`. Registers a biome modifier serializer.
+
+#### Creation
+
+```java
+REGISTRUM.biomeModifier("my_biome_modifier", MyBiomeModifier.CODEC);
+```
+
+#### Registration
+
+```java
+BiomeModifierEntry<MyBiomeModifier> entry = builder.register();
+```
+
+| Method | Description |
+|--------|-------------|
+| `register()` | Returns `BiomeModifierEntry<T>` |
+
+### GlobalLootModifierBuilder
+
+Constructs a `MapCodec<T extends IGlobalLootModifier>` registration entry, registered to `NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS`. Registers a global loot modifier serializer.
+
+#### Creation
+
+```java
+REGISTRUM.glm("my_loot_modifier", MyLootModifier.CODEC);
+```
+
+#### Registration
+
+```java
+GlobalLootModifierEntry<MyLootModifier> entry = builder.register();
+```
+
+| Method | Description |
+|--------|-------------|
+| `register()` | Returns `GlobalLootModifierEntry<T>` |
+
+### StructureModifierBuilder
+
+Constructs a `MapCodec<T extends StructureModifier>` registration entry, registered to `NeoForgeRegistries.Keys.STRUCTURE_MODIFIER_SERIALIZERS`. Registers a structure modifier serializer.
+
+#### Creation
+
+```java
+REGISTRUM.structureModifier("my_structure_modifier", MyStructureModifier.CODEC);
+```
+
+#### Registration
+
+```java
+StructureModifierEntry<MyStructureModifier> entry = builder.register();
+```
+
+| Method | Description |
+|--------|-------------|
+| `register()` | Returns `StructureModifierEntry<T>` |

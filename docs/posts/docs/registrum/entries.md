@@ -16,7 +16,13 @@ RegistryEntry<R, T> (extends DeferredHolder<R, T>, NonNullSupplier<T>)
 ├── BlockEntityEntry<T extends BlockEntity>
 ├── EntityEntry<T extends Entity>
 ├── MenuEntry<T extends AbstractContainerMenu>
-└── FluidEntry<T extends BaseFlowingFluid>
+├── FluidEntry<T extends BaseFlowingFluid>
+├── AttachmentEntry<E> (R = AttachmentType<?>, T = AttachmentType<E>)
+├── DataComponentEntry<E> (R = DataComponentType<?>, T = DataComponentType<E>)
+├── ConditionEntry<T extends ICondition> (R = MapCodec<?>, T = MapCodec<T>)
+├── BiomeModifierEntry<T extends BiomeModifier> (R = MapCodec<?>, T = MapCodec<T>)
+├── GlobalLootModifierEntry<T extends IGlobalLootModifier> (R = MapCodec<?>, T = MapCodec<T>)
+└── StructureModifierEntry<T extends StructureModifier> (R = MapCodec<?>, T = MapCodec<T>)
 ```
 
 ## RegistryEntry
@@ -179,6 +185,90 @@ public class FluidEntry<T extends BaseFlowingFluid>
 | `getType()`   | 获取 `FluidType`           |
 | `getBlock()`  | 获取 LiquidBlock（Optional） |
 | `getBucket()` | 获取 BucketItem（Optional）  |
+
+## AttachmentEntry
+
+```java
+public class AttachmentEntry<E> extends RegistryEntry<AttachmentType<?>, AttachmentType<E>> {
+```
+
+用于 `AttachmentType` 的注册条目，由 `AttachmentBuilder` 生成。
+
+### 方法
+
+| 方法 | 说明 |
+|------|------|
+| `cast(RegistryEntry)` | 静态安全转换 |
+
+## DataComponentEntry
+
+```java
+public class DataComponentEntry<E> extends RegistryEntry<DataComponentType<?>, DataComponentType<E>> {
+```
+
+用于 `DataComponentType` 的注册条目，由 `DataComponentBuilder` 生成。
+
+### 方法
+
+| 方法 | 说明 |
+|------|------|
+| `cast(RegistryEntry)` | 静态安全转换 |
+
+## ConditionEntry
+
+```java
+public class ConditionEntry<T extends ICondition> extends RegistryEntry<MapCodec<? extends ICondition>, MapCodec<T>> {
+```
+
+用于条件编解码器的注册条目，由 `ConditionBuilder` 生成。注册的是 `MapCodec` 而非条件实例本身，使 NeoForge 数据驱动条件系统能识别自定义条件类型。
+
+### 方法
+
+| 方法 | 说明 |
+|------|------|
+| `cast(RegistryEntry)` | 静态安全转换 |
+
+## BiomeModifierEntry
+
+```java
+public class BiomeModifierEntry<T extends BiomeModifier> extends RegistryEntry<MapCodec<? extends BiomeModifier>, MapCodec<T>> {
+```
+
+用于生物群系修改器序列化器的注册条目，由 `BiomeModifierBuilder` 生成。
+
+### 方法
+
+| 方法 | 说明 |
+|------|------|
+| `cast(RegistryEntry)` | 静态安全转换 |
+
+## GlobalLootModifierEntry
+
+```java
+public class GlobalLootModifierEntry<T extends IGlobalLootModifier> extends RegistryEntry<MapCodec<? extends IGlobalLootModifier>, MapCodec<T>> {
+```
+
+用于全局战利品修改器序列化器的注册条目，由 `GlobalLootModifierBuilder` 生成。
+
+### 方法
+
+| 方法 | 说明 |
+|------|------|
+| `cast(RegistryEntry)` | 静态安全转换 |
+
+## StructureModifierEntry
+
+```java
+public class StructureModifierEntry<T extends StructureModifier> extends RegistryEntry<MapCodec<? extends StructureModifier>, MapCodec<T>> {
+```
+
+用于结构修改器序列化器的注册条目，由 `StructureModifierBuilder` 生成。
+
+### 方法
+
+| 方法 | 说明 |
+|------|------|
+| `cast(RegistryEntry)` | 静态安全转换 |
 
 ## LazyRegistryEntry
 

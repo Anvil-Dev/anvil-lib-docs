@@ -16,7 +16,13 @@ RegistryEntry<R, T> (extends DeferredHolder<R, T>, NonNullSupplier<T>)
 ├── BlockEntityEntry<T extends BlockEntity>
 ├── EntityEntry<T extends Entity>
 ├── MenuEntry<T extends AbstractContainerMenu>
-└── FluidEntry<T extends BaseFlowingFluid>
+├── FluidEntry<T extends BaseFlowingFluid>
+├── AttachmentEntry<E> (R = AttachmentType<?>, T = AttachmentType<E>)
+├── DataComponentEntry<E> (R = DataComponentType<?>, T = DataComponentType<E>)
+├── ConditionEntry<T extends ICondition> (R = MapCodec<?>, T = MapCodec<T>)
+├── BiomeModifierEntry<T extends BiomeModifier> (R = MapCodec<?>, T = MapCodec<T>)
+├── GlobalLootModifierEntry<T extends IGlobalLootModifier> (R = MapCodec<?>, T = MapCodec<T>)
+└── StructureModifierEntry<T extends StructureModifier> (R = MapCodec<?>, T = MapCodec<T>)
 ```
 
 ## RegistryEntry
@@ -179,6 +185,90 @@ public class FluidEntry<T extends BaseFlowingFluid>
 | `getType()`    | Gets the `FluidType`              |
 | `getBlock()`   | Gets the LiquidBlock (Optional)   |
 | `getBucket()`  | Gets the BucketItem (Optional)    |
+
+## AttachmentEntry
+
+```java
+public class AttachmentEntry<E> extends RegistryEntry<AttachmentType<?>, AttachmentType<E>> {
+```
+
+A registration entry for `AttachmentType`, produced by `AttachmentBuilder`.
+
+### Methods
+
+| Method | Description |
+|--------|-------------|
+| `cast(RegistryEntry)` | Static safe cast |
+
+## DataComponentEntry
+
+```java
+public class DataComponentEntry<E> extends RegistryEntry<DataComponentType<?>, DataComponentType<E>> {
+```
+
+A registration entry for `DataComponentType`, produced by `DataComponentBuilder`.
+
+### Methods
+
+| Method | Description |
+|--------|-------------|
+| `cast(RegistryEntry)` | Static safe cast |
+
+## ConditionEntry
+
+```java
+public class ConditionEntry<T extends ICondition> extends RegistryEntry<MapCodec<? extends ICondition>, MapCodec<T>> {
+```
+
+A registration entry for condition codecs, produced by `ConditionBuilder`. What is registered is the `MapCodec`, not the condition instance itself, enabling the NeoForge data-driven condition system to recognize custom condition types.
+
+### Methods
+
+| Method | Description |
+|--------|-------------|
+| `cast(RegistryEntry)` | Static safe cast |
+
+## BiomeModifierEntry
+
+```java
+public class BiomeModifierEntry<T extends BiomeModifier> extends RegistryEntry<MapCodec<? extends BiomeModifier>, MapCodec<T>> {
+```
+
+A registration entry for biome modifier serializers, produced by `BiomeModifierBuilder`.
+
+### Methods
+
+| Method | Description |
+|--------|-------------|
+| `cast(RegistryEntry)` | Static safe cast |
+
+## GlobalLootModifierEntry
+
+```java
+public class GlobalLootModifierEntry<T extends IGlobalLootModifier> extends RegistryEntry<MapCodec<? extends IGlobalLootModifier>, MapCodec<T>> {
+```
+
+A registration entry for global loot modifier serializers, produced by `GlobalLootModifierBuilder`.
+
+### Methods
+
+| Method | Description |
+|--------|-------------|
+| `cast(RegistryEntry)` | Static safe cast |
+
+## StructureModifierEntry
+
+```java
+public class StructureModifierEntry<T extends StructureModifier> extends RegistryEntry<MapCodec<? extends StructureModifier>, MapCodec<T>> {
+```
+
+A registration entry for structure modifier serializers, produced by `StructureModifierBuilder`.
+
+### Methods
+
+| Method | Description |
+|--------|-------------|
+| `cast(RegistryEntry)` | Static safe cast |
 
 ## LazyRegistryEntry
 

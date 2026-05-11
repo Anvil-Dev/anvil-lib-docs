@@ -244,3 +244,227 @@ entry.getType();    // 获取 FluidType
 entry.getBlock();   // 获取 LiquidBlock（Optional）
 entry.getBucket();  // 获取 BucketItem（Optional）
 ```
+
+## 数据与修改器构建器
+
+### AttachmentBuilder
+
+构建 `AttachmentType<E>` 注册条目，注册到 `NeoForgeRegistries.Keys.ATTACHMENT_TYPES`。
+
+#### 创建
+
+```java
+// 使用 Function<IAttachmentHolder, E>
+REGISTRUM.attachment("my_attachment", holder -> new MyAttachment());
+
+// 使用 Supplier<E>
+REGISTRUM.attachment("my_attachment", MyAttachment::new);
+```
+
+#### 序列化
+
+```java
+builder.serialize(mySerializer);       // IAttachmentSerializer
+builder.serialize(myMapCodec);         // MapCodec
+builder.serialize(myMapCodec, predicate); // MapCodec + 谓词
+```
+
+#### 同步
+
+```java
+builder.sync(mySyncHandler);                            // AttachmentSyncHandler
+builder.sync(myStreamCodec);                             // StreamCodec
+builder.sync(sendToPlayer, myStreamCodec);               // BiPredicate + StreamCodec
+```
+
+#### 生命周期控制
+
+```java
+builder.copyOnDeath();               // 玩家死亡时保留
+builder.copyHandler(myCloner);        // 自定义复制处理器
+```
+
+#### 注册
+
+```java
+AttachmentEntry<E> entry = builder.register();
+```
+
+| 方法 | 说明 |
+|------|------|
+| `serialize(IAttachmentSerializer<E>)` | 设置序列化器 |
+| `serialize(MapCodec<E>)` | 设置 MapCodec 序列化器 |
+| `serialize(MapCodec<E>, Predicate)` | 设置 MapCodec 序列化器及谓词 |
+| `copyOnDeath()` | 死亡时复制数据 |
+| `copyHandler(IAttachmentCopyHandler<E>)` | 自定义复制处理器 |
+| `sync(AttachmentSyncHandler<E>)` | 设置同步处理器 |
+| `sync(StreamCodec<..., E>)` | 设置 StreamCodec 同步 |
+| `register()` | 返回 `AttachmentEntry<E>` |
+
+### DataComponentBuilder
+
+构建 `DataComponentType<E>` 注册条目，注册到 `Registries.DATA_COMPONENT_TYPE`。
+
+#### 创建
+
+```java
+REGISTRUM.dataComponent("my_component")
+```
+
+#### 配置
+
+```java
+builder.persistent(myCodec);                       // 持久化 Codec
+builder.networkSynchronized(myStreamCodec);        // 网络同步
+builder.cacheEncoding();                           // 缓存编码
+builder.ignoreSwapAnimation();                     // 忽略交换动画
+```
+
+#### 注册
+
+```java
+DataComponentEntry<E> entry = builder.register();
+```
+
+| 方法 | 说明 |
+|------|------|
+| `persistent(Codec<E>)` | 设置持久化 Codec |
+| `networkSynchronized(StreamCodec<..., E>)` | 设置网络同步 Codec |
+| `cacheEncoding()` | 缓存编码结果 |
+| `ignoreSwapAnimation()` | 忽略交换动画 |
+| `register()` | 返回 `DataComponentEntry<E>` |
+
+### CreativeTabBuilder
+
+构建 `CreativeModeTab` 注册条目，注册到 `Registries.CREATIVE_MODE_TAB`。独立于 `AbstractRegistrum` 的 `defaultCreativeTab()`，是构建单独创造标签页的专用 Builder。
+
+#### 创建
+
+```java
+// 使用 ItemLike
+REGISTRUM.creativeTab("my_tab", MY_ITEM);
+
+// 使用 Supplier<ItemLike>
+REGISTRUM.creativeTab("my_tab", () -> MY_ITEM.get());
+```
+
+#### 配置
+
+```java
+builder.title(Component.literal("My Tab"));          // 标题
+builder.defaultTitle();                              // 自动翻译键标题
+builder.icon(() -> MY_ITEM.asStack());               // 图标
+builder.displayItems((params, output) -> { ... });   // 物品生成器
+builder.displayItems(MY_ITEM1, MY_ITEM2);            // 直接列出物品
+builder.hideTitle();                                 // 隐藏标题
+builder.noScrollBar();                               // 无滚动条
+builder.withSearchBar();                             // 搜索栏
+builder.alignedRight();                              // 右对齐
+builder.withTabsBefore(otherTabId);                  // 排序控制
+builder.withTabsAfter(otherTabId);                   // 排序控制
+builder.backgroundTexture(myTexture);                // 背景纹理
+builder.withLabelColor(0xFF0000);                    // 标签颜色
+```
+
+#### 注册
+
+```java
+RegistryEntry<CreativeModeTab, CreativeModeTab> entry = builder.register();
+```
+
+| 方法 | 说明 |
+|------|------|
+| `defaultTitle()` | 使用自动翻译键标题 |
+| `title(Component)` | 设置标题 |
+| `icon(Supplier<ItemStack>)` | 设置图标 |
+| `displayItems(DisplayItemsGenerator)` | 设置物品生成器 |
+| `displayItems(ItemLike...)` | 直接列出物品 |
+| `hideTitle()` | 隐藏标题 |
+| `noScrollBar()` | 禁用滚动条 |
+| `withSearchBar()` | 启用搜索栏 |
+| `alignedRight()` | 右对齐 |
+| `withTabsBefore(...)` | 在指定标签页之前 |
+| `withTabsAfter(...)` | 在指定标签页之后 |
+| `backgroundTexture(Identifier)` | 设置背景纹理 |
+| `withLabelColor(int)` | 设置标签颜色 |
+| `register()` | 返回 `RegistryEntry<CreativeModeTab, CreativeModeTab>` |
+
+### ConditionBuilder
+
+构建 `MapCodec<T extends ICondition>` 注册条目，注册到 `NeoForgeRegistries.Keys.CONDITION_CODECS`。注册条件编解码器，允许数据驱动条件系统识别自定义条件类型。
+
+#### 创建
+
+```java
+REGISTRUM.condition("my_condition", MyCondition.CODEC);
+```
+
+#### 注册
+
+```java
+ConditionEntry<MyCondition> entry = builder.register();
+```
+
+| 方法 | 说明 |
+|------|------|
+| `register()` | 返回 `ConditionEntry<T>` |
+
+### BiomeModifierBuilder
+
+构建 `MapCodec<T extends BiomeModifier>` 注册条目，注册到 `NeoForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS`。注册生物群系修改器序列化器。
+
+#### 创建
+
+```java
+REGISTRUM.biomeModifier("my_biome_modifier", MyBiomeModifier.CODEC);
+```
+
+#### 注册
+
+```java
+BiomeModifierEntry<MyBiomeModifier> entry = builder.register();
+```
+
+| 方法 | 说明 |
+|------|------|
+| `register()` | 返回 `BiomeModifierEntry<T>` |
+
+### GlobalLootModifierBuilder
+
+构建 `MapCodec<T extends IGlobalLootModifier>` 注册条目，注册到 `NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS`。注册全局战利品修改器序列化器。
+
+#### 创建
+
+```java
+REGISTRUM.glm("my_loot_modifier", MyLootModifier.CODEC);
+```
+
+#### 注册
+
+```java
+GlobalLootModifierEntry<MyLootModifier> entry = builder.register();
+```
+
+| 方法 | 说明 |
+|------|------|
+| `register()` | 返回 `GlobalLootModifierEntry<T>` |
+
+### StructureModifierBuilder
+
+构建 `MapCodec<T extends StructureModifier>` 注册条目，注册到 `NeoForgeRegistries.Keys.STRUCTURE_MODIFIER_SERIALIZERS`。注册结构修改器序列化器。
+
+#### 创建
+
+```java
+REGISTRUM.structureModifier("my_structure_modifier", MyStructureModifier.CODEC);
+```
+
+#### 注册
+
+```java
+StructureModifierEntry<MyStructureModifier> entry = builder.register();
+```
+
+| 方法 | 说明 |
+|------|------|
+| `register()` | 返回 `StructureModifierEntry<T>` |
