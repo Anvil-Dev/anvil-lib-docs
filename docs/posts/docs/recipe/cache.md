@@ -6,8 +6,10 @@ next: false
 
 # 缓存系统 <Badge type="info" text="API renamed in 1.21.10" />
 
-> **注意**: 1.21.10 版本中 `IItemHandlerCache`（接口）→ `ItemResourceHandlerCache`（具体类），`ItemHandlerCacheElement` → `ItemResourceHandlerCacheElement`。内部方法也做了适配：`getStackInSlot`→`extract`、`getSlotLimit`→`getCapacityAsInt` 等。
+::: tip Note
+1.21.10 版本中 `IItemHandlerCache`（接口）→ `ItemResourceHandlerCache`（具体类），`ItemHandlerCacheElement` → `ItemResourceHandlerCacheElement`。内部方法也做了适配：`getStackInSlot`→`extract`、`getSlotLimit`→`getCapacityAsInt` 等。
 `ItemResourceHandlerCacheElement`。详情参考[版本差分文档](../version-diff)。
+:::
 
 Recipe 模块采用**事务式缓存**实现世界修改：先模拟修改，配方成功后通过 acceptor 统一提交。这确保了配方失败时世界状态保持完整。
 

@@ -8,7 +8,9 @@ next: false
 
 The package `dev.anvilcraft.lib.v2.registrum` provides a declarative registration system based on fluent builders, greatly simplifying the registration and data generation workflow for blocks, items, entities, block entities, menus, fluids, and more in Minecraft mods.
 
-> Portions of this module are based on [Registrate](https://github.com/tterrag1098/Registrate), under the Mozilla Public License 2.0.
+::: info
+Portions of this module are based on [Registrate](https://github.com/tterrag1098/Registrate), under the Mozilla Public License 2.0.
+:::
 
 ## Architecture Overview
 

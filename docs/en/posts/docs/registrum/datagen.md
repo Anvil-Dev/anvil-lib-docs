@@ -228,7 +228,9 @@ DataIngredient.ingredient(
 );
 ```
 
-> **Note**: `DataIngredient` is only intended for data generation; attempting to serialize it over the network will throw an exception.
+::: tip Note
+`DataIngredient` is only intended for data generation; attempting to serialize it over the network will throw an exception.
+:::
 
 ## Tag Generation
 

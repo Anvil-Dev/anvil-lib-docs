@@ -9,7 +9,9 @@ next: false
 包 `dev.anvilcraft.lib.v2.sync` 提供了一套**声明式字段同步系统**，通过 `@Sync` 注解和 `SyncProxy<T>` 代理自动在客户端和服务端之间同步
 Java 对象的字段值。支持方向控制、维度感知分发，以及字节码注入简化字段声明。
 
-> **可用性**: 本模块**仅**在 Minecraft **26.1** 版本中存在。
+::: warning Availability
+本模块**仅**在 Minecraft **26.1** 版本中存在。
+:::
 
 ## 架构概览
 

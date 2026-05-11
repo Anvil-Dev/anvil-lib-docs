@@ -6,7 +6,9 @@ next: false
 
 # Dynamic Multiblock System <Badge type="tip" text="1.21.1" /> <Badge type="info" text="not in 1.21.2–1.21.11" /> <Badge type="tip" text="26.1" />
 
-> **Availability**: This module is available in Minecraft **1.21.1** and **26.1**. Versions 1.21.2 through 1.21.11 were not synced due to development resource constraints. If you are using these versions, the dynamic multiblock feature is unavailable.
+::: warning Availability
+This module is available in Minecraft **1.21.1** and **26.1**. Versions 1.21.2 through 1.21.11 were not synced due to development resource constraints. If you are using these versions, the dynamic multiblock feature is unavailable.
+:::
 
 The package `dev.anvilcraft.lib.v2.multiblock` provides a **dynamic multiblock structure**
 system. It supports defining multiblock shapes via datapack or code, asynchronous block matching, automatic structure state tracking (formed/unformed), and network synchronization to clients.

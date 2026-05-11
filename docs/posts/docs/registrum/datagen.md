@@ -228,7 +228,9 @@ DataIngredient.ingredient(
 );
 ```
 
-> **注意**: `DataIngredient` 仅用于数据生成，试图通过网络序列化时会抛出异常。
+::: tip Note
+`DataIngredient` 仅用于数据生成，试图通过网络序列化时会抛出异常。
+:::
 
 ## 标签生成
 

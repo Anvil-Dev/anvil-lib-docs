@@ -9,7 +9,9 @@ next: false
 包 `dev.anvilcraft.lib.v2.registrum` 提供了一套基于流式构建器的声明式注册系统，大幅简化 Minecraft
 模组中物品、方块、实体、方块实体、菜单、流体等的注册与数据生成流程。
 
-> 本模块部分代码基于 [Registrate](https://github.com/tterrag1098/Registrate)，遵循 Mozilla Public License 2.0。
+::: info
+本模块部分代码基于 [Registrate](https://github.com/tterrag1098/Registrate)，遵循 Mozilla Public License 2.0。
+:::
 
 ## 架构概览
 

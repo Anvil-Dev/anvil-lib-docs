@@ -6,8 +6,9 @@ next: false
 
 # Core Interfaces <Badge type="tip" text=">=1.21.1" /> <Badge type="danger" text="API changed in 26.1" />
 
-> **Breaking Change**: In version 26.1, the `IMoveableEntityBlock` API has been completely redesigned from NBT-based `clearData`/`setData` to data-driven
-> `storeData`/`loadData`. Choose the appropriate API based on your target version.
+::: danger BREAKING
+In version 26.1, the `IMoveableEntityBlock` API has been completely redesigned from NBT-based `clearData`/`setData` to data-driven `storeData`/`loadData`. Choose the appropriate API based on your target version.
+:::
 
 ---
 

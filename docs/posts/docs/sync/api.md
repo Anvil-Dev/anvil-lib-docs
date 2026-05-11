@@ -68,6 +68,7 @@ new SyncProxy<>(customStreamCodec);
 
 ### 默认支持的 StreamCodec 类型（18 种）
 
+::: details Click to expand — Built-in StreamCodec Type Table
 `SyncProxy.defaultCodec()` 自动为以下类型提供 StreamCodec：
 
 | 类型 | StreamCodec |
@@ -92,6 +93,8 @@ new SyncProxy<>(customStreamCodec);
 | `Byte/byte` | `ByteBufCodecs.BYTE` |
 | `long[]` | `ByteBufCodecs.LONG_ARRAY` |
 | `byte[]` (Byte[]) | `ByteBufCodecs.BYTE_ARRAY` |
+
+:::
 
 对于不在列表中的类型，必须通过 `new SyncProxy<>(value, customCodec)` 提供自定义 StreamCodec，否则构造时抛出 NPE。
 

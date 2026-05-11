@@ -6,8 +6,10 @@ next: false
 
 # Cache System <Badge type="info" text="API renamed in 1.21.10" />
 
-> **Note**: In version 1.21.10, `IItemHandlerCache` (interface) became `ItemResourceHandlerCache` (concrete class), and `ItemHandlerCacheElement` became `ItemResourceHandlerCacheElement`. Internal methods were also adapted: `getStackInSlot` to `extract`, `getSlotLimit` to `getCapacityAsInt`, etc.
-> `ItemResourceHandlerCacheElement`. See the [version diff documentation](../version-diff) for details.
+::: tip Note
+In version 1.21.10, `IItemHandlerCache` (interface) became `ItemResourceHandlerCache` (concrete class), and `ItemHandlerCacheElement` became `ItemResourceHandlerCacheElement`. Internal methods were also adapted: `getStackInSlot` to `extract`, `getSlotLimit` to `getCapacityAsInt`, etc.
+`ItemResourceHandlerCacheElement`. See the [version diff documentation](../version-diff) for details.
+:::
 
 The Recipe module uses **transactional caches** for world modifications: modifications are simulated first, and upon recipe success, they are committed atomically via an acceptor. This ensures the world state remains intact when a recipe fails.
 

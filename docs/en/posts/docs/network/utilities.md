@@ -8,7 +8,9 @@ next: false
 
 <Badge type="tip" text="1.21.1" /> <Badge type="danger" text="not in 1.21.2–1.21.11" /> <Badge type="tip" text="26.1" />
 
-> **Availability Warning**: `NetworkUtil` is **not available** in versions 1.21.2 through 1.21.11. If you are using these versions, use `PacketDistributor` directly or implement equivalent batch-sending logic yourself.
+::: warning Availability
+`NetworkUtil` is **not available** in versions 1.21.2 through 1.21.11. If you are using these versions, use `PacketDistributor` directly or implement equivalent batch-sending logic yourself.
+:::
 
 `NetworkUtil` provides static convenience methods for sending network packets from the server to multiple players.
 

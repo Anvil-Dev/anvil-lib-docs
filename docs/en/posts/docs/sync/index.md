@@ -10,7 +10,9 @@ The package `dev.anvilcraft.lib.v2.sync` provides a **declarative field synchron
 synchronizes Java object field values between client and server using the `@Sync` annotation and `SyncProxy<T>` proxies.
 It supports directional control, dimension-aware distribution, and bytecode injection that auto-associates proxies with parent objects, field names, and directions — completely transparent to users.
 
-> **Availability**: This module is **only** available in Minecraft **26.1**.
+::: warning Availability
+This module is **only** available in Minecraft **26.1**.
+:::
 
 ## Architecture Overview
 

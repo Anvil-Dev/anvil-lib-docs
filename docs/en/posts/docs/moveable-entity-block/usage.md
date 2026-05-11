@@ -6,8 +6,9 @@ next: false
 
 # Mixin and Usage Guide <Badge type="info" text="1.21.1 API" />
 
-> **26.1 Migration Note**: This document describes the 1.21.1 API (`clearData`/`setData` + `CompoundTag`). Version 26.1 uses the new
-> `storeData`/`loadData` + `ValueInput`/`ValueOutput` API. See the [core interfaces documentation](./api) for the migration guide.
+::: warning Migration to 26.1
+This document describes the 1.21.1 API (`clearData`/`setData` + `CompoundTag`). Version 26.1 uses the new `storeData`/`loadData` + `ValueInput`/`ValueOutput` API. See the [core interfaces documentation](./api) for the migration guide.
+:::
 
 ## Applicable Versions
 

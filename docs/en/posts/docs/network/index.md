@@ -6,7 +6,9 @@ next: false
 
 # Network Packet Module <Badge type="tip" text=">=1.21.1" />
 
-> **Availability**: `NetworkUtil` (batch-sending utilities) was not synchronized in versions 1.21.2-1.21.11; it is only available in 1.21.1 and 26.1. All other APIs are consistent across all versions.
+::: warning Availability
+`NetworkUtil` (batch-sending utilities) was not synchronized in versions 1.21.2-1.21.11; it is only available in 1.21.1 and 26.1. All other APIs are consistent across all versions.
+:::
 
 The package `dev.anvilcraft.lib.v2.network` provides a high-level abstraction over the NeoForge networking system to simplify packet definition, direction management, and automatic registration.
 

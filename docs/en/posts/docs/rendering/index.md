@@ -6,8 +6,9 @@ next: false
 
 # Rendering Module <Badge type="tip" text="26.1 only" />
 
-> **Availability**: This module **only** exists in Minecraft **26.1**. All earlier versions (1.21.1 through 1.21.11) do
-> not include this module.
+::: warning Availability
+This module **only** exists in Minecraft **26.1**. All earlier versions (1.21.1 through 1.21.11) do not include this module.
+:::
 
 The package `dev.anvilcraft.lib.v2.rendering` provides bloom post-processing effects and a general-purpose UBO (Uniform
 Buffer Object) layout definition framework, integrated into Minecraft's GUI rendering and main rendering pipeline via
