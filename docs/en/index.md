@@ -53,6 +53,9 @@ features:
   - title: Sync
     details: Declarative field synchronization system
     link: /posts/docs/sync/index
+  - title: Font
+    details: SDF-based font rendering system
+    link: /posts/docs/font/index
   - title: Main
     details: Aggregation module (includes all submodules)
     link: /posts/docs/main/index

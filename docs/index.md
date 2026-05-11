@@ -53,6 +53,9 @@ features:
   - title: Sync
     details: 声明式字段同步系统
     link: /posts/docs/sync/index
+  - title: Font
+    details: 基于 SDF 的字体渲染系统
+    link: /posts/docs/font/index
   - title: Main
     details: 聚合模块（包含全部子模块）
     link: /posts/docs/main/index
