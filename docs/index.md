@@ -56,6 +56,9 @@ features:
   - title: Font
     details: 基于 SDF 的字体渲染系统
     link: /posts/docs/font/index
+  - title: Space Select
+    details: 可视化空间选区系统
+    link: /posts/docs/space-select/index
   - title: Main
     details: 聚合模块（包含全部子模块）
     link: /posts/docs/main/index

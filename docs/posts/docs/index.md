@@ -32,6 +32,7 @@ AnvilLib 采用模块化设计，包含以下功能模块：
 | **Rendering**             | 功能不多的渲染库        |
 | **Sync**                  | 声明式字段同步系统       |
 | **Font**                  | SDF 字体渲染系统       |
+| **Space Select**          | 可视化空间选区系统       |
 | **Main**                  | 聚合模块（包含全部子模块）   |
 | **版本差分**                  | 版本间 API 变更与迁移指南 |
 
@@ -79,6 +80,7 @@ dependencies {
     implementation "dev.anvilcraft.lib:anvillib-rendering-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-sync-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-font-neoforge-26.1:2.0.0"
+    implementation "dev.anvilcraft.lib:anvillib-space-select-neoforge-26.1:2.0.0"
 }
 ```
 
@@ -105,6 +107,7 @@ dependencies {
     implementation("dev.anvilcraft.lib:anvillib-rendering-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-sync-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-font-neoforge-26.1:2.0.0")
+    implementation("dev.anvilcraft.lib:anvillib-space-select-neoforge-26.1:2.0.0")
 }
 ```
 

@@ -56,6 +56,9 @@ features:
   - title: Font
     details: SDF-based font rendering system
     link: /posts/docs/font/index
+  - title: Space Select
+    details: Visual space selection system
+    link: /posts/docs/space-select/index
   - title: Main
     details: Aggregation module (includes all submodules)
     link: /posts/docs/main/index
