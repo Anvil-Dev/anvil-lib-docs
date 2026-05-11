@@ -36,11 +36,28 @@ AnvilLib 采用模块化设计，包含以下功能模块：
 
 ## 依赖引入
 
-### Gradle (Groovy DSL)
+### Gradle
 
-```groovy
+:::code-group
+
+```groovy [Groovy DSL]
 repositories {
     mavenCentral() // 本项目已经上传至 Maven Central
+    maven { url = "https://server.cjsah.net:1002/maven/" } // 如果你有使用最新构建的需求
+    // 如果你需要使用的模块中包含接口注入，由于 NeoForge 对 MavenCentral 的镜像不完整，你需要按以下格式添加
+    exclusiveContent {
+        forRepositories(
+                // 以下二选一
+                mavenCentral()
+                maven { // Anvil Lib
+                    name = "Cjsah Maven"
+                    url = "https://server.cjsah.net:1002/maven/"
+                }
+        )
+        filter {
+            includeGroup "dev.anvilcraft.lib"
+        }
+    }
 }
 
 dependencies {
@@ -59,14 +76,14 @@ dependencies {
     implementation "dev.anvilcraft.lib:anvillib-util-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-wheel-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-rendering-neoforge-26.1:2.0.0"
+    implementation "dev.anvilcraft.lib:anvillib-sync-neoforge-26.1:2.0.0"
 }
 ```
 
-### Gradle (Kotlin DSL)
-
-```kotlin
+```kotlin [Kotlin DSL]
 repositories {
     mavenCentral() // 本项目已经上传至 Maven Central
+    maven { url = "https://server.cjsah.net:1002/maven/" } // 如果你有使用最新构建的需求
 }
 
 dependencies {
@@ -84,8 +101,11 @@ dependencies {
     implementation("dev.anvilcraft.lib:anvillib-util-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-wheel-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-rendering-neoforge-26.1:2.0.0")
+    implementation("dev.anvilcraft.lib:anvillib-sync-neoforge-26.1:2.0.0")
 }
 ```
+
+:::
 
 > 版本号建议与项目发布版本保持一致（当前工程配置为 `mod_version=2.0.0`）。
 
@@ -112,6 +132,10 @@ Registrum 模块部分代码基于 [Registrate](https://github.com/tterrag1098/R
 ## 作者
 
 - **Gugle** - 主要开发者
+- **秋水AuU_** - 多方块、Util、Network 模块贡献者
+- **竹若泠** - Rendering 模块贡献者
+- **LouisQuepierts** - Rendering 模块贡献者
+- **MercuryGryph** - Wheel 模块贡献者
 
 ## 相关链接
 
