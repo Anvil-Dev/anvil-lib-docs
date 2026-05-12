@@ -56,6 +56,9 @@ features:
   - title: Font
     details: 基于 SDF 的字体渲染系统
     link: /posts/docs/font/index
+  - title: Collision
+    details: AABB/三角形 SAT 碰撞检测
+    link: /posts/docs/collision/index
   - title: Space Select
     details: 可视化空间选区系统
     link: /posts/docs/space-select/index

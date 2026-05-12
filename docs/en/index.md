@@ -56,6 +56,9 @@ features:
   - title: Font
     details: SDF-based font rendering system
     link: /posts/docs/font/index
+  - title: Collision
+    details: AABB/Triangle SAT collision detection
+    link: /posts/docs/collision/index
   - title: Space Select
     details: Visual space selection system
     link: /posts/docs/space-select/index

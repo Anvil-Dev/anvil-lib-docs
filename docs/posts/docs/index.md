@@ -17,24 +17,25 @@ next: false
 
 AnvilLib 采用模块化设计，包含以下功能模块：
 
-| 模块                        | 说明              |
-|---------------------------|-----------------|
-| **Config**                | 基于注解的配置系统       |
-| **Codec**                 | 数据编解码与网络序列化工具   |
-| **Integration**           | 模组兼容性集成框架       |
-| **Network**               | 网络通信与数据包自动注册框架  |
-| **Recipe**                | 世界内配方系统         |
-| **Moveable Entity Block** | 可被活塞推动的方块实体支持   |
-| **Multiblock**            | 动态多方块系统         |
-| **Registrum**             | 简化的注册系统         |
-| **Util**                  | 可共享的工具方法        |
-| **Wheel**                 | 轮盘菜单客户端 API     |
-| **Rendering**             | 功能不多的渲染库        |
-| **Sync**                  | 声明式字段同步系统       |
-| **Font**                  | SDF 字体渲染系统      |
-| **Space Select**          | 可视化空间选区系统       |
-| **Main**                  | 聚合模块（包含全部子模块）   |
-| **版本差分**                  | 版本间 API 变更与迁移指南 |
+| 模块                        | 说明                |
+|---------------------------|-------------------|
+| **Config**                | 基于注解的配置系统         |
+| **Codec**                 | 数据编解码与网络序列化工具     |
+| **Integration**           | 模组兼容性集成框架         |
+| **Network**               | 网络通信与数据包自动注册框架    |
+| **Recipe**                | 世界内配方系统           |
+| **Moveable Entity Block** | 可被活塞推动的方块实体支持     |
+| **Multiblock**            | 动态多方块系统           |
+| **Registrum**             | 简化的注册系统           |
+| **Util**                  | 可共享的工具方法          |
+| **Wheel**                 | 轮盘菜单客户端 API       |
+| **Rendering**             | 功能不多的渲染库          |
+| **Sync**                  | 声明式字段同步系统         |
+| **Font**                  | SDF 字体渲染系统        |
+| **Collision**             | AABB/三角形 SAT 碰撞检测 |
+| **Space Select**          | 可视化空间选区系统         |
+| **Main**                  | 聚合模块（包含全部子模块）     |
+| **版本差分**                  | 版本间 API 变更与迁移指南   |
 
 ## 依赖引入
 
@@ -80,6 +81,7 @@ dependencies {
     implementation "dev.anvilcraft.lib:anvillib-rendering-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-sync-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-font-neoforge-26.1:2.0.0"
+    implementation "dev.anvilcraft.lib:anvillib-collision-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-space-select-neoforge-26.1:2.0.0"
 }
 ```
@@ -107,6 +109,7 @@ dependencies {
     implementation("dev.anvilcraft.lib:anvillib-rendering-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-sync-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-font-neoforge-26.1:2.0.0")
+    implementation("dev.anvilcraft.lib:anvillib-collision-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-space-select-neoforge-26.1:2.0.0")
 }
 ```

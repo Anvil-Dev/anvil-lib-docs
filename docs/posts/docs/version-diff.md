@@ -22,6 +22,7 @@ next: false
 | codec                 | ✅ 3    | ✅ 3            | ✅ 3  |                                                       |
 | config                | ✅ 11   | ✅ 11           | ✅ 11 |                                                       |
 | integration           | ✅ 7    | ✅ 7            | ✅ 7  |                                                       |
+| collision             | —      | —              | ✅    |                                                       |
 | main                  | ✅ 2    | ✅ 2            | ✅ 2  |                                                       |
 | network               | ✅ 14   | ✅ 12           | ✅ 14 | 1.21.2–1.21.11 缺少 `NetworkUtil`                       |
 | recipe                | ✅ 88   | ✅ 99           | ✅ 89 |                                                       |

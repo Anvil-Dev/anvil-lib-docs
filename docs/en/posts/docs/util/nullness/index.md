@@ -35,7 +35,8 @@ varies by version:
 | 26.1           | `import dev.anvilcraft.lib.v2.util.nullness.NonNullSupplier;` (restored) |
 
 > In versions 1.21.2–1.21.11, `module.util` was not synchronized due to capacity constraints. The nullness functional
-> interfaces were embedded into `module.registrum` to ensure Registrum could compile independently. In 26.1, `module.util`
+> interfaces were embedded into `module.registrum` to ensure Registrum could compile independently. In 26.1,
+`module.util`
 > synchronization was restored and the import path returned to its original location.
 
 ## Deprecated Interfaces

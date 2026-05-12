@@ -10,7 +10,8 @@ This document records API differences, module availability, and code-level chang
 AnvilLib, helping developers quickly identify compatibility differences and migration costs between versions.
 
 > All versions belong to AnvilLib `2.0.0`, developed **in parallel simultaneously**, differing only in the target
-> Minecraft compilation version. Some modules were not synchronized to all Minecraft versions due to development capacity
+> Minecraft compilation version. Some modules were not synchronized to all Minecraft versions due to development
+> capacity
 > constraints. The version numbering below is for retrieval convenience only and does not imply release order.
 
 ---
@@ -39,7 +40,8 @@ The following table shows the **presence status** of each module across 12 Minec
 > `--` indicates the module does **not exist** in that version range. Numbers represent Java source file counts.
 >
 > **nullness package embedding for util module**: In versions where `module.util` was removed (1.21.2–1.21.11),
-> functional interfaces such as `NonNullSupplier` and `NonNullFunction` were temporarily embedded into `module.registrum`
+> functional interfaces such as `NonNullSupplier` and `NonNullFunction` were temporarily embedded into
+`module.registrum`
 > under the `registrum.util.nullness` package to ensure the Registrum module could compile independently. In 26.1, once
 `module.util` was restored as an independent module, these classes migrated back to `util.nullness`.
 
