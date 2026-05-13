@@ -245,6 +245,23 @@ entry.getBlock();   // 获取 LiquidBlock（Optional）
 entry.getBucket();  // 获取 BucketItem（Optional）
 ```
 
+## SoundEventBuilder
+
+注册 `SoundEvent` 到 `Registries.SOUND_EVENT`。
+
+- 构造函数参数 `(owner, parent, name, callback)` —— 使用 modid:name 作为声音事件 ID
+- `fix(float range)` —— 创建固定范围声音事件；省略则使用可变范围（默认）
+- 返回 `SoundEventEntry`
+
+```java
+REGISTRUM.object("my_sound")
+    .soundEvent()
+        .fix(16.0f)  // 可选：固定范围
+        .register();
+```
+
+不调用 `fix()` 时，使用 `SoundEvent.createVariableRangeEvent(id)`。
+
 ## 数据与修改器构建器
 
 ### AttachmentBuilder

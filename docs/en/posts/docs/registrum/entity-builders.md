@@ -245,6 +245,23 @@ entry.getBlock();   // Get LiquidBlock (Optional)
 entry.getBucket();  // Get BucketItem (Optional)
 ```
 
+## SoundEventBuilder
+
+Registers a `SoundEvent` to `Registries.SOUND_EVENT`.
+
+- Constructor takes `(owner, parent, name, callback)` -- uses modid:name as the sound event ID
+- `fix(float range)` -- creates a fixed range sound event; omit for variable range (default)
+- Returns `SoundEventEntry`
+
+```java
+REGISTRUM.object("my_sound")
+    .soundEvent()
+        .fix(16.0f)  // optional: fixed range
+        .register();
+```
+
+Without `fix()`, uses `SoundEvent.createVariableRangeEvent(id)`.
+
 ## Data and Modifier Builders
 
 ### AttachmentBuilder

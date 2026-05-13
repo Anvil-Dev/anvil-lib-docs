@@ -1127,6 +1127,25 @@ public <T extends StructureModifier> StructureModifierBuilder<T, S> structureMod
 REGISTRUM.structureModifier("my_struct_modifier", MyStructModifier.CODEC).register();
 ```
 
+### SoundEvent Builder (1 overload)
+
+Registers a SoundEvent (`Registries.SOUND_EVENT`).
+
+```java
+public SoundEventBuilder<S> soundEvent()
+```
+
+Uses the current name (from `object()`). Returns a `SoundEventBuilder` for configuring fixed range and registering.
+
+```java
+REGISTRUM.object("my_sound")
+    .soundEvent()
+        .fix(16.0f)  // optional: fixed range
+        .register();
+```
+
+Without `fix()`, uses `SoundEvent.createVariableRangeEvent(id)`.
+
 ### Condition Builder (1 overload)
 
 Registers a condition codec (`NeoForgeRegistries.Keys.CONDITION_CODECS`).

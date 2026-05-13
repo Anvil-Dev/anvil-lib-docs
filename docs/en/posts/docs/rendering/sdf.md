@@ -11,53 +11,51 @@ Fields (SDF)**. Parameters are transmitted via GPU UBO, supporting 7 shape types
 
 ## SdfGraphics
 
-Core entry point providing a fluent Builder API. Access the global singleton via `SdfGraphics.instance`.
+Core entry point providing a fluent Builder API. Access the global singleton via `SdfGraphics.getInstance()`.
 
 ### Shape Drawing Methods
 
 All methods return `this` for chaining. Each call sets the current parameter state; `draw(graphics)` submits the render.
 
-| Method                                 | Parameters                                   | Description    |
-|----------------------------------------|----------------------------------------------|----------------|
-| `box(x, y, width, height)`             | Position + size                              | Rectangle      |
-| `circle(x, y, radius)`                 | Center + radius                              | Circle         |
-| `arc(x, y, sweep, radius, width)`      | Center + sweep angle + radius + width        | Arc            |
-| `sector(x, y, sweep, radius, width)`   | Center + sweep angle + radius + width        | Annular sector |
-| `pie(x, y, sweep, radius)`             | Center + sweep angle + radius                | Pie            |
-| `capsule(x, y, topR, bottomR, height)` | Center + top radius + bottom radius + height | Capsule        |
-| `egg(x, y, topR, bottomR, height)`     | Center + top radius + bottom radius + height | Egg            |
+| Method                                        | Parameters                                   | Description    |
+|-----------------------------------------------|----------------------------------------------|----------------|
+| `box(x, y, w, h)`                             | Position + size                              | Rectangle      |
+| `circle(x, y, radius)`                        | Center + radius                              | Circle         |
+| `arc(x, y, radius, startAngle, arcLength)`    | Center + radius + start angle + arc length   | Arc            |
+| `sector(x, y, radius, startAngle, arcLength)` | Center + radius + start angle + arc length   | Annular sector |
+| `pie(x, y, radius, startAngle)`               | Center + radius + start angle                | Pie            |
+| `capsule(x, y, w, h, radius)`                 | Center + width + height + corner radius      | Capsule        |
+| `egg(x, y, radiusTop, radiusBottom, height)`  | Center + top radius + bottom radius + height | Egg            |
 
 ### Style Methods
 
-| Method                                      | Description                                         |
-|---------------------------------------------|-----------------------------------------------------|
-| `color(int rgba)`                           | Set color (ARGB)                                    |
-| `color(float r, float g, float b, float a)` | Set color (float components)                        |
-| `color(int r, int g, int b, int a)`         | Set color (integer components)                      |
-| `smooth(float radius)`                      | Set smooth/blur radius (>=0)                        |
-| `round(float radius)`                       | Set corner radius (>=0)                             |
-| `stroke(float width)`                       | Set stroke width (>0 auto-enables onion mode)       |
-| `rotate(float degrees)`                     | Set rotation angle (degrees, auto-wrapped to 0-360) |
-| `center(boolean center)`                    | Whether to use center as anchor                     |
-| `onion(boolean onion)`                      | Enable hollow stroke mode                           |
-| `fill()`                                    | Set fill pass (default)                             |
-| `light(float radius)`                       | Set light pass, radius = glow attenuation distance  |
+| Method                  | Description                                         |
+|-------------------------|-----------------------------------------------------|
+| `color(int argbHex)`    | Set color (ARGB)                                    |
+| `rotate(float degrees)` | Set rotation angle (degrees, auto-wrapped to 0-360) |
+| `center(boolean)`       | Whether to use center as anchor                     |
+| `stroke(int width)`     | Set stroke width (0=filled, >0=outline)             |
+| `round(float radius)`   | Set corner radius (>=0)                             |
+| `fill()`                | Set fill pass (default)                             |
+| `light(int)`            | Set light pass                                      |
+| `reset()`               | Reset parameters to defaults                        |
+| `onion(boolean)`        | Enable hollow stroke mode                           |
 
 ### Collision Detection
 
 ```java
-// Check if point (x, y) is within SDF distance threshold
-boolean hit = SdfGraphics.instance.collide(x, y, threshold);
+// Check if point (mouseX, mouseY) is within SDF distance threshold
+boolean hit = SdfGraphics.getInstance().collide(mouseX, mouseY, threshold);
 ```
 
 ### Copy and Reset
 
 ```java
 // Copy current parameter state (creates new SdfGraphics instance)
-SdfGraphics copy = SdfGraphics.instance.cache();
+SdfGraphics copy = SdfGraphics.getInstance().cache();
 
 // Reset parameters to defaults
-SdfGraphics.instance.reset();
+SdfGraphics.getInstance().reset();
 
 // Flush global state (reset params + zero UBO index)
 SdfGraphics.flush();
@@ -66,24 +64,23 @@ SdfGraphics.flush();
 ### Usage Example
 
 ```java
-SdfGraphics sdf = SdfGraphics.instance;
+SdfGraphics sdf = SdfGraphics.getInstance();
 
 // Filled rounded rectangle
 sdf.box(100, 50, 200, 80)
    .color(0xFFFF4080)
    .round(10)
-   .smooth(2)
    .draw(graphics);
 
 // Stroked circle
 sdf.circle(200, 150, 60)
-   .color(1.0f, 0.5f, 0.2f, 1.0f)
+   .color(0xFF4080FF)
    .stroke(4)
    .draw(graphics);
 
 // Glowing rectangle
 sdf.box(300, 100, 150, 60)
-   .color(255, 200, 50, 255)
+   .color(0xFFFFC832)
    .light(8)
    .draw(graphics);
 
@@ -134,10 +131,10 @@ Utility class (`@UtilityClass`) containing 9 core SDF mathematical functions: `s
 ## Internal Rendering Pipeline
 
 ```
-SdfGraphics.box().color().round().smooth().draw(graphics)
+SdfGraphics.box().color().round().draw(graphics)
   → SdfParameters sets corresponding Vector4f/Vector4i components
   → _draw() function:
-    1. Compute expanded size (round + smooth + stroke) * 2
+    1. Compute expanded size (round + stroke) * 2
     2. Build Matrix3x2f transform (translate + rotate + scale)
     3. Write SdfParameters via UBO offset
     4. Create RenderState (implements LibGuiElementRenderState)
@@ -147,7 +144,7 @@ SdfGraphics.box().color().round().smooth().draw(graphics)
 
 ## Capacity Limits
 
-- Global UBO buffer size: `SDF_PARAMETER_SIZE * 256 = 16384 bytes`
+- Global UBO buffer size: `SDF_PARAMETER_SIZE * 256 = 16 * 16 * 256 = 65536 bytes`
 - Maximum 256 SDF draw calls per frame
 - Call `SdfGraphics.flush()` at end of each frame to reset the index counter
 
@@ -155,5 +152,5 @@ SdfGraphics.box().color().round().smooth().draw(graphics)
 
 - SDF rendering depends on `ConfigureMainRenderTargetEvent` for GPU resource init (UBO, CommandEncoder)
 - Renders through `ALRPipelines.SDF_GRAPHICS` pipeline, no texture binding needed (`TextureSetup.noTexture()`)
-- `stroke()` simultaneously sets stroke width and enables `onion` mode
+- `stroke(0)` for filled mode, `stroke(>0)` for outline mode
 - Colors use ARGB format; `color(int)` accepts `0xAARRGGBB`

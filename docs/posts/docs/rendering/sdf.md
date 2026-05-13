@@ -11,53 +11,51 @@ GPU UBO 传输参数，支持 7 种图形类型和填充/发光两种渲染 Pass
 
 ## SdfGraphics
 
-核心入口类，提供流式 Builder API。全局单例通过 `SdfGraphics.instance` 获取。
+核心入口类，提供流式 Builder API。全局单例通过 `SdfGraphics.getInstance()` 获取。
 
 ### 图形绘制方法
 
 所有方法返回 `this` 支持链式调用，每个方法设置当前参数状态，调用 `draw(graphics)` 提交渲染。
 
-| 方法                                     | 参数                 | 说明  |
-|----------------------------------------|--------------------|-----|
-| `box(x, y, width, height)`             | 位置 + 尺寸            | 矩形  |
-| `circle(x, y, radius)`                 | 中心 + 半径            | 圆形  |
-| `arc(x, y, sweep, radius, width)`      | 中心 + 扫角 + 半径 + 线宽  | 弧形  |
-| `sector(x, y, sweep, radius, width)`   | 中心 + 扫角 + 半径 + 线宽  | 扇形环 |
-| `pie(x, y, sweep, radius)`             | 中心 + 扫角 + 半径       | 饼形  |
-| `capsule(x, y, topR, bottomR, height)` | 中心 + 上半径 + 下半径 + 高 | 胶囊形 |
-| `egg(x, y, topR, bottomR, height)`     | 中心 + 上半径 + 下半径 + 高 | 蛋形  |
+| 方法                                            | 参数                 | 说明  |
+|-----------------------------------------------|--------------------|-----|
+| `box(x, y, w, h)`                             | 位置 + 尺寸            | 矩形  |
+| `circle(x, y, radius)`                        | 中心 + 半径            | 圆形  |
+| `arc(x, y, radius, startAngle, arcLength)`    | 中心 + 半径 + 起始角 + 弧长 | 弧形  |
+| `sector(x, y, radius, startAngle, arcLength)` | 中心 + 半径 + 起始角 + 弧长 | 扇形环 |
+| `pie(x, y, radius, startAngle)`               | 中心 + 半径 + 起始角      | 饼形  |
+| `capsule(x, y, w, h, radius)`                 | 中心 + 宽 + 高 + 圆角半径  | 胶囊形 |
+| `egg(x, y, radiusTop, radiusBottom, height)`  | 中心 + 上半径 + 下半径 + 高 | 蛋形  |
 
 ### 样式方法
 
-| 方法                                          | 说明                        |
-|---------------------------------------------|---------------------------|
-| `color(int rgba)`                           | 设置颜色（ARGB）                |
-| `color(float r, float g, float b, float a)` | 设置颜色（浮点分量）                |
-| `color(int r, int g, int b, int a)`         | 设置颜色（整数分量）                |
-| `smooth(float radius)`                      | 设置平滑/模糊半径（≥0）             |
-| `round(float radius)`                       | 设置圆角半径（≥0）                |
-| `stroke(float width)`                       | 设置描边宽度（>0 时自动启用 onion 模式） |
-| `rotate(float degrees)`                     | 设置旋转角度（度，自动 wrap 到 0-360） |
-| `center(boolean center)`                    | 是否以中心为锚点                  |
-| `onion(boolean onion)`                      | 启用中空描边模式                  |
-| `fill()`                                    | 设置填充 Pass（默认）             |
-| `light(float radius)`                       | 设置发光 Pass，radius 为发光衰减距离  |
+| 方法                      | 说明                        |
+|-------------------------|---------------------------|
+| `color(int argbHex)`    | 设置颜色（ARGB）                |
+| `rotate(float degrees)` | 设置旋转角度（度，自动 wrap 到 0-360） |
+| `center(boolean)`       | 是否以中心为锚点                  |
+| `stroke(int width)`     | 设置描边宽度（0=填充, >0=描边）       |
+| `round(float radius)`   | 设置圆角半径（≥0）                |
+| `fill()`                | 设置填充 Pass（默认）             |
+| `light(int)`            | 设置发光 Pass                 |
+| `reset()`               | 重置参数为默认值                  |
+| `onion(boolean)`        | 启用中空描边模式                  |
 
 ### 碰撞检测
 
 ```java
-// 判断点 (x, y) 是否在 SDF 距离阈值内
-boolean hit = SdfGraphics.instance.collide(x, y, threshold);
+// 判断点 (mouseX, mouseY) 是否在 SDF 距离阈值内
+boolean hit = SdfGraphics.getInstance().collide(mouseX, mouseY, threshold);
 ```
 
 ### 复制与重置
 
 ```java
 // 复制当前参数状态（创建新的 SdfGraphics 实例）
-SdfGraphics copy = SdfGraphics.instance.cache();
+SdfGraphics copy = SdfGraphics.getInstance().cache();
 
 // 重置参数为默认值
-SdfGraphics.instance.reset();
+SdfGraphics.getInstance().reset();
 
 // 刷新全局状态（重置参数 + 清零 UBO 索引）
 SdfGraphics.flush();
@@ -67,24 +65,23 @@ SdfGraphics.flush();
 
 ```java
 // 获取全局实例
-SdfGraphics sdf = SdfGraphics.instance;
+SdfGraphics sdf = SdfGraphics.getInstance();
 
 // 绘制填充圆角矩形
 sdf.box(100, 50, 200, 80)
    .color(0xFFFF4080)
    .round(10)
-   .smooth(2)
    .draw(graphics);
 
 // 绘制描边圆形
 sdf.circle(200, 150, 60)
-   .color(1.0f, 0.5f, 0.2f, 1.0f)
+   .color(0xFF4080FF)
    .stroke(4)
    .draw(graphics);
 
 // 绘制发光矩形
 sdf.box(300, 100, 150, 60)
-   .color(255, 200, 50, 255)
+   .color(0xFFFFC832)
    .light(8)
    .draw(graphics);
 
@@ -144,10 +141,10 @@ UBO 参数类，继承 `UboObject<SdfParameters>`。通过 `SdfGraphics` 的 Bui
 ## 内部渲染流程
 
 ```
-SdfGraphics.box().color().round().smooth().draw(graphics)
+SdfGraphics.box().color().round().draw(graphics)
   → SdfParameters 设置对应的 Vector4f/Vector4i 分量
   → _draw() 函数:
-    1. 计算扩展尺寸 (round + smooth + stroke) * 2
+    1. 计算扩展尺寸 (round + stroke) * 2
     2. 构建 Matrix3x2f 变换（平移 + 旋转 + 缩放）
     3. 通过 UBO offset 写入 SdfParameters
     4. 创建 RenderState (实现 LibGuiElementRenderState)
@@ -165,5 +162,5 @@ SdfGraphics.box().color().round().smooth().draw(graphics)
 
 - SDF 渲染依赖 `ConfigureMainRenderTargetEvent` 初始化 GPU 资源（UBO、CommandEncoder）
 - 渲染通过 `ALRPipelines.SDF_GRAPHICS` 管线，无需纹理绑定（`TextureSetup.noTexture()`）
-- `stroke()` 同时设置描边宽度和启用 `onion` 模式
+- `stroke(0)` 为填充模式，`stroke(>0)` 为描边模式
 - 颜色使用 ARGB 格式，`color(int)` 接受 `0xAARRGGBB`

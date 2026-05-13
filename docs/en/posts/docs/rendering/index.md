@@ -50,4 +50,3 @@ Mixin.
 
 - The bloom effect depends on creating a significant number of RenderTargets, restricted to client-side environments
 - All GPU resources are created by `GpuDevice`, with lifecycle tied to the `BloomPostEffect` instance
-- Mixin modifies `GuiRenderer` internal behavior and may conflict with other rendering mods

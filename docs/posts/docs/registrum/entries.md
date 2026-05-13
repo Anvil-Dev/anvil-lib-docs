@@ -17,6 +17,7 @@ RegistryEntry<R, T> (extends DeferredHolder<R, T>, NonNullSupplier<T>)
 ├── EntityEntry<T extends Entity>
 ├── MenuEntry<T extends AbstractContainerMenu>
 ├── FluidEntry<T extends BaseFlowingFluid>
+├── SoundEventEntry
 ├── AttachmentEntry<E> (R = AttachmentType<?>, T = AttachmentType<E>)
 ├── DataComponentEntry<E> (R = DataComponentType<?>, T = DataComponentType<E>)
 ├── ConditionEntry<T extends ICondition> (R = MapCodec<?>, T = MapCodec<T>)
@@ -185,6 +186,14 @@ public class FluidEntry<T extends BaseFlowingFluid>
 | `getType()`   | 获取 `FluidType`           |
 | `getBlock()`  | 获取 LiquidBlock（Optional） |
 | `getBucket()` | 获取 BucketItem（Optional）  |
+
+## SoundEventEntry
+
+```java
+public class SoundEventEntry extends RegistryEntry<SoundEvent, SoundEvent>
+```
+
+`SoundEvent` 注册条目的包装器。由 `SoundEventBuilder` 生成。提供 `cast()` 方法用于类型安全转换。
 
 ## AttachmentEntry
 

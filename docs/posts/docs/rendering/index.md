@@ -43,4 +43,3 @@ Mixin 集成到 Minecraft 的 GUI 渲染和主渲染流程中。
 
 - 泛光效果依赖大量 RenderTarget 创建，限定客户端环境
 - 所有 GPU 资源由 `GpuDevice` 创建，生命周期跟随 `BloomPostEffect` 实例
-- Mixin 修改 `GuiRenderer` 内部行为，可能与其它渲染模组冲突

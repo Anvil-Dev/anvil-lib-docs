@@ -1117,6 +1117,25 @@ public <T extends StructureModifier> StructureModifierBuilder<T, S> structureMod
 REGISTRUM.structureModifier("my_struct_modifier", MyStructModifier.CODEC).register();
 ```
 
+### SoundEvent 构建器（1 个重载）
+
+注册一个 SoundEvent（`Registries.SOUND_EVENT`）。
+
+```java
+public SoundEventBuilder<S> soundEvent()
+```
+
+使用当前名称（来自 `object()`）。返回一个 `SoundEventBuilder`，用于配置固定范围和注册。
+
+```java
+REGISTRUM.object("my_sound")
+    .soundEvent()
+        .fix(16.0f)  // 可选：固定范围
+        .register();
+```
+
+不调用 `fix()` 时，使用 `SoundEvent.createVariableRangeEvent(id)`。
+
 ### Condition 构建器（1 个重载）
 
 注册一个 condition 编解码器（`NeoForgeRegistries.Keys.CONDITION_CODECS`）。
