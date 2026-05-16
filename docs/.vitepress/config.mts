@@ -164,6 +164,7 @@ function getAutoConfig(lang: string = 'zh', homeName = '首页') {
         },
         {icon: 'curseforge', link: 'https://www.curseforge.com/minecraft/mc-mods/anvil-lib', ariaLabel: 'CurseForge'},
         {icon: 'modrinth', link: 'https://modrinth.com/mod/anvil-lib', ariaLabel: 'Modrinth'},
+        {icon: 'qq', link: 'https://qm.qq.com/q/RGA0DXEyic', ariaLabel: 'QQ'},
     ];
 
     const footer = {
