@@ -56,7 +56,7 @@ jobs:
           branch: pages
           folder: ./docs/.vitepress/dist
       - name: Update Pages
-        uses: Gu-ZT/1panel-actions@1.0.1
+        uses: Gu-ZT/1panel-actions@1.0.2
         with:
           url: ${{ secrets.ONEPANEL_URL }}
           token: ${{ secrets.ONEPANEL_TOKEN }}
