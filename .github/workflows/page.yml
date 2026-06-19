@@ -56,10 +56,11 @@ jobs:
           branch: pages
           folder: ./docs/.vitepress/dist
       - name: Update Pages
-        uses: Gu-ZT/1panel-actions@1.0.2
+        uses: Gu-ZT/1panel-actions@1.0.3
         with:
           url: ${{ secrets.ONEPANEL_URL }}
           token: ${{ secrets.ONEPANEL_TOKEN }}
+          timezone: +8
           action: runScript
           params: |
             name=更新 lib.anvilcraft.dev
