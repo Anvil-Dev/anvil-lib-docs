@@ -60,7 +60,6 @@ jobs:
         with:
           url: ${{ secrets.ONEPANEL_URL }}
           token: ${{ secrets.ONEPANEL_TOKEN }}
-          timezone: +8
           action: runScript
           params: |
             name=更新 lib.anvilcraft.dev
