@@ -6,10 +6,10 @@ on:
     branches:
       - main
     paths:
+      - .github/workflows/page.yml
       - docs/**
       - package.json
       - pnpm-lock.yaml
-      - .github/workflows/page.yml
 
 permissions:
   contents: write
@@ -60,6 +60,6 @@ jobs:
         with:
           url: ${{ secrets.ONEPANEL_URL }}
           token: ${{ secrets.ONEPANEL_TOKEN }}
-          action: runScript
+          action: runCronjob
           params: |
-            name=更新 lib.anvilcraft.dev
+            name=更新lib.anvilcraft.dev
