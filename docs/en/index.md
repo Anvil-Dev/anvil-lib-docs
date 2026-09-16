@@ -62,6 +62,9 @@ features:
   - title: Space Select
     details: Visual space selection system
     link: /posts/docs/space-select/index
+  - title: Math
+    details: Serializable math expression system
+    link: /posts/docs/math/index
   - title: Main
     details: Aggregation module (includes all submodules)
     link: /posts/docs/main/index

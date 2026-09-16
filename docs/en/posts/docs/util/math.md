@@ -1,5 +1,8 @@
 # Math Util
 
+> This page covers `MathUtil`, the numeric utility class in the `util` module. For the serializable math expression
+> system (text such as `x*2` plus its JSON codecs), see [Math Expression](../math/index).
+
 `dev.anvilcraft.lib.v2.util.MathUtil` provides common math and vector operations:
 
 - `rotationDegrees(Vector2f, float)` / `rotate(Vector2f, float)` – vector rotation

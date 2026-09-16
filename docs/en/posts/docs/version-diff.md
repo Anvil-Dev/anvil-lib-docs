@@ -25,6 +25,7 @@ The following table shows the **presence status** of each module across 12 Minec
 | codec                 | x 3    | x 3            | x 3  |                                                                                                                 |
 | config                | x 11   | x 11           | x 11 |                                                                                                                 |
 | integration           | x 7    | x 7            | x 7  |                                                                                                                 |
+| collision             | --     | --             | x    |                                                                                                                 |
 | main                  | x 2    | x 2            | x 2  |                                                                                                                 |
 | network               | x 14   | x 12           | x 14 | 1.21.2–1.21.11 lack `NetworkUtil`                                                                               |
 | recipe                | x 88   | x 99           | x 89 |                                                                                                                 |
@@ -35,7 +36,8 @@ The following table shows the **presence status** of each module across 12 Minec
 | **util**              | x 43   | --             | x 43 | Not synced to 1.21.2–1.21.11 due to capacity constraints; nullness package embedded into registrum as a stopgap |
 | **rendering**         | --     | --             | x 19 | Only exists in 26.1                                                                                             |
 | test                  | x 17   | x 6            | x 12 |                                                                                                                 |
-| **Total**             | 273    | 240–248        | 312  |                                                                                                                 |
+| **math**              | x 32   | --             | x 32 | Not synced to 1.21.2–1.21.11 due to capacity constraints; 23 main sources + 9 in-module tests                    |
+| **Total**             | 305    | 240–248        | 344  |                                                                                                                 |
 
 > `--` indicates the module does **not exist** in that version range. Numbers represent Java source file counts.
 >
@@ -60,6 +62,7 @@ Compilation target change: `[1.21.1,1.21.2)` -> `[1.21.2,1.21.3)`, Parchment `20
 
 - `module.multiblock` — Not synced to this version
 - `module.util` — Not synced to this version; nullness package embedded into registrum
+- `module.math` — Not synced to this version (like multiblock and util, restored only in 26.1)
 - `module.network` — `NetworkUtil.java` and `util/` package not synced (14->12 files)
 - `module.test` — Multiblock tests, Datagen tests, wheel/lang not synced (17->6 files)
 
@@ -209,6 +212,7 @@ Compilation target change: `[26.1,26.2)`, no Parchment (NeoForge 26.1 no longer 
 | Module         | Status      | Notes                                                                        |
 |----------------|-------------|------------------------------------------------------------------------------|
 | **rendering**  | New         | Bloom post-processing, UBO framework, GUI Mixin, renderdoc-loader (19 files) |
+| **math**       | New         | Serializable math expression system; not synced in 1.21.2–1.21.11 (23 files) |
 | **multiblock** | Synced      | Not synced in 1.21.2–1.21.11; restored in 26.1 (26 files)                    |
 | **util**       | Synced      | Not synced in 1.21.2–1.21.11; restored in 26.1 (43 files)                    |
 | **network**    | Restored    | `NetworkUtil.java` returns (12->14 files)                                    |
@@ -236,6 +240,7 @@ Compilation target change: `[26.1,26.2)`, no Parchment (NeoForge 26.1 no longer 
 | `LibEntityTypeTags`                      | recipe                |
 | `IRecipeMapExtension` + `RecipeMapMixin` | recipe                |
 | Entire `rendering` module                | rendering             |
+| Entire `math` module                     | math                  |
 
 ---
 
@@ -268,6 +273,7 @@ Based on the frequency and impact of changes across versions:
 | `IPacket` interface hierarchy                        | <Badge type="tip" text="stable" />                  | No API changes                                                    |
 | Registrum Builder (Block/Item/Entity, etc.)          | <Badge type="tip" text="stable" />                  | No API changes                                                    |
 | `MultiblockDefinition` / `DynamicMultiblockManager`  | <Badge type="tip" text="stable" />                  | API consistent, differs only in available versions (1.21.1, 26.1) |
+| `IExpression` / `IFunction` / `FlatExpressionParser` | <Badge type="tip" text="stable" />                  | API identical in 1.21.1 and 26.1; only mapping migration (`ResourceLocation` -> `Identifier`) |
 | `NetworkRegistrar`                                   | <Badge type="warning" text="volatile" />            | 1.21.7 (bidirectional), 1.21.9 (FMLLoader)                        |
 | `InWorldRecipe`                                      | <Badge type="warning" text="volatile" />            | Changes in 1.21.2, 1.21.11, and 26.1                              |
 | `InWorldRecipeBuilder`                               | <Badge type="warning" text="volatile" />            | Same as above                                                     |
@@ -309,3 +315,4 @@ number for each version)
 | `anvillib-multiblock-neoforge-<ver>`            | x      | --             | x    |
 | `anvillib-util-neoforge-<ver>`                  | x      | --             | x    |
 | `anvillib-rendering-neoforge-<ver>`             | --     | --             | x    |
+| `anvillib-math-neoforge-<ver>`                  | x      | --             | x    |

@@ -34,6 +34,7 @@ AnvilLib 采用模块化设计，包含以下功能模块：
 | **Font**                  | SDF 字体渲染系统        |
 | **Collision**             | AABB/三角形 SAT 碰撞检测 |
 | **Space Select**          | 可视化空间选区系统         |
+| **Math**                  | 可序列化的数学表达式系统      |
 | **Main**                  | 聚合模块（包含全部子模块）     |
 | **版本差分**                  | 版本间 API 变更与迁移指南   |
 
@@ -83,6 +84,7 @@ dependencies {
     implementation "dev.anvilcraft.lib:anvillib-font-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-collision-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-space-select-neoforge-26.1:2.0.0"
+    implementation "dev.anvilcraft.lib:anvillib-math-neoforge-26.1:2.0.0"
 }
 ```
 
@@ -111,6 +113,7 @@ dependencies {
     implementation("dev.anvilcraft.lib:anvillib-font-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-collision-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-space-select-neoforge-26.1:2.0.0")
+    implementation("dev.anvilcraft.lib:anvillib-math-neoforge-26.1:2.0.0")
 }
 ```
 

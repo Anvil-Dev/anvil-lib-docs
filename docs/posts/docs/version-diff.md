@@ -33,7 +33,8 @@ next: false
 | **util**              | ✅ 43   | —              | ✅ 43 | 因产能限制，未同步到 1.21.2–1.21.11；nullness 包内嵌到 registrum 中过渡 |
 | **rendering**         | —      | —              | ✅ 19 | 仅 26.1 版本存在                                           |
 | test                  | ✅ 17   | ✅ 6            | ✅ 12 |                                                       |
-| **总计**                | 273    | 240–248        | 312  |                                                       |
+| **math**              | ✅ 32   | —              | ✅ 32 | 因产能限制，未同步到 1.21.2–1.21.11；23 个主源文件 + 9 个模块内测试          |
+| **总计**                | 305    | 240–248        | 344  |                                                       |
 
 > `—` 表示该模块在此版本范围内**不存在**。数字为 Java 源文件数。
 >
@@ -55,6 +56,7 @@ next: false
 
 - `module.multiblock` — 未同步到此版本
 - `module.util` — 未同步到此版本；nullness 包内嵌到 registrum
+- `module.math` — 未同步到此版本（与 multiblock、util 相同，直到 26.1 才恢复）
 - `module.network` — `NetworkUtil.java` 及 `util/` 包未同步（14→12 文件）
 - `module.test` — Multiblock 测试、Datagen 测试、wheel/lang 未同步（17→6 文件）
 
@@ -204,6 +206,7 @@ next: false
 | 模块             | 状态 | 说明                                              |
 |----------------|----|-------------------------------------------------|
 | **rendering**  | 新增 | 泛光后处理、UBO 框架、GUI Mixin、renderdoc-loader (19 文件) |
+| **math**       | 新增 | 可序列化的数学表达式系统，1.21.2–1.21.11 中未同步 (23 文件)       |
 | **multiblock** | 同步 | 1.21.2–1.21.11 中未同步，26.1 中恢复同步 (26 文件)          |
 | **util**       | 同步 | 1.21.2–1.21.11 中未同步，26.1 中恢复同步 (43 文件)          |
 | **network**    | 恢复 | `NetworkUtil.java` 回归 (12→14 文件)                |
@@ -231,6 +234,7 @@ next: false
 | `LibEntityTypeTags`                      | recipe                |
 | `IRecipeMapExtension` + `RecipeMapMixin` | recipe                |
 | 整个 `rendering` 模块                        | rendering             |
+| 整个 `math` 模块                             | math                  |
 
 ---
 
@@ -262,6 +266,7 @@ next: false
 | `IPacket` 接口体系                                      | <Badge type="tip" text="stable" />       | 无 API 变更                                     |
 | Registrum Builder（Block/Item/Entity 等）              | <Badge type="tip" text="stable" />       | 无 API 变更                                     |
 | `MultiblockDefinition` / `DynamicMultiblockManager` | <Badge type="tip" text="stable" />       | API 一致，仅可用版本不同（1.21.1、26.1）                  |
+| `IExpression` / `IFunction` / `FlatExpressionParser` | <Badge type="tip" text="stable" />       | 1.21.1 与 26.1 的 API 一致，仅映射迁移（`ResourceLocation`→`Identifier`） |
 | `NetworkRegistrar`                                  | <Badge type="warning" text="volatile" /> | 1.21.7 (双向)、1.21.9 (FMLLoader)               |
 | `InWorldRecipe`                                     | <Badge type="warning" text="volatile" /> | 1.21.2、1.21.11、26.1 各有变更                     |
 | `InWorldRecipeBuilder`                              | <Badge type="warning" text="volatile" /> | 同上                                           |
@@ -302,3 +307,4 @@ dependencies {
 | `anvillib-multiblock-neoforge-<ver>`            | ✅      | —              | ✅    |
 | `anvillib-util-neoforge-<ver>`                  | ✅      | —              | ✅    |
 | `anvillib-rendering-neoforge-<ver>`             | —      | —              | ✅    |
+| `anvillib-math-neoforge-<ver>`                  | ✅      | —              | ✅    |

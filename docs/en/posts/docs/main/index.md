@@ -30,6 +30,7 @@ Currently available submodules:
 | `anvillib-rendering-neoforge-26.1`             | Lightweight rendering library                                |
 | `anvillib-multiblock-neoforge-26.1`            | Dynamic multiblock system                                    |
 | `anvillib-util-neoforge-26.1`                  | Shareable utility methods                                    |
+| `anvillib-math-neoforge-26.1`                  | Serializable math expression system                           |
 
 All submodules are included via `jarJar`, meaning they are embedded into the final published Jar, and use `api` for
 dependency transitivity, so mods do not need to depend on them individually.

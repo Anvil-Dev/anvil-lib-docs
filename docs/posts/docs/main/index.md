@@ -28,5 +28,6 @@ AnvilLib 采用多模块 Gradle 项目组织。根项目 `anvillib` 通过 `buil
 | `anvillib-sync-neoforge-26.1`                  | 声明式字段同步系统            |
 | `anvillib-multiblock-neoforge-26.1`            | 动态多方块系统              |
 | `anvillib-util-neoforge-26.1`                  | 可共享的工具方法             |
+| `anvillib-math-neoforge-26.1`                  | 可序列化的数学表达式系统         |
 
 所有子模块均以 `jarJar` 方式包含，即内嵌到最终发布的 Jar 中，并使用 `api` 进行依赖传递，无需模组单独依赖。

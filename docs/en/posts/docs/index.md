@@ -35,6 +35,7 @@ AnvilLib adopts a modular design with the following functional modules:
 | **Font**                  | SDF font rendering system                                         |
 | **Collision**             | AABB/Triangle SAT collision detection                             |
 | **Space Select**          | Visual space selection system                                     |
+| **Math**                  | Serializable math expression system                               |
 | **Main**                  | Aggregate module (includes all submodules)                        |
 | **Version Diff**          | Version-to-version API changes and migration guide                |
 
@@ -85,6 +86,7 @@ dependencies {
     implementation "dev.anvilcraft.lib:anvillib-font-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-collision-neoforge-26.1:2.0.0"
     implementation "dev.anvilcraft.lib:anvillib-space-select-neoforge-26.1:2.0.0"
+    implementation "dev.anvilcraft.lib:anvillib-math-neoforge-26.1:2.0.0"
 }
 ```
 
@@ -113,6 +115,7 @@ dependencies {
     implementation("dev.anvilcraft.lib:anvillib-font-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-collision-neoforge-26.1:2.0.0")
     implementation("dev.anvilcraft.lib:anvillib-space-select-neoforge-26.1:2.0.0")
+    implementation("dev.anvilcraft.lib:anvillib-math-neoforge-26.1:2.0.0")
 }
 ```
 

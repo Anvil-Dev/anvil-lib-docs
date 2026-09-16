@@ -62,6 +62,9 @@ features:
   - title: Space Select
     details: 可视化空间选区系统
     link: /posts/docs/space-select/index
+  - title: Math
+    details: 可序列化的数学表达式系统
+    link: /posts/docs/math/index
   - title: Main
     details: 聚合模块（包含全部子模块）
     link: /posts/docs/main/index

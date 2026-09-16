@@ -1,5 +1,7 @@
 # 数学 Util
 
+> 本页是 `util` 模块里的数值工具类 `MathUtil`；可序列化的数学表达式系统（含 `x*2` 这类文本与 JSON 编解码）见 [Math 表达式](../math/index)。
+
 `dev.anvilcraft.lib.v2.util.MathUtil` 提供常用数学与向量操作：
 
 - `rotationDegrees(Vector2f, float)` / `rotate(Vector2f, float)` – 向量旋转
