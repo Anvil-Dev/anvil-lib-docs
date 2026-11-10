@@ -1,0 +1,74 @@
+:root {
+  --vp-c-brand-1: #d97706;
+  --vp-c-brand-2: #b45309;
+  --vp-c-brand-3: #92400e;
+  --vp-c-brand-soft: rgba(217, 119, 6, 0.14);
+}
+
+.dark {
+  --vp-c-brand-1: #f59e0b;
+  --vp-c-brand-2: #d97706;
+  --vp-c-brand-3: #b45309;
+  --vp-c-brand-soft: rgba(245, 158, 11, 0.16);
+}
+
+.anvillib-branch-card {
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--vp-c-divider);
+  border-left: 4px solid var(--vp-c-brand-1);
+  border-radius: 8px;
+  background-color: var(--vp-c-bg-soft);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.75rem;
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    font-family: var(--vp-font-family-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--vp-c-brand-1);
+    background-color: var(--vp-c-brand-soft);
+    border-radius: 4px;
+  }
+
+  &__title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--vp-c-text-1);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.75rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    .label {
+      font-size: 0.75rem;
+      color: var(--vp-c-text-2);
+    }
+
+    .value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--vp-c-text-1);
+    }
+  }
+}
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+}
