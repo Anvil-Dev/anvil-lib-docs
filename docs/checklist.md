@@ -61,13 +61,12 @@
 - [ ] 其余分支: `/<branch>/moveable-entity-block/index.md` — `IMoveableEntityBlock`、`AnvilLibMoveableEntityBlock`、`IPistonMovingBlockEntityExtension`、`IPistonHeadRenderStateExtension`
 
 ### 11. Multiblock 动态多方块系统 (`module.multiblock`)
-- [ ] `/<branch>/multiblock/index.md` — 多方块结构定义与序列化：`AnvilLibMultiblock`、`AnvilLibMultiblockConfig`、`MultiblockDefinition`、`DefinitionSerialization`、`LibRegistries`
-- [ ] `/<branch>/multiblock/controller-and-state.md` — 控制器与动态运行态管理：`IController`、`SimpleController`、`ControllerInfo`、`ControllerRecord`、`DynamicMultiblockManager`、`MultiblockState`、`MultiblockPart`、`MultiblockCheckSnapshot`
-- [ ] `/<branch>/multiblock/events-and-network.md` — 事件监听与网络同步：`DynamicMultiblockEvent`、`BlockEventListener`、`MultiblockFormPacket`、`MultiblockUnformPacket`
+- [x] `dev/26.1`: `/26.1/multiblock/index.md`、`/26.1/multiblock/controller-and-state.md`、`/26.1/multiblock/events-and-network.md`
+- [ ] 其余分支: `/<branch>/multiblock/index.md`、`controller-and-state.md`、`events-and-network.md`
 
 ### 12. Network 网络通信框架 (`module.network`)
-- [ ] `/<branch>/network/index.md` — 数据包接口层次：`IPacket`、`IClientboundPacket`、`IServerboundPacket`、`IInsensitiveBiPacket`、`ISensitiveBiPacket`
-- [ ] `/<branch>/network/registrar-and-util.md` — 自动扫描注册与网络工具：`@Network`、`NetworkRegistrar`、`PacketData`、`PacketDirection`、`PacketProtocol`、`NetworkUtil`、`BoolAndInt`
+- [x] `dev/26.1`: `/26.1/network/index.md`、`/26.1/network/registrar-and-util.md`
+- [ ] 其余分支: `/<branch>/network/index.md`、`registrar-and-util.md`
 
 ### 13. Recipe 世界内配方系统 (`module.recipe`)
 - [ ] `/<branch>/recipe/index.md` — 核心架构与配方构建：`AnvilLibRecipe`、`AnvilLibRecipeConfig`、`InWorldRecipe`、`InWorldRecipeBuilder`、`LibRegistries`、`LibRecipeTypes`、`LibRecipeInits`
