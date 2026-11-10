@@ -33,14 +33,12 @@
 - [ ] 其余分支: `/<branch>/collision/index.md` — `AnvilLibCollision` 与 `CollisionTest` SAT 碰撞检测详解
 
 ### 4. Config 注解配置系统 (`module.config`)
-- [ ] `/<branch>/config/index.md` — 配置声明与核心 API：`@Config`、`@Comment`、`@BoundedDiscrete`、`@Slider`、`@CollapsibleObject`、`@ConfigScreenStyle`、`ConfigManager`、`ConfigData`、`ConfigField`、`ConfigRecord`
-- [ ] `/<branch>/config/client-screen.md` — 客户端配置界面：`ConfigScreens`、`SidebarConfigScreen`、`ConfigTabs`、`PanelOptionsList`、`FlatButton`
-- [ ] `/<branch>/config/datagen-and-util.md` — 数据生成与辅助类：`ConfigLanguageProvider`、`TranslatableEnum`、`FormattingUtil`
+- [x] `dev/26.1`: `/26.1/config/index.md`、`/26.1/config/client-screen.md`、`/26.1/config/datagen-and-util.md`
+- [ ] 其余分支: `/<branch>/config/index.md`、`client-screen.md`、`datagen-and-util.md`
 
 ### 5. Cube 斜棱线与精确拾取 (`module.cube`)
-- [ ] `/<branch>/cube/index.md` — 模块入口、事件钩子与运行时排除规则：`AnvilLibCube`、`CubeHighlightEvents`、`CubeModelEvents`
-- [ ] `/<branch>/cube/picking-and-selection.md` — 精确拾取与动态选择部件：`CubePicking`、`CubeSelection`、`SelectionPart`、`BlockSelectionProvider`、`OutlineRenderer`
-- [ ] `/<branch>/cube/model-and-geometry.md` — 模型解码、捕获与几何轮廓算法：`CubeModelDecoder`、`ModelCapture`、`ModelSelection`、`ModelSelections`、`ConvexShape`、`OutlineBuilder`、`OutlineCache`、`OutlineVisibility`、`PackedOutline`、`SelectionGeometry`
+- [x] `dev/26.1`: `/26.1/cube/index.md`、`/26.1/cube/picking-and-selection.md`、`/26.1/cube/model-and-geometry.md`
+- [ ] 其余分支: `/<branch>/cube/index.md`、`picking-and-selection.md`、`model-and-geometry.md`
 
 ### 6. Explosion 爆炸系统 (`module.explosion`)
 - [ ] `/<branch>/explosion/index.md` — `AnvilLibExplosion`、`AnvilLibExplosionConfig`、`ExplosionExecutor`、`ExplosionSession` 及数据生成辅助
