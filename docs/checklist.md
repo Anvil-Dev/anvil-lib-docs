@@ -69,12 +69,8 @@
 - [ ] 其余分支: `/<branch>/network/index.md`、`registrar-and-util.md`
 
 ### 13. Recipe 世界内配方系统 (`module.recipe`)
-- [ ] `/<branch>/recipe/index.md` — 核心架构与配方构建：`AnvilLibRecipe`、`AnvilLibRecipeConfig`、`InWorldRecipe`、`InWorldRecipeBuilder`、`LibRegistries`、`LibRecipeTypes`、`LibRecipeInits`
-- [ ] `/<branch>/recipe/triggers.md` — 配方触发器：`IRecipeTrigger`、`LibRecipeTriggers` 与自定义触发器实现
-- [ ] `/<branch>/recipe/predicates.md` — 配方条件谓词与谓词函数：`IRecipePredicate`、`HasBlock` / `HasBlockBase` / `HasBlockIngredient`、`HasItem` / `HasItemBase` / `HasItemIngredient`、`HasEntity` / `HasEntityIngredient` / `EntityConditionBuilder`、`IPredicateFunction` / `SaveComponentToTag`、`AndPredicate` / `OrPredicate` / `NotPredicate`
-- [ ] `/<branch>/recipe/outcomes.md` — 配方结果、属性映射与受限批次规划：`IRecipeOutcome`、`SpawnItem`、`SetBlock`、`BlockPropertyMapping`、`SpawnEntity`、`ProduceExplosion`、`ChooseOneOutcome`、`IPlannedItemOutcome`、`PlannedItem`、`ItemBatchPlan`、`IOutcomeFunction` / `ApplyTagToComponent`
-- [ ] `/<branch>/recipe/caches.md` — 世界状态缓存与事务提交：`BlockCache`、`ItemCache`、`ItemResourceHandlerCache`、`EntityCache`、`EntityDropCapture`、`TagCache`、`ICacheElement` / `AbstractCacheElement` / `ICacheInput` / `ICacheOutput` / `ItemConsumption` / `CacheOperation`
-- [ ] `/<branch>/recipe/context-and-events.md` — 上下文、匹配器、事件与原版注入扩展：`InWorldRecipeContext`、`InWorldRecipeData`、`InWorldRecipeManager`、`ShapelessMatcher`、`Range`、`IPrioritized`、`IRecipeResultOffsetBlock`、`InWorldRecipeEvent` / `InWorldRecipeCommittedEvent` / `InWorldRecipeManagerEvent` / `ItemCacheEvent` / `ItemEntityEvent`、`IRecipeManagerExtension` / `IRecipeMapExtension`
+- [x] `dev/26.1`: `/26.1/recipe/index.md`、`triggers.md`、`predicates.md`、`outcomes.md`、`caches.md`、`context-and-events.md`
+- [ ] 其余分支: `/<branch>/recipe/index.md`、`triggers.md`、`predicates.md`、`outcomes.md`、`caches.md`、`context-and-events.md`
 
 ### 14. Registrum 注册与数据生成 (`module.registrum`)
 - [ ] `/<branch>/registrum/index.md` — 核心架构与入口：`Registrum`、`AbstractRegistrum`、`Builder`、`AbstractBuilder`、`NoConfigBuilder`、`SelfBuilder`、`BuilderCallback`、`RegistryEntry`、`LazyRegistryEntry`、`OneTimeEventReceiver`、`RegistrumDistExecutor`、`Sequence`
