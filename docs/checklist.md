@@ -73,12 +73,8 @@
 - [ ] 其余分支: `/<branch>/recipe/index.md`、`triggers.md`、`predicates.md`、`outcomes.md`、`caches.md`、`context-and-events.md`
 
 ### 14. Registrum 注册与数据生成 (`module.registrum`)
-- [ ] `/<branch>/registrum/index.md` — 核心架构与入口：`Registrum`、`AbstractRegistrum`、`Builder`、`AbstractBuilder`、`NoConfigBuilder`、`SelfBuilder`、`BuilderCallback`、`RegistryEntry`、`LazyRegistryEntry`、`OneTimeEventReceiver`、`RegistrumDistExecutor`、`Sequence`
-- [ ] `/<branch>/registrum/block-and-be.md` — 方块与方块实体注册：`BlockBuilder`、`BlockEntry`、`BlockEntityBuilder`、`BlockEntityEntry`
-- [ ] `/<branch>/registrum/item-and-creativetab.md` — 物品、创造模式标签页与分组变体选择器：`ItemBuilder`、`ItemEntry`、`ItemProviderEntry`、`CreativeTabBuilder`、`CreativeModeTabModifier`、`CreativeTabSection`、`CreativeTabSections`、`CreativeVariantPickerItem`、`CreativeVariantPickerRegistry`、`CreativeVariantPickerOverlay`
-- [ ] `/<branch>/registrum/entity-fluid-menu.md` — 实体、流体、菜单、状态效果与药水音效：`EntityBuilder` / `EntityEntry`、`FluidBuilder` / `FluidEntry`、`MenuBuilder` / `MenuEntry`、`MobEffectBuilder` / `MobEffectEntry`、`PotionBuilder` / `PotionEntry`、`SoundEventBuilder` / `SoundEventEntry`、`GameEventBuilder` / `GameEventEntry`、`ConditionBuilder` / `ConditionEntry`
-- [ ] `/<branch>/registrum/data-villager-modifier.md` — 数据组件、附件、配方、村民、生物群系与修改器：`DataComponentBuilder` / `DataComponentEntry`、`DataComponentPredicateBuilder` / `DataComponentPredicateEntry`、`AttachmentBuilder` / `AttachmentEntry`、`RecipeTypeBuilder` / `RecipeSerializerBuilder`、`PoiTypeBuilder` / `VillagerProfessionBuilder` / `VillagerTypeBuilder`、`BiomeBuilder`、`BiomeModifierBuilder` / `GlobalLootModifierBuilder` / `StructureModifierBuilder`
-- [ ] `/<branch>/registrum/datagen-providers.md` — 数据生成連携体系：`ProviderType`、`GeneratorType`、`DataGenContext`、`DataProviderInitializer`、`DataIngredient`、`RegistrumProvider`、`RegistrumDataProvider`、`RegistrumLangProvider`、`RegistrumTagsProvider` / `RegistrumItemTagsProvider`、`RegistrumAdvancementProvider`、`RegistrumDataMapProvider`、`RegistrumDatapackProvider`、`RegistrumGenericProvider`、`RegistrumLookupFillerProvider`、`RegistrumModelProvider` / `RegistrumBlockModelGenerator` / `RegistrumItemModelGenerator`、`RegistrumRecipeProvider` / `RegistrumRecipeRunner`、`RegistrumLootTableProvider` / `RegistrumBlockLootTables` / `RegistrumEntityLootTables`
+- [x] `dev/26.1`: `/26.1/registrum/index.md`、`block-and-be.md`、`item-and-creativetab.md`、`entity-fluid-menu.md`、`data-villager-modifier.md`、`datagen-providers.md`
+- [ ] 其余分支: `/<branch>/registrum/index.md`、`block-and-be.md`、`item-and-creativetab.md`、`entity-fluid-menu.md`、`data-villager-modifier.md`、`datagen-providers.md`
 
 ### 15. Rendering 渲染扩展系统 (`module.rendering`)
 - **在 `dev/1.21.1` 与 `dev/1.21.4` 中（3 篇）**：
