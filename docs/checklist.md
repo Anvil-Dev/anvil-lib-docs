@@ -92,16 +92,16 @@
   - [ ] `dev/26.2` & `dev/26.3`: `/<branch>/rendering/index.md`、`blaze3d-compute.md`、`buffers-foundation.md`、`post-effects.md`、`cached-ber.md`、`occlusion-culling.md`、`projection.md`、`sdf.md`、`gui-and-fakeworld.md`
 
 ### 16. RPC 跨端远程过程调用 (`module.rpc`)
-- [ ] `/<branch>/rpc/index.md` — 远程调用声明与调用入口：`AnvilLibRpc`、`@RpcMethods`、`@RemoteCallable`、`@CallableParam`、`RPC`、`RpcMethodRef`、`RpcFunctionRef`、`LambdaResolver`
-- [ ] `/<branch>/rpc/targets-and-validation.md` — 调用目标、参数校验、注册表与握手同步：`RpcTarget`、`ClientRpcTargets`、`IRemoteCallableValidator`、`RpcRegistry`、`RpcPendingCalls`、`IRpcPayload` / `RpcPayload` / `RpcRequestPayload` / `RpcResponsePayload`、`RpcConfigurationTask`
+- [x] `dev/26.1`: `/26.1/rpc/index.md`、`refs-and-validation.md`
+- [ ] 其余分支: `/<branch>/rpc/index.md`、`refs-and-validation.md`
 
 ### 17. Space Select 空间区域选择 (`module.space-select`)
-- [ ] `/<branch>/space-select/index.md` — 区域模型与管理：`AnvilLibSpaceSelect`、`District`、`DistrictManager`、`SpaceSelectItem`
-- [ ] `/<branch>/space-select/client-and-events.md` — 客户端渲染、滚轮调整与事件网络：`AnvilLibSpaceSelectClient`、`ClientDistrictManager`、`DistrictRenderer`、`SpaceSelectScrollHandler`、`PlayerCreateDistrictEvent`、`SpaceSelectPayload`
+- [x] `dev/26.1`: `/26.1/space-select/index.md`、`client-and-events.md`
+- [ ] 其余分支: `/<branch>/space-select/index.md`、`client-and-events.md`
 
 ### 18. Sync 字段自动同步框架 (`module.sync` & `module.sync:processor`)
-- [ ] `/<branch>/sync/index.md` — 注解同步与管理器：`AnvilLibSync`、`@Sync`、`@LazySync`、`SyncDirection`、`SideUtil`、`SyncManager`、`LazySyncManager`、`SyncConfigManager`、`SyncProxy`、`SyncRegisterEntry`
-- [ ] `/<branch>/sync/processor-and-network.md` — 编译期字节码注入处理器与网络协议：`SyncClassProcessor`、`SyncBytecodeInjector`、`LazySyncBytecodeInjector`、`SyncTargetIndex`、`LazySyncTargetIndex`、`SyncPayload` / `LazySyncPayload` / `SyncConfigurationPayload`
+- [x] `dev/26.1`: `/26.1/sync/index.md`、`processor-and-network.md`
+- [ ] 其余分支: `/<branch>/sync/index.md`、`processor-and-network.md`
 
 ### 19. UI 柔性控件库 (`module.ui`)
 - [ ] `/<branch>/ui/index.md` — 精灵资源与基础渲染器：`AnvilLibUi`、`FlexibleSprites`、`SpriteTheme`、`SpriteStyle`、`SpriteType`、`SpriteVariant`、`PointerDirection`、`Renderer`
