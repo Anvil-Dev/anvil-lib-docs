@@ -41,24 +41,24 @@
 - [ ] 其余分支: `/<branch>/cube/index.md`、`picking-and-selection.md`、`model-and-geometry.md`
 
 ### 6. Explosion 爆炸系统 (`module.explosion`)
-- [x] `dev/26.1`: `/26.1/explosion/index.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/explosion/index.md`
 - [ ] 其余分支: `/<branch>/explosion/index.md` — `AnvilLibExplosion`、`AnvilLibExplosionConfig`、`ExplosionExecutor`、`ExplosionSession`
 
 ### 7. Font 字体与 SDF 文本渲染 (`module.font`)
-- [x] `dev/26.1`: `/26.1/font/index.md`、`/26.1/font/sdf-renderer.md`、`/26.1/font/screens.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/font/index.md`、`sdf-renderer.md`、`screens.md`
 - [ ] 其余分支: `/<branch>/font/index.md`、`sdf-renderer.md`、`screens.md`
 
 ### 8. Integration 模组兼容集成 (`module.integration`)
-- [x] `dev/26.1`: `/26.1/integration/index.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/integration/index.md`
 - [ ] 其余分支: `/<branch>/integration/index.md` — `@Integration`、`IntegrationHook`、`IntegrationType`、`ModVersionRange`、`IntegrationInstance`、`IntegrationManager`
 
 ### 9. Math 数学表达式系统 (`module.math`)
-- [x] `dev/26.1`: `/26.1/math/index.md`、`/26.1/math/functions-and-registries.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/math/index.md`、`functions-and-registries.md`
 - [ ] 其余分支: `/<branch>/math/index.md`、`functions-and-registries.md`
 
 ### 10. Moveable Entity Block 活塞移动方块实体 (`module.moveable-entity-block`)
-- [x] `dev/26.1`: `/26.1/moveable-entity-block/index.md`
-- [ ] 其余分支: `/<branch>/moveable-entity-block/index.md` — `IMoveableEntityBlock`、`AnvilLibMoveableEntityBlock`、`IPistonMovingBlockEntityExtension`、`IPistonHeadRenderStateExtension`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/moveable-entity-block/index.md`
+- [ ] 其余分支: `/<branch>/moveable-entity-block/index.md` — `IMoveableEntityBlock`、`AnvilLibMoveableEntityBlock`、`IPistonMovingBlockEntityExtension`
 
 ### 11. Multiblock 动态多方块系统 (`module.multiblock`)
 - [x] `dev/26.1`: `/26.1/multiblock/index.md`、`/26.1/multiblock/controller-and-state.md`、`/26.1/multiblock/events-and-network.md`
