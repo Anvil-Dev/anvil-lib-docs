@@ -61,11 +61,11 @@
 - [ ] 其余分支: `/<branch>/moveable-entity-block/index.md` — `IMoveableEntityBlock`、`AnvilLibMoveableEntityBlock`、`IPistonMovingBlockEntityExtension`
 
 ### 11. Multiblock 动态多方块系统 (`module.multiblock`)
-- [x] `dev/26.1`: `/26.1/multiblock/index.md`、`/26.1/multiblock/controller-and-state.md`、`/26.1/multiblock/events-and-network.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/multiblock/index.md`、`controller-and-state.md`、`events-and-network.md`
 - [ ] 其余分支: `/<branch>/multiblock/index.md`、`controller-and-state.md`、`events-and-network.md`
 
 ### 12. Network 网络通信框架 (`module.network`)
-- [x] `dev/26.1`: `/26.1/network/index.md`、`/26.1/network/registrar-and-util.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/network/index.md`、`registrar-and-util.md`
 - [ ] 其余分支: `/<branch>/network/index.md`、`registrar-and-util.md`
 
 ### 13. Recipe 世界内配方系统 (`module.recipe`)
