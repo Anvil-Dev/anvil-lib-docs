@@ -21,23 +21,23 @@
 以下路径以 `/<branch>/` 表示各分支独立路由（如 `/26.1/`、`/1.21.1/`）：
 
 ### 1. Main 与快速开始 (`module.main`)
-- [x] `dev/26.1`: `/26.1/index.md` & `/26.1/getting-started.md`
-- [ ] 其余分支 (`1.21.1` / `1.21.4` / `1.21.8` / `1.21.11` / `26.2` / `26.3`): `/<branch>/index.md` & `/<branch>/getting-started.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/index.md` & `/<branch>/getting-started.md`
+- [ ] 其余分支 (`1.21.4` / `1.21.8` / `1.21.11` / `26.2` / `26.3`): `/<branch>/index.md` & `/<branch>/getting-started.md`
 
 ### 2. Codec 数据编解码 (`module.codec`)
-- [x] `dev/26.1`: `/26.1/codec/index.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/codec/index.md`
 - [ ] 其余分支: `/<branch>/codec/index.md` — `CodecUtil` 与 `StreamCodecUtil`
 
 ### 3. Collision 碰撞检测工具 (`module.collision`)
-- [x] `dev/26.1`: `/26.1/collision/index.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/collision/index.md`
 - [ ] 其余分支: `/<branch>/collision/index.md` — `AnvilLibCollision` 与 `CollisionTest` SAT 碰撞检测详解
 
 ### 4. Config 注解配置系统 (`module.config`)
-- [x] `dev/26.1`: `/26.1/config/index.md`、`/26.1/config/client-screen.md`、`/26.1/config/datagen-and-util.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/config/index.md`、`client-screen.md`、`datagen-and-util.md`
 - [ ] 其余分支: `/<branch>/config/index.md`、`client-screen.md`、`datagen-and-util.md`
 
 ### 5. Cube 斜棱线与精确拾取 (`module.cube`)
-- [x] `dev/26.1`: `/26.1/cube/index.md`、`/26.1/cube/picking-and-selection.md`、`/26.1/cube/model-and-geometry.md`
+- [x] `dev/26.1` & `dev/1.21.1`: `/<branch>/cube/index.md`、`picking-and-selection.md`、`model-and-geometry.md`
 - [ ] 其余分支: `/<branch>/cube/index.md`、`picking-and-selection.md`、`model-and-geometry.md`
 
 ### 6. Explosion 爆炸系统 (`module.explosion`)
