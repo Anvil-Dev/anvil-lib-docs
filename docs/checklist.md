@@ -88,15 +88,8 @@
   - [ ] `/<branch>/rendering/buffers-and-blur.md` — `GaussianBlur`、`BlurParametersUbo`、`TransformsUbo`、`BufferLayout`（`Std140` / `Std430`）、`BufferObject`、`VertexBufferHost`、`EmptyBufferSource`
   - [ ] `/<branch>/rendering/gui-state.md` — `GuiRenderAccess`、`LibGuiElementRenderState`、`LibQuadGuiElementRenderState`
 - **在 `dev/26.1`、`dev/26.2` 与 `dev/26.3` 中（9 篇）**：
-  - [ ] `/<branch>/rendering/index.md` — 核心入口与全局配置：`AnvilLibRendering`、`ALROptions`、`ALRPipelines`、`ALRComputePipelines`、`ALRPostEffects`、`ALROptimizations`、`ALRDebugEntries`、`ALRSharedMath`、`MainTargetResizeEvent`、`RegisterComputePipelinesEvent`
-  - [ ] `/<branch>/rendering/blaze3d-compute.md` — Blaze3D 扩展、计算着色器与无绑定纹理：`ALRGpuDeviceExtension`、`ALRCommandEncoderExtension`、`ALRHICapabilities`、`ALRComputeCapabilities`、`ALRComputePipeline`、`ALRComputePass`、`ComputeBindingLayout` 及各类 Binding、`ALRComputeShaderManager`、`ExtendedGpuTexture`、`BindlessTexturingSupport`、`GpuQueryObject`
-  - [ ] `/<branch>/rendering/buffers-foundation.md` — 缓冲布局、UBO/SSBO 对象与资源池：`BufferLayout`（`Std140` / `Std430`）、`BufferObject`、`FullTransformsUbo` / `IntSizeUbo`、`StagingSupport`、`FullyBufferedBufferSource`、`VertexBufferHost`、`GpuReusableResourcePool`、`LoopResetPool` / `SimpleResetPool`、`CompoundSubmitNodeStorage`、`ALRMeshSorting`
-  - [ ] `/<branch>/rendering/post-effects.md` — 后处理管线：`BloomPostEffect`、`BloomRenderCallback`、`BloomParametersUbo`、`BloomSubmitNodeStorage`、`GaussianBlur`、`BlurParametersUbo`、`GlitchPostEffect`、`GlitchParametersUbo`
-  - [ ] `/<branch>/rendering/cached-ber.md` — 缓存方块实体渲染：`CachedBlockEntityRenderer`、`CachedBlockEntityRenderState`、`CachedBlockEntityRenderDispatcher`、`CachedBlockEntityRenderingPipeline`、`CachedRenderingChunk`、`RebuildTask`、`IrisSupport`
-  - [ ] `/<branch>/rendering/occlusion-culling.md` — 遮挡剔除系统：`OcclusionCuller`、`OcclusionMethod`、`OcclusionKey`、`OcclusionFeatureRendererHelper`、`HierarchicalZOcclusionCuller`（Hi-Z + SPD）、`GpuQueryOcclusionCuller`、`CullingStatistics`、`OcclusionCullingDebugEntry`
-  - [ ] `/<branch>/rendering/projection.md` — 结构投影渲染：`ProjectionScene`、`ProjectionMesh`、`ProjectionRenderer`、`ProjectionOverlay`、`ProjectionRenderTypes`、`ProjectionFeatures`、`ProjectionRenderEvents`
-  - [ ] `/<branch>/rendering/sdf.md` — 2D SDF 矢量渲染：`Sdf2d`、`SdfGraphics`、`SdfParameters`、`SdfPassType`、`SdfRenderType`
-  - [ ] `/<branch>/rendering/gui-and-fakeworld.md` — GUI 画中画与假世界访问：`GuiRenderExtras`、`GuiGraphicsExtractorExtension`、`BlockStatePipRenderer` / `BlockStatePipRenderingState`、`StructurePipRenderer` / `StructurePipRenderingState`、`DynamicTextureBlitRenderState`、`LibGuiElementRenderState`、`FakeDisplayLevel`、`SimpleOffsetBlockAccess`、`SimpleDelegatingTintAccess`、`SimpleTintedEmptyLevelAccess`
+  - [x] `dev/26.1`: `/26.1/rendering/index.md`、`blaze3d-compute.md`、`buffers-foundation.md`、`post-effects.md`、`cached-ber.md`、`occlusion-culling.md`、`projection.md`、`sdf.md`、`gui-and-fakeworld.md`
+  - [ ] `dev/26.2` & `dev/26.3`: `/<branch>/rendering/index.md`、`blaze3d-compute.md`、`buffers-foundation.md`、`post-effects.md`、`cached-ber.md`、`occlusion-culling.md`、`projection.md`、`sdf.md`、`gui-and-fakeworld.md`
 
 ### 16. RPC 跨端远程过程调用 (`module.rpc`)
 - [ ] `/<branch>/rpc/index.md` — 远程调用声明与调用入口：`AnvilLibRpc`、`@RpcMethods`、`@RemoteCallable`、`@CallableParam`、`RPC`、`RpcMethodRef`、`RpcFunctionRef`、`LambdaResolver`
