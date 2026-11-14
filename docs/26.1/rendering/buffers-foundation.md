@@ -136,6 +136,7 @@ public final class BeamUniformsUbo extends BufferObject<BeamUniformsUbo> {
 | `FullyBufferedBufferSource` & `VertexBufferHost` | 离线多渲染类型顶点缓冲收集器：在后台或预处理阶段收集各 `RenderType` 的顶点，对半透明层执行 `sortQuads`，并通过 `VertexBufferHost` 批量上传至各自的 `GpuBuffer`。 |
 | `TransformingVertexConsumerWrapper` | 包装 `VertexConsumer`，在写入顶点坐标与法线时自动左乘给定的 `PoseStack.Pose` 矩阵。 |
 | `EmptyBufferSource` / `EmptyOutlineBufferSource` / `EmptyVertexConsumer` | 空操作（No-op）顶点消费者与缓冲源单例，用于丢弃不需要渲染的通道输出。 |
+| `GpuBufferConstants` | 公开 OpenGL 着色器存储与原子计数用途常量：`USAGE_SHADER_STORAGE = 512`、`USAGE_ATOMIC_COUNTER = 1024`（补充原版 `GpuBuffer` 的用途标志位）。 |
 
 ---
 

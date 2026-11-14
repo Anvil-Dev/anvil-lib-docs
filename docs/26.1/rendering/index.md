@@ -4,14 +4,15 @@
 
 `module.rendering`（构件名 `anvillib-rendering-neoforge-26.1`，包名 `dev.anvilcraft.lib.v2.rendering`）在 `dev/26.1` 分支中提供了一套基于 Minecraft 26.1 全新 Blaze3D `GpuDevice` / `CommandEncoder` 渲染管线的高性能图形扩展库。它向 Blaze3D 注入了 **Compute Shader（计算着色器）管线**、**Bindless Texture（ARB 无绑定纹理与图像）** 与 **GPU Occlusion Query（遮挡查询）** 能力，并在此之上构建了**缓存方块实体渲染（CachedBER）**、**Hi-Z 金字塔遮挡剔除（Hierarchical-Z Occlusion Culling，含 AMD FidelityFX SPD 单通道下采样）**、**泛光/高斯模糊/故障后处理（Bloom / Blur / Glitch）**、**结构全息投影（Projection）**、**2D SDF 矢量图形** 以及 **GUI 画中画（PiP）方块/结构渲染**。
 
-由于该模块体量庞大，按功能子域拆分为 9 篇独立子文档：
+由于该模块体量庞大，按功能子域拆分为 10 篇独立子文档：
 - **本篇（核心入口与全局配置）**：详解 `AnvilLibRendering`、`ALROptions`、`ALRPipelines`、`ALRComputePipelines`、`ALRPostEffects`、`ALROptimizations`、`ALRDebugEntries`、`ALRSharedMath`、`MainTargetResizeEvent` 与 `RegisterComputePipelinesEvent`。
 - **[Blaze3D 扩展、计算着色器与无绑定纹理](./blaze3d-compute)**：详解 `ALRGpuDeviceExtension`、`ALRCommandEncoderExtension`、`ALRHICapabilities`、`ALRComputePipeline`、`ALRComputePass`、`ComputeBindingLayout`、`ALRComputeShaderManager`、`ExtendedGpuTexture`、`BindlessTexturingSupport` 与 `GpuQueryObject`。
-- **[缓冲布局、UBO/SSBO 对象与资源池](./buffers-foundation)**：详解 `BufferLayout`（`Std140` / `Std430`）、`BufferObject`、`FullTransformsUbo` / `IntSizeUbo`、`StagingSupport`、`FullyBufferedBufferSource`、`VertexBufferHost`、`GpuReusableResourcePool`、`CompoundSubmitNodeStorage` 与 `ALRMeshSorting`。
+- **[缓冲布局、UBO/SSBO 对象与资源池](./buffers-foundation)**：详解 `BufferLayout`（`Std140` / `Std430`）、`BufferObject`、`FullTransformsUbo` / `IntSizeUbo`、`StagingSupport`、`FullyBufferedBufferSource`、`VertexBufferHost`、`GpuReusableResourcePool`、`CompoundSubmitNodeStorage`、`ALRMeshSorting` 与 `GpuBufferConstants`。
 - **[后处理管线：泛光 (Bloom)、高斯模糊与故障特效](./post-effects)**：详解 `BloomPostEffect`、`BloomRenderCallback`、`BloomSubmitNodeStorage`、`GaussianBlur` 与 `GlitchPostEffect`。
 - **[缓存方块实体渲染 (CachedBER)](./cached-ber)**：详解 `CachedBlockEntityRenderer`、`CachedBlockEntityRenderState`、`CachedBlockEntityRenderDispatcher`、`CachedBlockEntityRenderingPipeline` 与 `IrisSupport`。
-- **[遮挡剔除系统：Hi-Z 与 GPU Query](./occlusion-culling)**：详解 `OcclusionCuller`、`HierarchicalZOcclusionCuller`、`GpuQueryOcclusionCuller`、`OcclusionKey`、`OcclusionFeatureRendererHelper`、`CullingStatistics` 与 F3 调试项。
+- **[遮挡剔除系统：Hi-Z 与 GPU Query](./occlusion-culling)**：详解 `OcclusionCuller`、`HierarchicalZOcclusionCuller`、`GpuQueryOcclusionCuller`、`OcclusionKey`、`OcclusionSubmitNodeCollection`、`OcclusionFeatureRendererHelper`、`CullingStatistics` 与 F3 调试项。
 - **[结构投影渲染 (Projection)](./projection)**：详解 `ProjectionScene`、`ProjectionMesh`、`ProjectionRenderer`、`ProjectionOverlay`、`ProjectionRenderTypes` 与 `ProjectionRenderEvents`。
+- **[结构只读沙盒与界面预览 (Preview)](./structure-preview)**：详解 `SandboxRenderLevel`、`StructureSandboxFactory`、`ViewportCameraRig`、`StructurePreviewRenderer`、`StructurePreviewPipRenderer`、`StructurePreviewPicker`、`StructureGuiProviders`、`StructureGuiSession` 与 `StructureGuiPreview`。
 - **[2D SDF 矢量图形渲染](./sdf)**：详解 `Sdf2d`、`SdfGraphics`、`SdfParameters`、`SdfPassType` 与 `SdfRenderType`。
 - **[GUI 画中画 (PiP) 与假世界访问](./gui-and-fakeworld)**：详解 `GuiRenderExtras`、`GuiGraphicsExtractorExtension`、`BlockStatePipRenderer`、`StructurePipRenderer`、`DynamicTextureBlitRenderState`、`FakeDisplayLevel` 等。
 

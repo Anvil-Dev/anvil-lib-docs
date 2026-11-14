@@ -129,6 +129,7 @@ public class KineticTurbineRenderer implements BlockEntityRenderer<KineticTurbin
 | :--- | :--- | :--- |
 | `OcclusionCuller` | • `default OcclusionSubmitNodeStorage wrapSubmitNodeStorage(SubmitNodeCollector original)`<br>• `boolean shouldDraw(Object feature)`<br>• `boolean isEmpty()`<br>• `@Nullable CullingStatistics collectStatistics()`<br>• `static OcclusionCuller createInstance(GpuDevice device)`<br>• 生命周期（内部自动驱动）：`onResize(int, int)`、`beforeExtract()`、`beginRenderingFrame()`、`submitFeatureKey(OcclusionKey, List<Object>)`、`processFeatures(CameraRenderState)` | 遮挡剔除器核心接口。可通过 `ALROptimizations.getOcclusionCuller()` 获取全局实例。 |
 | `OcclusionSubmitNodeStorage` | • `public void beginOcclusionRecord(OcclusionKey occlusionKey)`<br>• `public void beginOcclusionRecord(OcclusionKey occlusionKey, int order)`<br>• `public void endOcclusionRecord()`<br>• `public void endOcclusionRecord(int order)` | 继承自 `SubmitNodeStorage`。在 `beginOcclusionRecord` 与 `endOcclusionRecord` 之间拦截所有提交的渲染对象（支持阴影、火焰、文本、拴绳、移动方块、方块模型、物品、粒子组、名称标签、实心/半透明模型与模型部件、自定义几何体），在转发给底层 `original` 收集器的同时将其注册到 `OcclusionCuller`。注意：若未调用 `endOcclusionRecord` 就再次调用 `beginOcclusionRecord`，会抛出 `IllegalStateException`。 |
+| `OcclusionSubmitNodeCollection` | • `public void beginOcclusionRecord(OcclusionKey occlusionKey)`<br>• `public void endOcclusionRecord()` | 继承自 `SubmitNodeCollection`，供 `OcclusionSubmitNodeStorage` 按提交顺序层 (`order`) 管理内部子集合生命周期，将同一层录制期间提交的实体与方块模型特征统一汇总并关联至 `OcclusionKey`。 |
 
 ### 3. `HierarchicalZOcclusionCuller`、`GpuQueryOcclusionCuller` 与 F3 调试统计
 

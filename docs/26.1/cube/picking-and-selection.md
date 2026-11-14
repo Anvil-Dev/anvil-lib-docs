@@ -115,7 +115,8 @@ public interface BlockSelectionProvider {
 | :--- | :--- | :--- |
 | `public static void registerDynamic(Block block, AABB maximumBounds, boolean includeStaticModel, BlockSelectionProvider provider)` | `void` | 为 `block` 注册动态部件提供器。<br>• `maximumBounds`：所有动态部件在运动过程中可能达到的最大方块空间包围盒（若方块带 `hasOffsetFunction()` 则膨胀 `0.5` 后校验），必须位于 `[-2, 3]` 内，否则抛出 `IllegalArgumentException`。<br>• 运行时若 `provider` 返回的任意 `SelectionPart.bounds()` 超出了 `maximumBounds.inflate(1.0E-5)`，`target(...)` 会判定越界并返回 `null`（安全回退原版）。 |
 | `public static @Nullable List<SelectionPart> modelParts(BlockState state, BlockPos pos)` | `@Nullable List<SelectionPart>` | 按照原版位置随机种子 `state.getSeed(pos)` 收集 `state` 静态烘焙模型的 `SelectionPart` 列表（不可变），供自定义 `BlockSelectionProvider` 复用。若该方块被永久排除、无模型或部件数 `> 32` 则返回 `null`。 |
-| `public static @Nullable Target target(ClientLevel level, BlockPos pos, BlockState state, float fraction)` | `@Nullable CubeSelection.Target` | 获取指定位置在当前帧的完整拾取/高亮目标（单帧最多缓存 256 个位置）。若命中排除规则、无模型且无动态提供器、部件总数 `> 32` 或总凸多面体数 `> SelectionGeometry.MAX_SHAPES (1024)`，返回 `null`。 |
+| `public static @Nullable Target target(ClientLevel level, BlockPos pos, BlockState state, float fraction)` | `@Nullable CubeSelection.Target` | 获取**精确模型拾取**目标：仅当方块的生效规则为 `MODEL` 时委托调用 `outlineTarget(...)`，若处于 `OUTLINE` 或 `VANILLA` 模式则返回 `null`（保留原版射线选取）。 |
+| `public static @Nullable Target outlineTarget(ClientLevel level, BlockPos pos, BlockState state, float fraction)` | `@Nullable CubeSelection.Target` | 获取**描边与预览共用的几何目标**（同时响应 `MODEL` 与 `OUTLINE` 模式，单帧最多缓存 256 个位置）。若命中排除规则、无模型且无动态提供器、部件总数 `> 32` 或总凸多面体数 `> SelectionGeometry.MAX_SHAPES (1024)`，返回 `null`。 |
 | `public record Target(BlockState state, List<SelectionPart> parts, Vec3 offset, @Nullable AABB bounds)` | `record` | 表示单个方块在当前帧的组合选择目标。提供 `public @Nullable BlockHitResult clip(BlockPos pos, Vec3 start, Vec3 end)` 方法，对所有 `parts` 求最小正交点 `fraction`，并通过 `Direction.getApproximateNearest` 生成原版 `BlockHitResult`。 |
 
 ### 4. `CubePicking`（准星射线拾取入口）
@@ -125,7 +126,7 @@ public interface BlockSelectionProvider {
 | 常量 / 方法签名 | 返回值 | 说明 |
 | :--- | :--- | :--- |
 | `public static final double MAX_RANGE = 64` | `double` | 启用精确模型拾取的最大射线距离（64 格）；超出此距离直接委托原版 `entity.pick`。 |
-| `public static HitResult pick(Entity entity, double range, float partialTick, boolean fluids)` | `HitResult` | 客户端准星射线拾取主入口。<br>1. 通过 `ThreadLocal<Context>` 保证重入安全并开启当前帧 `CubeSelection.beginFrame`。<br>2. 先调用 `entity.pick(range, partialTick, fluids)`（在 `BlockGetterMixin` 配合下对沿途单格方块执行 `Target.clip`）。<br>3. 若 `CubeSelection.searchRadius() > 0`，再使用 `BlockGetter.traverseBlocks` 沿视线扫描每个体素周围 `[-radius, radius]^3` 内的越界方块（`CubeSelection.extendsBlock(state)`），用 `LongOpenHashSet visited` 去重，取距离眼睛最近的命中结果。 |
+| `public static HitResult pick(Entity entity, double range, float partialTick, boolean fluids)` | `HitResult` | 客户端准星射线拾取主入口。<br>1. 通过 `ThreadLocal<Context>` 保证重入安全，先开启当前帧 `CubeSelection.beginFrame`（确保仅描边 `OUTLINE` 模式的动态几何也能逐帧刷新）。<br>2. 检查 `!CubeSelection.active() || range > MAX_RANGE`，若未启用精确拾取或超出距离限制则直接回退原版 `entity.pick`。<br>3. 先调用 `entity.pick(range, partialTick, fluids)`（在 `BlockGetterMixin` 配合下对沿途单格方块执行 `Target.clip`）。<br>4. 若 `CubeSelection.searchRadius() > 0`，再使用 `BlockGetter.traverseBlocks` 沿视线扫描每个体素周围 `[-radius, radius]^3` 内的越界方块（`CubeSelection.extendsBlock(state)`），用 `LongOpenHashSet visited` 去重，取距离眼睛最近的命中结果。 |
 | `public static CubeSelection.@Nullable Target target(BlockGetter getter, BlockPos pos, BlockState state)` | `CubeSelection.Target` | 供 `BlockGetterMixin` 在准星射线遍历期间查询当前线程上下文下的 `Target`。非准星拾取调用（如普通物理碰撞、投射物或服务端射线）因 `context.level == null` 会立即返回 `null`，绝不干扰物理逻辑。 |
 
 ### 5. `OutlineRenderer`（轮廓线批量绘制器）
