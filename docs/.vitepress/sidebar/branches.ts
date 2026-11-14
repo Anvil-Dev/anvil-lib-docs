@@ -85,12 +85,14 @@ export function createBranchSidebar(meta: BranchMeta): DefaultTheme.SidebarItem[
       ? [
           { text: '模块概述与接入', link: `${base}/rendering/` },
           { text: '结构投影场景与网格 (ProjectionScene / Mesh)', link: `${base}/rendering/projection-scene` },
-          { text: '投影渲染器与覆盖层 (ProjectionRenderer / Overlay)', link: `${base}/rendering/projection-renderer` }
+          { text: '投影渲染器与覆盖层 (ProjectionRenderer / Overlay)', link: `${base}/rendering/projection-renderer` },
+          { text: '结构只读沙盒与界面预览 (Preview)', link: `${base}/rendering/structure-preview` }
         ]
       : meta.renderingTier === 'sdf-blur-projection'
         ? [
             { text: '模块概述与渲染管线 (ALRPipelines)', link: `${base}/rendering/` },
             { text: '结构投影渲染系统 (Projection)', link: `${base}/rendering/projection` },
+            { text: '结构只读沙盒与界面预览 (Preview)', link: `${base}/rendering/structure-preview` },
             { text: '2D SDF 矢量图形渲染 (SdfGraphics / Sdf2d)', link: `${base}/rendering/sdf` },
             { text: '高斯模糊与 UBO 缓冲布局 (Blur & Buffers)', link: `${base}/rendering/buffers-and-blur` },
             { text: 'GUI 渲染状态扩展 (GuiRenderState)', link: `${base}/rendering/gui-state` }
@@ -103,6 +105,7 @@ export function createBranchSidebar(meta: BranchMeta): DefaultTheme.SidebarItem[
             { text: '缓存方块实体渲染 (CachedBER)', link: `${base}/rendering/cached-ber` },
             { text: '遮挡剔除系统 (Hi-Z & GPU Query Occlusion)', link: `${base}/rendering/occlusion-culling` },
             { text: '结构投影渲染系统 (Projection)', link: `${base}/rendering/projection` },
+            { text: '结构只读沙盒与界面预览 (Preview)', link: `${base}/rendering/structure-preview` },
             { text: '2D SDF 矢量图形渲染 (SdfGraphics)', link: `${base}/rendering/sdf` },
             { text: 'GUI 画中画渲染与假世界 (PiP & FakeDisplayLevel)', link: `${base}/rendering/gui-and-fakeworld` }
           ]
