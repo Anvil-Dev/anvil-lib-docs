@@ -13,6 +13,9 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: false,
   ignoreDeadLinks: true,
+  markdown: {
+    math: true
+  },
   vite: {
     css: {
       preprocessorOptions: {
@@ -26,7 +29,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       {
-        text: '分支版本 (7 个 dev 分支)',
+        text: '分支版本',
         items: BRANCHES.map((b) => ({
           text: `${b.gitBranch} (MC ${b.minecraft})`,
           link: `/${b.id}/`
@@ -40,7 +43,18 @@ export default defineConfig({
       label: '本页目录'
     },
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        _render(source, env, md) {
+          const html = md.render(source, env)
+          if (env.frontmatter?.search === false) return ''
+
+          const branch = BRANCHES.find(({ id }) => env.relativePath?.startsWith(`${id}/`))
+          if (!branch) return html
+
+          return html.replace(/<h1\b[^>]*>/, (heading) => `${heading}[MC ${branch.minecraft}] `)
+        }
+      }
     },
     docFooter: {
       prev: '上一篇',
