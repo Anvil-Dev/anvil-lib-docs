@@ -1,0 +1,40 @@
+name: Deploy VitePress site to lib.anvilcraft.dev
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lib-anvilcraft-dev
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: pnpm/action-setup@v4
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm docs:build
+      - name: Publish to the pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: pages
+          folder: docs/.vitepress/dist
+      - name: Refresh the site in 1Panel
+        uses: Gu-ZT/1panel-actions@1.1.1
+        with:
+          url: ${{ secrets.ONEPANEL_URL }}
+          token: ${{ secrets.ONEPANEL_TOKEN }}
+          action: runCronjob
+          params: |
+            name=更新lib.anvilcraft.dev

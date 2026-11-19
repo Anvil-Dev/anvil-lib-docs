@@ -10,7 +10,7 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'AnvilLib 开发者文档',
   description: 'AnvilLib 全分支、全模块 NeoForge 模组开发技术文档',
-  cleanUrls: true,
+  cleanUrls: false,
   lastUpdated: false,
   ignoreDeadLinks: true,
   markdown: {

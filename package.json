@@ -4,6 +4,7 @@
   "private": true,
   "description": "AnvilLib 全分支、全模块开发者技术文档",
   "type": "module",
+  "packageManager": "pnpm@11.10.0",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
