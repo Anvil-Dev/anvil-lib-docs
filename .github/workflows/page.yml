@@ -25,6 +25,11 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
       - run: pnpm docs:build
+      - name: Upload the pages artifact for 1Panel
+        uses: actions/upload-pages-artifact@v4
+        with:
+          name: pages
+          path: docs/.vitepress/dist
       - name: Publish to the pages branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
