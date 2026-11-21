@@ -2,44 +2,44 @@
 layout: home
 
 hero:
-  name: AnvilLib 开发者文档
-  text: NeoForge 模组开发基础库全分支技术手册
-  tagline: 7 个 dev 分支完全独立成篇 · 20 个功能模块 · 100% 公开 API 与构建器覆盖
+  name: AnvilLib
+  text: NeoForge 模组开发库
+  tagline: 按 Minecraft 版本查阅集成指南、API 与代码示例
+  image:
+    src: /icon.png
+    alt: AnvilLib 铁砧与书本图标
   actions:
     - theme: brand
-      text: dev/26.3 文档 (MC 26.3)
+      text: 最新版文档
       link: /26.3/
     - theme: alt
-      text: dev/26.1 文档 (MC 26.1.2)
-      link: /26.1/
+      text: 快速开始
+      link: /26.3/getting-started
     - theme: alt
-      text: dev/1.21.1 文档 (MC 1.21.1)
-      link: /1.21.1/
-    - theme: alt
-      text: 查看全分支拆分清单
-      link: /checklist
+      text: 活动中心
+      link: /posts/event/
 
 features:
-  - title: dev/26.3 (Minecraft 26.3)
-    details: 面向 Minecraft 26.3 / NeoForge 26.3.x / Java 25 的完整模块文档树。
+  - title: Minecraft 26.3
+    details: dev/26.3 · NeoForge 26.3.x · Java 25+
     link: /26.3/
-  - title: dev/26.2 (Minecraft 26.2)
-    details: 面向 Minecraft 26.2 / NeoForge 26.2.x / Java 25 的完整模块文档树。
+  - title: Minecraft 26.2
+    details: dev/26.2 · NeoForge 26.2.x · Java 25+
     link: /26.2/
-  - title: dev/26.1 (Minecraft 26.1.2)
-    details: 面向 Minecraft 26.1.2 / NeoForge 26.1.2.x / Java 25 的完整模块文档树。
+  - title: Minecraft 26.1.2
+    details: dev/26.1 · NeoForge 26.1.2.x · Java 25+
     link: /26.1/
-  - title: dev/1.21.11 (Minecraft 1.21.11)
-    details: 面向 Minecraft 1.21.11 / NeoForge 21.11.x / Java 21 的完整模块文档树。
+  - title: Minecraft 1.21.11
+    details: dev/1.21.11 · NeoForge 21.11.x · Java 21+
     link: /1.21.11/
-  - title: dev/1.21.8 (Minecraft 1.21.8)
-    details: 面向 Minecraft 1.21.8 / NeoForge 21.8.x / Java 21 的完整模块文档树。
+  - title: Minecraft 1.21.8
+    details: dev/1.21.8 · NeoForge 21.8.x · Java 21+
     link: /1.21.8/
-  - title: dev/1.21.4 (Minecraft 1.21.4)
-    details: 面向 Minecraft 1.21.4 / NeoForge 21.4.x / Java 21 的完整模块文档树。
+  - title: Minecraft 1.21.4
+    details: dev/1.21.4 · NeoForge 21.4.x · Java 21+
     link: /1.21.4/
-  - title: dev/1.21.1 (Minecraft 1.21.1)
-    details: 面向 Minecraft 1.21.1 / NeoForge 21.1.x / Java 21 的完整模块文档树。
+  - title: Minecraft 1.21.1
+    details: dev/1.21.1 · NeoForge 21.1.x · Java 21+
     link: /1.21.1/
 ---
 

@@ -13,6 +13,9 @@ export default defineConfig({
   cleanUrls: false,
   lastUpdated: false,
   ignoreDeadLinks: true,
+  transformHead({ siteData }) {
+    return [['link', { rel: 'icon', href: `${siteData.base}favicon.ico` }]]
+  },
   markdown: {
     math: true
   },
@@ -26,6 +29,7 @@ export default defineConfig({
     }
   },
   themeConfig: {
+    logo: '/icon.png',
     nav: [
       { text: '首页', link: '/' },
       {
@@ -35,8 +39,8 @@ export default defineConfig({
           link: `/${b.id}/`
         }))
       },
-      { text: '全分支 Checklist', link: '/checklist' },
-      { text: '活动', link: '/posts/event/' }
+      { text: '活动', link: '/posts/event/' },
+      { component: 'AnvilCraftNavLink' }
     ],
     sidebar,
     outline: {
