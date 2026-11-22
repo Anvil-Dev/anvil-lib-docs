@@ -78,37 +78,255 @@ export const BRANCHES: readonly BranchMeta[] = [
 ] as const
 
 export function createBranchSidebar(meta: BranchMeta): DefaultTheme.SidebarItem[] {
-  const base = `/${meta.id}`
+  return buildBranchSidebar(meta, 'zh')
+}
+
+export function createEnBranchSidebar(meta: BranchMeta): DefaultTheme.SidebarItem[] {
+  return buildBranchSidebar(meta, 'en')
+}
+
+function buildBranchSidebar(meta: BranchMeta, locale: 'zh' | 'en'): DefaultTheme.SidebarItem[] {
+  const isEn = locale === 'en'
+  const base = isEn ? `/en/${meta.id}` : `/${meta.id}`
 
   const renderingItems: DefaultTheme.SidebarItem[] =
     meta.renderingTier === 'projection-only'
-      ? [
-          { text: '模块概述与接入', link: `${base}/rendering/` },
-          { text: '结构投影场景与网格 (ProjectionScene / Mesh)', link: `${base}/rendering/projection-scene` },
-          { text: '投影渲染器与覆盖层 (ProjectionRenderer / Overlay)', link: `${base}/rendering/projection-renderer` },
-          { text: '结构只读沙盒与界面预览 (Preview)', link: `${base}/rendering/structure-preview` }
-        ]
-      : meta.renderingTier === 'sdf-blur-projection'
+      ? isEn
         ? [
-            { text: '模块概述与渲染管线 (ALRPipelines)', link: `${base}/rendering/` },
-            { text: '结构投影渲染系统 (Projection)', link: `${base}/rendering/projection` },
-            { text: '结构只读沙盒与界面预览 (Preview)', link: `${base}/rendering/structure-preview` },
-            { text: '2D SDF 矢量图形渲染 (SdfGraphics / Sdf2d)', link: `${base}/rendering/sdf` },
-            { text: '高斯模糊与 UBO 缓冲布局 (Blur & Buffers)', link: `${base}/rendering/buffers-and-blur` },
-            { text: 'GUI 渲染状态扩展 (GuiRenderState)', link: `${base}/rendering/gui-state` }
+            { text: 'Overview & Setup', link: `${base}/rendering/` },
+            { text: 'ProjectionScene & Mesh', link: `${base}/rendering/projection-scene` },
+            { text: 'ProjectionRenderer & Overlay', link: `${base}/rendering/projection-renderer` },
+            { text: 'Structure Sandbox & UI Preview', link: `${base}/rendering/structure-preview` }
           ]
         : [
-            { text: '模块概述与核心入口', link: `${base}/rendering/` },
-            { text: 'Blaze3D 扩展与计算着色器 (Compute & Bindless)', link: `${base}/rendering/blaze3d-compute` },
-            { text: '缓冲布局与 GPU 资源池 (Buffers & Foundation)', link: `${base}/rendering/buffers-foundation` },
-            { text: '后处理管线：泛光、高斯模糊与故障效果', link: `${base}/rendering/post-effects` },
-            { text: '缓存方块实体渲染 (CachedBER)', link: `${base}/rendering/cached-ber` },
-            { text: '遮挡剔除系统 (Hi-Z & GPU Query Occlusion)', link: `${base}/rendering/occlusion-culling` },
-            { text: '结构投影渲染系统 (Projection)', link: `${base}/rendering/projection` },
-            { text: '结构只读沙盒与界面预览 (Preview)', link: `${base}/rendering/structure-preview` },
-            { text: '2D SDF 矢量图形渲染 (SdfGraphics)', link: `${base}/rendering/sdf` },
-            { text: 'GUI 画中画渲染与假世界 (PiP & FakeDisplayLevel)', link: `${base}/rendering/gui-and-fakeworld` }
+            { text: '模块概述与接入', link: `${base}/rendering/` },
+            { text: '结构投影场景与网格 (ProjectionScene / Mesh)', link: `${base}/rendering/projection-scene` },
+            { text: '投影渲染器与覆盖层 (ProjectionRenderer / Overlay)', link: `${base}/rendering/projection-renderer` },
+            { text: '结构只读沙盒与界面预览 (Preview)', link: `${base}/rendering/structure-preview` }
           ]
+      : meta.renderingTier === 'sdf-blur-projection'
+        ? isEn
+          ? [
+              { text: 'Overview & Pipelines (ALRPipelines)', link: `${base}/rendering/` },
+              { text: 'Projection Rendering System', link: `${base}/rendering/projection` },
+              { text: 'Structure Sandbox & UI Preview', link: `${base}/rendering/structure-preview` },
+              { text: '2D SDF Vector Rendering (SdfGraphics / Sdf2d)', link: `${base}/rendering/sdf` },
+              { text: 'Gaussian Blur & UBO Buffer Layouts', link: `${base}/rendering/buffers-and-blur` },
+              { text: 'GUI Render State Extensions (GuiRenderState)', link: `${base}/rendering/gui-state` }
+            ]
+          : [
+              { text: '模块概述与渲染管线 (ALRPipelines)', link: `${base}/rendering/` },
+              { text: '结构投影渲染系统 (Projection)', link: `${base}/rendering/projection` },
+              { text: '结构只读沙盒与界面预览 (Preview)', link: `${base}/rendering/structure-preview` },
+              { text: '2D SDF 矢量图形渲染 (SdfGraphics / Sdf2d)', link: `${base}/rendering/sdf` },
+              { text: '高斯模糊与 UBO 缓冲布局 (Blur & Buffers)', link: `${base}/rendering/buffers-and-blur` },
+              { text: 'GUI 渲染状态扩展 (GuiRenderState)', link: `${base}/rendering/gui-state` }
+            ]
+        : isEn
+          ? [
+              { text: 'Overview & Entry Points', link: `${base}/rendering/` },
+              { text: 'Blaze3D Extensions & Compute (Compute & Bindless)', link: `${base}/rendering/blaze3d-compute` },
+              { text: 'Buffer Layouts & GPU Resource Pools', link: `${base}/rendering/buffers-foundation` },
+              { text: 'Post-Processing: Bloom, Blur & Glitch', link: `${base}/rendering/post-effects` },
+              { text: 'Cached Block Entity Rendering (CachedBER)', link: `${base}/rendering/cached-ber` },
+              { text: 'Occlusion Culling (Hi-Z & GPU Query)', link: `${base}/rendering/occlusion-culling` },
+              { text: 'Projection Rendering System', link: `${base}/rendering/projection` },
+              { text: 'Structure Sandbox & UI Preview', link: `${base}/rendering/structure-preview` },
+              { text: '2D SDF Vector Rendering (SdfGraphics)', link: `${base}/rendering/sdf` },
+              { text: 'GUI PiP Rendering & FakeDisplayLevel', link: `${base}/rendering/gui-and-fakeworld` }
+            ]
+          : [
+              { text: '模块概述与核心入口', link: `${base}/rendering/` },
+              { text: 'Blaze3D 扩展与计算着色器 (Compute & Bindless)', link: `${base}/rendering/blaze3d-compute` },
+              { text: '缓冲布局与 GPU 资源池 (Buffers & Foundation)', link: `${base}/rendering/buffers-foundation` },
+              { text: '后处理管线：泛光、高斯模糊与故障效果', link: `${base}/rendering/post-effects` },
+              { text: '缓存方块实体渲染 (CachedBER)', link: `${base}/rendering/cached-ber` },
+              { text: '遮挡剔除系统 (Hi-Z & GPU Query Occlusion)', link: `${base}/rendering/occlusion-culling` },
+              { text: '结构投影渲染系统 (Projection)', link: `${base}/rendering/projection` },
+              { text: '结构只读沙盒与界面预览 (Preview)', link: `${base}/rendering/structure-preview` },
+              { text: '2D SDF 矢量图形渲染 (SdfGraphics)', link: `${base}/rendering/sdf` },
+              { text: 'GUI 画中画渲染与假世界 (PiP & FakeDisplayLevel)', link: `${base}/rendering/gui-and-fakeworld` }
+            ]
+
+  if (isEn) {
+    return [
+      {
+        text: `Main & Getting Started (${meta.gitBranch})`,
+        collapsed: false,
+        items: [
+          { text: 'Branch Overview & Module Matrix', link: `${base}/` },
+          { text: 'Dependencies & Build Setup (Main)', link: `${base}/getting-started` }
+        ]
+      },
+      {
+        text: 'Codec Data Serialization',
+        collapsed: false,
+        items: [
+          { text: 'CodecUtil & StreamCodecUtil', link: `${base}/codec/` }
+        ]
+      },
+      {
+        text: 'Collision Detection Utilities',
+        collapsed: false,
+        items: [
+          { text: 'AABB & Triangle SAT Collision', link: `${base}/collision/` }
+        ]
+      },
+      {
+        text: 'Config Annotation System',
+        collapsed: false,
+        items: [
+          { text: 'Declaration, Annotations & Lifecycle', link: `${base}/config/` },
+          { text: 'Client Config Screen & Sidebar Style', link: `${base}/config/client-screen` },
+          { text: 'Language Datagen & Enum Localization', link: `${base}/config/datagen-and-util` }
+        ]
+      },
+      {
+        text: 'Cube Sloped Edges & Precise Picking',
+        collapsed: false,
+        items: [
+          { text: 'Overview, Events & Target Exclusion', link: `${base}/cube/` },
+          { text: 'Precise Picking & Dynamic Part Providers', link: `${base}/cube/picking-and-selection` },
+          { text: 'Model Capture, Decoding & Outline Cache', link: `${base}/cube/model-and-geometry` }
+        ]
+      },
+      {
+        text: 'Explosion System',
+        collapsed: false,
+        items: [
+          { text: 'ExplosionExecutor & ExplosionSession', link: `${base}/explosion/` }
+        ]
+      },
+      {
+        text: 'Font & SDF Text Rendering',
+        collapsed: false,
+        items: [
+          { text: 'Font Management, Config & GuiGraphics', link: `${base}/font/` },
+          { text: 'SDF Glyph Atlas & Text Layout Renderer', link: `${base}/font/sdf-renderer` },
+          { text: 'Font Config & Test Screen Widgets', link: `${base}/font/screens` }
+        ]
+      },
+      {
+        text: 'Integration Mod Compatibility',
+        collapsed: false,
+        items: [
+          { text: '@Integration Annotation & Lifecycle Hooks', link: `${base}/integration/` }
+        ]
+      },
+      {
+        text: 'Math Expression System',
+        collapsed: false,
+        items: [
+          { text: 'Expression Model, Flat Syntax & Codec', link: `${base}/math/` },
+          { text: 'Functions, Varargs, Built-ins & Registries', link: `${base}/math/functions-and-registries` }
+        ]
+      },
+      {
+        text: 'Moveable Entity Block',
+        collapsed: false,
+        items: [
+          { text: 'IMoveableEntityBlock & Render State', link: `${base}/moveable-entity-block/` }
+        ]
+      },
+      {
+        text: 'Multiblock Dynamic Structures',
+        collapsed: false,
+        items: [
+          { text: 'Definition, Builder & Datapack Registration', link: `${base}/multiblock/` },
+          { text: 'Controller, Formation State & Manager', link: `${base}/multiblock/controller-and-state` },
+          { text: 'Multiblock Events & Network Sync', link: `${base}/multiblock/events-and-network` }
+        ]
+      },
+      {
+        text: 'Network Communication Framework',
+        collapsed: false,
+        items: [
+          { text: 'Packet Interfaces & Direction Model', link: `${base}/network/` },
+          { text: '@Network Annotation, Registrar & Utilities', link: `${base}/network/registrar-and-util` }
+        ]
+      },
+      {
+        text: 'Recipe In-World System',
+        collapsed: false,
+        items: [
+          { text: 'Architecture, InWorldRecipe & Builder', link: `${base}/recipe/` },
+          { text: 'Triggers (IRecipeTrigger) & Built-ins', link: `${base}/recipe/triggers` },
+          { text: 'Block, Item & Entity Predicates', link: `${base}/recipe/predicates` },
+          { text: 'Outcomes, Property Mapping & BatchPlan', link: `${base}/recipe/outcomes` },
+          { text: 'World State Caches (Block / Item / Entity)', link: `${base}/recipe/caches` },
+          { text: 'Context, Priority, Events & Extensions', link: `${base}/recipe/context-and-events` }
+        ]
+      },
+      {
+        text: 'Registrum Registration & Datagen',
+        collapsed: false,
+        items: [
+          { text: 'Core Architecture: Registrum & RegistryEntry', link: `${base}/registrum/` },
+          { text: 'Block & BlockEntity Builders', link: `${base}/registrum/block-and-be` },
+          { text: 'Item, CreativeTab & Variant Selectors', link: `${base}/registrum/item-and-creativetab` },
+          { text: 'Entity, Fluid, Menu, MobEffect & Sound', link: `${base}/registrum/entity-fluid-menu` },
+          { text: 'Villager, Biome, DataComponent & Modifiers', link: `${base}/registrum/data-villager-modifier` },
+          { text: 'Datagen Providers: Models, Recipes, Loot & Lang', link: `${base}/registrum/datagen-providers` }
+        ]
+      },
+      {
+        text: 'Rendering Extensions',
+        collapsed: false,
+        items: renderingItems
+      },
+      {
+        text: 'RPC Cross-Side Calls',
+        collapsed: false,
+        items: [
+          { text: '@RemoteCallable, Method Refs & RPC', link: `${base}/rpc/` },
+          { text: 'Method Refs, Validators & Config Sync', link: `${base}/rpc/refs-and-validation` }
+        ]
+      },
+      {
+        text: 'Space Select Region Selection',
+        collapsed: false,
+        items: [
+          { text: 'District Model, Selector Item & Manager', link: `${base}/space-select/` },
+          { text: 'Client Rendering, Scroll Control & Events', link: `${base}/space-select/client-and-events` }
+        ]
+      },
+      {
+        text: 'Sync Field Auto-Synchronization',
+        collapsed: false,
+        items: [
+          { text: '@Sync, @LazySync & SyncManager', link: `${base}/sync/` },
+          { text: 'Compile-Time Processor & Setup', link: `${base}/sync/processor-and-network` }
+        ]
+      },
+      {
+        text: 'UI Flexible Widget Library',
+        collapsed: false,
+        items: [
+          { text: 'Sprite Themes, 5-State Variants & Renderers', link: `${base}/ui/` },
+          { text: 'Buttons & Pointer Flyout Renderers', link: `${base}/ui/buttons-and-flyouts` }
+        ]
+      },
+      {
+        text: 'Util General Utilities',
+        collapsed: false,
+        items: [
+          { text: 'Collections, Math, Shapes & Inventory', link: `${base}/util/` },
+          { text: 'Flattened Multi-Dimensional Loop (FlattenLoop)', link: `${base}/util/flatten-loop` },
+          { text: 'Multi-Line Components & Tooltip Utils', link: `${base}/util/components` },
+          { text: 'Block, Item, NBT Predicates & Probability', link: `${base}/util/predicates` },
+          { text: 'Nullness Interfaces & UnlimitedItemStack', link: `${base}/util/nullness-and-stack` }
+        ]
+      },
+      {
+        text: 'Wheel Radial Menu Client API',
+        collapsed: false,
+        items: [
+          { text: 'Wheel Model, Pagination, Submenus & Callbacks', link: `${base}/wheel/` },
+          { text: 'Controller, Screen & Blur Rendering', link: `${base}/wheel/controller-and-screen` }
+        ]
+      }
+    ]
+  }
 
   return [
     {
