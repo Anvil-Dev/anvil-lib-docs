@@ -15,9 +15,6 @@ hero:
     - theme: alt
       text: dev/1.21.1 Docs (MC 1.21.1)
       link: /en/1.21.1/
-    - theme: alt
-      text: View Full Branch Checklist
-      link: /en/checklist
 
 features:
   - title: dev/26.3 (Minecraft 26.3)

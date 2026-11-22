@@ -43,7 +43,6 @@ export default defineConfig({
               link: `/${b.id}/`
             }))
           },
-          { text: '全分支 Checklist', link: '/checklist' },
           { text: '活动', link: '/posts/event/' },
           { component: 'AnvilCraftNavLink' }
         ],
@@ -74,7 +73,6 @@ export default defineConfig({
               link: `/en/${b.id}/`
             }))
           },
-          { text: 'Checklist', link: '/en/checklist' },
           { text: 'Events', link: '/en/posts/event/' },
           { component: 'AnvilCraftNavLink' }
         ],
